@@ -47,7 +47,6 @@ interface AlertInfo {
 
 export default function Dashboard() {
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
-    const [selectedAlertUser, setSelectedAlertUser] = useState<string | null>(null);
     const navigate = useNavigate();
 
     // Calculate alerts
@@ -148,7 +147,7 @@ export default function Dashboard() {
 
     // Get chart data for selected alert user
     const chartData = useMemo(() => {
-        const userId = selectedAlertUser || (redAlerts.length > 0 ? redAlerts[0].userId : alerts[0]?.userId);
+        const userId = redAlerts.length > 0 ? redAlerts[0].userId : alerts[0]?.userId;
         if (!userId) return null;
 
         const userSurveys = surveys
@@ -186,7 +185,7 @@ export default function Dashboard() {
             ],
             userName: user?.name || '',
         };
-    }, [selectedAlertUser, alerts, redAlerts]);
+    }, [alerts, redAlerts]);
 
     const chartOptions = {
         responsive: true,
