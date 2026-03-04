@@ -1,4 +1,4 @@
-﻿import { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { surveyQuestions as initialQuestions } from '../data/mockData';
 import type { SurveyQuestion, SurveyCategory } from '../types';
 
