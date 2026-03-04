@@ -8,7 +8,7 @@ import SurveyMobile from './pages/SurveyMobile';
 
 function App() {
   return (
-    <BrowserRouter basename="/talent">
+    <BrowserRouter basename="/talentmanagementdemo">
       <Routes>
         {/* Admin Layout */}
         <Route path="/" element={<Layout />}>
