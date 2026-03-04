@@ -74,6 +74,16 @@ export default function StaffDetail() {
         <div className='stat-card'><div className='stat-card-icon' style={{background:'var(--color-info-bg)',color:'var(--color-info)'}}>🧪</div><div className='stat-card-value'>{uApt.length}</div><div className='stat-card-label'>適性検査</div></div>
         <div className='stat-card'><div className='stat-card-icon' style={{background:pBgs[aiAdvice[0]?.priority||'low'],color:pCols[aiAdvice[0]?.priority||'low']}}>🤖</div><div className='stat-card-value'>{aiAdvice.filter(a=>a.priority==='high').length}</div><div className='stat-card-label'>緊急アドバイス</div></div>
       </div>
+
+      {/* Staff Selector */}
+      <div className='card' style={{marginBottom:'var(--space-5)',padding:'var(--space-3) var(--space-4)'}}>
+        <div style={{display:'flex',alignItems:'center',gap:'var(--space-3)',flexWrap:'wrap'}}>
+          <label style={{fontWeight:600,fontSize:'var(--font-size-sm)',whiteSpace:'nowrap'}}>👥 スタッフ選択:</label>
+          <select className='form-select' value={userId} onChange={(e)=>navigate('/staff/'+e.target.value)} style={{flex:1,minWidth:200}}>
+            {users.map(u=>(<option key={u.id} value={u.id}>{u.name} - {facilities.find(f=>f.id===u.facility_id)?.name}</option>))}
+          </select>
+        </div>
+      </div>
       <div className='tab-nav'>
         <button className={'tab-item '+(activeTab==='survey'?'active':'')} onClick={()=>setActiveTab('survey')}>📊 サーベイ推移</button>
         <button className={'tab-item '+(activeTab==='interviews'?'active':'')} onClick={()=>setActiveTab('interviews')}>📝 面談記録</button>

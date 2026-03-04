@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -47,6 +48,7 @@ interface AlertInfo {
 export default function Dashboard() {
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
     const [selectedAlertUser, setSelectedAlertUser] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     // Calculate alerts
     const alerts: AlertInfo[] = useMemo(() => {
@@ -284,7 +286,7 @@ export default function Dashboard() {
                     <div
                         key={alert.userId}
                         className={`alert-card alert-${alert.level}`}
-                        onClick={() => setSelectedAlertUser(alert.userId)}
+                        onClick={() => navigate('/staff/' + alert.userId)}
                         style={{ cursor: 'pointer' }}
                     >
                         <div className="alert-card-icon">

@@ -15,7 +15,7 @@ const navItems = [
         items: [
             { path: '/survey/history', label: 'サーベイ管理', icon: '📋' },
             { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
-            { path: '/staff/u-3', label: 'スタッフ詳細', icon: '👤' },
+            { path: '/staff/u-1', label: 'スタッフ詳細', icon: '👤' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
         ],
