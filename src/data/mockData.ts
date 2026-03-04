@@ -12,6 +12,8 @@ import type {
   SurveyPeriod,
   Facility,
   FacilityStaffingTarget,
+  InterviewLog,
+  AptitudeTest,
 } from '../types';
 
 export const occupations: Occupation[] = [
@@ -4815,5 +4817,46367 @@ export const facilityStaffingTargets: FacilityStaffingTarget[] = [
     facility_id: 'fac-7',
     occupation_id: 'occ-2',
     target_count: 3
+  }
+];
+
+export const interviewLogs: InterviewLog[] = [
+  {
+    id: 'int-1',
+    user_id: 'u-1',
+    interviewer_id: 'u-1',
+    date: '2025-10-10',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-2',
+    user_id: 'u-1',
+    interviewer_id: 'u-1',
+    date: '2025-08-11',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-3',
+    user_id: 'u-2',
+    interviewer_id: 'u-1',
+    date: '2025-08-06',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-4',
+    user_id: 'u-2',
+    interviewer_id: 'u-1',
+    date: '2025-09-14',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-5',
+    user_id: 'u-2',
+    interviewer_id: 'u-1',
+    date: '2025-09-27',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-6',
+    user_id: 'u-3',
+    interviewer_id: 'u-1',
+    date: '2025-11-03',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-7',
+    user_id: 'u-3',
+    interviewer_id: 'u-1',
+    date: '2025-08-12',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-8',
+    user_id: 'u-3',
+    interviewer_id: 'u-1',
+    date: '2025-10-10',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-9',
+    user_id: 'u-3',
+    interviewer_id: 'u-1',
+    date: '2025-12-07',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-10',
+    user_id: 'u-4',
+    interviewer_id: 'u-1',
+    date: '2025-11-20',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-11',
+    user_id: 'u-4',
+    interviewer_id: 'u-1',
+    date: '2025-09-24',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-12',
+    user_id: 'u-4',
+    interviewer_id: 'u-1',
+    date: '2025-07-01',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-13',
+    user_id: 'u-5',
+    interviewer_id: 'u-1',
+    date: '2025-09-09',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-14',
+    user_id: 'u-5',
+    interviewer_id: 'u-1',
+    date: '2025-11-14',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-15',
+    user_id: 'u-5',
+    interviewer_id: 'u-1',
+    date: '2025-12-12',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-16',
+    user_id: 'u-5',
+    interviewer_id: 'u-1',
+    date: '2025-08-21',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-17',
+    user_id: 'u-6',
+    interviewer_id: 'u-1',
+    date: '2025-10-07',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-18',
+    user_id: 'u-6',
+    interviewer_id: 'u-1',
+    date: '2025-12-08',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-19',
+    user_id: 'u-6',
+    interviewer_id: 'u-1',
+    date: '2025-12-07',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-20',
+    user_id: 'u-6',
+    interviewer_id: 'u-1',
+    date: '2025-12-21',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-21',
+    user_id: 'u-6',
+    interviewer_id: 'u-1',
+    date: '2025-08-01',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-22',
+    user_id: 'u-7',
+    interviewer_id: 'u-1',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-23',
+    user_id: 'u-7',
+    interviewer_id: 'u-1',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-24',
+    user_id: 'u-7',
+    interviewer_id: 'u-1',
+    date: '2025-09-15',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-25',
+    user_id: 'u-7',
+    interviewer_id: 'u-1',
+    date: '2025-08-11',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-26',
+    user_id: 'u-8',
+    interviewer_id: 'u-1',
+    date: '2025-07-21',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-27',
+    user_id: 'u-8',
+    interviewer_id: 'u-1',
+    date: '2025-08-17',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-28',
+    user_id: 'u-8',
+    interviewer_id: 'u-1',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-29',
+    user_id: 'u-9',
+    interviewer_id: 'u-1',
+    date: '2025-10-21',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-30',
+    user_id: 'u-9',
+    interviewer_id: 'u-1',
+    date: '2025-09-18',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-31',
+    user_id: 'u-9',
+    interviewer_id: 'u-1',
+    date: '2025-07-14',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-32',
+    user_id: 'u-10',
+    interviewer_id: 'u-1',
+    date: '2025-12-22',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-33',
+    user_id: 'u-10',
+    interviewer_id: 'u-1',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-34',
+    user_id: 'u-10',
+    interviewer_id: 'u-1',
+    date: '2025-10-27',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-35',
+    user_id: 'u-10',
+    interviewer_id: 'u-1',
+    date: '2025-08-08',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-36',
+    user_id: 'u-11',
+    interviewer_id: 'u-11',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-37',
+    user_id: 'u-11',
+    interviewer_id: 'u-11',
+    date: '2025-07-13',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-38',
+    user_id: 'u-12',
+    interviewer_id: 'u-11',
+    date: '2025-09-16',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-39',
+    user_id: 'u-12',
+    interviewer_id: 'u-11',
+    date: '2025-08-01',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-40',
+    user_id: 'u-12',
+    interviewer_id: 'u-11',
+    date: '2025-09-06',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-41',
+    user_id: 'u-12',
+    interviewer_id: 'u-11',
+    date: '2025-10-21',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-42',
+    user_id: 'u-12',
+    interviewer_id: 'u-11',
+    date: '2025-08-16',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-43',
+    user_id: 'u-13',
+    interviewer_id: 'u-11',
+    date: '2025-10-17',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-44',
+    user_id: 'u-13',
+    interviewer_id: 'u-11',
+    date: '2025-08-21',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-45',
+    user_id: 'u-13',
+    interviewer_id: 'u-11',
+    date: '2025-10-10',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-46',
+    user_id: 'u-13',
+    interviewer_id: 'u-11',
+    date: '2025-07-15',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-47',
+    user_id: 'u-13',
+    interviewer_id: 'u-11',
+    date: '2025-10-16',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-48',
+    user_id: 'u-14',
+    interviewer_id: 'u-11',
+    date: '2025-08-14',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-49',
+    user_id: 'u-14',
+    interviewer_id: 'u-11',
+    date: '2025-07-03',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-50',
+    user_id: 'u-14',
+    interviewer_id: 'u-11',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-51',
+    user_id: 'u-14',
+    interviewer_id: 'u-11',
+    date: '2025-08-21',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-52',
+    user_id: 'u-14',
+    interviewer_id: 'u-11',
+    date: '2025-08-01',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-53',
+    user_id: 'u-15',
+    interviewer_id: 'u-11',
+    date: '2025-12-11',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-54',
+    user_id: 'u-15',
+    interviewer_id: 'u-11',
+    date: '2025-07-06',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-55',
+    user_id: 'u-15',
+    interviewer_id: 'u-11',
+    date: '2025-11-17',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-56',
+    user_id: 'u-15',
+    interviewer_id: 'u-11',
+    date: '2025-09-18',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-57',
+    user_id: 'u-15',
+    interviewer_id: 'u-11',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-58',
+    user_id: 'u-16',
+    interviewer_id: 'u-11',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-59',
+    user_id: 'u-16',
+    interviewer_id: 'u-11',
+    date: '2025-08-11',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-60',
+    user_id: 'u-16',
+    interviewer_id: 'u-11',
+    date: '2025-07-16',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-61',
+    user_id: 'u-16',
+    interviewer_id: 'u-11',
+    date: '2025-11-12',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-62',
+    user_id: 'u-16',
+    interviewer_id: 'u-11',
+    date: '2025-12-18',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-63',
+    user_id: 'u-17',
+    interviewer_id: 'u-11',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-64',
+    user_id: 'u-17',
+    interviewer_id: 'u-11',
+    date: '2025-10-01',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-65',
+    user_id: 'u-17',
+    interviewer_id: 'u-11',
+    date: '2025-09-03',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-66',
+    user_id: 'u-18',
+    interviewer_id: 'u-11',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-67',
+    user_id: 'u-18',
+    interviewer_id: 'u-11',
+    date: '2025-10-04',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-68',
+    user_id: 'u-18',
+    interviewer_id: 'u-11',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-69',
+    user_id: 'u-18',
+    interviewer_id: 'u-11',
+    date: '2025-10-13',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-70',
+    user_id: 'u-19',
+    interviewer_id: 'u-11',
+    date: '2025-11-23',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-71',
+    user_id: 'u-19',
+    interviewer_id: 'u-11',
+    date: '2025-10-10',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-72',
+    user_id: 'u-19',
+    interviewer_id: 'u-11',
+    date: '2025-08-17',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-73',
+    user_id: 'u-19',
+    interviewer_id: 'u-11',
+    date: '2025-07-20',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-74',
+    user_id: 'u-19',
+    interviewer_id: 'u-11',
+    date: '2025-09-06',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-75',
+    user_id: 'u-20',
+    interviewer_id: 'u-11',
+    date: '2025-12-24',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-76',
+    user_id: 'u-20',
+    interviewer_id: 'u-11',
+    date: '2025-11-16',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-77',
+    user_id: 'u-20',
+    interviewer_id: 'u-11',
+    date: '2025-07-21',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-78',
+    user_id: 'u-20',
+    interviewer_id: 'u-11',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-79',
+    user_id: 'u-21',
+    interviewer_id: 'u-21',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-80',
+    user_id: 'u-21',
+    interviewer_id: 'u-21',
+    date: '2025-10-25',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-81',
+    user_id: 'u-21',
+    interviewer_id: 'u-21',
+    date: '2025-09-26',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-82',
+    user_id: 'u-22',
+    interviewer_id: 'u-21',
+    date: '2025-08-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-83',
+    user_id: 'u-22',
+    interviewer_id: 'u-21',
+    date: '2025-07-19',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-84',
+    user_id: 'u-22',
+    interviewer_id: 'u-21',
+    date: '2025-11-04',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-85',
+    user_id: 'u-23',
+    interviewer_id: 'u-21',
+    date: '2025-10-03',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-86',
+    user_id: 'u-23',
+    interviewer_id: 'u-21',
+    date: '2025-08-12',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-87',
+    user_id: 'u-23',
+    interviewer_id: 'u-21',
+    date: '2025-08-08',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-88',
+    user_id: 'u-23',
+    interviewer_id: 'u-21',
+    date: '2025-09-28',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-89',
+    user_id: 'u-24',
+    interviewer_id: 'u-21',
+    date: '2025-10-06',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-90',
+    user_id: 'u-24',
+    interviewer_id: 'u-21',
+    date: '2025-10-26',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-91',
+    user_id: 'u-24',
+    interviewer_id: 'u-21',
+    date: '2025-09-22',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-92',
+    user_id: 'u-25',
+    interviewer_id: 'u-21',
+    date: '2025-08-08',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-93',
+    user_id: 'u-25',
+    interviewer_id: 'u-21',
+    date: '2025-12-23',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-94',
+    user_id: 'u-25',
+    interviewer_id: 'u-21',
+    date: '2025-11-23',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-95',
+    user_id: 'u-25',
+    interviewer_id: 'u-21',
+    date: '2025-07-07',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-96',
+    user_id: 'u-26',
+    interviewer_id: 'u-21',
+    date: '2025-08-16',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-97',
+    user_id: 'u-26',
+    interviewer_id: 'u-21',
+    date: '2025-08-06',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-98',
+    user_id: 'u-26',
+    interviewer_id: 'u-21',
+    date: '2025-12-11',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-99',
+    user_id: 'u-26',
+    interviewer_id: 'u-21',
+    date: '2025-10-02',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-100',
+    user_id: 'u-27',
+    interviewer_id: 'u-21',
+    date: '2025-12-02',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-101',
+    user_id: 'u-27',
+    interviewer_id: 'u-21',
+    date: '2025-08-28',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-102',
+    user_id: 'u-28',
+    interviewer_id: 'u-21',
+    date: '2025-09-25',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-103',
+    user_id: 'u-28',
+    interviewer_id: 'u-21',
+    date: '2025-08-23',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-104',
+    user_id: 'u-28',
+    interviewer_id: 'u-21',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-105',
+    user_id: 'u-28',
+    interviewer_id: 'u-21',
+    date: '2025-07-14',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-106',
+    user_id: 'u-28',
+    interviewer_id: 'u-21',
+    date: '2025-10-18',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-107',
+    user_id: 'u-29',
+    interviewer_id: 'u-21',
+    date: '2025-11-13',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-108',
+    user_id: 'u-29',
+    interviewer_id: 'u-21',
+    date: '2025-08-26',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-109',
+    user_id: 'u-30',
+    interviewer_id: 'u-21',
+    date: '2025-11-09',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-110',
+    user_id: 'u-30',
+    interviewer_id: 'u-21',
+    date: '2025-12-13',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-111',
+    user_id: 'u-30',
+    interviewer_id: 'u-21',
+    date: '2025-08-22',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-112',
+    user_id: 'u-31',
+    interviewer_id: 'u-31',
+    date: '2025-12-20',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-113',
+    user_id: 'u-31',
+    interviewer_id: 'u-31',
+    date: '2025-09-03',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-114',
+    user_id: 'u-31',
+    interviewer_id: 'u-31',
+    date: '2025-08-06',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-115',
+    user_id: 'u-31',
+    interviewer_id: 'u-31',
+    date: '2025-11-23',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-116',
+    user_id: 'u-32',
+    interviewer_id: 'u-31',
+    date: '2025-10-16',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-117',
+    user_id: 'u-32',
+    interviewer_id: 'u-31',
+    date: '2025-12-20',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-118',
+    user_id: 'u-32',
+    interviewer_id: 'u-31',
+    date: '2025-07-23',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-119',
+    user_id: 'u-32',
+    interviewer_id: 'u-31',
+    date: '2025-10-11',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-120',
+    user_id: 'u-32',
+    interviewer_id: 'u-31',
+    date: '2025-08-01',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-121',
+    user_id: 'u-33',
+    interviewer_id: 'u-31',
+    date: '2025-09-20',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-122',
+    user_id: 'u-33',
+    interviewer_id: 'u-31',
+    date: '2025-10-03',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-123',
+    user_id: 'u-33',
+    interviewer_id: 'u-31',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-124',
+    user_id: 'u-33',
+    interviewer_id: 'u-31',
+    date: '2025-11-28',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-125',
+    user_id: 'u-34',
+    interviewer_id: 'u-31',
+    date: '2025-12-13',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-126',
+    user_id: 'u-34',
+    interviewer_id: 'u-31',
+    date: '2025-11-19',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-127',
+    user_id: 'u-34',
+    interviewer_id: 'u-31',
+    date: '2025-09-26',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-128',
+    user_id: 'u-34',
+    interviewer_id: 'u-31',
+    date: '2025-12-13',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-129',
+    user_id: 'u-34',
+    interviewer_id: 'u-31',
+    date: '2025-11-14',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-130',
+    user_id: 'u-35',
+    interviewer_id: 'u-31',
+    date: '2025-08-14',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-131',
+    user_id: 'u-35',
+    interviewer_id: 'u-31',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-132',
+    user_id: 'u-35',
+    interviewer_id: 'u-31',
+    date: '2025-11-05',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-133',
+    user_id: 'u-35',
+    interviewer_id: 'u-31',
+    date: '2025-08-19',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-134',
+    user_id: 'u-36',
+    interviewer_id: 'u-31',
+    date: '2025-08-09',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-135',
+    user_id: 'u-36',
+    interviewer_id: 'u-31',
+    date: '2025-09-11',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-136',
+    user_id: 'u-37',
+    interviewer_id: 'u-31',
+    date: '2025-08-05',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-137',
+    user_id: 'u-37',
+    interviewer_id: 'u-31',
+    date: '2025-07-05',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-138',
+    user_id: 'u-37',
+    interviewer_id: 'u-31',
+    date: '2025-11-24',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-139',
+    user_id: 'u-38',
+    interviewer_id: 'u-31',
+    date: '2025-12-24',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-140',
+    user_id: 'u-38',
+    interviewer_id: 'u-31',
+    date: '2025-10-28',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-141',
+    user_id: 'u-38',
+    interviewer_id: 'u-31',
+    date: '2025-07-18',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-18'
+  },
+  {
+    id: 'int-142',
+    user_id: 'u-39',
+    interviewer_id: 'u-31',
+    date: '2025-08-06',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-143',
+    user_id: 'u-39',
+    interviewer_id: 'u-31',
+    date: '2025-08-03',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-144',
+    user_id: 'u-39',
+    interviewer_id: 'u-31',
+    date: '2025-09-11',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-145',
+    user_id: 'u-39',
+    interviewer_id: 'u-31',
+    date: '2025-10-23',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-146',
+    user_id: 'u-39',
+    interviewer_id: 'u-31',
+    date: '2025-11-21',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-147',
+    user_id: 'u-40',
+    interviewer_id: 'u-31',
+    date: '2025-11-01',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-148',
+    user_id: 'u-40',
+    interviewer_id: 'u-31',
+    date: '2025-12-04',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-149',
+    user_id: 'u-40',
+    interviewer_id: 'u-31',
+    date: '2025-07-25',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-150',
+    user_id: 'u-40',
+    interviewer_id: 'u-31',
+    date: '2025-12-22',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-151',
+    user_id: 'u-41',
+    interviewer_id: 'u-41',
+    date: '2025-12-19',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-19'
+  },
+  {
+    id: 'int-152',
+    user_id: 'u-41',
+    interviewer_id: 'u-41',
+    date: '2025-08-27',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-153',
+    user_id: 'u-41',
+    interviewer_id: 'u-41',
+    date: '2025-12-24',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-154',
+    user_id: 'u-41',
+    interviewer_id: 'u-41',
+    date: '2025-09-09',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-155',
+    user_id: 'u-41',
+    interviewer_id: 'u-41',
+    date: '2025-09-13',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-156',
+    user_id: 'u-42',
+    interviewer_id: 'u-41',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-157',
+    user_id: 'u-42',
+    interviewer_id: 'u-41',
+    date: '2025-10-26',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-158',
+    user_id: 'u-42',
+    interviewer_id: 'u-41',
+    date: '2025-12-28',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-159',
+    user_id: 'u-42',
+    interviewer_id: 'u-41',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-160',
+    user_id: 'u-42',
+    interviewer_id: 'u-41',
+    date: '2025-07-25',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-161',
+    user_id: 'u-43',
+    interviewer_id: 'u-41',
+    date: '2025-11-18',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-162',
+    user_id: 'u-43',
+    interviewer_id: 'u-41',
+    date: '2025-12-10',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-163',
+    user_id: 'u-43',
+    interviewer_id: 'u-41',
+    date: '2025-09-03',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-164',
+    user_id: 'u-43',
+    interviewer_id: 'u-41',
+    date: '2025-09-05',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-165',
+    user_id: 'u-44',
+    interviewer_id: 'u-41',
+    date: '2025-12-01',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-166',
+    user_id: 'u-44',
+    interviewer_id: 'u-41',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-167',
+    user_id: 'u-44',
+    interviewer_id: 'u-41',
+    date: '2025-08-21',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-168',
+    user_id: 'u-45',
+    interviewer_id: 'u-41',
+    date: '2025-10-27',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-169',
+    user_id: 'u-45',
+    interviewer_id: 'u-41',
+    date: '2025-10-16',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-170',
+    user_id: 'u-45',
+    interviewer_id: 'u-41',
+    date: '2025-08-27',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-171',
+    user_id: 'u-45',
+    interviewer_id: 'u-41',
+    date: '2025-08-23',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-172',
+    user_id: 'u-46',
+    interviewer_id: 'u-41',
+    date: '2025-12-15',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-173',
+    user_id: 'u-46',
+    interviewer_id: 'u-41',
+    date: '2025-11-13',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-174',
+    user_id: 'u-46',
+    interviewer_id: 'u-41',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-175',
+    user_id: 'u-46',
+    interviewer_id: 'u-41',
+    date: '2025-09-23',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-176',
+    user_id: 'u-46',
+    interviewer_id: 'u-41',
+    date: '2025-12-03',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-177',
+    user_id: 'u-47',
+    interviewer_id: 'u-41',
+    date: '2025-12-16',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-178',
+    user_id: 'u-47',
+    interviewer_id: 'u-41',
+    date: '2025-09-21',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-179',
+    user_id: 'u-47',
+    interviewer_id: 'u-41',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-180',
+    user_id: 'u-47',
+    interviewer_id: 'u-41',
+    date: '2025-08-04',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-181',
+    user_id: 'u-48',
+    interviewer_id: 'u-41',
+    date: '2025-09-15',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-182',
+    user_id: 'u-48',
+    interviewer_id: 'u-41',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-183',
+    user_id: 'u-48',
+    interviewer_id: 'u-41',
+    date: '2025-12-25',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-184',
+    user_id: 'u-48',
+    interviewer_id: 'u-41',
+    date: '2025-11-20',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-185',
+    user_id: 'u-48',
+    interviewer_id: 'u-41',
+    date: '2025-11-01',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-186',
+    user_id: 'u-49',
+    interviewer_id: 'u-41',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-187',
+    user_id: 'u-49',
+    interviewer_id: 'u-41',
+    date: '2025-08-09',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-188',
+    user_id: 'u-49',
+    interviewer_id: 'u-41',
+    date: '2025-10-11',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-189',
+    user_id: 'u-50',
+    interviewer_id: 'u-41',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-190',
+    user_id: 'u-50',
+    interviewer_id: 'u-41',
+    date: '2025-07-16',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-191',
+    user_id: 'u-50',
+    interviewer_id: 'u-41',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-192',
+    user_id: 'u-51',
+    interviewer_id: 'u-51',
+    date: '2025-07-27',
+    type: '1on1',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-193',
+    user_id: 'u-51',
+    interviewer_id: 'u-51',
+    date: '2025-12-25',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-194',
+    user_id: 'u-51',
+    interviewer_id: 'u-51',
+    date: '2025-10-08',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-195',
+    user_id: 'u-51',
+    interviewer_id: 'u-51',
+    date: '2025-07-11',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-11'
+  },
+  {
+    id: 'int-196',
+    user_id: 'u-52',
+    interviewer_id: 'u-51',
+    date: '2025-10-15',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-197',
+    user_id: 'u-52',
+    interviewer_id: 'u-51',
+    date: '2025-10-22',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-198',
+    user_id: 'u-52',
+    interviewer_id: 'u-51',
+    date: '2025-11-26',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-199',
+    user_id: 'u-52',
+    interviewer_id: 'u-51',
+    date: '2025-08-15',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-200',
+    user_id: 'u-53',
+    interviewer_id: 'u-51',
+    date: '2025-07-23',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-201',
+    user_id: 'u-53',
+    interviewer_id: 'u-51',
+    date: '2025-12-22',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-202',
+    user_id: 'u-53',
+    interviewer_id: 'u-51',
+    date: '2025-09-18',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-203',
+    user_id: 'u-54',
+    interviewer_id: 'u-51',
+    date: '2025-09-21',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-204',
+    user_id: 'u-54',
+    interviewer_id: 'u-51',
+    date: '2025-08-25',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-205',
+    user_id: 'u-54',
+    interviewer_id: 'u-51',
+    date: '2025-12-28',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-206',
+    user_id: 'u-54',
+    interviewer_id: 'u-51',
+    date: '2025-08-03',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-207',
+    user_id: 'u-55',
+    interviewer_id: 'u-51',
+    date: '2025-08-02',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-208',
+    user_id: 'u-55',
+    interviewer_id: 'u-51',
+    date: '2025-08-26',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-209',
+    user_id: 'u-56',
+    interviewer_id: 'u-51',
+    date: '2025-11-01',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-210',
+    user_id: 'u-56',
+    interviewer_id: 'u-51',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-211',
+    user_id: 'u-56',
+    interviewer_id: 'u-51',
+    date: '2025-11-19',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-212',
+    user_id: 'u-57',
+    interviewer_id: 'u-51',
+    date: '2025-08-26',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-213',
+    user_id: 'u-57',
+    interviewer_id: 'u-51',
+    date: '2025-11-17',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-214',
+    user_id: 'u-57',
+    interviewer_id: 'u-51',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-215',
+    user_id: 'u-58',
+    interviewer_id: 'u-51',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-216',
+    user_id: 'u-58',
+    interviewer_id: 'u-51',
+    date: '2025-10-01',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-217',
+    user_id: 'u-59',
+    interviewer_id: 'u-51',
+    date: '2025-10-24',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-218',
+    user_id: 'u-59',
+    interviewer_id: 'u-51',
+    date: '2025-07-09',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-219',
+    user_id: 'u-59',
+    interviewer_id: 'u-51',
+    date: '2025-07-21',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-220',
+    user_id: 'u-59',
+    interviewer_id: 'u-51',
+    date: '2025-09-03',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-221',
+    user_id: 'u-59',
+    interviewer_id: 'u-51',
+    date: '2025-09-26',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-222',
+    user_id: 'u-60',
+    interviewer_id: 'u-51',
+    date: '2025-08-01',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-223',
+    user_id: 'u-60',
+    interviewer_id: 'u-51',
+    date: '2025-10-16',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-224',
+    user_id: 'u-60',
+    interviewer_id: 'u-51',
+    date: '2025-11-25',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-225',
+    user_id: 'u-60',
+    interviewer_id: 'u-51',
+    date: '2025-12-04',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-226',
+    user_id: 'u-60',
+    interviewer_id: 'u-51',
+    date: '2025-08-01',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-227',
+    user_id: 'u-61',
+    interviewer_id: 'u-61',
+    date: '2025-12-16',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-228',
+    user_id: 'u-61',
+    interviewer_id: 'u-61',
+    date: '2025-08-08',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-229',
+    user_id: 'u-61',
+    interviewer_id: 'u-61',
+    date: '2025-09-24',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-230',
+    user_id: 'u-61',
+    interviewer_id: 'u-61',
+    date: '2025-12-16',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-231',
+    user_id: 'u-62',
+    interviewer_id: 'u-61',
+    date: '2025-10-02',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-232',
+    user_id: 'u-62',
+    interviewer_id: 'u-61',
+    date: '2025-07-20',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-233',
+    user_id: 'u-62',
+    interviewer_id: 'u-61',
+    date: '2025-09-08',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-234',
+    user_id: 'u-63',
+    interviewer_id: 'u-61',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-235',
+    user_id: 'u-63',
+    interviewer_id: 'u-61',
+    date: '2025-10-25',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-236',
+    user_id: 'u-63',
+    interviewer_id: 'u-61',
+    date: '2025-07-05',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-237',
+    user_id: 'u-63',
+    interviewer_id: 'u-61',
+    date: '2025-08-21',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-238',
+    user_id: 'u-64',
+    interviewer_id: 'u-61',
+    date: '2025-12-13',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-239',
+    user_id: 'u-64',
+    interviewer_id: 'u-61',
+    date: '2025-08-03',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-240',
+    user_id: 'u-64',
+    interviewer_id: 'u-61',
+    date: '2025-10-21',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-241',
+    user_id: 'u-64',
+    interviewer_id: 'u-61',
+    date: '2025-09-21',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-242',
+    user_id: 'u-65',
+    interviewer_id: 'u-61',
+    date: '2025-07-04',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-243',
+    user_id: 'u-65',
+    interviewer_id: 'u-61',
+    date: '2025-09-26',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-244',
+    user_id: 'u-66',
+    interviewer_id: 'u-61',
+    date: '2025-07-16',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-245',
+    user_id: 'u-66',
+    interviewer_id: 'u-61',
+    date: '2025-11-15',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-246',
+    user_id: 'u-66',
+    interviewer_id: 'u-61',
+    date: '2025-11-26',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-247',
+    user_id: 'u-66',
+    interviewer_id: 'u-61',
+    date: '2025-10-11',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-248',
+    user_id: 'u-66',
+    interviewer_id: 'u-61',
+    date: '2025-08-23',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-249',
+    user_id: 'u-67',
+    interviewer_id: 'u-61',
+    date: '2025-07-22',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-250',
+    user_id: 'u-67',
+    interviewer_id: 'u-61',
+    date: '2025-07-20',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-251',
+    user_id: 'u-67',
+    interviewer_id: 'u-61',
+    date: '2025-11-15',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-252',
+    user_id: 'u-68',
+    interviewer_id: 'u-61',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-253',
+    user_id: 'u-68',
+    interviewer_id: 'u-61',
+    date: '2025-08-08',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-254',
+    user_id: 'u-69',
+    interviewer_id: 'u-61',
+    date: '2025-12-07',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-255',
+    user_id: 'u-69',
+    interviewer_id: 'u-61',
+    date: '2025-12-28',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-256',
+    user_id: 'u-69',
+    interviewer_id: 'u-61',
+    date: '2025-12-08',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-257',
+    user_id: 'u-69',
+    interviewer_id: 'u-61',
+    date: '2025-09-28',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-258',
+    user_id: 'u-69',
+    interviewer_id: 'u-61',
+    date: '2025-07-06',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-259',
+    user_id: 'u-70',
+    interviewer_id: 'u-61',
+    date: '2025-10-07',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-260',
+    user_id: 'u-70',
+    interviewer_id: 'u-61',
+    date: '2025-12-28',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-261',
+    user_id: 'u-70',
+    interviewer_id: 'u-61',
+    date: '2025-12-24',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-262',
+    user_id: 'u-70',
+    interviewer_id: 'u-61',
+    date: '2025-12-25',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-263',
+    user_id: 'u-70',
+    interviewer_id: 'u-61',
+    date: '2025-09-17',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-264',
+    user_id: 'u-71',
+    interviewer_id: 'u-71',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-265',
+    user_id: 'u-71',
+    interviewer_id: 'u-71',
+    date: '2025-11-10',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-266',
+    user_id: 'u-71',
+    interviewer_id: 'u-71',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-267',
+    user_id: 'u-71',
+    interviewer_id: 'u-71',
+    date: '2025-12-20',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-268',
+    user_id: 'u-72',
+    interviewer_id: 'u-71',
+    date: '2025-10-09',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-269',
+    user_id: 'u-72',
+    interviewer_id: 'u-71',
+    date: '2025-08-08',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-270',
+    user_id: 'u-73',
+    interviewer_id: 'u-71',
+    date: '2025-08-21',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-271',
+    user_id: 'u-73',
+    interviewer_id: 'u-71',
+    date: '2025-11-10',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-272',
+    user_id: 'u-73',
+    interviewer_id: 'u-71',
+    date: '2025-10-19',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-273',
+    user_id: 'u-74',
+    interviewer_id: 'u-71',
+    date: '2025-08-22',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-274',
+    user_id: 'u-74',
+    interviewer_id: 'u-71',
+    date: '2025-07-04',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-275',
+    user_id: 'u-75',
+    interviewer_id: 'u-71',
+    date: '2025-12-25',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-276',
+    user_id: 'u-75',
+    interviewer_id: 'u-71',
+    date: '2025-09-09',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-277',
+    user_id: 'u-75',
+    interviewer_id: 'u-71',
+    date: '2025-07-21',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-278',
+    user_id: 'u-75',
+    interviewer_id: 'u-71',
+    date: '2025-07-20',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-279',
+    user_id: 'u-76',
+    interviewer_id: 'u-71',
+    date: '2025-11-01',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-280',
+    user_id: 'u-76',
+    interviewer_id: 'u-71',
+    date: '2025-07-22',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-281',
+    user_id: 'u-77',
+    interviewer_id: 'u-71',
+    date: '2025-08-15',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-282',
+    user_id: 'u-77',
+    interviewer_id: 'u-71',
+    date: '2025-08-15',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-283',
+    user_id: 'u-77',
+    interviewer_id: 'u-71',
+    date: '2025-11-15',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-284',
+    user_id: 'u-78',
+    interviewer_id: 'u-71',
+    date: '2025-09-21',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-285',
+    user_id: 'u-78',
+    interviewer_id: 'u-71',
+    date: '2025-10-04',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-286',
+    user_id: 'u-78',
+    interviewer_id: 'u-71',
+    date: '2025-12-28',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-287',
+    user_id: 'u-78',
+    interviewer_id: 'u-71',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-288',
+    user_id: 'u-78',
+    interviewer_id: 'u-71',
+    date: '2025-08-20',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-289',
+    user_id: 'u-79',
+    interviewer_id: 'u-71',
+    date: '2025-07-09',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-290',
+    user_id: 'u-79',
+    interviewer_id: 'u-71',
+    date: '2025-07-22',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-291',
+    user_id: 'u-79',
+    interviewer_id: 'u-71',
+    date: '2025-11-21',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-292',
+    user_id: 'u-79',
+    interviewer_id: 'u-71',
+    date: '2025-11-28',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-293',
+    user_id: 'u-79',
+    interviewer_id: 'u-71',
+    date: '2025-09-20',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-294',
+    user_id: 'u-80',
+    interviewer_id: 'u-71',
+    date: '2025-07-14',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-295',
+    user_id: 'u-80',
+    interviewer_id: 'u-71',
+    date: '2025-09-20',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-296',
+    user_id: 'u-80',
+    interviewer_id: 'u-71',
+    date: '2025-07-09',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-297',
+    user_id: 'u-80',
+    interviewer_id: 'u-71',
+    date: '2025-09-22',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-298',
+    user_id: 'u-81',
+    interviewer_id: 'u-81',
+    date: '2025-11-18',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-299',
+    user_id: 'u-81',
+    interviewer_id: 'u-81',
+    date: '2025-08-07',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-300',
+    user_id: 'u-81',
+    interviewer_id: 'u-81',
+    date: '2025-08-10',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-301',
+    user_id: 'u-82',
+    interviewer_id: 'u-81',
+    date: '2025-10-21',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-302',
+    user_id: 'u-82',
+    interviewer_id: 'u-81',
+    date: '2025-11-05',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-303',
+    user_id: 'u-82',
+    interviewer_id: 'u-81',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-304',
+    user_id: 'u-83',
+    interviewer_id: 'u-81',
+    date: '2025-12-28',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-305',
+    user_id: 'u-83',
+    interviewer_id: 'u-81',
+    date: '2025-09-02',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-306',
+    user_id: 'u-84',
+    interviewer_id: 'u-81',
+    date: '2025-08-17',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-307',
+    user_id: 'u-84',
+    interviewer_id: 'u-81',
+    date: '2025-11-20',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-308',
+    user_id: 'u-85',
+    interviewer_id: 'u-81',
+    date: '2025-09-07',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-309',
+    user_id: 'u-85',
+    interviewer_id: 'u-81',
+    date: '2025-12-11',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-310',
+    user_id: 'u-85',
+    interviewer_id: 'u-81',
+    date: '2025-12-04',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-311',
+    user_id: 'u-86',
+    interviewer_id: 'u-81',
+    date: '2025-09-02',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-312',
+    user_id: 'u-86',
+    interviewer_id: 'u-81',
+    date: '2025-08-17',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-313',
+    user_id: 'u-86',
+    interviewer_id: 'u-81',
+    date: '2025-10-18',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-314',
+    user_id: 'u-86',
+    interviewer_id: 'u-81',
+    date: '2025-12-03',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-315',
+    user_id: 'u-86',
+    interviewer_id: 'u-81',
+    date: '2025-11-07',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-316',
+    user_id: 'u-87',
+    interviewer_id: 'u-81',
+    date: '2025-11-09',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-317',
+    user_id: 'u-87',
+    interviewer_id: 'u-81',
+    date: '2025-10-04',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-318',
+    user_id: 'u-87',
+    interviewer_id: 'u-81',
+    date: '2025-11-11',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-319',
+    user_id: 'u-87',
+    interviewer_id: 'u-81',
+    date: '2025-10-25',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-320',
+    user_id: 'u-88',
+    interviewer_id: 'u-81',
+    date: '2025-09-15',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-321',
+    user_id: 'u-88',
+    interviewer_id: 'u-81',
+    date: '2025-10-15',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-322',
+    user_id: 'u-88',
+    interviewer_id: 'u-81',
+    date: '2025-09-12',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-323',
+    user_id: 'u-88',
+    interviewer_id: 'u-81',
+    date: '2025-07-09',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-324',
+    user_id: 'u-88',
+    interviewer_id: 'u-81',
+    date: '2025-10-24',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-325',
+    user_id: 'u-89',
+    interviewer_id: 'u-81',
+    date: '2025-07-24',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-326',
+    user_id: 'u-89',
+    interviewer_id: 'u-81',
+    date: '2025-08-20',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-327',
+    user_id: 'u-90',
+    interviewer_id: 'u-81',
+    date: '2025-09-09',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-328',
+    user_id: 'u-90',
+    interviewer_id: 'u-81',
+    date: '2025-08-06',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-329',
+    user_id: 'u-90',
+    interviewer_id: 'u-81',
+    date: '2025-07-07',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-330',
+    user_id: 'u-91',
+    interviewer_id: 'u-91',
+    date: '2025-12-10',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-331',
+    user_id: 'u-91',
+    interviewer_id: 'u-91',
+    date: '2025-08-15',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-332',
+    user_id: 'u-91',
+    interviewer_id: 'u-91',
+    date: '2025-10-15',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-333',
+    user_id: 'u-92',
+    interviewer_id: 'u-91',
+    date: '2025-09-18',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-334',
+    user_id: 'u-92',
+    interviewer_id: 'u-91',
+    date: '2025-12-01',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-335',
+    user_id: 'u-92',
+    interviewer_id: 'u-91',
+    date: '2025-10-14',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-336',
+    user_id: 'u-92',
+    interviewer_id: 'u-91',
+    date: '2025-10-19',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-337',
+    user_id: 'u-92',
+    interviewer_id: 'u-91',
+    date: '2025-12-26',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-338',
+    user_id: 'u-93',
+    interviewer_id: 'u-91',
+    date: '2025-11-26',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-339',
+    user_id: 'u-93',
+    interviewer_id: 'u-91',
+    date: '2025-10-03',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-340',
+    user_id: 'u-94',
+    interviewer_id: 'u-91',
+    date: '2025-12-12',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-341',
+    user_id: 'u-94',
+    interviewer_id: 'u-91',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-342',
+    user_id: 'u-94',
+    interviewer_id: 'u-91',
+    date: '2025-12-17',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-343',
+    user_id: 'u-94',
+    interviewer_id: 'u-91',
+    date: '2025-12-20',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-344',
+    user_id: 'u-94',
+    interviewer_id: 'u-91',
+    date: '2025-09-07',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-345',
+    user_id: 'u-95',
+    interviewer_id: 'u-91',
+    date: '2025-10-14',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-346',
+    user_id: 'u-95',
+    interviewer_id: 'u-91',
+    date: '2025-10-23',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-347',
+    user_id: 'u-96',
+    interviewer_id: 'u-91',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-348',
+    user_id: 'u-96',
+    interviewer_id: 'u-91',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-349',
+    user_id: 'u-96',
+    interviewer_id: 'u-91',
+    date: '2025-10-23',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-350',
+    user_id: 'u-97',
+    interviewer_id: 'u-91',
+    date: '2025-07-17',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-351',
+    user_id: 'u-97',
+    interviewer_id: 'u-91',
+    date: '2025-08-17',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-352',
+    user_id: 'u-97',
+    interviewer_id: 'u-91',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-353',
+    user_id: 'u-97',
+    interviewer_id: 'u-91',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-354',
+    user_id: 'u-97',
+    interviewer_id: 'u-91',
+    date: '2025-12-14',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-355',
+    user_id: 'u-98',
+    interviewer_id: 'u-91',
+    date: '2025-12-26',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-356',
+    user_id: 'u-98',
+    interviewer_id: 'u-91',
+    date: '2025-09-19',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-357',
+    user_id: 'u-98',
+    interviewer_id: 'u-91',
+    date: '2025-07-22',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-358',
+    user_id: 'u-99',
+    interviewer_id: 'u-91',
+    date: '2025-12-27',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-27'
+  },
+  {
+    id: 'int-359',
+    user_id: 'u-99',
+    interviewer_id: 'u-91',
+    date: '2025-11-13',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-360',
+    user_id: 'u-100',
+    interviewer_id: 'u-91',
+    date: '2025-10-16',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-361',
+    user_id: 'u-100',
+    interviewer_id: 'u-91',
+    date: '2025-11-17',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-362',
+    user_id: 'u-101',
+    interviewer_id: 'u-101',
+    date: '2025-08-04',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-363',
+    user_id: 'u-101',
+    interviewer_id: 'u-101',
+    date: '2025-12-20',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-364',
+    user_id: 'u-101',
+    interviewer_id: 'u-101',
+    date: '2025-11-25',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-365',
+    user_id: 'u-101',
+    interviewer_id: 'u-101',
+    date: '2025-09-20',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-366',
+    user_id: 'u-101',
+    interviewer_id: 'u-101',
+    date: '2025-10-02',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-367',
+    user_id: 'u-102',
+    interviewer_id: 'u-101',
+    date: '2025-10-21',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-368',
+    user_id: 'u-102',
+    interviewer_id: 'u-101',
+    date: '2025-09-05',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-369',
+    user_id: 'u-102',
+    interviewer_id: 'u-101',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-370',
+    user_id: 'u-102',
+    interviewer_id: 'u-101',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-371',
+    user_id: 'u-103',
+    interviewer_id: 'u-101',
+    date: '2025-09-12',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-372',
+    user_id: 'u-103',
+    interviewer_id: 'u-101',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-373',
+    user_id: 'u-103',
+    interviewer_id: 'u-101',
+    date: '2025-09-12',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-374',
+    user_id: 'u-103',
+    interviewer_id: 'u-101',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-375',
+    user_id: 'u-104',
+    interviewer_id: 'u-101',
+    date: '2025-10-23',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-376',
+    user_id: 'u-104',
+    interviewer_id: 'u-101',
+    date: '2025-12-26',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-377',
+    user_id: 'u-104',
+    interviewer_id: 'u-101',
+    date: '2025-08-01',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-378',
+    user_id: 'u-104',
+    interviewer_id: 'u-101',
+    date: '2025-08-26',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-379',
+    user_id: 'u-104',
+    interviewer_id: 'u-101',
+    date: '2025-07-21',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-380',
+    user_id: 'u-105',
+    interviewer_id: 'u-101',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-381',
+    user_id: 'u-105',
+    interviewer_id: 'u-101',
+    date: '2025-11-07',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-382',
+    user_id: 'u-106',
+    interviewer_id: 'u-101',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-383',
+    user_id: 'u-106',
+    interviewer_id: 'u-101',
+    date: '2025-08-22',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-384',
+    user_id: 'u-106',
+    interviewer_id: 'u-101',
+    date: '2025-09-06',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-385',
+    user_id: 'u-107',
+    interviewer_id: 'u-101',
+    date: '2025-08-14',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-386',
+    user_id: 'u-107',
+    interviewer_id: 'u-101',
+    date: '2025-11-01',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-387',
+    user_id: 'u-107',
+    interviewer_id: 'u-101',
+    date: '2025-11-03',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-388',
+    user_id: 'u-107',
+    interviewer_id: 'u-101',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-389',
+    user_id: 'u-108',
+    interviewer_id: 'u-101',
+    date: '2025-09-26',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-390',
+    user_id: 'u-108',
+    interviewer_id: 'u-101',
+    date: '2025-07-08',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-391',
+    user_id: 'u-108',
+    interviewer_id: 'u-101',
+    date: '2025-07-09',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-392',
+    user_id: 'u-108',
+    interviewer_id: 'u-101',
+    date: '2025-07-20',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-393',
+    user_id: 'u-109',
+    interviewer_id: 'u-101',
+    date: '2025-11-20',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-394',
+    user_id: 'u-109',
+    interviewer_id: 'u-101',
+    date: '2025-10-09',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-395',
+    user_id: 'u-110',
+    interviewer_id: 'u-101',
+    date: '2025-09-21',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-396',
+    user_id: 'u-110',
+    interviewer_id: 'u-101',
+    date: '2025-12-24',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-397',
+    user_id: 'u-110',
+    interviewer_id: 'u-101',
+    date: '2025-12-09',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-398',
+    user_id: 'u-111',
+    interviewer_id: 'u-111',
+    date: '2025-12-16',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-399',
+    user_id: 'u-111',
+    interviewer_id: 'u-111',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-400',
+    user_id: 'u-111',
+    interviewer_id: 'u-111',
+    date: '2025-07-20',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-401',
+    user_id: 'u-112',
+    interviewer_id: 'u-111',
+    date: '2025-10-14',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-402',
+    user_id: 'u-112',
+    interviewer_id: 'u-111',
+    date: '2025-08-21',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-403',
+    user_id: 'u-113',
+    interviewer_id: 'u-111',
+    date: '2025-10-19',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-404',
+    user_id: 'u-113',
+    interviewer_id: 'u-111',
+    date: '2025-10-24',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-405',
+    user_id: 'u-113',
+    interviewer_id: 'u-111',
+    date: '2025-07-27',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-406',
+    user_id: 'u-113',
+    interviewer_id: 'u-111',
+    date: '2025-10-28',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-407',
+    user_id: 'u-113',
+    interviewer_id: 'u-111',
+    date: '2025-08-06',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-408',
+    user_id: 'u-114',
+    interviewer_id: 'u-111',
+    date: '2025-11-03',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-409',
+    user_id: 'u-114',
+    interviewer_id: 'u-111',
+    date: '2025-11-08',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-410',
+    user_id: 'u-114',
+    interviewer_id: 'u-111',
+    date: '2025-10-08',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-411',
+    user_id: 'u-114',
+    interviewer_id: 'u-111',
+    date: '2025-10-24',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-412',
+    user_id: 'u-115',
+    interviewer_id: 'u-111',
+    date: '2025-10-15',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-413',
+    user_id: 'u-115',
+    interviewer_id: 'u-111',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-414',
+    user_id: 'u-115',
+    interviewer_id: 'u-111',
+    date: '2025-10-04',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-415',
+    user_id: 'u-115',
+    interviewer_id: 'u-111',
+    date: '2025-08-22',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-416',
+    user_id: 'u-115',
+    interviewer_id: 'u-111',
+    date: '2025-09-13',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-417',
+    user_id: 'u-116',
+    interviewer_id: 'u-111',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-418',
+    user_id: 'u-116',
+    interviewer_id: 'u-111',
+    date: '2025-10-04',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-419',
+    user_id: 'u-116',
+    interviewer_id: 'u-111',
+    date: '2025-12-11',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-420',
+    user_id: 'u-116',
+    interviewer_id: 'u-111',
+    date: '2025-09-23',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-421',
+    user_id: 'u-116',
+    interviewer_id: 'u-111',
+    date: '2025-07-06',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-422',
+    user_id: 'u-117',
+    interviewer_id: 'u-111',
+    date: '2025-07-23',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-423',
+    user_id: 'u-117',
+    interviewer_id: 'u-111',
+    date: '2025-09-25',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-424',
+    user_id: 'u-118',
+    interviewer_id: 'u-111',
+    date: '2025-12-23',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-425',
+    user_id: 'u-118',
+    interviewer_id: 'u-111',
+    date: '2025-08-14',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-426',
+    user_id: 'u-118',
+    interviewer_id: 'u-111',
+    date: '2025-11-08',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-427',
+    user_id: 'u-118',
+    interviewer_id: 'u-111',
+    date: '2025-09-02',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-428',
+    user_id: 'u-119',
+    interviewer_id: 'u-111',
+    date: '2025-11-02',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-429',
+    user_id: 'u-119',
+    interviewer_id: 'u-111',
+    date: '2025-07-23',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-430',
+    user_id: 'u-119',
+    interviewer_id: 'u-111',
+    date: '2025-07-13',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-431',
+    user_id: 'u-120',
+    interviewer_id: 'u-111',
+    date: '2025-07-21',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-432',
+    user_id: 'u-120',
+    interviewer_id: 'u-111',
+    date: '2025-09-17',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-433',
+    user_id: 'u-121',
+    interviewer_id: 'u-121',
+    date: '2025-11-16',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-434',
+    user_id: 'u-121',
+    interviewer_id: 'u-121',
+    date: '2025-09-18',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-435',
+    user_id: 'u-121',
+    interviewer_id: 'u-121',
+    date: '2025-12-08',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-436',
+    user_id: 'u-122',
+    interviewer_id: 'u-121',
+    date: '2025-09-21',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-437',
+    user_id: 'u-122',
+    interviewer_id: 'u-121',
+    date: '2025-10-14',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-438',
+    user_id: 'u-123',
+    interviewer_id: 'u-121',
+    date: '2025-10-22',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-439',
+    user_id: 'u-123',
+    interviewer_id: 'u-121',
+    date: '2025-11-16',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-440',
+    user_id: 'u-123',
+    interviewer_id: 'u-121',
+    date: '2025-10-21',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-441',
+    user_id: 'u-123',
+    interviewer_id: 'u-121',
+    date: '2025-10-17',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-442',
+    user_id: 'u-124',
+    interviewer_id: 'u-121',
+    date: '2025-07-26',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-443',
+    user_id: 'u-124',
+    interviewer_id: 'u-121',
+    date: '2025-07-02',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-444',
+    user_id: 'u-124',
+    interviewer_id: 'u-121',
+    date: '2025-12-18',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-445',
+    user_id: 'u-124',
+    interviewer_id: 'u-121',
+    date: '2025-08-22',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-446',
+    user_id: 'u-124',
+    interviewer_id: 'u-121',
+    date: '2025-10-27',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-447',
+    user_id: 'u-125',
+    interviewer_id: 'u-121',
+    date: '2025-08-20',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-448',
+    user_id: 'u-125',
+    interviewer_id: 'u-121',
+    date: '2025-10-03',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-449',
+    user_id: 'u-125',
+    interviewer_id: 'u-121',
+    date: '2025-11-18',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-450',
+    user_id: 'u-125',
+    interviewer_id: 'u-121',
+    date: '2025-12-14',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-451',
+    user_id: 'u-126',
+    interviewer_id: 'u-121',
+    date: '2025-07-13',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-452',
+    user_id: 'u-126',
+    interviewer_id: 'u-121',
+    date: '2025-12-04',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-453',
+    user_id: 'u-126',
+    interviewer_id: 'u-121',
+    date: '2025-11-23',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-454',
+    user_id: 'u-126',
+    interviewer_id: 'u-121',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-455',
+    user_id: 'u-127',
+    interviewer_id: 'u-121',
+    date: '2025-11-11',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-456',
+    user_id: 'u-127',
+    interviewer_id: 'u-121',
+    date: '2025-12-14',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-457',
+    user_id: 'u-128',
+    interviewer_id: 'u-121',
+    date: '2025-10-19',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-458',
+    user_id: 'u-128',
+    interviewer_id: 'u-121',
+    date: '2025-07-03',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-459',
+    user_id: 'u-129',
+    interviewer_id: 'u-121',
+    date: '2025-10-24',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-460',
+    user_id: 'u-129',
+    interviewer_id: 'u-121',
+    date: '2025-10-12',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-461',
+    user_id: 'u-129',
+    interviewer_id: 'u-121',
+    date: '2025-12-21',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-462',
+    user_id: 'u-129',
+    interviewer_id: 'u-121',
+    date: '2025-12-13',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-463',
+    user_id: 'u-130',
+    interviewer_id: 'u-121',
+    date: '2025-09-25',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-464',
+    user_id: 'u-130',
+    interviewer_id: 'u-121',
+    date: '2025-09-05',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-465',
+    user_id: 'u-130',
+    interviewer_id: 'u-121',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-466',
+    user_id: 'u-131',
+    interviewer_id: 'u-131',
+    date: '2025-09-12',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-467',
+    user_id: 'u-131',
+    interviewer_id: 'u-131',
+    date: '2025-12-26',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-468',
+    user_id: 'u-131',
+    interviewer_id: 'u-131',
+    date: '2025-08-09',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-469',
+    user_id: 'u-131',
+    interviewer_id: 'u-131',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-470',
+    user_id: 'u-131',
+    interviewer_id: 'u-131',
+    date: '2025-10-26',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-471',
+    user_id: 'u-132',
+    interviewer_id: 'u-131',
+    date: '2025-07-22',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-472',
+    user_id: 'u-132',
+    interviewer_id: 'u-131',
+    date: '2025-12-15',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-473',
+    user_id: 'u-132',
+    interviewer_id: 'u-131',
+    date: '2025-10-13',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-474',
+    user_id: 'u-132',
+    interviewer_id: 'u-131',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-475',
+    user_id: 'u-132',
+    interviewer_id: 'u-131',
+    date: '2025-09-01',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-476',
+    user_id: 'u-133',
+    interviewer_id: 'u-131',
+    date: '2025-12-21',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-477',
+    user_id: 'u-133',
+    interviewer_id: 'u-131',
+    date: '2025-09-22',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-478',
+    user_id: 'u-133',
+    interviewer_id: 'u-131',
+    date: '2025-11-19',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-479',
+    user_id: 'u-133',
+    interviewer_id: 'u-131',
+    date: '2025-11-04',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-480',
+    user_id: 'u-134',
+    interviewer_id: 'u-131',
+    date: '2025-12-21',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-481',
+    user_id: 'u-134',
+    interviewer_id: 'u-131',
+    date: '2025-07-08',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-482',
+    user_id: 'u-134',
+    interviewer_id: 'u-131',
+    date: '2025-12-23',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-483',
+    user_id: 'u-134',
+    interviewer_id: 'u-131',
+    date: '2025-12-03',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-484',
+    user_id: 'u-135',
+    interviewer_id: 'u-131',
+    date: '2025-09-18',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-485',
+    user_id: 'u-135',
+    interviewer_id: 'u-131',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-486',
+    user_id: 'u-136',
+    interviewer_id: 'u-131',
+    date: '2025-09-19',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-487',
+    user_id: 'u-136',
+    interviewer_id: 'u-131',
+    date: '2025-10-28',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-488',
+    user_id: 'u-137',
+    interviewer_id: 'u-131',
+    date: '2025-08-05',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-489',
+    user_id: 'u-137',
+    interviewer_id: 'u-131',
+    date: '2025-07-22',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-490',
+    user_id: 'u-137',
+    interviewer_id: 'u-131',
+    date: '2025-10-24',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-491',
+    user_id: 'u-138',
+    interviewer_id: 'u-131',
+    date: '2025-07-27',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-492',
+    user_id: 'u-138',
+    interviewer_id: 'u-131',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-493',
+    user_id: 'u-138',
+    interviewer_id: 'u-131',
+    date: '2025-11-16',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-494',
+    user_id: 'u-138',
+    interviewer_id: 'u-131',
+    date: '2025-10-11',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-495',
+    user_id: 'u-138',
+    interviewer_id: 'u-131',
+    date: '2025-09-28',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-496',
+    user_id: 'u-139',
+    interviewer_id: 'u-131',
+    date: '2025-12-14',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-497',
+    user_id: 'u-139',
+    interviewer_id: 'u-131',
+    date: '2025-08-18',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-498',
+    user_id: 'u-139',
+    interviewer_id: 'u-131',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-499',
+    user_id: 'u-139',
+    interviewer_id: 'u-131',
+    date: '2025-10-18',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-500',
+    user_id: 'u-140',
+    interviewer_id: 'u-131',
+    date: '2025-07-16',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-501',
+    user_id: 'u-140',
+    interviewer_id: 'u-131',
+    date: '2025-12-25',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-502',
+    user_id: 'u-141',
+    interviewer_id: 'u-141',
+    date: '2025-10-03',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-503',
+    user_id: 'u-141',
+    interviewer_id: 'u-141',
+    date: '2025-07-15',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-504',
+    user_id: 'u-141',
+    interviewer_id: 'u-141',
+    date: '2025-12-13',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-505',
+    user_id: 'u-141',
+    interviewer_id: 'u-141',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-506',
+    user_id: 'u-141',
+    interviewer_id: 'u-141',
+    date: '2025-09-08',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-507',
+    user_id: 'u-142',
+    interviewer_id: 'u-141',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-508',
+    user_id: 'u-142',
+    interviewer_id: 'u-141',
+    date: '2025-07-02',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-509',
+    user_id: 'u-142',
+    interviewer_id: 'u-141',
+    date: '2025-08-02',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-510',
+    user_id: 'u-142',
+    interviewer_id: 'u-141',
+    date: '2025-09-24',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-511',
+    user_id: 'u-143',
+    interviewer_id: 'u-141',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-512',
+    user_id: 'u-143',
+    interviewer_id: 'u-141',
+    date: '2025-11-20',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-513',
+    user_id: 'u-143',
+    interviewer_id: 'u-141',
+    date: '2025-12-08',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-514',
+    user_id: 'u-143',
+    interviewer_id: 'u-141',
+    date: '2025-10-04',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-515',
+    user_id: 'u-143',
+    interviewer_id: 'u-141',
+    date: '2025-11-14',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-516',
+    user_id: 'u-144',
+    interviewer_id: 'u-141',
+    date: '2025-11-05',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-517',
+    user_id: 'u-144',
+    interviewer_id: 'u-141',
+    date: '2025-09-14',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-518',
+    user_id: 'u-145',
+    interviewer_id: 'u-141',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-519',
+    user_id: 'u-145',
+    interviewer_id: 'u-141',
+    date: '2025-11-19',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-520',
+    user_id: 'u-146',
+    interviewer_id: 'u-141',
+    date: '2025-07-19',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-521',
+    user_id: 'u-146',
+    interviewer_id: 'u-141',
+    date: '2025-12-15',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-522',
+    user_id: 'u-146',
+    interviewer_id: 'u-141',
+    date: '2025-12-03',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-523',
+    user_id: 'u-147',
+    interviewer_id: 'u-141',
+    date: '2025-07-26',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-524',
+    user_id: 'u-147',
+    interviewer_id: 'u-141',
+    date: '2025-09-03',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-525',
+    user_id: 'u-147',
+    interviewer_id: 'u-141',
+    date: '2025-10-28',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-526',
+    user_id: 'u-147',
+    interviewer_id: 'u-141',
+    date: '2025-12-14',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-527',
+    user_id: 'u-147',
+    interviewer_id: 'u-141',
+    date: '2025-07-27',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-528',
+    user_id: 'u-148',
+    interviewer_id: 'u-141',
+    date: '2025-11-17',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-529',
+    user_id: 'u-148',
+    interviewer_id: 'u-141',
+    date: '2025-12-02',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-530',
+    user_id: 'u-148',
+    interviewer_id: 'u-141',
+    date: '2025-09-10',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-531',
+    user_id: 'u-149',
+    interviewer_id: 'u-141',
+    date: '2025-10-19',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-532',
+    user_id: 'u-149',
+    interviewer_id: 'u-141',
+    date: '2025-09-12',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-533',
+    user_id: 'u-149',
+    interviewer_id: 'u-141',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-534',
+    user_id: 'u-149',
+    interviewer_id: 'u-141',
+    date: '2025-11-10',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-535',
+    user_id: 'u-149',
+    interviewer_id: 'u-141',
+    date: '2025-07-26',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-536',
+    user_id: 'u-150',
+    interviewer_id: 'u-141',
+    date: '2025-09-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-537',
+    user_id: 'u-150',
+    interviewer_id: 'u-141',
+    date: '2025-09-24',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-538',
+    user_id: 'u-150',
+    interviewer_id: 'u-141',
+    date: '2025-07-02',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-539',
+    user_id: 'u-150',
+    interviewer_id: 'u-141',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-540',
+    user_id: 'u-150',
+    interviewer_id: 'u-141',
+    date: '2025-11-04',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-541',
+    user_id: 'u-151',
+    interviewer_id: 'u-151',
+    date: '2025-07-26',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-542',
+    user_id: 'u-151',
+    interviewer_id: 'u-151',
+    date: '2025-11-13',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-543',
+    user_id: 'u-151',
+    interviewer_id: 'u-151',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-544',
+    user_id: 'u-151',
+    interviewer_id: 'u-151',
+    date: '2025-10-14',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-545',
+    user_id: 'u-152',
+    interviewer_id: 'u-151',
+    date: '2025-12-03',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-546',
+    user_id: 'u-152',
+    interviewer_id: 'u-151',
+    date: '2025-10-03',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-547',
+    user_id: 'u-153',
+    interviewer_id: 'u-151',
+    date: '2025-12-10',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-548',
+    user_id: 'u-153',
+    interviewer_id: 'u-151',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-549',
+    user_id: 'u-153',
+    interviewer_id: 'u-151',
+    date: '2025-09-03',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-550',
+    user_id: 'u-153',
+    interviewer_id: 'u-151',
+    date: '2025-10-22',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-551',
+    user_id: 'u-153',
+    interviewer_id: 'u-151',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-552',
+    user_id: 'u-154',
+    interviewer_id: 'u-151',
+    date: '2025-07-18',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-18'
+  },
+  {
+    id: 'int-553',
+    user_id: 'u-154',
+    interviewer_id: 'u-151',
+    date: '2025-07-26',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-554',
+    user_id: 'u-155',
+    interviewer_id: 'u-151',
+    date: '2025-12-04',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-555',
+    user_id: 'u-155',
+    interviewer_id: 'u-151',
+    date: '2025-11-08',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-556',
+    user_id: 'u-155',
+    interviewer_id: 'u-151',
+    date: '2025-12-05',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-557',
+    user_id: 'u-155',
+    interviewer_id: 'u-151',
+    date: '2025-12-22',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-558',
+    user_id: 'u-155',
+    interviewer_id: 'u-151',
+    date: '2025-11-20',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-559',
+    user_id: 'u-156',
+    interviewer_id: 'u-151',
+    date: '2025-09-23',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-560',
+    user_id: 'u-156',
+    interviewer_id: 'u-151',
+    date: '2025-08-10',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-561',
+    user_id: 'u-156',
+    interviewer_id: 'u-151',
+    date: '2025-07-07',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-562',
+    user_id: 'u-157',
+    interviewer_id: 'u-151',
+    date: '2025-12-15',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-563',
+    user_id: 'u-157',
+    interviewer_id: 'u-151',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-564',
+    user_id: 'u-157',
+    interviewer_id: 'u-151',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-565',
+    user_id: 'u-157',
+    interviewer_id: 'u-151',
+    date: '2025-11-17',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-566',
+    user_id: 'u-158',
+    interviewer_id: 'u-151',
+    date: '2025-12-21',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-567',
+    user_id: 'u-158',
+    interviewer_id: 'u-151',
+    date: '2025-08-15',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-568',
+    user_id: 'u-158',
+    interviewer_id: 'u-151',
+    date: '2025-09-14',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-569',
+    user_id: 'u-158',
+    interviewer_id: 'u-151',
+    date: '2025-12-21',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-570',
+    user_id: 'u-158',
+    interviewer_id: 'u-151',
+    date: '2025-11-18',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-571',
+    user_id: 'u-159',
+    interviewer_id: 'u-151',
+    date: '2025-12-13',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-572',
+    user_id: 'u-159',
+    interviewer_id: 'u-151',
+    date: '2025-09-17',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-573',
+    user_id: 'u-159',
+    interviewer_id: 'u-151',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-574',
+    user_id: 'u-159',
+    interviewer_id: 'u-151',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-575',
+    user_id: 'u-160',
+    interviewer_id: 'u-151',
+    date: '2025-08-12',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-576',
+    user_id: 'u-160',
+    interviewer_id: 'u-151',
+    date: '2025-11-12',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-577',
+    user_id: 'u-160',
+    interviewer_id: 'u-151',
+    date: '2025-07-20',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-578',
+    user_id: 'u-160',
+    interviewer_id: 'u-151',
+    date: '2025-08-28',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-579',
+    user_id: 'u-160',
+    interviewer_id: 'u-151',
+    date: '2025-08-01',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-580',
+    user_id: 'u-161',
+    interviewer_id: 'u-161',
+    date: '2025-10-25',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-581',
+    user_id: 'u-161',
+    interviewer_id: 'u-161',
+    date: '2025-12-17',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-582',
+    user_id: 'u-161',
+    interviewer_id: 'u-161',
+    date: '2025-12-14',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-583',
+    user_id: 'u-161',
+    interviewer_id: 'u-161',
+    date: '2025-09-24',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-584',
+    user_id: 'u-162',
+    interviewer_id: 'u-161',
+    date: '2025-11-25',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-585',
+    user_id: 'u-162',
+    interviewer_id: 'u-161',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-586',
+    user_id: 'u-162',
+    interviewer_id: 'u-161',
+    date: '2025-11-21',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-587',
+    user_id: 'u-163',
+    interviewer_id: 'u-161',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-588',
+    user_id: 'u-163',
+    interviewer_id: 'u-161',
+    date: '2025-12-10',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-589',
+    user_id: 'u-164',
+    interviewer_id: 'u-161',
+    date: '2025-12-09',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-590',
+    user_id: 'u-164',
+    interviewer_id: 'u-161',
+    date: '2025-12-08',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-591',
+    user_id: 'u-165',
+    interviewer_id: 'u-161',
+    date: '2025-07-19',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-592',
+    user_id: 'u-165',
+    interviewer_id: 'u-161',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-593',
+    user_id: 'u-166',
+    interviewer_id: 'u-161',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-594',
+    user_id: 'u-166',
+    interviewer_id: 'u-161',
+    date: '2025-08-02',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-595',
+    user_id: 'u-166',
+    interviewer_id: 'u-161',
+    date: '2025-07-23',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-596',
+    user_id: 'u-167',
+    interviewer_id: 'u-161',
+    date: '2025-11-27',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-597',
+    user_id: 'u-167',
+    interviewer_id: 'u-161',
+    date: '2025-08-08',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-598',
+    user_id: 'u-168',
+    interviewer_id: 'u-161',
+    date: '2025-12-17',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-599',
+    user_id: 'u-168',
+    interviewer_id: 'u-161',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-600',
+    user_id: 'u-169',
+    interviewer_id: 'u-161',
+    date: '2025-11-26',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-601',
+    user_id: 'u-169',
+    interviewer_id: 'u-161',
+    date: '2025-12-08',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-602',
+    user_id: 'u-170',
+    interviewer_id: 'u-161',
+    date: '2025-11-04',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-603',
+    user_id: 'u-170',
+    interviewer_id: 'u-161',
+    date: '2025-10-03',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-604',
+    user_id: 'u-170',
+    interviewer_id: 'u-161',
+    date: '2025-12-17',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-605',
+    user_id: 'u-170',
+    interviewer_id: 'u-161',
+    date: '2025-11-24',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-606',
+    user_id: 'u-171',
+    interviewer_id: 'u-171',
+    date: '2025-08-19',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-607',
+    user_id: 'u-171',
+    interviewer_id: 'u-171',
+    date: '2025-08-21',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-608',
+    user_id: 'u-172',
+    interviewer_id: 'u-171',
+    date: '2025-09-19',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-609',
+    user_id: 'u-172',
+    interviewer_id: 'u-171',
+    date: '2025-10-15',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-610',
+    user_id: 'u-173',
+    interviewer_id: 'u-171',
+    date: '2025-07-24',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-611',
+    user_id: 'u-173',
+    interviewer_id: 'u-171',
+    date: '2025-11-22',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-612',
+    user_id: 'u-173',
+    interviewer_id: 'u-171',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-613',
+    user_id: 'u-173',
+    interviewer_id: 'u-171',
+    date: '2025-09-19',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-614',
+    user_id: 'u-173',
+    interviewer_id: 'u-171',
+    date: '2025-11-19',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-615',
+    user_id: 'u-174',
+    interviewer_id: 'u-171',
+    date: '2025-07-14',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-616',
+    user_id: 'u-174',
+    interviewer_id: 'u-171',
+    date: '2025-11-13',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-617',
+    user_id: 'u-175',
+    interviewer_id: 'u-171',
+    date: '2025-08-27',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-618',
+    user_id: 'u-175',
+    interviewer_id: 'u-171',
+    date: '2025-07-16',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-619',
+    user_id: 'u-175',
+    interviewer_id: 'u-171',
+    date: '2025-09-04',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-620',
+    user_id: 'u-175',
+    interviewer_id: 'u-171',
+    date: '2025-12-16',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-621',
+    user_id: 'u-176',
+    interviewer_id: 'u-171',
+    date: '2025-09-08',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-622',
+    user_id: 'u-176',
+    interviewer_id: 'u-171',
+    date: '2025-09-06',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-623',
+    user_id: 'u-176',
+    interviewer_id: 'u-171',
+    date: '2025-10-20',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-624',
+    user_id: 'u-176',
+    interviewer_id: 'u-171',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-625',
+    user_id: 'u-176',
+    interviewer_id: 'u-171',
+    date: '2025-08-21',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-626',
+    user_id: 'u-177',
+    interviewer_id: 'u-171',
+    date: '2025-07-10',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-627',
+    user_id: 'u-177',
+    interviewer_id: 'u-171',
+    date: '2025-07-02',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-628',
+    user_id: 'u-177',
+    interviewer_id: 'u-171',
+    date: '2025-08-26',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-629',
+    user_id: 'u-178',
+    interviewer_id: 'u-171',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-630',
+    user_id: 'u-178',
+    interviewer_id: 'u-171',
+    date: '2025-09-08',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-631',
+    user_id: 'u-178',
+    interviewer_id: 'u-171',
+    date: '2025-07-09',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-632',
+    user_id: 'u-179',
+    interviewer_id: 'u-171',
+    date: '2025-12-15',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-633',
+    user_id: 'u-179',
+    interviewer_id: 'u-171',
+    date: '2025-10-27',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-634',
+    user_id: 'u-179',
+    interviewer_id: 'u-171',
+    date: '2025-11-14',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-635',
+    user_id: 'u-179',
+    interviewer_id: 'u-171',
+    date: '2025-12-19',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-19'
+  },
+  {
+    id: 'int-636',
+    user_id: 'u-179',
+    interviewer_id: 'u-171',
+    date: '2025-07-05',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-637',
+    user_id: 'u-180',
+    interviewer_id: 'u-171',
+    date: '2025-12-06',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-638',
+    user_id: 'u-180',
+    interviewer_id: 'u-171',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-639',
+    user_id: 'u-180',
+    interviewer_id: 'u-171',
+    date: '2025-12-20',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-640',
+    user_id: 'u-180',
+    interviewer_id: 'u-171',
+    date: '2025-12-19',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-19'
+  },
+  {
+    id: 'int-641',
+    user_id: 'u-181',
+    interviewer_id: 'u-181',
+    date: '2025-12-20',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-642',
+    user_id: 'u-181',
+    interviewer_id: 'u-181',
+    date: '2025-07-21',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-643',
+    user_id: 'u-181',
+    interviewer_id: 'u-181',
+    date: '2025-09-11',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-644',
+    user_id: 'u-181',
+    interviewer_id: 'u-181',
+    date: '2025-07-21',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-645',
+    user_id: 'u-182',
+    interviewer_id: 'u-181',
+    date: '2025-10-28',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-646',
+    user_id: 'u-182',
+    interviewer_id: 'u-181',
+    date: '2025-09-20',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-647',
+    user_id: 'u-183',
+    interviewer_id: 'u-181',
+    date: '2025-08-25',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-648',
+    user_id: 'u-183',
+    interviewer_id: 'u-181',
+    date: '2025-07-02',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-649',
+    user_id: 'u-183',
+    interviewer_id: 'u-181',
+    date: '2025-12-24',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-650',
+    user_id: 'u-184',
+    interviewer_id: 'u-181',
+    date: '2025-10-18',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-651',
+    user_id: 'u-184',
+    interviewer_id: 'u-181',
+    date: '2025-08-03',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-652',
+    user_id: 'u-184',
+    interviewer_id: 'u-181',
+    date: '2025-11-20',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-653',
+    user_id: 'u-185',
+    interviewer_id: 'u-181',
+    date: '2025-09-22',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-654',
+    user_id: 'u-185',
+    interviewer_id: 'u-181',
+    date: '2025-09-14',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-655',
+    user_id: 'u-185',
+    interviewer_id: 'u-181',
+    date: '2025-09-09',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-656',
+    user_id: 'u-185',
+    interviewer_id: 'u-181',
+    date: '2025-11-11',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-657',
+    user_id: 'u-186',
+    interviewer_id: 'u-181',
+    date: '2025-12-18',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-658',
+    user_id: 'u-186',
+    interviewer_id: 'u-181',
+    date: '2025-07-14',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-659',
+    user_id: 'u-186',
+    interviewer_id: 'u-181',
+    date: '2025-12-12',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-660',
+    user_id: 'u-186',
+    interviewer_id: 'u-181',
+    date: '2025-10-08',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-661',
+    user_id: 'u-187',
+    interviewer_id: 'u-181',
+    date: '2025-07-01',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-662',
+    user_id: 'u-187',
+    interviewer_id: 'u-181',
+    date: '2025-10-17',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-663',
+    user_id: 'u-187',
+    interviewer_id: 'u-181',
+    date: '2025-09-21',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-664',
+    user_id: 'u-187',
+    interviewer_id: 'u-181',
+    date: '2025-07-08',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-665',
+    user_id: 'u-188',
+    interviewer_id: 'u-181',
+    date: '2025-09-27',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-666',
+    user_id: 'u-188',
+    interviewer_id: 'u-181',
+    date: '2025-08-15',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-667',
+    user_id: 'u-188',
+    interviewer_id: 'u-181',
+    date: '2025-08-02',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-668',
+    user_id: 'u-189',
+    interviewer_id: 'u-181',
+    date: '2025-10-06',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-669',
+    user_id: 'u-189',
+    interviewer_id: 'u-181',
+    date: '2025-11-05',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-670',
+    user_id: 'u-190',
+    interviewer_id: 'u-181',
+    date: '2025-11-12',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-671',
+    user_id: 'u-190',
+    interviewer_id: 'u-181',
+    date: '2025-10-15',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-672',
+    user_id: 'u-190',
+    interviewer_id: 'u-181',
+    date: '2025-08-01',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-673',
+    user_id: 'u-190',
+    interviewer_id: 'u-181',
+    date: '2025-09-03',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-674',
+    user_id: 'u-190',
+    interviewer_id: 'u-181',
+    date: '2025-10-01',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-675',
+    user_id: 'u-191',
+    interviewer_id: 'u-191',
+    date: '2025-08-14',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-676',
+    user_id: 'u-191',
+    interviewer_id: 'u-191',
+    date: '2025-07-24',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-677',
+    user_id: 'u-191',
+    interviewer_id: 'u-191',
+    date: '2025-07-04',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-678',
+    user_id: 'u-191',
+    interviewer_id: 'u-191',
+    date: '2025-12-09',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-679',
+    user_id: 'u-191',
+    interviewer_id: 'u-191',
+    date: '2025-10-19',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-680',
+    user_id: 'u-192',
+    interviewer_id: 'u-191',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-681',
+    user_id: 'u-192',
+    interviewer_id: 'u-191',
+    date: '2025-09-06',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-682',
+    user_id: 'u-192',
+    interviewer_id: 'u-191',
+    date: '2025-08-03',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-683',
+    user_id: 'u-192',
+    interviewer_id: 'u-191',
+    date: '2025-09-05',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-684',
+    user_id: 'u-192',
+    interviewer_id: 'u-191',
+    date: '2025-07-01',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-685',
+    user_id: 'u-193',
+    interviewer_id: 'u-191',
+    date: '2025-12-16',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-686',
+    user_id: 'u-193',
+    interviewer_id: 'u-191',
+    date: '2025-07-11',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-11'
+  },
+  {
+    id: 'int-687',
+    user_id: 'u-193',
+    interviewer_id: 'u-191',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-688',
+    user_id: 'u-194',
+    interviewer_id: 'u-191',
+    date: '2025-07-26',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-689',
+    user_id: 'u-194',
+    interviewer_id: 'u-191',
+    date: '2025-11-19',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-690',
+    user_id: 'u-194',
+    interviewer_id: 'u-191',
+    date: '2025-12-04',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-691',
+    user_id: 'u-194',
+    interviewer_id: 'u-191',
+    date: '2025-10-04',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-692',
+    user_id: 'u-194',
+    interviewer_id: 'u-191',
+    date: '2025-12-14',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-693',
+    user_id: 'u-195',
+    interviewer_id: 'u-191',
+    date: '2025-08-07',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-694',
+    user_id: 'u-195',
+    interviewer_id: 'u-191',
+    date: '2025-11-26',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-695',
+    user_id: 'u-195',
+    interviewer_id: 'u-191',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-696',
+    user_id: 'u-196',
+    interviewer_id: 'u-191',
+    date: '2025-10-10',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-697',
+    user_id: 'u-196',
+    interviewer_id: 'u-191',
+    date: '2025-08-11',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-698',
+    user_id: 'u-196',
+    interviewer_id: 'u-191',
+    date: '2025-12-15',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-699',
+    user_id: 'u-196',
+    interviewer_id: 'u-191',
+    date: '2025-07-27',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-700',
+    user_id: 'u-197',
+    interviewer_id: 'u-191',
+    date: '2025-11-18',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-701',
+    user_id: 'u-197',
+    interviewer_id: 'u-191',
+    date: '2025-11-27',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-702',
+    user_id: 'u-197',
+    interviewer_id: 'u-191',
+    date: '2025-07-11',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-11'
+  },
+  {
+    id: 'int-703',
+    user_id: 'u-197',
+    interviewer_id: 'u-191',
+    date: '2025-09-26',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-704',
+    user_id: 'u-197',
+    interviewer_id: 'u-191',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-705',
+    user_id: 'u-198',
+    interviewer_id: 'u-191',
+    date: '2025-12-15',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-706',
+    user_id: 'u-198',
+    interviewer_id: 'u-191',
+    date: '2025-07-15',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-707',
+    user_id: 'u-198',
+    interviewer_id: 'u-191',
+    date: '2025-12-01',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-708',
+    user_id: 'u-198',
+    interviewer_id: 'u-191',
+    date: '2025-12-03',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-709',
+    user_id: 'u-198',
+    interviewer_id: 'u-191',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-710',
+    user_id: 'u-199',
+    interviewer_id: 'u-191',
+    date: '2025-12-06',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-711',
+    user_id: 'u-199',
+    interviewer_id: 'u-191',
+    date: '2025-12-14',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-712',
+    user_id: 'u-199',
+    interviewer_id: 'u-191',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-713',
+    user_id: 'u-199',
+    interviewer_id: 'u-191',
+    date: '2025-08-03',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-714',
+    user_id: 'u-199',
+    interviewer_id: 'u-191',
+    date: '2025-09-04',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-715',
+    user_id: 'u-200',
+    interviewer_id: 'u-191',
+    date: '2025-11-18',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-716',
+    user_id: 'u-200',
+    interviewer_id: 'u-191',
+    date: '2025-12-09',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-717',
+    user_id: 'u-200',
+    interviewer_id: 'u-191',
+    date: '2025-12-19',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-19'
+  },
+  {
+    id: 'int-718',
+    user_id: 'u-200',
+    interviewer_id: 'u-191',
+    date: '2025-09-24',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-719',
+    user_id: 'u-201',
+    interviewer_id: 'u-201',
+    date: '2025-07-14',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-720',
+    user_id: 'u-201',
+    interviewer_id: 'u-201',
+    date: '2025-09-07',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-721',
+    user_id: 'u-201',
+    interviewer_id: 'u-201',
+    date: '2025-07-01',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-722',
+    user_id: 'u-201',
+    interviewer_id: 'u-201',
+    date: '2025-09-15',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-723',
+    user_id: 'u-201',
+    interviewer_id: 'u-201',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-724',
+    user_id: 'u-202',
+    interviewer_id: 'u-201',
+    date: '2025-09-01',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-725',
+    user_id: 'u-202',
+    interviewer_id: 'u-201',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-726',
+    user_id: 'u-202',
+    interviewer_id: 'u-201',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-727',
+    user_id: 'u-202',
+    interviewer_id: 'u-201',
+    date: '2025-08-24',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-728',
+    user_id: 'u-202',
+    interviewer_id: 'u-201',
+    date: '2025-09-21',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-729',
+    user_id: 'u-203',
+    interviewer_id: 'u-201',
+    date: '2025-09-17',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-730',
+    user_id: 'u-203',
+    interviewer_id: 'u-201',
+    date: '2025-07-28',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-731',
+    user_id: 'u-203',
+    interviewer_id: 'u-201',
+    date: '2025-08-01',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-732',
+    user_id: 'u-204',
+    interviewer_id: 'u-201',
+    date: '2025-12-22',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-733',
+    user_id: 'u-204',
+    interviewer_id: 'u-201',
+    date: '2025-08-26',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-734',
+    user_id: 'u-204',
+    interviewer_id: 'u-201',
+    date: '2025-10-20',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-735',
+    user_id: 'u-205',
+    interviewer_id: 'u-201',
+    date: '2025-08-07',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-736',
+    user_id: 'u-205',
+    interviewer_id: 'u-201',
+    date: '2025-07-22',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-737',
+    user_id: 'u-205',
+    interviewer_id: 'u-201',
+    date: '2025-09-26',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-738',
+    user_id: 'u-205',
+    interviewer_id: 'u-201',
+    date: '2025-12-04',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-739',
+    user_id: 'u-206',
+    interviewer_id: 'u-201',
+    date: '2025-09-18',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-740',
+    user_id: 'u-206',
+    interviewer_id: 'u-201',
+    date: '2025-10-22',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-741',
+    user_id: 'u-207',
+    interviewer_id: 'u-201',
+    date: '2025-10-13',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-742',
+    user_id: 'u-207',
+    interviewer_id: 'u-201',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-743',
+    user_id: 'u-207',
+    interviewer_id: 'u-201',
+    date: '2025-11-11',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-744',
+    user_id: 'u-207',
+    interviewer_id: 'u-201',
+    date: '2025-12-02',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-745',
+    user_id: 'u-207',
+    interviewer_id: 'u-201',
+    date: '2025-07-10',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-746',
+    user_id: 'u-208',
+    interviewer_id: 'u-201',
+    date: '2025-10-10',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-747',
+    user_id: 'u-208',
+    interviewer_id: 'u-201',
+    date: '2025-10-24',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-748',
+    user_id: 'u-208',
+    interviewer_id: 'u-201',
+    date: '2025-11-23',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-749',
+    user_id: 'u-208',
+    interviewer_id: 'u-201',
+    date: '2025-07-08',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-750',
+    user_id: 'u-208',
+    interviewer_id: 'u-201',
+    date: '2025-12-23',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-751',
+    user_id: 'u-209',
+    interviewer_id: 'u-201',
+    date: '2025-10-02',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-752',
+    user_id: 'u-209',
+    interviewer_id: 'u-201',
+    date: '2025-10-02',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-753',
+    user_id: 'u-209',
+    interviewer_id: 'u-201',
+    date: '2025-09-04',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-754',
+    user_id: 'u-210',
+    interviewer_id: 'u-201',
+    date: '2025-08-05',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-755',
+    user_id: 'u-210',
+    interviewer_id: 'u-201',
+    date: '2025-10-23',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-756',
+    user_id: 'u-210',
+    interviewer_id: 'u-201',
+    date: '2025-10-17',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-757',
+    user_id: 'u-210',
+    interviewer_id: 'u-201',
+    date: '2025-09-12',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-758',
+    user_id: 'u-210',
+    interviewer_id: 'u-201',
+    date: '2025-07-07',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-759',
+    user_id: 'u-211',
+    interviewer_id: 'u-211',
+    date: '2025-07-14',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-760',
+    user_id: 'u-211',
+    interviewer_id: 'u-211',
+    date: '2025-10-19',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-761',
+    user_id: 'u-211',
+    interviewer_id: 'u-211',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-762',
+    user_id: 'u-211',
+    interviewer_id: 'u-211',
+    date: '2025-09-20',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-763',
+    user_id: 'u-211',
+    interviewer_id: 'u-211',
+    date: '2025-08-13',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-764',
+    user_id: 'u-212',
+    interviewer_id: 'u-211',
+    date: '2025-07-02',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-765',
+    user_id: 'u-212',
+    interviewer_id: 'u-211',
+    date: '2025-11-05',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-766',
+    user_id: 'u-212',
+    interviewer_id: 'u-211',
+    date: '2025-11-22',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-767',
+    user_id: 'u-212',
+    interviewer_id: 'u-211',
+    date: '2025-11-03',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-768',
+    user_id: 'u-212',
+    interviewer_id: 'u-211',
+    date: '2025-12-05',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-769',
+    user_id: 'u-213',
+    interviewer_id: 'u-211',
+    date: '2025-10-05',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-05'
+  },
+  {
+    id: 'int-770',
+    user_id: 'u-213',
+    interviewer_id: 'u-211',
+    date: '2025-09-16',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-771',
+    user_id: 'u-213',
+    interviewer_id: 'u-211',
+    date: '2025-07-02',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-772',
+    user_id: 'u-214',
+    interviewer_id: 'u-211',
+    date: '2025-11-03',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-773',
+    user_id: 'u-214',
+    interviewer_id: 'u-211',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-774',
+    user_id: 'u-215',
+    interviewer_id: 'u-211',
+    date: '2025-10-28',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-775',
+    user_id: 'u-215',
+    interviewer_id: 'u-211',
+    date: '2025-11-09',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-776',
+    user_id: 'u-215',
+    interviewer_id: 'u-211',
+    date: '2025-12-12',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-777',
+    user_id: 'u-216',
+    interviewer_id: 'u-211',
+    date: '2025-11-04',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-778',
+    user_id: 'u-216',
+    interviewer_id: 'u-211',
+    date: '2025-09-28',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-779',
+    user_id: 'u-216',
+    interviewer_id: 'u-211',
+    date: '2025-09-01',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-780',
+    user_id: 'u-216',
+    interviewer_id: 'u-211',
+    date: '2025-08-27',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-781',
+    user_id: 'u-217',
+    interviewer_id: 'u-211',
+    date: '2025-08-28',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-782',
+    user_id: 'u-217',
+    interviewer_id: 'u-211',
+    date: '2025-07-06',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-783',
+    user_id: 'u-218',
+    interviewer_id: 'u-211',
+    date: '2025-12-11',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-784',
+    user_id: 'u-218',
+    interviewer_id: 'u-211',
+    date: '2025-10-03',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-785',
+    user_id: 'u-219',
+    interviewer_id: 'u-211',
+    date: '2025-10-13',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-786',
+    user_id: 'u-219',
+    interviewer_id: 'u-211',
+    date: '2025-11-04',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-787',
+    user_id: 'u-219',
+    interviewer_id: 'u-211',
+    date: '2025-10-17',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-788',
+    user_id: 'u-219',
+    interviewer_id: 'u-211',
+    date: '2025-08-27',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-789',
+    user_id: 'u-219',
+    interviewer_id: 'u-211',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-790',
+    user_id: 'u-220',
+    interviewer_id: 'u-211',
+    date: '2025-10-23',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-791',
+    user_id: 'u-220',
+    interviewer_id: 'u-211',
+    date: '2025-11-09',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-792',
+    user_id: 'u-220',
+    interviewer_id: 'u-211',
+    date: '2025-09-19',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-793',
+    user_id: 'u-220',
+    interviewer_id: 'u-211',
+    date: '2025-08-27',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-794',
+    user_id: 'u-221',
+    interviewer_id: 'u-221',
+    date: '2025-11-26',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-795',
+    user_id: 'u-221',
+    interviewer_id: 'u-221',
+    date: '2025-11-09',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-796',
+    user_id: 'u-221',
+    interviewer_id: 'u-221',
+    date: '2025-10-06',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-797',
+    user_id: 'u-221',
+    interviewer_id: 'u-221',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-798',
+    user_id: 'u-222',
+    interviewer_id: 'u-221',
+    date: '2025-08-08',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-799',
+    user_id: 'u-222',
+    interviewer_id: 'u-221',
+    date: '2025-09-12',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-800',
+    user_id: 'u-223',
+    interviewer_id: 'u-221',
+    date: '2025-10-23',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-801',
+    user_id: 'u-223',
+    interviewer_id: 'u-221',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-802',
+    user_id: 'u-223',
+    interviewer_id: 'u-221',
+    date: '2025-07-12',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-803',
+    user_id: 'u-223',
+    interviewer_id: 'u-221',
+    date: '2025-12-23',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-804',
+    user_id: 'u-224',
+    interviewer_id: 'u-221',
+    date: '2025-12-21',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-805',
+    user_id: 'u-224',
+    interviewer_id: 'u-221',
+    date: '2025-10-03',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-806',
+    user_id: 'u-224',
+    interviewer_id: 'u-221',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-807',
+    user_id: 'u-224',
+    interviewer_id: 'u-221',
+    date: '2025-12-06',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-808',
+    user_id: 'u-225',
+    interviewer_id: 'u-221',
+    date: '2025-11-14',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-809',
+    user_id: 'u-225',
+    interviewer_id: 'u-221',
+    date: '2025-11-07',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-810',
+    user_id: 'u-226',
+    interviewer_id: 'u-221',
+    date: '2025-12-15',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-811',
+    user_id: 'u-226',
+    interviewer_id: 'u-221',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-812',
+    user_id: 'u-226',
+    interviewer_id: 'u-221',
+    date: '2025-10-13',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-813',
+    user_id: 'u-227',
+    interviewer_id: 'u-221',
+    date: '2025-12-05',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-814',
+    user_id: 'u-227',
+    interviewer_id: 'u-221',
+    date: '2025-08-17',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-815',
+    user_id: 'u-227',
+    interviewer_id: 'u-221',
+    date: '2025-10-18',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-816',
+    user_id: 'u-227',
+    interviewer_id: 'u-221',
+    date: '2025-11-28',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-817',
+    user_id: 'u-227',
+    interviewer_id: 'u-221',
+    date: '2025-10-06',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-818',
+    user_id: 'u-228',
+    interviewer_id: 'u-221',
+    date: '2025-09-06',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-819',
+    user_id: 'u-228',
+    interviewer_id: 'u-221',
+    date: '2025-08-02',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-820',
+    user_id: 'u-228',
+    interviewer_id: 'u-221',
+    date: '2025-08-25',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-821',
+    user_id: 'u-229',
+    interviewer_id: 'u-221',
+    date: '2025-08-16',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-822',
+    user_id: 'u-229',
+    interviewer_id: 'u-221',
+    date: '2025-11-25',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-823',
+    user_id: 'u-229',
+    interviewer_id: 'u-221',
+    date: '2025-09-04',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-824',
+    user_id: 'u-229',
+    interviewer_id: 'u-221',
+    date: '2025-07-15',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-825',
+    user_id: 'u-229',
+    interviewer_id: 'u-221',
+    date: '2025-11-24',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-826',
+    user_id: 'u-230',
+    interviewer_id: 'u-221',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-827',
+    user_id: 'u-230',
+    interviewer_id: 'u-221',
+    date: '2025-10-10',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-828',
+    user_id: 'u-230',
+    interviewer_id: 'u-221',
+    date: '2025-07-10',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-829',
+    user_id: 'u-230',
+    interviewer_id: 'u-221',
+    date: '2025-07-16',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-830',
+    user_id: 'u-231',
+    interviewer_id: 'u-231',
+    date: '2025-11-10',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-831',
+    user_id: 'u-231',
+    interviewer_id: 'u-231',
+    date: '2025-10-26',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-832',
+    user_id: 'u-232',
+    interviewer_id: 'u-231',
+    date: '2025-09-27',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-833',
+    user_id: 'u-232',
+    interviewer_id: 'u-231',
+    date: '2025-10-16',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-834',
+    user_id: 'u-232',
+    interviewer_id: 'u-231',
+    date: '2025-10-16',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-835',
+    user_id: 'u-232',
+    interviewer_id: 'u-231',
+    date: '2025-11-09',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-836',
+    user_id: 'u-232',
+    interviewer_id: 'u-231',
+    date: '2025-12-06',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-837',
+    user_id: 'u-233',
+    interviewer_id: 'u-231',
+    date: '2025-07-02',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-838',
+    user_id: 'u-233',
+    interviewer_id: 'u-231',
+    date: '2025-10-05',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-05'
+  },
+  {
+    id: 'int-839',
+    user_id: 'u-233',
+    interviewer_id: 'u-231',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-840',
+    user_id: 'u-234',
+    interviewer_id: 'u-231',
+    date: '2025-12-27',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-27'
+  },
+  {
+    id: 'int-841',
+    user_id: 'u-234',
+    interviewer_id: 'u-231',
+    date: '2025-09-03',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-842',
+    user_id: 'u-235',
+    interviewer_id: 'u-231',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-843',
+    user_id: 'u-235',
+    interviewer_id: 'u-231',
+    date: '2025-08-17',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-844',
+    user_id: 'u-235',
+    interviewer_id: 'u-231',
+    date: '2025-08-11',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-845',
+    user_id: 'u-236',
+    interviewer_id: 'u-231',
+    date: '2025-10-10',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-846',
+    user_id: 'u-236',
+    interviewer_id: 'u-231',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-847',
+    user_id: 'u-236',
+    interviewer_id: 'u-231',
+    date: '2025-07-24',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-848',
+    user_id: 'u-236',
+    interviewer_id: 'u-231',
+    date: '2025-12-22',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-849',
+    user_id: 'u-237',
+    interviewer_id: 'u-231',
+    date: '2025-11-05',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-850',
+    user_id: 'u-237',
+    interviewer_id: 'u-231',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-851',
+    user_id: 'u-237',
+    interviewer_id: 'u-231',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-852',
+    user_id: 'u-237',
+    interviewer_id: 'u-231',
+    date: '2025-12-10',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-853',
+    user_id: 'u-237',
+    interviewer_id: 'u-231',
+    date: '2025-11-14',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-854',
+    user_id: 'u-238',
+    interviewer_id: 'u-231',
+    date: '2025-09-20',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-855',
+    user_id: 'u-238',
+    interviewer_id: 'u-231',
+    date: '2025-09-10',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-856',
+    user_id: 'u-238',
+    interviewer_id: 'u-231',
+    date: '2025-09-21',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-857',
+    user_id: 'u-238',
+    interviewer_id: 'u-231',
+    date: '2025-08-08',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-858',
+    user_id: 'u-239',
+    interviewer_id: 'u-231',
+    date: '2025-09-23',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-859',
+    user_id: 'u-239',
+    interviewer_id: 'u-231',
+    date: '2025-11-05',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-860',
+    user_id: 'u-240',
+    interviewer_id: 'u-231',
+    date: '2025-07-16',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-861',
+    user_id: 'u-240',
+    interviewer_id: 'u-231',
+    date: '2025-10-08',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-862',
+    user_id: 'u-240',
+    interviewer_id: 'u-231',
+    date: '2025-09-10',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-863',
+    user_id: 'u-240',
+    interviewer_id: 'u-231',
+    date: '2025-10-18',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-864',
+    user_id: 'u-241',
+    interviewer_id: 'u-241',
+    date: '2025-11-28',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-865',
+    user_id: 'u-241',
+    interviewer_id: 'u-241',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-866',
+    user_id: 'u-241',
+    interviewer_id: 'u-241',
+    date: '2025-08-24',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-867',
+    user_id: 'u-242',
+    interviewer_id: 'u-241',
+    date: '2025-07-23',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-868',
+    user_id: 'u-242',
+    interviewer_id: 'u-241',
+    date: '2025-12-10',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-869',
+    user_id: 'u-243',
+    interviewer_id: 'u-241',
+    date: '2025-12-10',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-870',
+    user_id: 'u-243',
+    interviewer_id: 'u-241',
+    date: '2025-09-01',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-871',
+    user_id: 'u-244',
+    interviewer_id: 'u-241',
+    date: '2025-08-01',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-872',
+    user_id: 'u-244',
+    interviewer_id: 'u-241',
+    date: '2025-11-03',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-873',
+    user_id: 'u-244',
+    interviewer_id: 'u-241',
+    date: '2025-09-05',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-874',
+    user_id: 'u-244',
+    interviewer_id: 'u-241',
+    date: '2025-09-18',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-875',
+    user_id: 'u-245',
+    interviewer_id: 'u-241',
+    date: '2025-09-01',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-876',
+    user_id: 'u-245',
+    interviewer_id: 'u-241',
+    date: '2025-11-26',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-877',
+    user_id: 'u-245',
+    interviewer_id: 'u-241',
+    date: '2025-09-22',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-878',
+    user_id: 'u-245',
+    interviewer_id: 'u-241',
+    date: '2025-12-26',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-879',
+    user_id: 'u-245',
+    interviewer_id: 'u-241',
+    date: '2025-10-19',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-880',
+    user_id: 'u-246',
+    interviewer_id: 'u-241',
+    date: '2025-09-21',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-881',
+    user_id: 'u-246',
+    interviewer_id: 'u-241',
+    date: '2025-09-14',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-882',
+    user_id: 'u-246',
+    interviewer_id: 'u-241',
+    date: '2025-09-03',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-883',
+    user_id: 'u-246',
+    interviewer_id: 'u-241',
+    date: '2025-11-01',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-884',
+    user_id: 'u-246',
+    interviewer_id: 'u-241',
+    date: '2025-07-14',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-885',
+    user_id: 'u-247',
+    interviewer_id: 'u-241',
+    date: '2025-12-03',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-886',
+    user_id: 'u-247',
+    interviewer_id: 'u-241',
+    date: '2025-10-23',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-887',
+    user_id: 'u-247',
+    interviewer_id: 'u-241',
+    date: '2025-10-15',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-888',
+    user_id: 'u-247',
+    interviewer_id: 'u-241',
+    date: '2025-09-03',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-889',
+    user_id: 'u-247',
+    interviewer_id: 'u-241',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-890',
+    user_id: 'u-248',
+    interviewer_id: 'u-241',
+    date: '2025-07-23',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-891',
+    user_id: 'u-248',
+    interviewer_id: 'u-241',
+    date: '2025-10-28',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-892',
+    user_id: 'u-248',
+    interviewer_id: 'u-241',
+    date: '2025-11-25',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-893',
+    user_id: 'u-249',
+    interviewer_id: 'u-241',
+    date: '2025-09-23',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-894',
+    user_id: 'u-249',
+    interviewer_id: 'u-241',
+    date: '2025-09-20',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-895',
+    user_id: 'u-249',
+    interviewer_id: 'u-241',
+    date: '2025-08-26',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-896',
+    user_id: 'u-249',
+    interviewer_id: 'u-241',
+    date: '2025-11-27',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-897',
+    user_id: 'u-249',
+    interviewer_id: 'u-241',
+    date: '2025-10-10',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-898',
+    user_id: 'u-250',
+    interviewer_id: 'u-241',
+    date: '2025-11-20',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-899',
+    user_id: 'u-250',
+    interviewer_id: 'u-241',
+    date: '2025-07-22',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-900',
+    user_id: 'u-250',
+    interviewer_id: 'u-241',
+    date: '2025-11-27',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-901',
+    user_id: 'u-250',
+    interviewer_id: 'u-241',
+    date: '2025-07-20',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-902',
+    user_id: 'u-251',
+    interviewer_id: 'u-251',
+    date: '2025-12-15',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-903',
+    user_id: 'u-251',
+    interviewer_id: 'u-251',
+    date: '2025-10-12',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-904',
+    user_id: 'u-251',
+    interviewer_id: 'u-251',
+    date: '2025-12-07',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-905',
+    user_id: 'u-252',
+    interviewer_id: 'u-251',
+    date: '2025-07-08',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-906',
+    user_id: 'u-252',
+    interviewer_id: 'u-251',
+    date: '2025-12-01',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-907',
+    user_id: 'u-252',
+    interviewer_id: 'u-251',
+    date: '2025-07-06',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-908',
+    user_id: 'u-253',
+    interviewer_id: 'u-251',
+    date: '2025-11-11',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-909',
+    user_id: 'u-253',
+    interviewer_id: 'u-251',
+    date: '2025-09-25',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-910',
+    user_id: 'u-253',
+    interviewer_id: 'u-251',
+    date: '2025-10-08',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-911',
+    user_id: 'u-254',
+    interviewer_id: 'u-251',
+    date: '2025-10-27',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-912',
+    user_id: 'u-254',
+    interviewer_id: 'u-251',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-913',
+    user_id: 'u-254',
+    interviewer_id: 'u-251',
+    date: '2025-11-28',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-914',
+    user_id: 'u-255',
+    interviewer_id: 'u-251',
+    date: '2025-10-02',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-915',
+    user_id: 'u-255',
+    interviewer_id: 'u-251',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-916',
+    user_id: 'u-255',
+    interviewer_id: 'u-251',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-917',
+    user_id: 'u-255',
+    interviewer_id: 'u-251',
+    date: '2025-09-24',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-918',
+    user_id: 'u-256',
+    interviewer_id: 'u-251',
+    date: '2025-12-26',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-919',
+    user_id: 'u-256',
+    interviewer_id: 'u-251',
+    date: '2025-09-02',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-920',
+    user_id: 'u-256',
+    interviewer_id: 'u-251',
+    date: '2025-11-14',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-921',
+    user_id: 'u-257',
+    interviewer_id: 'u-251',
+    date: '2025-12-20',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-922',
+    user_id: 'u-257',
+    interviewer_id: 'u-251',
+    date: '2025-11-09',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-923',
+    user_id: 'u-257',
+    interviewer_id: 'u-251',
+    date: '2025-09-07',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-924',
+    user_id: 'u-257',
+    interviewer_id: 'u-251',
+    date: '2025-08-24',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-925',
+    user_id: 'u-257',
+    interviewer_id: 'u-251',
+    date: '2025-10-07',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-926',
+    user_id: 'u-258',
+    interviewer_id: 'u-251',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-927',
+    user_id: 'u-258',
+    interviewer_id: 'u-251',
+    date: '2025-09-05',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-928',
+    user_id: 'u-258',
+    interviewer_id: 'u-251',
+    date: '2025-10-20',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-929',
+    user_id: 'u-258',
+    interviewer_id: 'u-251',
+    date: '2025-08-04',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-930',
+    user_id: 'u-259',
+    interviewer_id: 'u-251',
+    date: '2025-10-10',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-931',
+    user_id: 'u-259',
+    interviewer_id: 'u-251',
+    date: '2025-07-21',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-932',
+    user_id: 'u-260',
+    interviewer_id: 'u-251',
+    date: '2025-07-05',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-933',
+    user_id: 'u-260',
+    interviewer_id: 'u-251',
+    date: '2025-10-09',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-934',
+    user_id: 'u-260',
+    interviewer_id: 'u-251',
+    date: '2025-09-17',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-935',
+    user_id: 'u-260',
+    interviewer_id: 'u-251',
+    date: '2025-10-13',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-936',
+    user_id: 'u-261',
+    interviewer_id: 'u-261',
+    date: '2025-07-19',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-937',
+    user_id: 'u-261',
+    interviewer_id: 'u-261',
+    date: '2025-12-10',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-938',
+    user_id: 'u-261',
+    interviewer_id: 'u-261',
+    date: '2025-09-15',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-939',
+    user_id: 'u-261',
+    interviewer_id: 'u-261',
+    date: '2025-08-02',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-940',
+    user_id: 'u-261',
+    interviewer_id: 'u-261',
+    date: '2025-10-20',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-941',
+    user_id: 'u-262',
+    interviewer_id: 'u-261',
+    date: '2025-12-13',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-942',
+    user_id: 'u-262',
+    interviewer_id: 'u-261',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-943',
+    user_id: 'u-263',
+    interviewer_id: 'u-261',
+    date: '2025-09-27',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-944',
+    user_id: 'u-263',
+    interviewer_id: 'u-261',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-945',
+    user_id: 'u-263',
+    interviewer_id: 'u-261',
+    date: '2025-11-04',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-946',
+    user_id: 'u-264',
+    interviewer_id: 'u-261',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-947',
+    user_id: 'u-264',
+    interviewer_id: 'u-261',
+    date: '2025-11-21',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-948',
+    user_id: 'u-265',
+    interviewer_id: 'u-261',
+    date: '2025-07-12',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-949',
+    user_id: 'u-265',
+    interviewer_id: 'u-261',
+    date: '2025-09-14',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-950',
+    user_id: 'u-265',
+    interviewer_id: 'u-261',
+    date: '2025-10-22',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-951',
+    user_id: 'u-265',
+    interviewer_id: 'u-261',
+    date: '2025-09-05',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-952',
+    user_id: 'u-265',
+    interviewer_id: 'u-261',
+    date: '2025-12-24',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-953',
+    user_id: 'u-266',
+    interviewer_id: 'u-261',
+    date: '2025-11-17',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-954',
+    user_id: 'u-266',
+    interviewer_id: 'u-261',
+    date: '2025-07-12',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-955',
+    user_id: 'u-266',
+    interviewer_id: 'u-261',
+    date: '2025-11-17',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-956',
+    user_id: 'u-266',
+    interviewer_id: 'u-261',
+    date: '2025-08-18',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-957',
+    user_id: 'u-267',
+    interviewer_id: 'u-261',
+    date: '2025-09-10',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-958',
+    user_id: 'u-267',
+    interviewer_id: 'u-261',
+    date: '2025-10-18',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-959',
+    user_id: 'u-267',
+    interviewer_id: 'u-261',
+    date: '2025-11-16',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-960',
+    user_id: 'u-267',
+    interviewer_id: 'u-261',
+    date: '2025-07-04',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-961',
+    user_id: 'u-268',
+    interviewer_id: 'u-261',
+    date: '2025-07-02',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-962',
+    user_id: 'u-268',
+    interviewer_id: 'u-261',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-963',
+    user_id: 'u-269',
+    interviewer_id: 'u-261',
+    date: '2025-11-03',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-964',
+    user_id: 'u-269',
+    interviewer_id: 'u-261',
+    date: '2025-10-21',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-965',
+    user_id: 'u-270',
+    interviewer_id: 'u-261',
+    date: '2025-08-20',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-966',
+    user_id: 'u-270',
+    interviewer_id: 'u-261',
+    date: '2025-08-18',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-967',
+    user_id: 'u-270',
+    interviewer_id: 'u-261',
+    date: '2025-11-25',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-968',
+    user_id: 'u-271',
+    interviewer_id: 'u-271',
+    date: '2025-08-11',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-969',
+    user_id: 'u-271',
+    interviewer_id: 'u-271',
+    date: '2025-09-05',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-970',
+    user_id: 'u-271',
+    interviewer_id: 'u-271',
+    date: '2025-09-28',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-971',
+    user_id: 'u-271',
+    interviewer_id: 'u-271',
+    date: '2025-07-13',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-972',
+    user_id: 'u-272',
+    interviewer_id: 'u-271',
+    date: '2025-10-12',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-973',
+    user_id: 'u-272',
+    interviewer_id: 'u-271',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-974',
+    user_id: 'u-273',
+    interviewer_id: 'u-271',
+    date: '2025-08-08',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-975',
+    user_id: 'u-273',
+    interviewer_id: 'u-271',
+    date: '2025-09-04',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-976',
+    user_id: 'u-273',
+    interviewer_id: 'u-271',
+    date: '2025-08-10',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-977',
+    user_id: 'u-273',
+    interviewer_id: 'u-271',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-978',
+    user_id: 'u-273',
+    interviewer_id: 'u-271',
+    date: '2025-09-21',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-979',
+    user_id: 'u-274',
+    interviewer_id: 'u-271',
+    date: '2025-07-13',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-980',
+    user_id: 'u-274',
+    interviewer_id: 'u-271',
+    date: '2025-08-16',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-981',
+    user_id: 'u-274',
+    interviewer_id: 'u-271',
+    date: '2025-11-28',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-982',
+    user_id: 'u-275',
+    interviewer_id: 'u-271',
+    date: '2025-09-06',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-983',
+    user_id: 'u-275',
+    interviewer_id: 'u-271',
+    date: '2025-08-12',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-984',
+    user_id: 'u-275',
+    interviewer_id: 'u-271',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-985',
+    user_id: 'u-276',
+    interviewer_id: 'u-271',
+    date: '2025-07-26',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-986',
+    user_id: 'u-276',
+    interviewer_id: 'u-271',
+    date: '2025-08-19',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-987',
+    user_id: 'u-276',
+    interviewer_id: 'u-271',
+    date: '2025-09-12',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-988',
+    user_id: 'u-277',
+    interviewer_id: 'u-271',
+    date: '2025-12-18',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-989',
+    user_id: 'u-277',
+    interviewer_id: 'u-271',
+    date: '2025-08-05',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-990',
+    user_id: 'u-277',
+    interviewer_id: 'u-271',
+    date: '2025-11-27',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-991',
+    user_id: 'u-277',
+    interviewer_id: 'u-271',
+    date: '2025-07-15',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-992',
+    user_id: 'u-278',
+    interviewer_id: 'u-271',
+    date: '2025-09-19',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-993',
+    user_id: 'u-278',
+    interviewer_id: 'u-271',
+    date: '2025-10-13',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-994',
+    user_id: 'u-279',
+    interviewer_id: 'u-271',
+    date: '2025-12-19',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-19'
+  },
+  {
+    id: 'int-995',
+    user_id: 'u-279',
+    interviewer_id: 'u-271',
+    date: '2025-07-24',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-996',
+    user_id: 'u-280',
+    interviewer_id: 'u-271',
+    date: '2025-11-26',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-997',
+    user_id: 'u-280',
+    interviewer_id: 'u-271',
+    date: '2025-07-23',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-998',
+    user_id: 'u-280',
+    interviewer_id: 'u-271',
+    date: '2025-10-26',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-999',
+    user_id: 'u-280',
+    interviewer_id: 'u-271',
+    date: '2025-11-06',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1000',
+    user_id: 'u-281',
+    interviewer_id: 'u-281',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1001',
+    user_id: 'u-281',
+    interviewer_id: 'u-281',
+    date: '2025-08-23',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1002',
+    user_id: 'u-281',
+    interviewer_id: 'u-281',
+    date: '2025-10-02',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-1003',
+    user_id: 'u-281',
+    interviewer_id: 'u-281',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1004',
+    user_id: 'u-281',
+    interviewer_id: 'u-281',
+    date: '2025-11-24',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-1005',
+    user_id: 'u-282',
+    interviewer_id: 'u-281',
+    date: '2025-07-01',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1006',
+    user_id: 'u-282',
+    interviewer_id: 'u-281',
+    date: '2025-11-09',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1007',
+    user_id: 'u-282',
+    interviewer_id: 'u-281',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1008',
+    user_id: 'u-283',
+    interviewer_id: 'u-281',
+    date: '2025-11-11',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1009',
+    user_id: 'u-283',
+    interviewer_id: 'u-281',
+    date: '2025-10-02',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-1010',
+    user_id: 'u-283',
+    interviewer_id: 'u-281',
+    date: '2025-08-12',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1011',
+    user_id: 'u-283',
+    interviewer_id: 'u-281',
+    date: '2025-07-02',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-1012',
+    user_id: 'u-284',
+    interviewer_id: 'u-281',
+    date: '2025-08-28',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1013',
+    user_id: 'u-284',
+    interviewer_id: 'u-281',
+    date: '2025-09-07',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1014',
+    user_id: 'u-284',
+    interviewer_id: 'u-281',
+    date: '2025-12-26',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-1015',
+    user_id: 'u-285',
+    interviewer_id: 'u-281',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1016',
+    user_id: 'u-285',
+    interviewer_id: 'u-281',
+    date: '2025-09-16',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1017',
+    user_id: 'u-286',
+    interviewer_id: 'u-281',
+    date: '2025-07-01',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1018',
+    user_id: 'u-286',
+    interviewer_id: 'u-281',
+    date: '2025-07-07',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-1019',
+    user_id: 'u-286',
+    interviewer_id: 'u-281',
+    date: '2025-11-22',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1020',
+    user_id: 'u-286',
+    interviewer_id: 'u-281',
+    date: '2025-12-03',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-1021',
+    user_id: 'u-287',
+    interviewer_id: 'u-281',
+    date: '2025-07-06',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1022',
+    user_id: 'u-287',
+    interviewer_id: 'u-281',
+    date: '2025-12-07',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-1023',
+    user_id: 'u-287',
+    interviewer_id: 'u-281',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1024',
+    user_id: 'u-287',
+    interviewer_id: 'u-281',
+    date: '2025-08-03',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-1025',
+    user_id: 'u-288',
+    interviewer_id: 'u-281',
+    date: '2025-10-18',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-1026',
+    user_id: 'u-288',
+    interviewer_id: 'u-281',
+    date: '2025-07-25',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-1027',
+    user_id: 'u-288',
+    interviewer_id: 'u-281',
+    date: '2025-11-06',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1028',
+    user_id: 'u-288',
+    interviewer_id: 'u-281',
+    date: '2025-11-15',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-1029',
+    user_id: 'u-288',
+    interviewer_id: 'u-281',
+    date: '2025-09-12',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-1030',
+    user_id: 'u-289',
+    interviewer_id: 'u-281',
+    date: '2025-09-19',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-1031',
+    user_id: 'u-289',
+    interviewer_id: 'u-281',
+    date: '2025-09-19',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-1032',
+    user_id: 'u-289',
+    interviewer_id: 'u-281',
+    date: '2025-07-09',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-09'
+  },
+  {
+    id: 'int-1033',
+    user_id: 'u-289',
+    interviewer_id: 'u-281',
+    date: '2025-12-23',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-1034',
+    user_id: 'u-290',
+    interviewer_id: 'u-281',
+    date: '2025-12-01',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-1035',
+    user_id: 'u-290',
+    interviewer_id: 'u-281',
+    date: '2025-12-06',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1036',
+    user_id: 'u-291',
+    interviewer_id: 'u-291',
+    date: '2025-08-10',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-1037',
+    user_id: 'u-291',
+    interviewer_id: 'u-291',
+    date: '2025-12-10',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-1038',
+    user_id: 'u-291',
+    interviewer_id: 'u-291',
+    date: '2025-09-18',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1039',
+    user_id: 'u-291',
+    interviewer_id: 'u-291',
+    date: '2025-07-17',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1040',
+    user_id: 'u-291',
+    interviewer_id: 'u-291',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1041',
+    user_id: 'u-292',
+    interviewer_id: 'u-291',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1042',
+    user_id: 'u-292',
+    interviewer_id: 'u-291',
+    date: '2025-10-21',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1043',
+    user_id: 'u-293',
+    interviewer_id: 'u-291',
+    date: '2025-12-24',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1044',
+    user_id: 'u-293',
+    interviewer_id: 'u-291',
+    date: '2025-08-13',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1045',
+    user_id: 'u-293',
+    interviewer_id: 'u-291',
+    date: '2025-08-28',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1046',
+    user_id: 'u-293',
+    interviewer_id: 'u-291',
+    date: '2025-10-17',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1047',
+    user_id: 'u-293',
+    interviewer_id: 'u-291',
+    date: '2025-09-06',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-1048',
+    user_id: 'u-294',
+    interviewer_id: 'u-291',
+    date: '2025-08-26',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-1049',
+    user_id: 'u-294',
+    interviewer_id: 'u-291',
+    date: '2025-10-24',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-1050',
+    user_id: 'u-294',
+    interviewer_id: 'u-291',
+    date: '2025-12-27',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-27'
+  },
+  {
+    id: 'int-1051',
+    user_id: 'u-294',
+    interviewer_id: 'u-291',
+    date: '2025-08-01',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-1052',
+    user_id: 'u-295',
+    interviewer_id: 'u-291',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1053',
+    user_id: 'u-295',
+    interviewer_id: 'u-291',
+    date: '2025-07-28',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1054',
+    user_id: 'u-295',
+    interviewer_id: 'u-291',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1055',
+    user_id: 'u-295',
+    interviewer_id: 'u-291',
+    date: '2025-09-02',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-1056',
+    user_id: 'u-296',
+    interviewer_id: 'u-291',
+    date: '2025-07-03',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1057',
+    user_id: 'u-296',
+    interviewer_id: 'u-291',
+    date: '2025-08-22',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1058',
+    user_id: 'u-296',
+    interviewer_id: 'u-291',
+    date: '2025-07-19',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1059',
+    user_id: 'u-297',
+    interviewer_id: 'u-291',
+    date: '2025-12-08',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1060',
+    user_id: 'u-297',
+    interviewer_id: 'u-291',
+    date: '2025-07-04',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1061',
+    user_id: 'u-297',
+    interviewer_id: 'u-291',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1062',
+    user_id: 'u-297',
+    interviewer_id: 'u-291',
+    date: '2025-11-21',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-1063',
+    user_id: 'u-297',
+    interviewer_id: 'u-291',
+    date: '2025-12-01',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-1064',
+    user_id: 'u-298',
+    interviewer_id: 'u-291',
+    date: '2025-07-06',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1065',
+    user_id: 'u-298',
+    interviewer_id: 'u-291',
+    date: '2025-09-01',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-1066',
+    user_id: 'u-298',
+    interviewer_id: 'u-291',
+    date: '2025-12-28',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-1067',
+    user_id: 'u-298',
+    interviewer_id: 'u-291',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1068',
+    user_id: 'u-299',
+    interviewer_id: 'u-291',
+    date: '2025-07-05',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1069',
+    user_id: 'u-299',
+    interviewer_id: 'u-291',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1070',
+    user_id: 'u-300',
+    interviewer_id: 'u-291',
+    date: '2025-10-03',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-1071',
+    user_id: 'u-300',
+    interviewer_id: 'u-291',
+    date: '2025-07-15',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1072',
+    user_id: 'u-300',
+    interviewer_id: 'u-291',
+    date: '2025-08-11',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-1073',
+    user_id: 'u-300',
+    interviewer_id: 'u-291',
+    date: '2025-12-23',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-1074',
+    user_id: 'u-301',
+    interviewer_id: 'u-301',
+    date: '2025-11-11',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1075',
+    user_id: 'u-301',
+    interviewer_id: 'u-301',
+    date: '2025-08-19',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1076',
+    user_id: 'u-301',
+    interviewer_id: 'u-301',
+    date: '2025-08-27',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-1077',
+    user_id: 'u-301',
+    interviewer_id: 'u-301',
+    date: '2025-08-16',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1078',
+    user_id: 'u-301',
+    interviewer_id: 'u-301',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1079',
+    user_id: 'u-302',
+    interviewer_id: 'u-301',
+    date: '2025-11-02',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1080',
+    user_id: 'u-302',
+    interviewer_id: 'u-301',
+    date: '2025-11-23',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1081',
+    user_id: 'u-302',
+    interviewer_id: 'u-301',
+    date: '2025-07-04',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1082',
+    user_id: 'u-302',
+    interviewer_id: 'u-301',
+    date: '2025-10-20',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-1083',
+    user_id: 'u-303',
+    interviewer_id: 'u-301',
+    date: '2025-10-04',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-1084',
+    user_id: 'u-303',
+    interviewer_id: 'u-301',
+    date: '2025-12-15',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-1085',
+    user_id: 'u-303',
+    interviewer_id: 'u-301',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-1086',
+    user_id: 'u-304',
+    interviewer_id: 'u-301',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1087',
+    user_id: 'u-304',
+    interviewer_id: 'u-301',
+    date: '2025-08-15',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1088',
+    user_id: 'u-305',
+    interviewer_id: 'u-301',
+    date: '2025-09-11',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-1089',
+    user_id: 'u-305',
+    interviewer_id: 'u-301',
+    date: '2025-11-11',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1090',
+    user_id: 'u-306',
+    interviewer_id: 'u-301',
+    date: '2025-11-11',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1091',
+    user_id: 'u-306',
+    interviewer_id: 'u-301',
+    date: '2025-07-15',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1092',
+    user_id: 'u-306',
+    interviewer_id: 'u-301',
+    date: '2025-08-15',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1093',
+    user_id: 'u-307',
+    interviewer_id: 'u-301',
+    date: '2025-08-02',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-1094',
+    user_id: 'u-307',
+    interviewer_id: 'u-301',
+    date: '2025-10-09',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1095',
+    user_id: 'u-307',
+    interviewer_id: 'u-301',
+    date: '2025-08-25',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-1096',
+    user_id: 'u-307',
+    interviewer_id: 'u-301',
+    date: '2025-07-19',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1097',
+    user_id: 'u-308',
+    interviewer_id: 'u-301',
+    date: '2025-09-25',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1098',
+    user_id: 'u-308',
+    interviewer_id: 'u-301',
+    date: '2025-07-06',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1099',
+    user_id: 'u-309',
+    interviewer_id: 'u-301',
+    date: '2025-07-04',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1100',
+    user_id: 'u-309',
+    interviewer_id: 'u-301',
+    date: '2025-11-01',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-1101',
+    user_id: 'u-310',
+    interviewer_id: 'u-301',
+    date: '2025-09-22',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1102',
+    user_id: 'u-310',
+    interviewer_id: 'u-301',
+    date: '2025-12-16',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1103',
+    user_id: 'u-310',
+    interviewer_id: 'u-301',
+    date: '2025-08-09',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-1104',
+    user_id: 'u-310',
+    interviewer_id: 'u-301',
+    date: '2025-07-20',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-1105',
+    user_id: 'u-311',
+    interviewer_id: 'u-311',
+    date: '2025-08-11',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-1106',
+    user_id: 'u-311',
+    interviewer_id: 'u-311',
+    date: '2025-11-09',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1107',
+    user_id: 'u-312',
+    interviewer_id: 'u-311',
+    date: '2025-09-25',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1108',
+    user_id: 'u-312',
+    interviewer_id: 'u-311',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-1109',
+    user_id: 'u-312',
+    interviewer_id: 'u-311',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1110',
+    user_id: 'u-313',
+    interviewer_id: 'u-311',
+    date: '2025-08-25',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-1111',
+    user_id: 'u-313',
+    interviewer_id: 'u-311',
+    date: '2025-07-10',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1112',
+    user_id: 'u-314',
+    interviewer_id: 'u-311',
+    date: '2025-08-06',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-1113',
+    user_id: 'u-314',
+    interviewer_id: 'u-311',
+    date: '2025-11-13',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1114',
+    user_id: 'u-315',
+    interviewer_id: 'u-311',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1115',
+    user_id: 'u-315',
+    interviewer_id: 'u-311',
+    date: '2025-09-27',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-1116',
+    user_id: 'u-315',
+    interviewer_id: 'u-311',
+    date: '2025-12-24',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1117',
+    user_id: 'u-315',
+    interviewer_id: 'u-311',
+    date: '2025-07-15',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1118',
+    user_id: 'u-316',
+    interviewer_id: 'u-311',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1119',
+    user_id: 'u-316',
+    interviewer_id: 'u-311',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1120',
+    user_id: 'u-316',
+    interviewer_id: 'u-311',
+    date: '2025-08-12',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1121',
+    user_id: 'u-316',
+    interviewer_id: 'u-311',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1122',
+    user_id: 'u-317',
+    interviewer_id: 'u-311',
+    date: '2025-11-11',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1123',
+    user_id: 'u-317',
+    interviewer_id: 'u-311',
+    date: '2025-09-13',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-1124',
+    user_id: 'u-317',
+    interviewer_id: 'u-311',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1125',
+    user_id: 'u-317',
+    interviewer_id: 'u-311',
+    date: '2025-08-05',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-1126',
+    user_id: 'u-317',
+    interviewer_id: 'u-311',
+    date: '2025-08-10',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-1127',
+    user_id: 'u-318',
+    interviewer_id: 'u-311',
+    date: '2025-11-03',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1128',
+    user_id: 'u-318',
+    interviewer_id: 'u-311',
+    date: '2025-08-16',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1129',
+    user_id: 'u-318',
+    interviewer_id: 'u-311',
+    date: '2025-09-27',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-1130',
+    user_id: 'u-318',
+    interviewer_id: 'u-311',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1131',
+    user_id: 'u-319',
+    interviewer_id: 'u-311',
+    date: '2025-09-04',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-1132',
+    user_id: 'u-319',
+    interviewer_id: 'u-311',
+    date: '2025-12-06',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1133',
+    user_id: 'u-319',
+    interviewer_id: 'u-311',
+    date: '2025-12-14',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-1134',
+    user_id: 'u-319',
+    interviewer_id: 'u-311',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1135',
+    user_id: 'u-319',
+    interviewer_id: 'u-311',
+    date: '2025-12-02',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-1136',
+    user_id: 'u-320',
+    interviewer_id: 'u-311',
+    date: '2025-10-13',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-1137',
+    user_id: 'u-320',
+    interviewer_id: 'u-311',
+    date: '2025-07-14',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-1138',
+    user_id: 'u-320',
+    interviewer_id: 'u-311',
+    date: '2025-09-07',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1139',
+    user_id: 'u-320',
+    interviewer_id: 'u-311',
+    date: '2025-10-05',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-05'
+  },
+  {
+    id: 'int-1140',
+    user_id: 'u-321',
+    interviewer_id: 'u-321',
+    date: '2025-11-11',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1141',
+    user_id: 'u-321',
+    interviewer_id: 'u-321',
+    date: '2025-10-02',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-02'
+  },
+  {
+    id: 'int-1142',
+    user_id: 'u-321',
+    interviewer_id: 'u-321',
+    date: '2025-09-16',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1143',
+    user_id: 'u-321',
+    interviewer_id: 'u-321',
+    date: '2025-09-12',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-1144',
+    user_id: 'u-321',
+    interviewer_id: 'u-321',
+    date: '2025-12-08',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1145',
+    user_id: 'u-322',
+    interviewer_id: 'u-321',
+    date: '2025-09-20',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-1146',
+    user_id: 'u-322',
+    interviewer_id: 'u-321',
+    date: '2025-12-18',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-1147',
+    user_id: 'u-322',
+    interviewer_id: 'u-321',
+    date: '2025-11-07',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1148',
+    user_id: 'u-322',
+    interviewer_id: 'u-321',
+    date: '2025-08-11',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-1149',
+    user_id: 'u-323',
+    interviewer_id: 'u-321',
+    date: '2025-11-27',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-1150',
+    user_id: 'u-323',
+    interviewer_id: 'u-321',
+    date: '2025-12-24',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1151',
+    user_id: 'u-324',
+    interviewer_id: 'u-321',
+    date: '2025-08-18',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-1152',
+    user_id: 'u-324',
+    interviewer_id: 'u-321',
+    date: '2025-07-15',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1153',
+    user_id: 'u-324',
+    interviewer_id: 'u-321',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1154',
+    user_id: 'u-325',
+    interviewer_id: 'u-321',
+    date: '2025-10-09',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1155',
+    user_id: 'u-325',
+    interviewer_id: 'u-321',
+    date: '2025-07-03',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1156',
+    user_id: 'u-325',
+    interviewer_id: 'u-321',
+    date: '2025-09-13',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-1157',
+    user_id: 'u-325',
+    interviewer_id: 'u-321',
+    date: '2025-08-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1158',
+    user_id: 'u-326',
+    interviewer_id: 'u-321',
+    date: '2025-08-05',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-1159',
+    user_id: 'u-326',
+    interviewer_id: 'u-321',
+    date: '2025-09-17',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-1160',
+    user_id: 'u-326',
+    interviewer_id: 'u-321',
+    date: '2025-10-03',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-1161',
+    user_id: 'u-327',
+    interviewer_id: 'u-321',
+    date: '2025-08-27',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-1162',
+    user_id: 'u-327',
+    interviewer_id: 'u-321',
+    date: '2025-11-02',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1163',
+    user_id: 'u-327',
+    interviewer_id: 'u-321',
+    date: '2025-08-13',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1164',
+    user_id: 'u-328',
+    interviewer_id: 'u-321',
+    date: '2025-09-15',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1165',
+    user_id: 'u-328',
+    interviewer_id: 'u-321',
+    date: '2025-11-23',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1166',
+    user_id: 'u-329',
+    interviewer_id: 'u-321',
+    date: '2025-07-04',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1167',
+    user_id: 'u-329',
+    interviewer_id: 'u-321',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1168',
+    user_id: 'u-330',
+    interviewer_id: 'u-321',
+    date: '2025-10-21',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1169',
+    user_id: 'u-330',
+    interviewer_id: 'u-321',
+    date: '2025-07-19',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1170',
+    user_id: 'u-330',
+    interviewer_id: 'u-321',
+    date: '2025-07-14',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-1171',
+    user_id: 'u-330',
+    interviewer_id: 'u-321',
+    date: '2025-09-05',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-05'
+  },
+  {
+    id: 'int-1172',
+    user_id: 'u-331',
+    interviewer_id: 'u-331',
+    date: '2025-12-28',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-1173',
+    user_id: 'u-331',
+    interviewer_id: 'u-331',
+    date: '2025-10-21',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1174',
+    user_id: 'u-331',
+    interviewer_id: 'u-331',
+    date: '2025-10-07',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-1175',
+    user_id: 'u-331',
+    interviewer_id: 'u-331',
+    date: '2025-09-28',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1176',
+    user_id: 'u-331',
+    interviewer_id: 'u-331',
+    date: '2025-10-07',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-1177',
+    user_id: 'u-332',
+    interviewer_id: 'u-331',
+    date: '2025-09-28',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1178',
+    user_id: 'u-332',
+    interviewer_id: 'u-331',
+    date: '2025-10-18',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-1179',
+    user_id: 'u-332',
+    interviewer_id: 'u-331',
+    date: '2025-12-14',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-14'
+  },
+  {
+    id: 'int-1180',
+    user_id: 'u-333',
+    interviewer_id: 'u-331',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1181',
+    user_id: 'u-333',
+    interviewer_id: 'u-331',
+    date: '2025-07-28',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1182',
+    user_id: 'u-333',
+    interviewer_id: 'u-331',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1183',
+    user_id: 'u-334',
+    interviewer_id: 'u-331',
+    date: '2025-07-13',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-1184',
+    user_id: 'u-334',
+    interviewer_id: 'u-331',
+    date: '2025-09-10',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1185',
+    user_id: 'u-334',
+    interviewer_id: 'u-331',
+    date: '2025-10-14',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-1186',
+    user_id: 'u-334',
+    interviewer_id: 'u-331',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1187',
+    user_id: 'u-335',
+    interviewer_id: 'u-331',
+    date: '2025-11-12',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-1188',
+    user_id: 'u-335',
+    interviewer_id: 'u-331',
+    date: '2025-08-08',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-1189',
+    user_id: 'u-335',
+    interviewer_id: 'u-331',
+    date: '2025-07-08',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1190',
+    user_id: 'u-336',
+    interviewer_id: 'u-331',
+    date: '2025-08-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1191',
+    user_id: 'u-336',
+    interviewer_id: 'u-331',
+    date: '2025-08-10',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-1192',
+    user_id: 'u-336',
+    interviewer_id: 'u-331',
+    date: '2025-11-16',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-1193',
+    user_id: 'u-336',
+    interviewer_id: 'u-331',
+    date: '2025-12-13',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-1194',
+    user_id: 'u-336',
+    interviewer_id: 'u-331',
+    date: '2025-09-12',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-1195',
+    user_id: 'u-337',
+    interviewer_id: 'u-331',
+    date: '2025-10-11',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1196',
+    user_id: 'u-337',
+    interviewer_id: 'u-331',
+    date: '2025-08-05',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-05'
+  },
+  {
+    id: 'int-1197',
+    user_id: 'u-337',
+    interviewer_id: 'u-331',
+    date: '2025-07-18',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-18'
+  },
+  {
+    id: 'int-1198',
+    user_id: 'u-337',
+    interviewer_id: 'u-331',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1199',
+    user_id: 'u-338',
+    interviewer_id: 'u-331',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1200',
+    user_id: 'u-338',
+    interviewer_id: 'u-331',
+    date: '2025-07-19',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1201',
+    user_id: 'u-338',
+    interviewer_id: 'u-331',
+    date: '2025-11-05',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-1202',
+    user_id: 'u-338',
+    interviewer_id: 'u-331',
+    date: '2025-09-01',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-1203',
+    user_id: 'u-338',
+    interviewer_id: 'u-331',
+    date: '2025-07-27',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1204',
+    user_id: 'u-339',
+    interviewer_id: 'u-331',
+    date: '2025-12-17',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-1205',
+    user_id: 'u-339',
+    interviewer_id: 'u-331',
+    date: '2025-08-09',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-1206',
+    user_id: 'u-339',
+    interviewer_id: 'u-331',
+    date: '2025-12-03',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-1207',
+    user_id: 'u-340',
+    interviewer_id: 'u-331',
+    date: '2025-11-07',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1208',
+    user_id: 'u-340',
+    interviewer_id: 'u-331',
+    date: '2025-08-18',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-1209',
+    user_id: 'u-340',
+    interviewer_id: 'u-331',
+    date: '2025-12-09',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1210',
+    user_id: 'u-340',
+    interviewer_id: 'u-331',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1211',
+    user_id: 'u-340',
+    interviewer_id: 'u-331',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1212',
+    user_id: 'u-341',
+    interviewer_id: 'u-341',
+    date: '2025-10-25',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-1213',
+    user_id: 'u-341',
+    interviewer_id: 'u-341',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1214',
+    user_id: 'u-342',
+    interviewer_id: 'u-341',
+    date: '2025-08-13',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1215',
+    user_id: 'u-342',
+    interviewer_id: 'u-341',
+    date: '2025-11-01',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-1216',
+    user_id: 'u-342',
+    interviewer_id: 'u-341',
+    date: '2025-12-06',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1217',
+    user_id: 'u-343',
+    interviewer_id: 'u-341',
+    date: '2025-08-12',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1218',
+    user_id: 'u-343',
+    interviewer_id: 'u-341',
+    date: '2025-12-04',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-1219',
+    user_id: 'u-343',
+    interviewer_id: 'u-341',
+    date: '2025-09-14',
+    type: '1on1',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-1220',
+    user_id: 'u-344',
+    interviewer_id: 'u-341',
+    date: '2025-11-26',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-1221',
+    user_id: 'u-344',
+    interviewer_id: 'u-341',
+    date: '2025-08-23',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1222',
+    user_id: 'u-344',
+    interviewer_id: 'u-341',
+    date: '2025-11-23',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1223',
+    user_id: 'u-344',
+    interviewer_id: 'u-341',
+    date: '2025-11-16',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-1224',
+    user_id: 'u-344',
+    interviewer_id: 'u-341',
+    date: '2025-10-20',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-1225',
+    user_id: 'u-345',
+    interviewer_id: 'u-341',
+    date: '2025-10-22',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-1226',
+    user_id: 'u-345',
+    interviewer_id: 'u-341',
+    date: '2025-07-12',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-1227',
+    user_id: 'u-345',
+    interviewer_id: 'u-341',
+    date: '2025-10-28',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-1228',
+    user_id: 'u-346',
+    interviewer_id: 'u-341',
+    date: '2025-08-06',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-1229',
+    user_id: 'u-346',
+    interviewer_id: 'u-341',
+    date: '2025-08-13',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1230',
+    user_id: 'u-346',
+    interviewer_id: 'u-341',
+    date: '2025-10-01',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-1231',
+    user_id: 'u-347',
+    interviewer_id: 'u-341',
+    date: '2025-09-17',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-1232',
+    user_id: 'u-347',
+    interviewer_id: 'u-341',
+    date: '2025-11-12',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-1233',
+    user_id: 'u-347',
+    interviewer_id: 'u-341',
+    date: '2025-10-27',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-1234',
+    user_id: 'u-347',
+    interviewer_id: 'u-341',
+    date: '2025-10-22',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-1235',
+    user_id: 'u-347',
+    interviewer_id: 'u-341',
+    date: '2025-08-20',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1236',
+    user_id: 'u-348',
+    interviewer_id: 'u-341',
+    date: '2025-07-23',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-1237',
+    user_id: 'u-348',
+    interviewer_id: 'u-341',
+    date: '2025-11-12',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-1238',
+    user_id: 'u-348',
+    interviewer_id: 'u-341',
+    date: '2025-11-18',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-1239',
+    user_id: 'u-348',
+    interviewer_id: 'u-341',
+    date: '2025-08-28',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1240',
+    user_id: 'u-348',
+    interviewer_id: 'u-341',
+    date: '2025-12-16',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1241',
+    user_id: 'u-349',
+    interviewer_id: 'u-341',
+    date: '2025-10-17',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1242',
+    user_id: 'u-349',
+    interviewer_id: 'u-341',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1243',
+    user_id: 'u-349',
+    interviewer_id: 'u-341',
+    date: '2025-08-16',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1244',
+    user_id: 'u-350',
+    interviewer_id: 'u-341',
+    date: '2025-11-25',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-1245',
+    user_id: 'u-350',
+    interviewer_id: 'u-341',
+    date: '2025-11-17',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-1246',
+    user_id: 'u-350',
+    interviewer_id: 'u-341',
+    date: '2025-07-11',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-11'
+  },
+  {
+    id: 'int-1247',
+    user_id: 'u-351',
+    interviewer_id: 'u-351',
+    date: '2025-07-22',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-1248',
+    user_id: 'u-351',
+    interviewer_id: 'u-351',
+    date: '2025-11-01',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-1249',
+    user_id: 'u-351',
+    interviewer_id: 'u-351',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1250',
+    user_id: 'u-351',
+    interviewer_id: 'u-351',
+    date: '2025-10-11',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1251',
+    user_id: 'u-352',
+    interviewer_id: 'u-351',
+    date: '2025-12-16',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1252',
+    user_id: 'u-352',
+    interviewer_id: 'u-351',
+    date: '2025-11-07',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1253',
+    user_id: 'u-353',
+    interviewer_id: 'u-351',
+    date: '2025-07-20',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-1254',
+    user_id: 'u-353',
+    interviewer_id: 'u-351',
+    date: '2025-07-19',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1255',
+    user_id: 'u-353',
+    interviewer_id: 'u-351',
+    date: '2025-08-04',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1256',
+    user_id: 'u-353',
+    interviewer_id: 'u-351',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1257',
+    user_id: 'u-353',
+    interviewer_id: 'u-351',
+    date: '2025-12-21',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-1258',
+    user_id: 'u-354',
+    interviewer_id: 'u-351',
+    date: '2025-11-19',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-1259',
+    user_id: 'u-354',
+    interviewer_id: 'u-351',
+    date: '2025-11-23',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1260',
+    user_id: 'u-355',
+    interviewer_id: 'u-351',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1261',
+    user_id: 'u-355',
+    interviewer_id: 'u-351',
+    date: '2025-08-24',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1262',
+    user_id: 'u-356',
+    interviewer_id: 'u-351',
+    date: '2025-08-24',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1263',
+    user_id: 'u-356',
+    interviewer_id: 'u-351',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1264',
+    user_id: 'u-356',
+    interviewer_id: 'u-351',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1265',
+    user_id: 'u-356',
+    interviewer_id: 'u-351',
+    date: '2025-11-09',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1266',
+    user_id: 'u-356',
+    interviewer_id: 'u-351',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1267',
+    user_id: 'u-357',
+    interviewer_id: 'u-351',
+    date: '2025-12-24',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1268',
+    user_id: 'u-357',
+    interviewer_id: 'u-351',
+    date: '2025-12-24',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1269',
+    user_id: 'u-357',
+    interviewer_id: 'u-351',
+    date: '2025-07-01',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1270',
+    user_id: 'u-357',
+    interviewer_id: 'u-351',
+    date: '2025-08-03',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-1271',
+    user_id: 'u-357',
+    interviewer_id: 'u-351',
+    date: '2025-10-21',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1272',
+    user_id: 'u-358',
+    interviewer_id: 'u-351',
+    date: '2025-11-02',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1273',
+    user_id: 'u-358',
+    interviewer_id: 'u-351',
+    date: '2025-12-27',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-27'
+  },
+  {
+    id: 'int-1274',
+    user_id: 'u-358',
+    interviewer_id: 'u-351',
+    date: '2025-07-25',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-1275',
+    user_id: 'u-359',
+    interviewer_id: 'u-351',
+    date: '2025-11-13',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1276',
+    user_id: 'u-359',
+    interviewer_id: 'u-351',
+    date: '2025-11-03',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1277',
+    user_id: 'u-359',
+    interviewer_id: 'u-351',
+    date: '2025-12-23',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-1278',
+    user_id: 'u-360',
+    interviewer_id: 'u-351',
+    date: '2025-08-03',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-03'
+  },
+  {
+    id: 'int-1279',
+    user_id: 'u-360',
+    interviewer_id: 'u-351',
+    date: '2025-08-12',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1280',
+    user_id: 'u-361',
+    interviewer_id: 'u-361',
+    date: '2025-09-10',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1281',
+    user_id: 'u-361',
+    interviewer_id: 'u-361',
+    date: '2025-10-06',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1282',
+    user_id: 'u-361',
+    interviewer_id: 'u-361',
+    date: '2025-07-21',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-1283',
+    user_id: 'u-361',
+    interviewer_id: 'u-361',
+    date: '2025-12-13',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-1284',
+    user_id: 'u-362',
+    interviewer_id: 'u-361',
+    date: '2025-10-25',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-1285',
+    user_id: 'u-362',
+    interviewer_id: 'u-361',
+    date: '2025-11-26',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-1286',
+    user_id: 'u-362',
+    interviewer_id: 'u-361',
+    date: '2025-07-06',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1287',
+    user_id: 'u-362',
+    interviewer_id: 'u-361',
+    date: '2025-07-25',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-1288',
+    user_id: 'u-362',
+    interviewer_id: 'u-361',
+    date: '2025-11-06',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1289',
+    user_id: 'u-363',
+    interviewer_id: 'u-361',
+    date: '2025-10-17',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1290',
+    user_id: 'u-363',
+    interviewer_id: 'u-361',
+    date: '2025-07-16',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-1291',
+    user_id: 'u-363',
+    interviewer_id: 'u-361',
+    date: '2025-12-13',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-13'
+  },
+  {
+    id: 'int-1292',
+    user_id: 'u-363',
+    interviewer_id: 'u-361',
+    date: '2025-10-09',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1293',
+    user_id: 'u-363',
+    interviewer_id: 'u-361',
+    date: '2025-10-17',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1294',
+    user_id: 'u-364',
+    interviewer_id: 'u-361',
+    date: '2025-07-08',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1295',
+    user_id: 'u-364',
+    interviewer_id: 'u-361',
+    date: '2025-11-19',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-1296',
+    user_id: 'u-364',
+    interviewer_id: 'u-361',
+    date: '2025-09-11',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-1297',
+    user_id: 'u-364',
+    interviewer_id: 'u-361',
+    date: '2025-12-05',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1298',
+    user_id: 'u-365',
+    interviewer_id: 'u-361',
+    date: '2025-11-18',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-1299',
+    user_id: 'u-365',
+    interviewer_id: 'u-361',
+    date: '2025-11-07',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1300',
+    user_id: 'u-366',
+    interviewer_id: 'u-361',
+    date: '2025-10-01',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-1301',
+    user_id: 'u-366',
+    interviewer_id: 'u-361',
+    date: '2025-08-20',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1302',
+    user_id: 'u-366',
+    interviewer_id: 'u-361',
+    date: '2025-07-17',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1303',
+    user_id: 'u-367',
+    interviewer_id: 'u-361',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1304',
+    user_id: 'u-367',
+    interviewer_id: 'u-361',
+    date: '2025-11-21',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-1305',
+    user_id: 'u-367',
+    interviewer_id: 'u-361',
+    date: '2025-08-20',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-20'
+  },
+  {
+    id: 'int-1306',
+    user_id: 'u-367',
+    interviewer_id: 'u-361',
+    date: '2025-09-26',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-26'
+  },
+  {
+    id: 'int-1307',
+    user_id: 'u-367',
+    interviewer_id: 'u-361',
+    date: '2025-11-13',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1308',
+    user_id: 'u-368',
+    interviewer_id: 'u-361',
+    date: '2025-09-20',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-1309',
+    user_id: 'u-368',
+    interviewer_id: 'u-361',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1310',
+    user_id: 'u-368',
+    interviewer_id: 'u-361',
+    date: '2025-11-19',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-1311',
+    user_id: 'u-368',
+    interviewer_id: 'u-361',
+    date: '2025-07-11',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-11'
+  },
+  {
+    id: 'int-1312',
+    user_id: 'u-368',
+    interviewer_id: 'u-361',
+    date: '2025-12-21',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-1313',
+    user_id: 'u-369',
+    interviewer_id: 'u-361',
+    date: '2025-09-08',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1314',
+    user_id: 'u-369',
+    interviewer_id: 'u-361',
+    date: '2025-11-07',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1315',
+    user_id: 'u-369',
+    interviewer_id: 'u-361',
+    date: '2025-11-22',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1316',
+    user_id: 'u-369',
+    interviewer_id: 'u-361',
+    date: '2025-11-09',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1317',
+    user_id: 'u-369',
+    interviewer_id: 'u-361',
+    date: '2025-10-12',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-1318',
+    user_id: 'u-370',
+    interviewer_id: 'u-361',
+    date: '2025-10-28',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-1319',
+    user_id: 'u-370',
+    interviewer_id: 'u-361',
+    date: '2025-07-25',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-1320',
+    user_id: 'u-370',
+    interviewer_id: 'u-361',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1321',
+    user_id: 'u-370',
+    interviewer_id: 'u-361',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-1322',
+    user_id: 'u-371',
+    interviewer_id: 'u-371',
+    date: '2025-10-23',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-1323',
+    user_id: 'u-371',
+    interviewer_id: 'u-371',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1324',
+    user_id: 'u-371',
+    interviewer_id: 'u-371',
+    date: '2025-11-28',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1325',
+    user_id: 'u-372',
+    interviewer_id: 'u-371',
+    date: '2025-11-13',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1326',
+    user_id: 'u-372',
+    interviewer_id: 'u-371',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-1327',
+    user_id: 'u-372',
+    interviewer_id: 'u-371',
+    date: '2025-11-15',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-1328',
+    user_id: 'u-373',
+    interviewer_id: 'u-371',
+    date: '2025-07-05',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1329',
+    user_id: 'u-373',
+    interviewer_id: 'u-371',
+    date: '2025-07-19',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1330',
+    user_id: 'u-373',
+    interviewer_id: 'u-371',
+    date: '2025-07-27',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1331',
+    user_id: 'u-373',
+    interviewer_id: 'u-371',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-1332',
+    user_id: 'u-374',
+    interviewer_id: 'u-371',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1333',
+    user_id: 'u-374',
+    interviewer_id: 'u-371',
+    date: '2025-08-06',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-1334',
+    user_id: 'u-374',
+    interviewer_id: 'u-371',
+    date: '2025-07-21',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-1335',
+    user_id: 'u-374',
+    interviewer_id: 'u-371',
+    date: '2025-07-23',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-1336',
+    user_id: 'u-374',
+    interviewer_id: 'u-371',
+    date: '2025-10-16',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-1337',
+    user_id: 'u-375',
+    interviewer_id: 'u-371',
+    date: '2025-07-02',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-1338',
+    user_id: 'u-375',
+    interviewer_id: 'u-371',
+    date: '2025-10-13',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-1339',
+    user_id: 'u-375',
+    interviewer_id: 'u-371',
+    date: '2025-10-16',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-1340',
+    user_id: 'u-376',
+    interviewer_id: 'u-371',
+    date: '2025-12-08',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1341',
+    user_id: 'u-376',
+    interviewer_id: 'u-371',
+    date: '2025-07-01',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1342',
+    user_id: 'u-377',
+    interviewer_id: 'u-371',
+    date: '2025-12-12',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-1343',
+    user_id: 'u-377',
+    interviewer_id: 'u-371',
+    date: '2025-10-19',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-1344',
+    user_id: 'u-377',
+    interviewer_id: 'u-371',
+    date: '2025-11-02',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1345',
+    user_id: 'u-377',
+    interviewer_id: 'u-371',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-1346',
+    user_id: 'u-378',
+    interviewer_id: 'u-371',
+    date: '2025-09-22',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1347',
+    user_id: 'u-378',
+    interviewer_id: 'u-371',
+    date: '2025-07-04',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1348',
+    user_id: 'u-378',
+    interviewer_id: 'u-371',
+    date: '2025-10-15',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-1349',
+    user_id: 'u-378',
+    interviewer_id: 'u-371',
+    date: '2025-07-04',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1350',
+    user_id: 'u-379',
+    interviewer_id: 'u-371',
+    date: '2025-08-08',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-1351',
+    user_id: 'u-379',
+    interviewer_id: 'u-371',
+    date: '2025-11-20',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-1352',
+    user_id: 'u-379',
+    interviewer_id: 'u-371',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1353',
+    user_id: 'u-379',
+    interviewer_id: 'u-371',
+    date: '2025-12-08',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1354',
+    user_id: 'u-379',
+    interviewer_id: 'u-371',
+    date: '2025-08-14',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-1355',
+    user_id: 'u-380',
+    interviewer_id: 'u-371',
+    date: '2025-07-07',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-1356',
+    user_id: 'u-380',
+    interviewer_id: 'u-371',
+    date: '2025-10-12',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-1357',
+    user_id: 'u-381',
+    interviewer_id: 'u-381',
+    date: '2025-12-05',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1358',
+    user_id: 'u-381',
+    interviewer_id: 'u-381',
+    date: '2025-10-20',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-1359',
+    user_id: 'u-382',
+    interviewer_id: 'u-381',
+    date: '2025-09-13',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-1360',
+    user_id: 'u-382',
+    interviewer_id: 'u-381',
+    date: '2025-10-03',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-1361',
+    user_id: 'u-382',
+    interviewer_id: 'u-381',
+    date: '2025-09-19',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-1362',
+    user_id: 'u-382',
+    interviewer_id: 'u-381',
+    date: '2025-08-19',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1363',
+    user_id: 'u-383',
+    interviewer_id: 'u-381',
+    date: '2025-12-10',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-1364',
+    user_id: 'u-383',
+    interviewer_id: 'u-381',
+    date: '2025-08-09',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-1365',
+    user_id: 'u-383',
+    interviewer_id: 'u-381',
+    date: '2025-07-22',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-1366',
+    user_id: 'u-383',
+    interviewer_id: 'u-381',
+    date: '2025-11-09',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1367',
+    user_id: 'u-384',
+    interviewer_id: 'u-381',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1368',
+    user_id: 'u-384',
+    interviewer_id: 'u-381',
+    date: '2025-11-09',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1369',
+    user_id: 'u-384',
+    interviewer_id: 'u-381',
+    date: '2025-11-19',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-19'
+  },
+  {
+    id: 'int-1370',
+    user_id: 'u-385',
+    interviewer_id: 'u-381',
+    date: '2025-07-06',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1371',
+    user_id: 'u-385',
+    interviewer_id: 'u-381',
+    date: '2025-07-22',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-22'
+  },
+  {
+    id: 'int-1372',
+    user_id: 'u-385',
+    interviewer_id: 'u-381',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1373',
+    user_id: 'u-385',
+    interviewer_id: 'u-381',
+    date: '2025-12-08',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1374',
+    user_id: 'u-385',
+    interviewer_id: 'u-381',
+    date: '2025-07-04',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1375',
+    user_id: 'u-386',
+    interviewer_id: 'u-381',
+    date: '2025-07-04',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1376',
+    user_id: 'u-386',
+    interviewer_id: 'u-381',
+    date: '2025-10-12',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-1377',
+    user_id: 'u-386',
+    interviewer_id: 'u-381',
+    date: '2025-11-03',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1378',
+    user_id: 'u-387',
+    interviewer_id: 'u-381',
+    date: '2025-09-09',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1379',
+    user_id: 'u-387',
+    interviewer_id: 'u-381',
+    date: '2025-11-18',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-1380',
+    user_id: 'u-387',
+    interviewer_id: 'u-381',
+    date: '2025-12-28',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-1381',
+    user_id: 'u-387',
+    interviewer_id: 'u-381',
+    date: '2025-10-09',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1382',
+    user_id: 'u-387',
+    interviewer_id: 'u-381',
+    date: '2025-10-03',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-1383',
+    user_id: 'u-388',
+    interviewer_id: 'u-381',
+    date: '2025-09-02',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-1384',
+    user_id: 'u-388',
+    interviewer_id: 'u-381',
+    date: '2025-08-23',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1385',
+    user_id: 'u-389',
+    interviewer_id: 'u-381',
+    date: '2025-12-21',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-1386',
+    user_id: 'u-389',
+    interviewer_id: 'u-381',
+    date: '2025-07-02',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-1387',
+    user_id: 'u-389',
+    interviewer_id: 'u-381',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1388',
+    user_id: 'u-389',
+    interviewer_id: 'u-381',
+    date: '2025-12-03',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-1389',
+    user_id: 'u-389',
+    interviewer_id: 'u-381',
+    date: '2025-10-08',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-1390',
+    user_id: 'u-390',
+    interviewer_id: 'u-381',
+    date: '2025-09-08',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1391',
+    user_id: 'u-390',
+    interviewer_id: 'u-381',
+    date: '2025-10-10',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-1392',
+    user_id: 'u-390',
+    interviewer_id: 'u-381',
+    date: '2025-08-22',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1393',
+    user_id: 'u-390',
+    interviewer_id: 'u-381',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1394',
+    user_id: 'u-390',
+    interviewer_id: 'u-381',
+    date: '2025-12-23',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-1395',
+    user_id: 'u-391',
+    interviewer_id: 'u-391',
+    date: '2025-09-18',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1396',
+    user_id: 'u-391',
+    interviewer_id: 'u-391',
+    date: '2025-11-11',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1397',
+    user_id: 'u-392',
+    interviewer_id: 'u-391',
+    date: '2025-11-23',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1398',
+    user_id: 'u-392',
+    interviewer_id: 'u-391',
+    date: '2025-10-06',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1399',
+    user_id: 'u-392',
+    interviewer_id: 'u-391',
+    date: '2025-07-16',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-1400',
+    user_id: 'u-392',
+    interviewer_id: 'u-391',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1401',
+    user_id: 'u-392',
+    interviewer_id: 'u-391',
+    date: '2025-07-07',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-1402',
+    user_id: 'u-393',
+    interviewer_id: 'u-391',
+    date: '2025-08-18',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-1403',
+    user_id: 'u-393',
+    interviewer_id: 'u-391',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1404',
+    user_id: 'u-393',
+    interviewer_id: 'u-391',
+    date: '2025-07-03',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1405',
+    user_id: 'u-393',
+    interviewer_id: 'u-391',
+    date: '2025-07-26',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-1406',
+    user_id: 'u-394',
+    interviewer_id: 'u-391',
+    date: '2025-12-25',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-1407',
+    user_id: 'u-394',
+    interviewer_id: 'u-391',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1408',
+    user_id: 'u-394',
+    interviewer_id: 'u-391',
+    date: '2025-09-19',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-1409',
+    user_id: 'u-394',
+    interviewer_id: 'u-391',
+    date: '2025-07-04',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-04'
+  },
+  {
+    id: 'int-1410',
+    user_id: 'u-394',
+    interviewer_id: 'u-391',
+    date: '2025-11-06',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1411',
+    user_id: 'u-395',
+    interviewer_id: 'u-391',
+    date: '2025-09-01',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-1412',
+    user_id: 'u-395',
+    interviewer_id: 'u-391',
+    date: '2025-07-03',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1413',
+    user_id: 'u-395',
+    interviewer_id: 'u-391',
+    date: '2025-07-17',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1414',
+    user_id: 'u-395',
+    interviewer_id: 'u-391',
+    date: '2025-07-23',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-1415',
+    user_id: 'u-395',
+    interviewer_id: 'u-391',
+    date: '2025-11-14',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-1416',
+    user_id: 'u-396',
+    interviewer_id: 'u-391',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-1417',
+    user_id: 'u-396',
+    interviewer_id: 'u-391',
+    date: '2025-12-11',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-1418',
+    user_id: 'u-397',
+    interviewer_id: 'u-391',
+    date: '2025-09-18',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1419',
+    user_id: 'u-397',
+    interviewer_id: 'u-391',
+    date: '2025-10-21',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1420',
+    user_id: 'u-397',
+    interviewer_id: 'u-391',
+    date: '2025-09-14',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-1421',
+    user_id: 'u-398',
+    interviewer_id: 'u-391',
+    date: '2025-12-12',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-1422',
+    user_id: 'u-398',
+    interviewer_id: 'u-391',
+    date: '2025-10-27',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-1423',
+    user_id: 'u-398',
+    interviewer_id: 'u-391',
+    date: '2025-07-10',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1424',
+    user_id: 'u-398',
+    interviewer_id: 'u-391',
+    date: '2025-12-01',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-1425',
+    user_id: 'u-399',
+    interviewer_id: 'u-391',
+    date: '2025-10-17',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1426',
+    user_id: 'u-399',
+    interviewer_id: 'u-391',
+    date: '2025-07-26',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-1427',
+    user_id: 'u-399',
+    interviewer_id: 'u-391',
+    date: '2025-07-28',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1428',
+    user_id: 'u-399',
+    interviewer_id: 'u-391',
+    date: '2025-12-20',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1429',
+    user_id: 'u-399',
+    interviewer_id: 'u-391',
+    date: '2025-10-13',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-1430',
+    user_id: 'u-400',
+    interviewer_id: 'u-391',
+    date: '2025-11-27',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-1431',
+    user_id: 'u-400',
+    interviewer_id: 'u-391',
+    date: '2025-12-06',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1432',
+    user_id: 'u-401',
+    interviewer_id: 'u-401',
+    date: '2025-12-04',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-04'
+  },
+  {
+    id: 'int-1433',
+    user_id: 'u-401',
+    interviewer_id: 'u-401',
+    date: '2025-09-25',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1434',
+    user_id: 'u-401',
+    interviewer_id: 'u-401',
+    date: '2025-07-12',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-1435',
+    user_id: 'u-401',
+    interviewer_id: 'u-401',
+    date: '2025-09-02',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-1436',
+    user_id: 'u-401',
+    interviewer_id: 'u-401',
+    date: '2025-08-19',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1437',
+    user_id: 'u-402',
+    interviewer_id: 'u-401',
+    date: '2025-12-02',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-1438',
+    user_id: 'u-402',
+    interviewer_id: 'u-401',
+    date: '2025-12-16',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1439',
+    user_id: 'u-402',
+    interviewer_id: 'u-401',
+    date: '2025-11-13',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1440',
+    user_id: 'u-402',
+    interviewer_id: 'u-401',
+    date: '2025-12-25',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-1441',
+    user_id: 'u-403',
+    interviewer_id: 'u-401',
+    date: '2025-11-08',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-1442',
+    user_id: 'u-403',
+    interviewer_id: 'u-401',
+    date: '2025-08-08',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-1443',
+    user_id: 'u-403',
+    interviewer_id: 'u-401',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1444',
+    user_id: 'u-403',
+    interviewer_id: 'u-401',
+    date: '2025-09-13',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-1445',
+    user_id: 'u-403',
+    interviewer_id: 'u-401',
+    date: '2025-11-20',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-1446',
+    user_id: 'u-404',
+    interviewer_id: 'u-401',
+    date: '2025-09-17',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-17'
+  },
+  {
+    id: 'int-1447',
+    user_id: 'u-404',
+    interviewer_id: 'u-401',
+    date: '2025-11-20',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-1448',
+    user_id: 'u-404',
+    interviewer_id: 'u-401',
+    date: '2025-12-15',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-1449',
+    user_id: 'u-405',
+    interviewer_id: 'u-401',
+    date: '2025-12-10',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-10'
+  },
+  {
+    id: 'int-1450',
+    user_id: 'u-405',
+    interviewer_id: 'u-401',
+    date: '2025-08-24',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1451',
+    user_id: 'u-405',
+    interviewer_id: 'u-401',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1452',
+    user_id: 'u-406',
+    interviewer_id: 'u-401',
+    date: '2025-12-11',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-1453',
+    user_id: 'u-406',
+    interviewer_id: 'u-401',
+    date: '2025-09-28',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1454',
+    user_id: 'u-406',
+    interviewer_id: 'u-401',
+    date: '2025-11-08',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-08'
+  },
+  {
+    id: 'int-1455',
+    user_id: 'u-406',
+    interviewer_id: 'u-401',
+    date: '2025-11-28',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1456',
+    user_id: 'u-406',
+    interviewer_id: 'u-401',
+    date: '2025-09-24',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-1457',
+    user_id: 'u-407',
+    interviewer_id: 'u-401',
+    date: '2025-12-09',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1458',
+    user_id: 'u-407',
+    interviewer_id: 'u-401',
+    date: '2025-09-23',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-23'
+  },
+  {
+    id: 'int-1459',
+    user_id: 'u-407',
+    interviewer_id: 'u-401',
+    date: '2025-09-10',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1460',
+    user_id: 'u-407',
+    interviewer_id: 'u-401',
+    date: '2025-08-04',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1461',
+    user_id: 'u-408',
+    interviewer_id: 'u-401',
+    date: '2025-10-11',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1462',
+    user_id: 'u-408',
+    interviewer_id: 'u-401',
+    date: '2025-09-28',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1463',
+    user_id: 'u-408',
+    interviewer_id: 'u-401',
+    date: '2025-12-01',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-1464',
+    user_id: 'u-408',
+    interviewer_id: 'u-401',
+    date: '2025-08-06',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-1465',
+    user_id: 'u-408',
+    interviewer_id: 'u-401',
+    date: '2025-08-11',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-1466',
+    user_id: 'u-409',
+    interviewer_id: 'u-401',
+    date: '2025-11-20',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-1467',
+    user_id: 'u-409',
+    interviewer_id: 'u-401',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1468',
+    user_id: 'u-410',
+    interviewer_id: 'u-401',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1469',
+    user_id: 'u-410',
+    interviewer_id: 'u-401',
+    date: '2025-10-15',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-15'
+  },
+  {
+    id: 'int-1470',
+    user_id: 'u-411',
+    interviewer_id: 'u-411',
+    date: '2025-10-18',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-1471',
+    user_id: 'u-411',
+    interviewer_id: 'u-411',
+    date: '2025-11-15',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-1472',
+    user_id: 'u-411',
+    interviewer_id: 'u-411',
+    date: '2025-11-12',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-12'
+  },
+  {
+    id: 'int-1473',
+    user_id: 'u-412',
+    interviewer_id: 'u-411',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1474',
+    user_id: 'u-412',
+    interviewer_id: 'u-411',
+    date: '2025-09-15',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1475',
+    user_id: 'u-413',
+    interviewer_id: 'u-411',
+    date: '2025-08-09',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-09'
+  },
+  {
+    id: 'int-1476',
+    user_id: 'u-413',
+    interviewer_id: 'u-411',
+    date: '2025-10-13',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-1477',
+    user_id: 'u-413',
+    interviewer_id: 'u-411',
+    date: '2025-10-25',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-25'
+  },
+  {
+    id: 'int-1478',
+    user_id: 'u-414',
+    interviewer_id: 'u-411',
+    date: '2025-11-26',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-1479',
+    user_id: 'u-414',
+    interviewer_id: 'u-411',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1480',
+    user_id: 'u-414',
+    interviewer_id: 'u-411',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-1481',
+    user_id: 'u-415',
+    interviewer_id: 'u-411',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1482',
+    user_id: 'u-415',
+    interviewer_id: 'u-411',
+    date: '2025-09-19',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-19'
+  },
+  {
+    id: 'int-1483',
+    user_id: 'u-415',
+    interviewer_id: 'u-411',
+    date: '2025-11-06',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1484',
+    user_id: 'u-415',
+    interviewer_id: 'u-411',
+    date: '2025-11-13',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1485',
+    user_id: 'u-416',
+    interviewer_id: 'u-411',
+    date: '2025-11-14',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-14'
+  },
+  {
+    id: 'int-1486',
+    user_id: 'u-416',
+    interviewer_id: 'u-411',
+    date: '2025-08-13',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1487',
+    user_id: 'u-416',
+    interviewer_id: 'u-411',
+    date: '2025-10-19',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-19'
+  },
+  {
+    id: 'int-1488',
+    user_id: 'u-416',
+    interviewer_id: 'u-411',
+    date: '2025-08-21',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-1489',
+    user_id: 'u-417',
+    interviewer_id: 'u-411',
+    date: '2025-07-26',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-1490',
+    user_id: 'u-417',
+    interviewer_id: 'u-411',
+    date: '2025-12-03',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-1491',
+    user_id: 'u-417',
+    interviewer_id: 'u-411',
+    date: '2025-11-21',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-21'
+  },
+  {
+    id: 'int-1492',
+    user_id: 'u-417',
+    interviewer_id: 'u-411',
+    date: '2025-12-07',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-1493',
+    user_id: 'u-417',
+    interviewer_id: 'u-411',
+    date: '2025-10-14',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-1494',
+    user_id: 'u-418',
+    interviewer_id: 'u-411',
+    date: '2025-09-15',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1495',
+    user_id: 'u-418',
+    interviewer_id: 'u-411',
+    date: '2025-12-09',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-09'
+  },
+  {
+    id: 'int-1496',
+    user_id: 'u-418',
+    interviewer_id: 'u-411',
+    date: '2025-09-06',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-1497',
+    user_id: 'u-419',
+    interviewer_id: 'u-411',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1498',
+    user_id: 'u-419',
+    interviewer_id: 'u-411',
+    date: '2025-08-16',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1499',
+    user_id: 'u-419',
+    interviewer_id: 'u-411',
+    date: '2025-11-28',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1500',
+    user_id: 'u-419',
+    interviewer_id: 'u-411',
+    date: '2025-10-06',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1501',
+    user_id: 'u-420',
+    interviewer_id: 'u-411',
+    date: '2025-09-03',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-1502',
+    user_id: 'u-420',
+    interviewer_id: 'u-411',
+    date: '2025-07-23',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-23'
+  },
+  {
+    id: 'int-1503',
+    user_id: 'u-421',
+    interviewer_id: 'u-421',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1504',
+    user_id: 'u-421',
+    interviewer_id: 'u-421',
+    date: '2025-09-24',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-1505',
+    user_id: 'u-421',
+    interviewer_id: 'u-421',
+    date: '2025-09-28',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1506',
+    user_id: 'u-422',
+    interviewer_id: 'u-421',
+    date: '2025-07-12',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-1507',
+    user_id: 'u-422',
+    interviewer_id: 'u-421',
+    date: '2025-08-26',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-1508',
+    user_id: 'u-422',
+    interviewer_id: 'u-421',
+    date: '2025-12-08',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1509',
+    user_id: 'u-422',
+    interviewer_id: 'u-421',
+    date: '2025-11-20',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-20'
+  },
+  {
+    id: 'int-1510',
+    user_id: 'u-422',
+    interviewer_id: 'u-421',
+    date: '2025-12-12',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-12'
+  },
+  {
+    id: 'int-1511',
+    user_id: 'u-423',
+    interviewer_id: 'u-421',
+    date: '2025-12-20',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1512',
+    user_id: 'u-423',
+    interviewer_id: 'u-421',
+    date: '2025-10-06',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1513',
+    user_id: 'u-423',
+    interviewer_id: 'u-421',
+    date: '2025-12-18',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-1514',
+    user_id: 'u-424',
+    interviewer_id: 'u-421',
+    date: '2025-07-02',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-02'
+  },
+  {
+    id: 'int-1515',
+    user_id: 'u-424',
+    interviewer_id: 'u-421',
+    date: '2025-08-04',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1516',
+    user_id: 'u-424',
+    interviewer_id: 'u-421',
+    date: '2025-10-17',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-17'
+  },
+  {
+    id: 'int-1517',
+    user_id: 'u-424',
+    interviewer_id: 'u-421',
+    date: '2025-07-10',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1518',
+    user_id: 'u-424',
+    interviewer_id: 'u-421',
+    date: '2025-11-28',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1519',
+    user_id: 'u-425',
+    interviewer_id: 'u-421',
+    date: '2025-08-11',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-11'
+  },
+  {
+    id: 'int-1520',
+    user_id: 'u-425',
+    interviewer_id: 'u-421',
+    date: '2025-12-15',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-1521',
+    user_id: 'u-426',
+    interviewer_id: 'u-421',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1522',
+    user_id: 'u-426',
+    interviewer_id: 'u-421',
+    date: '2025-09-16',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1523',
+    user_id: 'u-427',
+    interviewer_id: 'u-421',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1524',
+    user_id: 'u-427',
+    interviewer_id: 'u-421',
+    date: '2025-09-03',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-03'
+  },
+  {
+    id: 'int-1525',
+    user_id: 'u-427',
+    interviewer_id: 'u-421',
+    date: '2025-07-15',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1526',
+    user_id: 'u-427',
+    interviewer_id: 'u-421',
+    date: '2025-10-06',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1527',
+    user_id: 'u-428',
+    interviewer_id: 'u-421',
+    date: '2025-08-27',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-27'
+  },
+  {
+    id: 'int-1528',
+    user_id: 'u-428',
+    interviewer_id: 'u-421',
+    date: '2025-10-21',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1529',
+    user_id: 'u-428',
+    interviewer_id: 'u-421',
+    date: '2025-12-07',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-1530',
+    user_id: 'u-428',
+    interviewer_id: 'u-421',
+    date: '2025-11-07',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1531',
+    user_id: 'u-428',
+    interviewer_id: 'u-421',
+    date: '2025-09-16',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1532',
+    user_id: 'u-429',
+    interviewer_id: 'u-421',
+    date: '2025-09-27',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-1533',
+    user_id: 'u-429',
+    interviewer_id: 'u-421',
+    date: '2025-07-27',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1534',
+    user_id: 'u-429',
+    interviewer_id: 'u-421',
+    date: '2025-10-22',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-1535',
+    user_id: 'u-429',
+    interviewer_id: 'u-421',
+    date: '2025-11-10',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-1536',
+    user_id: 'u-430',
+    interviewer_id: 'u-421',
+    date: '2025-09-07',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1537',
+    user_id: 'u-430',
+    interviewer_id: 'u-421',
+    date: '2025-08-24',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1538',
+    user_id: 'u-430',
+    interviewer_id: 'u-421',
+    date: '2025-08-14',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-1539',
+    user_id: 'u-430',
+    interviewer_id: 'u-421',
+    date: '2025-08-26',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-1540',
+    user_id: 'u-431',
+    interviewer_id: 'u-431',
+    date: '2025-11-01',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-01'
+  },
+  {
+    id: 'int-1541',
+    user_id: 'u-431',
+    interviewer_id: 'u-431',
+    date: '2025-10-14',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-14'
+  },
+  {
+    id: 'int-1542',
+    user_id: 'u-431',
+    interviewer_id: 'u-431',
+    date: '2025-10-08',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-1543',
+    user_id: 'u-431',
+    interviewer_id: 'u-431',
+    date: '2025-11-23',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1544',
+    user_id: 'u-431',
+    interviewer_id: 'u-431',
+    date: '2025-12-17',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-1545',
+    user_id: 'u-432',
+    interviewer_id: 'u-431',
+    date: '2025-12-18',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-1546',
+    user_id: 'u-432',
+    interviewer_id: 'u-431',
+    date: '2025-08-07',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-1547',
+    user_id: 'u-432',
+    interviewer_id: 'u-431',
+    date: '2025-11-09',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1548',
+    user_id: 'u-433',
+    interviewer_id: 'u-431',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1549',
+    user_id: 'u-433',
+    interviewer_id: 'u-431',
+    date: '2025-08-15',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1550',
+    user_id: 'u-433',
+    interviewer_id: 'u-431',
+    date: '2025-07-21',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-1551',
+    user_id: 'u-433',
+    interviewer_id: 'u-431',
+    date: '2025-07-12',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-1552',
+    user_id: 'u-434',
+    interviewer_id: 'u-431',
+    date: '2025-11-16',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-1553',
+    user_id: 'u-434',
+    interviewer_id: 'u-431',
+    date: '2025-09-09',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1554',
+    user_id: 'u-434',
+    interviewer_id: 'u-431',
+    date: '2025-09-20',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-1555',
+    user_id: 'u-434',
+    interviewer_id: 'u-431',
+    date: '2025-09-04',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-04'
+  },
+  {
+    id: 'int-1556',
+    user_id: 'u-434',
+    interviewer_id: 'u-431',
+    date: '2025-09-12',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-1557',
+    user_id: 'u-435',
+    interviewer_id: 'u-431',
+    date: '2025-11-22',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1558',
+    user_id: 'u-435',
+    interviewer_id: 'u-431',
+    date: '2025-08-10',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-1559',
+    user_id: 'u-435',
+    interviewer_id: 'u-431',
+    date: '2025-07-13',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-1560',
+    user_id: 'u-435',
+    interviewer_id: 'u-431',
+    date: '2025-09-21',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-1561',
+    user_id: 'u-436',
+    interviewer_id: 'u-431',
+    date: '2025-11-10',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-1562',
+    user_id: 'u-436',
+    interviewer_id: 'u-431',
+    date: '2025-07-17',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1563',
+    user_id: 'u-437',
+    interviewer_id: 'u-431',
+    date: '2025-07-15',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1564',
+    user_id: 'u-437',
+    interviewer_id: 'u-431',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1565',
+    user_id: 'u-437',
+    interviewer_id: 'u-431',
+    date: '2025-09-18',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1566',
+    user_id: 'u-438',
+    interviewer_id: 'u-431',
+    date: '2025-10-26',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-26'
+  },
+  {
+    id: 'int-1567',
+    user_id: 'u-438',
+    interviewer_id: 'u-431',
+    date: '2025-12-18',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-1568',
+    user_id: 'u-438',
+    interviewer_id: 'u-431',
+    date: '2025-11-03',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1569',
+    user_id: 'u-438',
+    interviewer_id: 'u-431',
+    date: '2025-07-24',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1570',
+    user_id: 'u-439',
+    interviewer_id: 'u-431',
+    date: '2025-09-06',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-1571',
+    user_id: 'u-439',
+    interviewer_id: 'u-431',
+    date: '2025-07-26',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-1572',
+    user_id: 'u-439',
+    interviewer_id: 'u-431',
+    date: '2025-12-24',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1573',
+    user_id: 'u-439',
+    interviewer_id: 'u-431',
+    date: '2025-10-01',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-1574',
+    user_id: 'u-440',
+    interviewer_id: 'u-431',
+    date: '2025-12-06',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1575',
+    user_id: 'u-440',
+    interviewer_id: 'u-431',
+    date: '2025-07-10',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-10'
+  },
+  {
+    id: 'int-1576',
+    user_id: 'u-440',
+    interviewer_id: 'u-431',
+    date: '2025-12-17',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-17'
+  },
+  {
+    id: 'int-1577',
+    user_id: 'u-440',
+    interviewer_id: 'u-431',
+    date: '2025-08-22',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1578',
+    user_id: 'u-440',
+    interviewer_id: 'u-431',
+    date: '2025-08-21',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-1579',
+    user_id: 'u-441',
+    interviewer_id: 'u-441',
+    date: '2025-12-25',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-1580',
+    user_id: 'u-441',
+    interviewer_id: 'u-441',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-1581',
+    user_id: 'u-441',
+    interviewer_id: 'u-441',
+    date: '2025-10-24',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-1582',
+    user_id: 'u-442',
+    interviewer_id: 'u-441',
+    date: '2025-08-19',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1583',
+    user_id: 'u-442',
+    interviewer_id: 'u-441',
+    date: '2025-08-12',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1584',
+    user_id: 'u-442',
+    interviewer_id: 'u-441',
+    date: '2025-11-17',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-1585',
+    user_id: 'u-443',
+    interviewer_id: 'u-441',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1586',
+    user_id: 'u-443',
+    interviewer_id: 'u-441',
+    date: '2025-11-07',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-07'
+  },
+  {
+    id: 'int-1587',
+    user_id: 'u-443',
+    interviewer_id: 'u-441',
+    date: '2025-11-24',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-1588',
+    user_id: 'u-443',
+    interviewer_id: 'u-441',
+    date: '2025-11-03',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1589',
+    user_id: 'u-443',
+    interviewer_id: 'u-441',
+    date: '2025-08-28',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1590',
+    user_id: 'u-444',
+    interviewer_id: 'u-441',
+    date: '2025-10-04',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-1591',
+    user_id: 'u-444',
+    interviewer_id: 'u-441',
+    date: '2025-12-05',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1592',
+    user_id: 'u-444',
+    interviewer_id: 'u-441',
+    date: '2025-09-28',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1593',
+    user_id: 'u-444',
+    interviewer_id: 'u-441',
+    date: '2025-08-16',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1594',
+    user_id: 'u-445',
+    interviewer_id: 'u-441',
+    date: '2025-09-07',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1595',
+    user_id: 'u-445',
+    interviewer_id: 'u-441',
+    date: '2025-07-20',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-20'
+  },
+  {
+    id: 'int-1596',
+    user_id: 'u-445',
+    interviewer_id: 'u-441',
+    date: '2025-08-02',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-1597',
+    user_id: 'u-445',
+    interviewer_id: 'u-441',
+    date: '2025-07-05',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1598',
+    user_id: 'u-446',
+    interviewer_id: 'u-441',
+    date: '2025-09-09',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1599',
+    user_id: 'u-446',
+    interviewer_id: 'u-441',
+    date: '2025-12-08',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-08'
+  },
+  {
+    id: 'int-1600',
+    user_id: 'u-446',
+    interviewer_id: 'u-441',
+    date: '2025-09-18',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1601',
+    user_id: 'u-447',
+    interviewer_id: 'u-441',
+    date: '2025-08-07',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-1602',
+    user_id: 'u-447',
+    interviewer_id: 'u-441',
+    date: '2025-11-18',
+    type: '1on1',
+    summary: '異動希望について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-1603',
+    user_id: 'u-447',
+    interviewer_id: 'u-441',
+    date: '2025-11-09',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1604',
+    user_id: 'u-447',
+    interviewer_id: 'u-441',
+    date: '2025-07-21',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-21'
+  },
+  {
+    id: 'int-1605',
+    user_id: 'u-448',
+    interviewer_id: 'u-441',
+    date: '2025-07-28',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1606',
+    user_id: 'u-448',
+    interviewer_id: 'u-441',
+    date: '2025-11-26',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-1607',
+    user_id: 'u-448',
+    interviewer_id: 'u-441',
+    date: '2025-11-05',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-05'
+  },
+  {
+    id: 'int-1608',
+    user_id: 'u-449',
+    interviewer_id: 'u-441',
+    date: '2025-11-13',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-13'
+  },
+  {
+    id: 'int-1609',
+    user_id: 'u-449',
+    interviewer_id: 'u-441',
+    date: '2025-12-26',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-1610',
+    user_id: 'u-449',
+    interviewer_id: 'u-441',
+    date: '2025-07-15',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1611',
+    user_id: 'u-449',
+    interviewer_id: 'u-441',
+    date: '2025-11-16',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-1612',
+    user_id: 'u-450',
+    interviewer_id: 'u-441',
+    date: '2025-07-07',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-07'
+  },
+  {
+    id: 'int-1613',
+    user_id: 'u-450',
+    interviewer_id: 'u-441',
+    date: '2025-11-06',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-06'
+  },
+  {
+    id: 'int-1614',
+    user_id: 'u-450',
+    interviewer_id: 'u-441',
+    date: '2025-09-25',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1615',
+    user_id: 'u-450',
+    interviewer_id: 'u-441',
+    date: '2025-08-07',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-07'
+  },
+  {
+    id: 'int-1616',
+    user_id: 'u-451',
+    interviewer_id: 'u-451',
+    date: '2025-07-01',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1617',
+    user_id: 'u-451',
+    interviewer_id: 'u-451',
+    date: '2025-12-25',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-1618',
+    user_id: 'u-451',
+    interviewer_id: 'u-451',
+    date: '2025-10-06',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1619',
+    user_id: 'u-452',
+    interviewer_id: 'u-451',
+    date: '2025-08-14',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-1620',
+    user_id: 'u-452',
+    interviewer_id: 'u-451',
+    date: '2025-08-10',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-10'
+  },
+  {
+    id: 'int-1621',
+    user_id: 'u-452',
+    interviewer_id: 'u-451',
+    date: '2025-10-09',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-09'
+  },
+  {
+    id: 'int-1622',
+    user_id: 'u-453',
+    interviewer_id: 'u-451',
+    date: '2025-07-13',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-1623',
+    user_id: 'u-453',
+    interviewer_id: 'u-451',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1624',
+    user_id: 'u-453',
+    interviewer_id: 'u-451',
+    date: '2025-12-06',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-06'
+  },
+  {
+    id: 'int-1625',
+    user_id: 'u-453',
+    interviewer_id: 'u-451',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1626',
+    user_id: 'u-453',
+    interviewer_id: 'u-451',
+    date: '2025-07-27',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-27'
+  },
+  {
+    id: 'int-1627',
+    user_id: 'u-454',
+    interviewer_id: 'u-451',
+    date: '2025-12-07',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-07'
+  },
+  {
+    id: 'int-1628',
+    user_id: 'u-454',
+    interviewer_id: 'u-451',
+    date: '2025-07-26',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-26'
+  },
+  {
+    id: 'int-1629',
+    user_id: 'u-454',
+    interviewer_id: 'u-451',
+    date: '2025-11-11',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-11'
+  },
+  {
+    id: 'int-1630',
+    user_id: 'u-455',
+    interviewer_id: 'u-451',
+    date: '2025-08-15',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1631',
+    user_id: 'u-455',
+    interviewer_id: 'u-451',
+    date: '2025-09-12',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-12'
+  },
+  {
+    id: 'int-1632',
+    user_id: 'u-455',
+    interviewer_id: 'u-451',
+    date: '2025-10-03',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-03'
+  },
+  {
+    id: 'int-1633',
+    user_id: 'u-455',
+    interviewer_id: 'u-451',
+    date: '2025-11-23',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-23'
+  },
+  {
+    id: 'int-1634',
+    user_id: 'u-455',
+    interviewer_id: 'u-451',
+    date: '2025-10-04',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-1635',
+    user_id: 'u-456',
+    interviewer_id: 'u-451',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1636',
+    user_id: 'u-456',
+    interviewer_id: 'u-451',
+    date: '2025-07-28',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1637',
+    user_id: 'u-456',
+    interviewer_id: 'u-451',
+    date: '2025-12-18',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-18'
+  },
+  {
+    id: 'int-1638',
+    user_id: 'u-456',
+    interviewer_id: 'u-451',
+    date: '2025-09-18',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1639',
+    user_id: 'u-457',
+    interviewer_id: 'u-451',
+    date: '2025-08-04',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1640',
+    user_id: 'u-457',
+    interviewer_id: 'u-451',
+    date: '2025-09-09',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-09'
+  },
+  {
+    id: 'int-1641',
+    user_id: 'u-457',
+    interviewer_id: 'u-451',
+    date: '2025-12-22',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-1642',
+    user_id: 'u-458',
+    interviewer_id: 'u-451',
+    date: '2025-08-06',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-06'
+  },
+  {
+    id: 'int-1643',
+    user_id: 'u-458',
+    interviewer_id: 'u-451',
+    date: '2025-11-27',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-27'
+  },
+  {
+    id: 'int-1644',
+    user_id: 'u-458',
+    interviewer_id: 'u-451',
+    date: '2025-12-24',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1645',
+    user_id: 'u-458',
+    interviewer_id: 'u-451',
+    date: '2025-07-24',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1646',
+    user_id: 'u-458',
+    interviewer_id: 'u-451',
+    date: '2025-09-08',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1647',
+    user_id: 'u-459',
+    interviewer_id: 'u-451',
+    date: '2025-08-28',
+    type: '定期面談',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1648',
+    user_id: 'u-459',
+    interviewer_id: 'u-451',
+    date: '2025-08-01',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-1649',
+    user_id: 'u-459',
+    interviewer_id: 'u-451',
+    date: '2025-09-24',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-24'
+  },
+  {
+    id: 'int-1650',
+    user_id: 'u-460',
+    interviewer_id: 'u-451',
+    date: '2025-09-07',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-07'
+  },
+  {
+    id: 'int-1651',
+    user_id: 'u-460',
+    interviewer_id: 'u-451',
+    date: '2025-10-28',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-1652',
+    user_id: 'u-460',
+    interviewer_id: 'u-451',
+    date: '2025-09-14',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-14'
+  },
+  {
+    id: 'int-1653',
+    user_id: 'u-460',
+    interviewer_id: 'u-451',
+    date: '2025-08-22',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1654',
+    user_id: 'u-461',
+    interviewer_id: 'u-461',
+    date: '2025-10-12',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-12'
+  },
+  {
+    id: 'int-1655',
+    user_id: 'u-461',
+    interviewer_id: 'u-461',
+    date: '2025-11-15',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-15'
+  },
+  {
+    id: 'int-1656',
+    user_id: 'u-461',
+    interviewer_id: 'u-461',
+    date: '2025-08-15',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1657',
+    user_id: 'u-462',
+    interviewer_id: 'u-461',
+    date: '2025-07-03',
+    type: 'キャリア面談',
+    summary: '最近の体調について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1658',
+    user_id: 'u-462',
+    interviewer_id: 'u-461',
+    date: '2025-12-20',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1659',
+    user_id: 'u-462',
+    interviewer_id: 'u-461',
+    date: '2025-09-22',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-22'
+  },
+  {
+    id: 'int-1660',
+    user_id: 'u-463',
+    interviewer_id: 'u-461',
+    date: '2025-08-19',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-19'
+  },
+  {
+    id: 'int-1661',
+    user_id: 'u-463',
+    interviewer_id: 'u-461',
+    date: '2025-12-11',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-11'
+  },
+  {
+    id: 'int-1662',
+    user_id: 'u-463',
+    interviewer_id: 'u-461',
+    date: '2025-07-14',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-14'
+  },
+  {
+    id: 'int-1663',
+    user_id: 'u-464',
+    interviewer_id: 'u-461',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: '業務改善提案の相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1664',
+    user_id: 'u-464',
+    interviewer_id: 'u-461',
+    date: '2025-08-22',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1665',
+    user_id: 'u-464',
+    interviewer_id: 'u-461',
+    date: '2025-11-24',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-1666',
+    user_id: 'u-464',
+    interviewer_id: 'u-461',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1667',
+    user_id: 'u-465',
+    interviewer_id: 'u-461',
+    date: '2025-11-25',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-1668',
+    user_id: 'u-465',
+    interviewer_id: 'u-461',
+    date: '2025-12-20',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-20'
+  },
+  {
+    id: 'int-1669',
+    user_id: 'u-465',
+    interviewer_id: 'u-461',
+    date: '2025-09-21',
+    type: 'キャリア面談',
+    summary: 'スキルアップの方向性',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-09-21'
+  },
+  {
+    id: 'int-1670',
+    user_id: 'u-465',
+    interviewer_id: 'u-461',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1671',
+    user_id: 'u-466',
+    interviewer_id: 'u-461',
+    date: '2025-07-17',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1672',
+    user_id: 'u-466',
+    interviewer_id: 'u-461',
+    date: '2025-10-11',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1673',
+    user_id: 'u-466',
+    interviewer_id: 'u-461',
+    date: '2025-09-15',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-15'
+  },
+  {
+    id: 'int-1674',
+    user_id: 'u-467',
+    interviewer_id: 'u-461',
+    date: '2025-09-11',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-11'
+  },
+  {
+    id: 'int-1675',
+    user_id: 'u-467',
+    interviewer_id: 'u-461',
+    date: '2025-10-27',
+    type: '1on1',
+    summary: '評価結果のフィードバック',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-27'
+  },
+  {
+    id: 'int-1676',
+    user_id: 'u-467',
+    interviewer_id: 'u-461',
+    date: '2025-12-26',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-1677',
+    user_id: 'u-468',
+    interviewer_id: 'u-461',
+    date: '2025-11-02',
+    type: '1on1',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1678',
+    user_id: 'u-468',
+    interviewer_id: 'u-461',
+    date: '2025-10-23',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-1679',
+    user_id: 'u-468',
+    interviewer_id: 'u-461',
+    date: '2025-12-22',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-1680',
+    user_id: 'u-468',
+    interviewer_id: 'u-461',
+    date: '2025-10-10',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-10'
+  },
+  {
+    id: 'int-1681',
+    user_id: 'u-469',
+    interviewer_id: 'u-461',
+    date: '2025-12-01',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-01'
+  },
+  {
+    id: 'int-1682',
+    user_id: 'u-469',
+    interviewer_id: 'u-461',
+    date: '2025-08-13',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-13'
+  },
+  {
+    id: 'int-1683',
+    user_id: 'u-469',
+    interviewer_id: 'u-461',
+    date: '2025-07-12',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-12'
+  },
+  {
+    id: 'int-1684',
+    user_id: 'u-469',
+    interviewer_id: 'u-461',
+    date: '2025-08-18',
+    type: 'キャリア面談',
+    summary: '後輩指導の状況について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-18'
+  },
+  {
+    id: 'int-1685',
+    user_id: 'u-469',
+    interviewer_id: 'u-461',
+    date: '2025-12-02',
+    type: 'キャリア面談',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-02'
+  },
+  {
+    id: 'int-1686',
+    user_id: 'u-470',
+    interviewer_id: 'u-461',
+    date: '2025-12-26',
+    type: 'キャリア面談',
+    summary: '目標達成状況の確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-1687',
+    user_id: 'u-470',
+    interviewer_id: 'u-461',
+    date: '2025-08-22',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-22'
+  },
+  {
+    id: 'int-1688',
+    user_id: 'u-470',
+    interviewer_id: 'u-461',
+    date: '2025-09-13',
+    type: 'フォローアップ',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-13'
+  },
+  {
+    id: 'int-1689',
+    user_id: 'u-470',
+    interviewer_id: 'u-461',
+    date: '2025-07-16',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-1690',
+    user_id: 'u-471',
+    interviewer_id: 'u-471',
+    date: '2025-11-17',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-1691',
+    user_id: 'u-471',
+    interviewer_id: 'u-471',
+    date: '2025-09-28',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-28'
+  },
+  {
+    id: 'int-1692',
+    user_id: 'u-472',
+    interviewer_id: 'u-471',
+    date: '2025-07-24',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1693',
+    user_id: 'u-472',
+    interviewer_id: 'u-471',
+    date: '2025-07-19',
+    type: 'フォローアップ',
+    summary: 'チーム内の人間関係について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-19'
+  },
+  {
+    id: 'int-1694',
+    user_id: 'u-472',
+    interviewer_id: 'u-471',
+    date: '2025-09-20',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-09-20'
+  },
+  {
+    id: 'int-1695',
+    user_id: 'u-472',
+    interviewer_id: 'u-471',
+    date: '2025-11-26',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-26'
+  },
+  {
+    id: 'int-1696',
+    user_id: 'u-472',
+    interviewer_id: 'u-471',
+    date: '2025-08-16',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-16'
+  },
+  {
+    id: 'int-1697',
+    user_id: 'u-473',
+    interviewer_id: 'u-471',
+    date: '2025-08-25',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-25'
+  },
+  {
+    id: 'int-1698',
+    user_id: 'u-473',
+    interviewer_id: 'u-471',
+    date: '2025-11-25',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-25'
+  },
+  {
+    id: 'int-1699',
+    user_id: 'u-473',
+    interviewer_id: 'u-471',
+    date: '2025-09-01',
+    type: '定期面談',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-01'
+  },
+  {
+    id: 'int-1700',
+    user_id: 'u-474',
+    interviewer_id: 'u-471',
+    date: '2025-09-10',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1701',
+    user_id: 'u-474',
+    interviewer_id: 'u-471',
+    date: '2025-11-03',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-03'
+  },
+  {
+    id: 'int-1702',
+    user_id: 'u-474',
+    interviewer_id: 'u-471',
+    date: '2025-07-18',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-18'
+  },
+  {
+    id: 'int-1703',
+    user_id: 'u-474',
+    interviewer_id: 'u-471',
+    date: '2025-10-04',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-04'
+  },
+  {
+    id: 'int-1704',
+    user_id: 'u-475',
+    interviewer_id: 'u-471',
+    date: '2025-10-20',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-20'
+  },
+  {
+    id: 'int-1705',
+    user_id: 'u-475',
+    interviewer_id: 'u-471',
+    date: '2025-07-03',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-03'
+  },
+  {
+    id: 'int-1706',
+    user_id: 'u-475',
+    interviewer_id: 'u-471',
+    date: '2025-12-03',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-03'
+  },
+  {
+    id: 'int-1707',
+    user_id: 'u-475',
+    interviewer_id: 'u-471',
+    date: '2025-07-17',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-17'
+  },
+  {
+    id: 'int-1708',
+    user_id: 'u-476',
+    interviewer_id: 'u-471',
+    date: '2025-11-22',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1709',
+    user_id: 'u-476',
+    interviewer_id: 'u-471',
+    date: '2025-10-05',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-05'
+  },
+  {
+    id: 'int-1710',
+    user_id: 'u-476',
+    interviewer_id: 'u-471',
+    date: '2025-07-08',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1711',
+    user_id: 'u-477',
+    interviewer_id: 'u-471',
+    date: '2025-12-23',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-12-23'
+  },
+  {
+    id: 'int-1712',
+    user_id: 'u-477',
+    interviewer_id: 'u-471',
+    date: '2025-08-08',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-08'
+  },
+  {
+    id: 'int-1713',
+    user_id: 'u-477',
+    interviewer_id: 'u-471',
+    date: '2025-09-10',
+    type: 'フォローアップ',
+    summary: '目標達成状況の確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1714',
+    user_id: 'u-477',
+    interviewer_id: 'u-471',
+    date: '2025-07-25',
+    type: 'フォローアップ',
+    summary: 'スキルアップの方向性',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-25'
+  },
+  {
+    id: 'int-1715',
+    user_id: 'u-478',
+    interviewer_id: 'u-471',
+    date: '2025-11-10',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-1716',
+    user_id: 'u-478',
+    interviewer_id: 'u-471',
+    date: '2025-12-21',
+    type: 'フォローアップ',
+    summary: '休暇取得の促進',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-21'
+  },
+  {
+    id: 'int-1717',
+    user_id: 'u-478',
+    interviewer_id: 'u-471',
+    date: '2025-10-21',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1718',
+    user_id: 'u-478',
+    interviewer_id: 'u-471',
+    date: '2025-12-24',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-12-24'
+  },
+  {
+    id: 'int-1719',
+    user_id: 'u-479',
+    interviewer_id: 'u-471',
+    date: '2025-11-24',
+    type: 'フォローアップ',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-24'
+  },
+  {
+    id: 'int-1720',
+    user_id: 'u-479',
+    interviewer_id: 'u-471',
+    date: '2025-09-27',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-27'
+  },
+  {
+    id: 'int-1721',
+    user_id: 'u-479',
+    interviewer_id: 'u-471',
+    date: '2025-10-18',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-18'
+  },
+  {
+    id: 'int-1722',
+    user_id: 'u-479',
+    interviewer_id: 'u-471',
+    date: '2025-11-22',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-22'
+  },
+  {
+    id: 'int-1723',
+    user_id: 'u-480',
+    interviewer_id: 'u-471',
+    date: '2025-08-23',
+    type: '1on1',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-23'
+  },
+  {
+    id: 'int-1724',
+    user_id: 'u-480',
+    interviewer_id: 'u-471',
+    date: '2025-09-16',
+    type: '1on1',
+    summary: '休暇取得の促進',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1725',
+    user_id: 'u-480',
+    interviewer_id: 'u-471',
+    date: '2025-11-28',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1726',
+    user_id: 'u-480',
+    interviewer_id: 'u-471',
+    date: '2025-08-28',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1727',
+    user_id: 'u-480',
+    interviewer_id: 'u-471',
+    date: '2025-09-10',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 3,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1728',
+    user_id: 'u-481',
+    interviewer_id: 'u-481',
+    date: '2025-08-02',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-08-02'
+  },
+  {
+    id: 'int-1729',
+    user_id: 'u-481',
+    interviewer_id: 'u-481',
+    date: '2025-10-23',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-23'
+  },
+  {
+    id: 'int-1730',
+    user_id: 'u-481',
+    interviewer_id: 'u-481',
+    date: '2025-11-17',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-11-17'
+  },
+  {
+    id: 'int-1731',
+    user_id: 'u-481',
+    interviewer_id: 'u-481',
+    date: '2025-12-15',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-15'
+  },
+  {
+    id: 'int-1732',
+    user_id: 'u-481',
+    interviewer_id: 'u-481',
+    date: '2025-10-06',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-06'
+  },
+  {
+    id: 'int-1733',
+    user_id: 'u-482',
+    interviewer_id: 'u-481',
+    date: '2025-12-22',
+    type: '定期面談',
+    summary: 'チーム内の人間関係について',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-22'
+  },
+  {
+    id: 'int-1734',
+    user_id: 'u-482',
+    interviewer_id: 'u-481',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 2,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1735',
+    user_id: 'u-482',
+    interviewer_id: 'u-481',
+    date: '2025-09-25',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1736',
+    user_id: 'u-483',
+    interviewer_id: 'u-481',
+    date: '2025-10-08',
+    type: 'キャリア面談',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-1737',
+    user_id: 'u-483',
+    interviewer_id: 'u-481',
+    date: '2025-10-13',
+    type: '定期面談',
+    summary: '業務改善提案の相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 3,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-13'
+  },
+  {
+    id: 'int-1738',
+    user_id: 'u-484',
+    interviewer_id: 'u-481',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: 'チーム内の人間関係について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1739',
+    user_id: 'u-484',
+    interviewer_id: 'u-481',
+    date: '2025-10-16',
+    type: 'フォローアップ',
+    summary: '業務改善提案の相談',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-16'
+  },
+  {
+    id: 'int-1740',
+    user_id: 'u-484',
+    interviewer_id: 'u-481',
+    date: '2025-07-13',
+    type: '1on1',
+    summary: '後輩指導の状況について',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-13'
+  },
+  {
+    id: 'int-1741',
+    user_id: 'u-485',
+    interviewer_id: 'u-481',
+    date: '2025-09-25',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-25'
+  },
+  {
+    id: 'int-1742',
+    user_id: 'u-485',
+    interviewer_id: 'u-481',
+    date: '2025-11-04',
+    type: '1on1',
+    summary: '業務負荷について相談',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-11-04'
+  },
+  {
+    id: 'int-1743',
+    user_id: 'u-485',
+    interviewer_id: 'u-481',
+    date: '2025-11-09',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-11-09'
+  },
+  {
+    id: 'int-1744',
+    user_id: 'u-485',
+    interviewer_id: 'u-481',
+    date: '2025-12-05',
+    type: '1on1',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-05'
+  },
+  {
+    id: 'int-1745',
+    user_id: 'u-485',
+    interviewer_id: 'u-481',
+    date: '2025-11-28',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-11-28'
+  },
+  {
+    id: 'int-1746',
+    user_id: 'u-486',
+    interviewer_id: 'u-481',
+    date: '2025-07-15',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-07-15'
+  },
+  {
+    id: 'int-1747',
+    user_id: 'u-486',
+    interviewer_id: 'u-481',
+    date: '2025-10-24',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-10-24'
+  },
+  {
+    id: 'int-1748',
+    user_id: 'u-487',
+    interviewer_id: 'u-481',
+    date: '2025-10-11',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1749',
+    user_id: 'u-487',
+    interviewer_id: 'u-481',
+    date: '2025-12-25',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-25'
+  },
+  {
+    id: 'int-1750',
+    user_id: 'u-487',
+    interviewer_id: 'u-481',
+    date: '2025-12-28',
+    type: 'キャリア面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-1751',
+    user_id: 'u-487',
+    interviewer_id: 'u-481',
+    date: '2025-12-16',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1752',
+    user_id: 'u-488',
+    interviewer_id: 'u-481',
+    date: '2025-10-21',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1753',
+    user_id: 'u-488',
+    interviewer_id: 'u-481',
+    date: '2025-10-07',
+    type: '定期面談',
+    summary: '評価結果のフィードバック',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-07'
+  },
+  {
+    id: 'int-1754',
+    user_id: 'u-488',
+    interviewer_id: 'u-481',
+    date: '2025-07-16',
+    type: 'キャリア面談',
+    summary: '評価結果のフィードバック',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-16'
+  },
+  {
+    id: 'int-1755',
+    user_id: 'u-489',
+    interviewer_id: 'u-481',
+    date: '2025-10-28',
+    type: 'キャリア面談',
+    summary: '休暇取得の促進',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-10-28'
+  },
+  {
+    id: 'int-1756',
+    user_id: 'u-489',
+    interviewer_id: 'u-481',
+    date: '2025-07-24',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 5,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1757',
+    user_id: 'u-489',
+    interviewer_id: 'u-481',
+    date: '2025-09-06',
+    type: '定期面談',
+    summary: '異動希望について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-06'
+  },
+  {
+    id: 'int-1758',
+    user_id: 'u-490',
+    interviewer_id: 'u-481',
+    date: '2025-12-16',
+    type: 'フォローアップ',
+    summary: 'キャリアプランの確認',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 2,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-12-16'
+  },
+  {
+    id: 'int-1759',
+    user_id: 'u-490',
+    interviewer_id: 'u-481',
+    date: '2025-10-22',
+    type: '定期面談',
+    summary: '新しいプロジェクトへの参加について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 1,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-10-22'
+  },
+  {
+    id: 'int-1760',
+    user_id: 'u-490',
+    interviewer_id: 'u-481',
+    date: '2025-07-28',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 5,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-28'
+  },
+  {
+    id: 'int-1761',
+    user_id: 'u-490',
+    interviewer_id: 'u-481',
+    date: '2025-09-16',
+    type: '1on1',
+    summary: 'メンタルヘルスの状況確認',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-16'
+  },
+  {
+    id: 'int-1762',
+    user_id: 'u-491',
+    interviewer_id: 'u-491',
+    date: '2025-12-28',
+    type: '定期面談',
+    summary: 'スキルアップの方向性',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-12-28'
+  },
+  {
+    id: 'int-1763',
+    user_id: 'u-491',
+    interviewer_id: 'u-491',
+    date: '2025-08-24',
+    type: '1on1',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-24'
+  },
+  {
+    id: 'int-1764',
+    user_id: 'u-491',
+    interviewer_id: 'u-491',
+    date: '2025-12-26',
+    type: '定期面談',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-12-26'
+  },
+  {
+    id: 'int-1765',
+    user_id: 'u-491',
+    interviewer_id: 'u-491',
+    date: '2025-09-10',
+    type: '定期面談',
+    summary: 'メンタルヘルスの状況確認',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-09-10'
+  },
+  {
+    id: 'int-1766',
+    user_id: 'u-491',
+    interviewer_id: 'u-491',
+    date: '2025-11-02',
+    type: '定期面談',
+    summary: 'ワークライフバランスの改善',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-11-02'
+  },
+  {
+    id: 'int-1767',
+    user_id: 'u-492',
+    interviewer_id: 'u-491',
+    date: '2025-11-18',
+    type: 'フォローアップ',
+    summary: '評価結果のフィードバック',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-18'
+  },
+  {
+    id: 'int-1768',
+    user_id: 'u-492',
+    interviewer_id: 'u-491',
+    date: '2025-11-16',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '同僚との連携について悩みがある様子。コミュニケーションの取り方について具体的なアドバイスをした。',
+    mood: 4,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-11-16'
+  },
+  {
+    id: 'int-1769',
+    user_id: 'u-493',
+    interviewer_id: 'u-491',
+    date: '2025-08-26',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-26'
+  },
+  {
+    id: 'int-1770',
+    user_id: 'u-493',
+    interviewer_id: 'u-491',
+    date: '2025-09-02',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 5,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-09-02'
+  },
+  {
+    id: 'int-1771',
+    user_id: 'u-493',
+    interviewer_id: 'u-491',
+    date: '2025-10-11',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '研修内容を業務に活かせている。具体的な改善提案があり、チームで共有する予定。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-10-11'
+  },
+  {
+    id: 'int-1772',
+    user_id: 'u-494',
+    interviewer_id: 'u-491',
+    date: '2025-07-01',
+    type: '定期面談',
+    summary: '最近の体調について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 5,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-07-01'
+  },
+  {
+    id: 'int-1773',
+    user_id: 'u-494',
+    interviewer_id: 'u-491',
+    date: '2025-09-18',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 2,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-09-18'
+  },
+  {
+    id: 'int-1774',
+    user_id: 'u-495',
+    interviewer_id: 'u-491',
+    date: '2025-08-28',
+    type: '1on1',
+    summary: '最近の体調について',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-08-28'
+  },
+  {
+    id: 'int-1775',
+    user_id: 'u-495',
+    interviewer_id: 'u-491',
+    date: '2025-07-24',
+    type: '定期面談',
+    summary: '休暇取得の促進',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-07-24'
+  },
+  {
+    id: 'int-1776',
+    user_id: 'u-495',
+    interviewer_id: 'u-491',
+    date: '2025-08-21',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '家庭の事情で時短勤務を希望。制度の活用について人事と連携して対応する方針を確認。',
+    mood: 3,
+    action_items: [
+      '資格試験の日程確認',
+      '学習計画の策定'
+    ],
+    created_at: '2025-08-21'
+  },
+  {
+    id: 'int-1777',
+    user_id: 'u-495',
+    interviewer_id: 'u-491',
+    date: '2025-08-14',
+    type: '定期面談',
+    summary: '業務負荷について相談',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-14'
+  },
+  {
+    id: 'int-1778',
+    user_id: 'u-496',
+    interviewer_id: 'u-491',
+    date: '2025-08-01',
+    type: 'キャリア面談',
+    summary: 'チーム内の人間関係について',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 4,
+    action_items: [
+      '新しい目標設定の準備',
+      '上位者への報告資料作成'
+    ],
+    created_at: '2025-08-01'
+  },
+  {
+    id: 'int-1779',
+    user_id: 'u-496',
+    interviewer_id: 'u-491',
+    date: '2025-10-01',
+    type: '定期面談',
+    summary: 'キャリアプランの確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 5,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-01'
+  },
+  {
+    id: 'int-1780',
+    user_id: 'u-496',
+    interviewer_id: 'u-491',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 3,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1781',
+    user_id: 'u-496',
+    interviewer_id: 'u-491',
+    date: '2025-08-17',
+    type: '1on1',
+    summary: '新しいプロジェクトへの参加について',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 4,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-17'
+  },
+  {
+    id: 'int-1782',
+    user_id: 'u-496',
+    interviewer_id: 'u-491',
+    date: '2025-08-04',
+    type: 'フォローアップ',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 5,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1783',
+    user_id: 'u-497',
+    interviewer_id: 'u-491',
+    date: '2025-09-08',
+    type: 'キャリア面談',
+    summary: '業務負荷について相談',
+    details: '将来的にリーダー職を目指したいとのこと。必要なスキルセットについて話し合い、研修計画を立てた。',
+    mood: 2,
+    action_items: [
+      '人事部門との調整',
+      '引き継ぎ計画の作成'
+    ],
+    created_at: '2025-09-08'
+  },
+  {
+    id: 'int-1784',
+    user_id: 'u-497',
+    interviewer_id: 'u-491',
+    date: '2025-07-06',
+    type: 'フォローアップ',
+    summary: '最近の体調について',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 5,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-07-06'
+  },
+  {
+    id: 'int-1785',
+    user_id: 'u-497',
+    interviewer_id: 'u-491',
+    date: '2025-08-15',
+    type: 'キャリア面談',
+    summary: '業務改善提案の相談',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 2,
+    action_items: [
+      '他部署との交流機会を設定',
+      'ジョブシャドウイングの調整'
+    ],
+    created_at: '2025-08-15'
+  },
+  {
+    id: 'int-1786',
+    user_id: 'u-497',
+    interviewer_id: 'u-491',
+    date: '2025-07-05',
+    type: 'キャリア面談',
+    summary: '異動希望について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-05'
+  },
+  {
+    id: 'int-1787',
+    user_id: 'u-497',
+    interviewer_id: 'u-491',
+    date: '2025-10-21',
+    type: '1on1',
+    summary: '目標達成状況の確認',
+    details: 'プロジェクトへの参加意欲が高い。必要な準備事項についてブリーフィングを実施。',
+    mood: 1,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-10-21'
+  },
+  {
+    id: 'int-1788',
+    user_id: 'u-498',
+    interviewer_id: 'u-491',
+    date: '2025-10-08',
+    type: 'フォローアップ',
+    summary: '研修参加後の振り返り',
+    details: '資格取得に向けた勉強を始めたいとのこと。支援制度について説明し、スケジュールを一緒に考えた。',
+    mood: 3,
+    action_items: [
+      'チームミーティングの頻度を見直し',
+      'ペアワークの導入を検討'
+    ],
+    created_at: '2025-10-08'
+  },
+  {
+    id: 'int-1789',
+    user_id: 'u-498',
+    interviewer_id: 'u-491',
+    date: '2025-11-10',
+    type: 'キャリア面談',
+    summary: '研修参加後の振り返り',
+    details: '最近残業が増えており、少し疲れている様子。業務の優先順位付けを一緒に整理した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-11-10'
+  },
+  {
+    id: 'int-1790',
+    user_id: 'u-498',
+    interviewer_id: 'u-491',
+    date: '2025-08-12',
+    type: 'フォローアップ',
+    summary: 'ワークライフバランスの改善',
+    details: '目標の進捗は順調。新しい挑戦を求めているので、次回の評価で検討する旨を伝えた。',
+    mood: 4,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-08-12'
+  },
+  {
+    id: 'int-1791',
+    user_id: 'u-498',
+    interviewer_id: 'u-491',
+    date: '2025-07-08',
+    type: 'フォローアップ',
+    summary: '新しいプロジェクトへの参加について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 4,
+    action_items: [
+      '研修プログラムのリストアップ',
+      'メンター候補の選定'
+    ],
+    created_at: '2025-07-08'
+  },
+  {
+    id: 'int-1792',
+    user_id: 'u-499',
+    interviewer_id: 'u-491',
+    date: '2025-08-04',
+    type: 'フォローアップ',
+    summary: '後輩指導の状況について',
+    details: '睡眠の質が低下しているとのこと。産業医面談を勧め、業務調整の可能性を検討した。',
+    mood: 1,
+    action_items: [
+      '業務量のモニタリングを2週間実施',
+      '次回面談を2週間後に設定'
+    ],
+    created_at: '2025-08-04'
+  },
+  {
+    id: 'int-1793',
+    user_id: 'u-499',
+    interviewer_id: 'u-491',
+    date: '2025-12-12',
+    type: '1on1',
+    summary: '異動希望について',
+    details: '現職場での成長を実感しているが、他部署の業務にも興味があるとのこと。ジョブローテーションの可能性を検討。',
+    mood: 1,
+    action_items: [
+      '産業医面談の日程調整',
+      '当面の業務量を20%削減'
+    ],
+    created_at: '2025-12-12'
+  }
+];
+
+export const aptitudeTests: AptitudeTest[] = [
+  {
+    id: 'apt-1',
+    user_id: 'u-1',
+    test_date: '2025-07-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-2',
+    user_id: 'u-2',
+    test_date: '2025-06-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-3',
+    user_id: 'u-3',
+    test_date: '2025-07-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-4',
+    user_id: 'u-4',
+    test_date: '2025-07-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-5',
+    user_id: 'u-5',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-6',
+    user_id: 'u-6',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-7',
+    user_id: 'u-7',
+    test_date: '2025-06-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-8',
+    user_id: 'u-8',
+    test_date: '2025-09-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-9',
+    user_id: 'u-9',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-10',
+    user_id: 'u-10',
+    test_date: '2025-07-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-11',
+    user_id: 'u-11',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-12',
+    user_id: 'u-12',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-13',
+    user_id: 'u-13',
+    test_date: '2025-08-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-14',
+    user_id: 'u-14',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 91,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-15',
+    user_id: 'u-15',
+    test_date: '2025-05-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-16',
+    user_id: 'u-16',
+    test_date: '2025-07-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-17',
+    user_id: 'u-17',
+    test_date: '2025-07-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-18',
+    user_id: 'u-18',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-19',
+    user_id: 'u-19',
+    test_date: '2025-07-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-20',
+    user_id: 'u-20',
+    test_date: '2025-05-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-21',
+    user_id: 'u-21',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-22',
+    user_id: 'u-22',
+    test_date: '2025-07-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-23',
+    user_id: 'u-23',
+    test_date: '2025-06-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-24',
+    user_id: 'u-24',
+    test_date: '2025-05-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-25',
+    user_id: 'u-25',
+    test_date: '2025-08-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-26',
+    user_id: 'u-26',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-27',
+    user_id: 'u-27',
+    test_date: '2025-05-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-28',
+    user_id: 'u-28',
+    test_date: '2025-08-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-29',
+    user_id: 'u-29',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-30',
+    user_id: 'u-30',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-31',
+    user_id: 'u-31',
+    test_date: '2025-07-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-32',
+    user_id: 'u-32',
+    test_date: '2025-05-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-33',
+    user_id: 'u-33',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-34',
+    user_id: 'u-34',
+    test_date: '2025-04-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-35',
+    user_id: 'u-35',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-36',
+    user_id: 'u-36',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 62,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-37',
+    user_id: 'u-37',
+    test_date: '2025-04-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-38',
+    user_id: 'u-38',
+    test_date: '2025-09-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-39',
+    user_id: 'u-39',
+    test_date: '2025-07-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-40',
+    user_id: 'u-40',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 91,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-41',
+    user_id: 'u-41',
+    test_date: '2025-05-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-42',
+    user_id: 'u-42',
+    test_date: '2025-04-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-43',
+    user_id: 'u-43',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 66,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-44',
+    user_id: 'u-44',
+    test_date: '2025-04-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-45',
+    user_id: 'u-45',
+    test_date: '2025-07-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-46',
+    user_id: 'u-46',
+    test_date: '2025-05-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-47',
+    user_id: 'u-47',
+    test_date: '2025-06-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-48',
+    user_id: 'u-48',
+    test_date: '2025-06-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-49',
+    user_id: 'u-49',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-50',
+    user_id: 'u-50',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-51',
+    user_id: 'u-51',
+    test_date: '2025-09-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-52',
+    user_id: 'u-52',
+    test_date: '2025-07-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-53',
+    user_id: 'u-53',
+    test_date: '2025-09-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-54',
+    user_id: 'u-54',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-55',
+    user_id: 'u-55',
+    test_date: '2025-08-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-56',
+    user_id: 'u-56',
+    test_date: '2025-09-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-57',
+    user_id: 'u-57',
+    test_date: '2025-05-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-58',
+    user_id: 'u-58',
+    test_date: '2025-05-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-59',
+    user_id: 'u-59',
+    test_date: '2025-05-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-60',
+    user_id: 'u-60',
+    test_date: '2025-06-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-61',
+    user_id: 'u-61',
+    test_date: '2025-05-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-62',
+    user_id: 'u-62',
+    test_date: '2025-06-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-63',
+    user_id: 'u-63',
+    test_date: '2025-05-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-64',
+    user_id: 'u-64',
+    test_date: '2025-07-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-65',
+    user_id: 'u-65',
+    test_date: '2025-04-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-66',
+    user_id: 'u-66',
+    test_date: '2025-05-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-67',
+    user_id: 'u-67',
+    test_date: '2025-08-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 91,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-68',
+    user_id: 'u-68',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-69',
+    user_id: 'u-69',
+    test_date: '2025-06-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-70',
+    user_id: 'u-70',
+    test_date: '2025-09-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 83,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-71',
+    user_id: 'u-71',
+    test_date: '2025-04-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-72',
+    user_id: 'u-72',
+    test_date: '2025-06-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-73',
+    user_id: 'u-73',
+    test_date: '2025-05-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-74',
+    user_id: 'u-74',
+    test_date: '2025-08-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-75',
+    user_id: 'u-75',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 56,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-76',
+    user_id: 'u-76',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-77',
+    user_id: 'u-77',
+    test_date: '2025-09-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-78',
+    user_id: 'u-78',
+    test_date: '2025-06-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-79',
+    user_id: 'u-79',
+    test_date: '2025-08-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-80',
+    user_id: 'u-80',
+    test_date: '2025-09-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-81',
+    user_id: 'u-81',
+    test_date: '2025-07-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-82',
+    user_id: 'u-82',
+    test_date: '2025-04-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-83',
+    user_id: 'u-83',
+    test_date: '2025-06-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-84',
+    user_id: 'u-84',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-85',
+    user_id: 'u-85',
+    test_date: '2025-09-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-86',
+    user_id: 'u-86',
+    test_date: '2025-06-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-87',
+    user_id: 'u-87',
+    test_date: '2025-07-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-88',
+    user_id: 'u-88',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-89',
+    user_id: 'u-89',
+    test_date: '2025-09-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-90',
+    user_id: 'u-90',
+    test_date: '2025-09-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-91',
+    user_id: 'u-91',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-92',
+    user_id: 'u-92',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-93',
+    user_id: 'u-93',
+    test_date: '2025-04-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-94',
+    user_id: 'u-94',
+    test_date: '2025-05-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 56,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-95',
+    user_id: 'u-95',
+    test_date: '2025-06-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 49,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-96',
+    user_id: 'u-96',
+    test_date: '2025-09-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-97',
+    user_id: 'u-97',
+    test_date: '2025-06-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-98',
+    user_id: 'u-98',
+    test_date: '2025-08-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-99',
+    user_id: 'u-99',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-100',
+    user_id: 'u-100',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 83,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-101',
+    user_id: 'u-101',
+    test_date: '2025-06-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-102',
+    user_id: 'u-102',
+    test_date: '2025-05-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 56,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-103',
+    user_id: 'u-103',
+    test_date: '2025-09-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-104',
+    user_id: 'u-104',
+    test_date: '2025-04-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-105',
+    user_id: 'u-105',
+    test_date: '2025-09-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-106',
+    user_id: 'u-106',
+    test_date: '2025-04-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-107',
+    user_id: 'u-107',
+    test_date: '2025-06-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-108',
+    user_id: 'u-108',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 91,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-109',
+    user_id: 'u-109',
+    test_date: '2025-08-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-110',
+    user_id: 'u-110',
+    test_date: '2025-08-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-111',
+    user_id: 'u-111',
+    test_date: '2025-05-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-112',
+    user_id: 'u-112',
+    test_date: '2025-09-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-113',
+    user_id: 'u-113',
+    test_date: '2025-06-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-114',
+    user_id: 'u-114',
+    test_date: '2025-05-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-115',
+    user_id: 'u-115',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-116',
+    user_id: 'u-116',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-117',
+    user_id: 'u-117',
+    test_date: '2025-05-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-118',
+    user_id: 'u-118',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-119',
+    user_id: 'u-119',
+    test_date: '2025-08-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-120',
+    user_id: 'u-120',
+    test_date: '2025-08-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-121',
+    user_id: 'u-121',
+    test_date: '2025-06-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-122',
+    user_id: 'u-122',
+    test_date: '2025-05-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 83,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-123',
+    user_id: 'u-123',
+    test_date: '2025-09-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-124',
+    user_id: 'u-124',
+    test_date: '2025-06-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-125',
+    user_id: 'u-125',
+    test_date: '2025-07-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-126',
+    user_id: 'u-126',
+    test_date: '2025-08-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-127',
+    user_id: 'u-127',
+    test_date: '2025-09-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-128',
+    user_id: 'u-128',
+    test_date: '2025-04-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-129',
+    user_id: 'u-129',
+    test_date: '2025-08-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-130',
+    user_id: 'u-130',
+    test_date: '2025-05-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-131',
+    user_id: 'u-131',
+    test_date: '2025-05-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-132',
+    user_id: 'u-132',
+    test_date: '2025-08-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-133',
+    user_id: 'u-133',
+    test_date: '2025-09-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-134',
+    user_id: 'u-134',
+    test_date: '2025-05-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-135',
+    user_id: 'u-135',
+    test_date: '2025-04-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-136',
+    user_id: 'u-136',
+    test_date: '2025-08-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-137',
+    user_id: 'u-137',
+    test_date: '2025-08-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-138',
+    user_id: 'u-138',
+    test_date: '2025-09-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-139',
+    user_id: 'u-139',
+    test_date: '2025-08-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-140',
+    user_id: 'u-140',
+    test_date: '2025-06-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-141',
+    user_id: 'u-141',
+    test_date: '2025-08-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-142',
+    user_id: 'u-142',
+    test_date: '2025-08-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-143',
+    user_id: 'u-143',
+    test_date: '2025-09-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-144',
+    user_id: 'u-144',
+    test_date: '2025-06-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-145',
+    user_id: 'u-145',
+    test_date: '2025-05-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-146',
+    user_id: 'u-146',
+    test_date: '2025-09-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-147',
+    user_id: 'u-147',
+    test_date: '2025-08-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 56,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-148',
+    user_id: 'u-148',
+    test_date: '2025-04-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-149',
+    user_id: 'u-149',
+    test_date: '2025-07-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 62,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-150',
+    user_id: 'u-150',
+    test_date: '2025-08-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-151',
+    user_id: 'u-151',
+    test_date: '2025-09-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-152',
+    user_id: 'u-152',
+    test_date: '2025-04-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-153',
+    user_id: 'u-153',
+    test_date: '2025-04-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-154',
+    user_id: 'u-154',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-155',
+    user_id: 'u-155',
+    test_date: '2025-05-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-156',
+    user_id: 'u-156',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-157',
+    user_id: 'u-157',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-158',
+    user_id: 'u-158',
+    test_date: '2025-05-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-159',
+    user_id: 'u-159',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-160',
+    user_id: 'u-160',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 66,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-161',
+    user_id: 'u-161',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-162',
+    user_id: 'u-162',
+    test_date: '2025-08-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-163',
+    user_id: 'u-163',
+    test_date: '2025-08-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-164',
+    user_id: 'u-164',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-165',
+    user_id: 'u-165',
+    test_date: '2025-06-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-166',
+    user_id: 'u-166',
+    test_date: '2025-08-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-167',
+    user_id: 'u-167',
+    test_date: '2025-07-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-168',
+    user_id: 'u-168',
+    test_date: '2025-09-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-169',
+    user_id: 'u-169',
+    test_date: '2025-07-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-170',
+    user_id: 'u-170',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 90,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-171',
+    user_id: 'u-171',
+    test_date: '2025-07-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-172',
+    user_id: 'u-172',
+    test_date: '2025-06-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-173',
+    user_id: 'u-173',
+    test_date: '2025-09-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 49,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-174',
+    user_id: 'u-174',
+    test_date: '2025-05-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-175',
+    user_id: 'u-175',
+    test_date: '2025-08-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-176',
+    user_id: 'u-176',
+    test_date: '2025-07-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-177',
+    user_id: 'u-177',
+    test_date: '2025-06-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-178',
+    user_id: 'u-178',
+    test_date: '2025-08-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-179',
+    user_id: 'u-179',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-180',
+    user_id: 'u-180',
+    test_date: '2025-07-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-181',
+    user_id: 'u-181',
+    test_date: '2025-04-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-182',
+    user_id: 'u-182',
+    test_date: '2025-09-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 62,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-183',
+    user_id: 'u-183',
+    test_date: '2025-05-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 66,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-184',
+    user_id: 'u-184',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-185',
+    user_id: 'u-185',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 56,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-186',
+    user_id: 'u-186',
+    test_date: '2025-06-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-187',
+    user_id: 'u-187',
+    test_date: '2025-05-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-188',
+    user_id: 'u-188',
+    test_date: '2025-06-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-189',
+    user_id: 'u-189',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-190',
+    user_id: 'u-190',
+    test_date: '2025-06-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-191',
+    user_id: 'u-191',
+    test_date: '2025-08-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-192',
+    user_id: 'u-192',
+    test_date: '2025-05-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-193',
+    user_id: 'u-193',
+    test_date: '2025-07-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-194',
+    user_id: 'u-194',
+    test_date: '2025-09-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-195',
+    user_id: 'u-195',
+    test_date: '2025-07-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-196',
+    user_id: 'u-196',
+    test_date: '2025-08-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-197',
+    user_id: 'u-197',
+    test_date: '2025-06-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-198',
+    user_id: 'u-198',
+    test_date: '2025-06-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-199',
+    user_id: 'u-199',
+    test_date: '2025-05-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-200',
+    user_id: 'u-200',
+    test_date: '2025-07-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-201',
+    user_id: 'u-201',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-202',
+    user_id: 'u-202',
+    test_date: '2025-08-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-203',
+    user_id: 'u-203',
+    test_date: '2025-06-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-204',
+    user_id: 'u-204',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-205',
+    user_id: 'u-205',
+    test_date: '2025-06-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-206',
+    user_id: 'u-206',
+    test_date: '2025-04-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-207',
+    user_id: 'u-207',
+    test_date: '2025-07-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-208',
+    user_id: 'u-208',
+    test_date: '2025-05-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-209',
+    user_id: 'u-209',
+    test_date: '2025-08-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-210',
+    user_id: 'u-210',
+    test_date: '2025-06-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-211',
+    user_id: 'u-211',
+    test_date: '2025-07-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-212',
+    user_id: 'u-212',
+    test_date: '2025-07-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-213',
+    user_id: 'u-213',
+    test_date: '2025-09-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-214',
+    user_id: 'u-214',
+    test_date: '2025-07-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-215',
+    user_id: 'u-215',
+    test_date: '2025-05-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-216',
+    user_id: 'u-216',
+    test_date: '2025-07-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-217',
+    user_id: 'u-217',
+    test_date: '2025-06-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-218',
+    user_id: 'u-218',
+    test_date: '2025-08-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-219',
+    user_id: 'u-219',
+    test_date: '2025-07-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-220',
+    user_id: 'u-220',
+    test_date: '2025-07-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-221',
+    user_id: 'u-221',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-222',
+    user_id: 'u-222',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-223',
+    user_id: 'u-223',
+    test_date: '2025-07-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-224',
+    user_id: 'u-224',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-225',
+    user_id: 'u-225',
+    test_date: '2025-07-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-226',
+    user_id: 'u-226',
+    test_date: '2025-04-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-227',
+    user_id: 'u-227',
+    test_date: '2025-08-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-228',
+    user_id: 'u-228',
+    test_date: '2025-09-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-229',
+    user_id: 'u-229',
+    test_date: '2025-04-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-230',
+    user_id: 'u-230',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-231',
+    user_id: 'u-231',
+    test_date: '2025-05-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-232',
+    user_id: 'u-232',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-233',
+    user_id: 'u-233',
+    test_date: '2025-06-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-234',
+    user_id: 'u-234',
+    test_date: '2025-09-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-235',
+    user_id: 'u-235',
+    test_date: '2025-06-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-236',
+    user_id: 'u-236',
+    test_date: '2025-07-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-237',
+    user_id: 'u-237',
+    test_date: '2025-05-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-238',
+    user_id: 'u-238',
+    test_date: '2025-05-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-239',
+    user_id: 'u-239',
+    test_date: '2025-07-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-240',
+    user_id: 'u-240',
+    test_date: '2025-08-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-241',
+    user_id: 'u-241',
+    test_date: '2025-08-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-242',
+    user_id: 'u-242',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-243',
+    user_id: 'u-243',
+    test_date: '2025-09-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-244',
+    user_id: 'u-244',
+    test_date: '2025-08-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 62,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-245',
+    user_id: 'u-245',
+    test_date: '2025-07-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-246',
+    user_id: 'u-246',
+    test_date: '2025-06-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-247',
+    user_id: 'u-247',
+    test_date: '2025-04-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-248',
+    user_id: 'u-248',
+    test_date: '2025-04-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-249',
+    user_id: 'u-249',
+    test_date: '2025-05-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-250',
+    user_id: 'u-250',
+    test_date: '2025-05-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-251',
+    user_id: 'u-251',
+    test_date: '2025-04-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-252',
+    user_id: 'u-252',
+    test_date: '2025-05-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-253',
+    user_id: 'u-253',
+    test_date: '2025-06-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-254',
+    user_id: 'u-254',
+    test_date: '2025-09-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 66,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-255',
+    user_id: 'u-255',
+    test_date: '2025-06-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-256',
+    user_id: 'u-256',
+    test_date: '2025-08-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-257',
+    user_id: 'u-257',
+    test_date: '2025-07-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-258',
+    user_id: 'u-258',
+    test_date: '2025-05-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-259',
+    user_id: 'u-259',
+    test_date: '2025-08-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-260',
+    user_id: 'u-260',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-261',
+    user_id: 'u-261',
+    test_date: '2025-08-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-262',
+    user_id: 'u-262',
+    test_date: '2025-08-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-263',
+    user_id: 'u-263',
+    test_date: '2025-05-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-264',
+    user_id: 'u-264',
+    test_date: '2025-07-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-265',
+    user_id: 'u-265',
+    test_date: '2025-04-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-266',
+    user_id: 'u-266',
+    test_date: '2025-04-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-267',
+    user_id: 'u-267',
+    test_date: '2025-07-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-268',
+    user_id: 'u-268',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-269',
+    user_id: 'u-269',
+    test_date: '2025-09-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-270',
+    user_id: 'u-270',
+    test_date: '2025-09-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-271',
+    user_id: 'u-271',
+    test_date: '2025-05-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-272',
+    user_id: 'u-272',
+    test_date: '2025-06-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-273',
+    user_id: 'u-273',
+    test_date: '2025-08-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-274',
+    user_id: 'u-274',
+    test_date: '2025-05-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-275',
+    user_id: 'u-275',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-276',
+    user_id: 'u-276',
+    test_date: '2025-09-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-277',
+    user_id: 'u-277',
+    test_date: '2025-06-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-278',
+    user_id: 'u-278',
+    test_date: '2025-06-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-279',
+    user_id: 'u-279',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-280',
+    user_id: 'u-280',
+    test_date: '2025-09-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-281',
+    user_id: 'u-281',
+    test_date: '2025-05-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-282',
+    user_id: 'u-282',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-283',
+    user_id: 'u-283',
+    test_date: '2025-06-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-284',
+    user_id: 'u-284',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-285',
+    user_id: 'u-285',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-286',
+    user_id: 'u-286',
+    test_date: '2025-04-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-287',
+    user_id: 'u-287',
+    test_date: '2025-05-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-288',
+    user_id: 'u-288',
+    test_date: '2025-06-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 80,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-289',
+    user_id: 'u-289',
+    test_date: '2025-05-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-290',
+    user_id: 'u-290',
+    test_date: '2025-06-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-291',
+    user_id: 'u-291',
+    test_date: '2025-07-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-292',
+    user_id: 'u-292',
+    test_date: '2025-06-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-293',
+    user_id: 'u-293',
+    test_date: '2025-04-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-294',
+    user_id: 'u-294',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-295',
+    user_id: 'u-295',
+    test_date: '2025-09-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-296',
+    user_id: 'u-296',
+    test_date: '2025-05-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-297',
+    user_id: 'u-297',
+    test_date: '2025-07-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-298',
+    user_id: 'u-298',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-299',
+    user_id: 'u-299',
+    test_date: '2025-09-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-300',
+    user_id: 'u-300',
+    test_date: '2025-04-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-301',
+    user_id: 'u-301',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-302',
+    user_id: 'u-302',
+    test_date: '2025-08-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-303',
+    user_id: 'u-303',
+    test_date: '2025-06-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-304',
+    user_id: 'u-304',
+    test_date: '2025-07-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-305',
+    user_id: 'u-305',
+    test_date: '2025-09-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-306',
+    user_id: 'u-306',
+    test_date: '2025-04-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-307',
+    user_id: 'u-307',
+    test_date: '2025-04-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-308',
+    user_id: 'u-308',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-309',
+    user_id: 'u-309',
+    test_date: '2025-05-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-310',
+    user_id: 'u-310',
+    test_date: '2025-09-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-311',
+    user_id: 'u-311',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-312',
+    user_id: 'u-312',
+    test_date: '2025-06-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-313',
+    user_id: 'u-313',
+    test_date: '2025-09-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-314',
+    user_id: 'u-314',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-315',
+    user_id: 'u-315',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-316',
+    user_id: 'u-316',
+    test_date: '2025-09-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-317',
+    user_id: 'u-317',
+    test_date: '2025-09-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-318',
+    user_id: 'u-318',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 59,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-319',
+    user_id: 'u-319',
+    test_date: '2025-06-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-320',
+    user_id: 'u-320',
+    test_date: '2025-09-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-321',
+    user_id: 'u-321',
+    test_date: '2025-08-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-322',
+    user_id: 'u-322',
+    test_date: '2025-04-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-323',
+    user_id: 'u-323',
+    test_date: '2025-04-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-324',
+    user_id: 'u-324',
+    test_date: '2025-09-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-325',
+    user_id: 'u-325',
+    test_date: '2025-09-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-326',
+    user_id: 'u-326',
+    test_date: '2025-08-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-327',
+    user_id: 'u-327',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 83,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-328',
+    user_id: 'u-328',
+    test_date: '2025-04-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-329',
+    user_id: 'u-329',
+    test_date: '2025-04-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-330',
+    user_id: 'u-330',
+    test_date: '2025-04-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-331',
+    user_id: 'u-331',
+    test_date: '2025-08-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 79,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-332',
+    user_id: 'u-332',
+    test_date: '2025-04-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-333',
+    user_id: 'u-333',
+    test_date: '2025-04-22',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-334',
+    user_id: 'u-334',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-335',
+    user_id: 'u-335',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-336',
+    user_id: 'u-336',
+    test_date: '2025-06-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-337',
+    user_id: 'u-337',
+    test_date: '2025-04-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-338',
+    user_id: 'u-338',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-339',
+    user_id: 'u-339',
+    test_date: '2025-08-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-340',
+    user_id: 'u-340',
+    test_date: '2025-06-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-341',
+    user_id: 'u-341',
+    test_date: '2025-09-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-342',
+    user_id: 'u-342',
+    test_date: '2025-04-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-343',
+    user_id: 'u-343',
+    test_date: '2025-08-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-344',
+    user_id: 'u-344',
+    test_date: '2025-04-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-345',
+    user_id: 'u-345',
+    test_date: '2025-04-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-346',
+    user_id: 'u-346',
+    test_date: '2025-05-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-347',
+    user_id: 'u-347',
+    test_date: '2025-05-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 90,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-348',
+    user_id: 'u-348',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 80,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-349',
+    user_id: 'u-349',
+    test_date: '2025-04-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-350',
+    user_id: 'u-350',
+    test_date: '2025-07-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-351',
+    user_id: 'u-351',
+    test_date: '2025-04-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-352',
+    user_id: 'u-352',
+    test_date: '2025-09-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-353',
+    user_id: 'u-353',
+    test_date: '2025-04-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-354',
+    user_id: 'u-354',
+    test_date: '2025-05-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-355',
+    user_id: 'u-355',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-356',
+    user_id: 'u-356',
+    test_date: '2025-05-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-357',
+    user_id: 'u-357',
+    test_date: '2025-08-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-358',
+    user_id: 'u-358',
+    test_date: '2025-09-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-359',
+    user_id: 'u-359',
+    test_date: '2025-08-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-360',
+    user_id: 'u-360',
+    test_date: '2025-09-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-361',
+    user_id: 'u-361',
+    test_date: '2025-05-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-362',
+    user_id: 'u-362',
+    test_date: '2025-09-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-363',
+    user_id: 'u-363',
+    test_date: '2025-04-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-364',
+    user_id: 'u-364',
+    test_date: '2025-07-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-365',
+    user_id: 'u-365',
+    test_date: '2025-06-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-366',
+    user_id: 'u-366',
+    test_date: '2025-06-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-367',
+    user_id: 'u-367',
+    test_date: '2025-04-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-368',
+    user_id: 'u-368',
+    test_date: '2025-08-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-369',
+    user_id: 'u-369',
+    test_date: '2025-08-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-370',
+    user_id: 'u-370',
+    test_date: '2025-08-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-371',
+    user_id: 'u-371',
+    test_date: '2025-07-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-372',
+    user_id: 'u-372',
+    test_date: '2025-08-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-373',
+    user_id: 'u-373',
+    test_date: '2025-05-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-374',
+    user_id: 'u-374',
+    test_date: '2025-08-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-375',
+    user_id: 'u-375',
+    test_date: '2025-07-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-376',
+    user_id: 'u-376',
+    test_date: '2025-04-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-377',
+    user_id: 'u-377',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-378',
+    user_id: 'u-378',
+    test_date: '2025-06-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-379',
+    user_id: 'u-379',
+    test_date: '2025-08-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-380',
+    user_id: 'u-380',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 94,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-381',
+    user_id: 'u-381',
+    test_date: '2025-08-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-382',
+    user_id: 'u-382',
+    test_date: '2025-07-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-383',
+    user_id: 'u-383',
+    test_date: '2025-05-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-384',
+    user_id: 'u-384',
+    test_date: '2025-08-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-385',
+    user_id: 'u-385',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-386',
+    user_id: 'u-386',
+    test_date: '2025-09-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-387',
+    user_id: 'u-387',
+    test_date: '2025-05-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-388',
+    user_id: 'u-388',
+    test_date: '2025-04-14',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 74,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-389',
+    user_id: 'u-389',
+    test_date: '2025-04-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-390',
+    user_id: 'u-390',
+    test_date: '2025-06-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-391',
+    user_id: 'u-391',
+    test_date: '2025-08-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 88,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-392',
+    user_id: 'u-392',
+    test_date: '2025-08-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-393',
+    user_id: 'u-393',
+    test_date: '2025-08-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-394',
+    user_id: 'u-394',
+    test_date: '2025-05-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 49,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-395',
+    user_id: 'u-395',
+    test_date: '2025-08-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-396',
+    user_id: 'u-396',
+    test_date: '2025-07-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-397',
+    user_id: 'u-397',
+    test_date: '2025-06-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-398',
+    user_id: 'u-398',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 90,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-399',
+    user_id: 'u-399',
+    test_date: '2025-04-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-400',
+    user_id: 'u-400',
+    test_date: '2025-08-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-401',
+    user_id: 'u-401',
+    test_date: '2025-04-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-402',
+    user_id: 'u-402',
+    test_date: '2025-09-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-403',
+    user_id: 'u-403',
+    test_date: '2025-08-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-404',
+    user_id: 'u-404',
+    test_date: '2025-04-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-405',
+    user_id: 'u-405',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-406',
+    user_id: 'u-406',
+    test_date: '2025-06-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 89,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-407',
+    user_id: 'u-407',
+    test_date: '2025-09-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-408',
+    user_id: 'u-408',
+    test_date: '2025-08-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 85,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-409',
+    user_id: 'u-409',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-410',
+    user_id: 'u-410',
+    test_date: '2025-05-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 91,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-411',
+    user_id: 'u-411',
+    test_date: '2025-07-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-412',
+    user_id: 'u-412',
+    test_date: '2025-07-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-413',
+    user_id: 'u-413',
+    test_date: '2025-04-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 83,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-414',
+    user_id: 'u-414',
+    test_date: '2025-08-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-415',
+    user_id: 'u-415',
+    test_date: '2025-05-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-416',
+    user_id: 'u-416',
+    test_date: '2025-05-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-417',
+    user_id: 'u-417',
+    test_date: '2025-07-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-418',
+    user_id: 'u-418',
+    test_date: '2025-04-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 46,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-419',
+    user_id: 'u-419',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-420',
+    user_id: 'u-420',
+    test_date: '2025-08-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 80,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-421',
+    user_id: 'u-421',
+    test_date: '2025-09-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-422',
+    user_id: 'u-422',
+    test_date: '2025-05-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 63,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-423',
+    user_id: 'u-423',
+    test_date: '2025-06-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-424',
+    user_id: 'u-424',
+    test_date: '2025-05-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-425',
+    user_id: 'u-425',
+    test_date: '2025-09-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-426',
+    user_id: 'u-426',
+    test_date: '2025-08-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-427',
+    user_id: 'u-427',
+    test_date: '2025-08-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-428',
+    user_id: 'u-428',
+    test_date: '2025-09-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 80,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-429',
+    user_id: 'u-429',
+    test_date: '2025-05-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 87,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-430',
+    user_id: 'u-430',
+    test_date: '2025-09-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-431',
+    user_id: 'u-431',
+    test_date: '2025-05-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-432',
+    user_id: 'u-432',
+    test_date: '2025-08-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-433',
+    user_id: 'u-433',
+    test_date: '2025-08-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 78,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-434',
+    user_id: 'u-434',
+    test_date: '2025-07-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-435',
+    user_id: 'u-435',
+    test_date: '2025-08-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-436',
+    user_id: 'u-436',
+    test_date: '2025-08-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-437',
+    user_id: 'u-437',
+    test_date: '2025-08-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 82,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-438',
+    user_id: 'u-438',
+    test_date: '2025-09-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-439',
+    user_id: 'u-439',
+    test_date: '2025-06-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 71,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-440',
+    user_id: 'u-440',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 92,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-441',
+    user_id: 'u-441',
+    test_date: '2025-08-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-442',
+    user_id: 'u-442',
+    test_date: '2025-09-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-443',
+    user_id: 'u-443',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-444',
+    user_id: 'u-444',
+    test_date: '2025-06-20',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 75,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-445',
+    user_id: 'u-445',
+    test_date: '2025-06-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 78,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 72,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-446',
+    user_id: 'u-446',
+    test_date: '2025-05-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-447',
+    user_id: 'u-447',
+    test_date: '2025-06-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-448',
+    user_id: 'u-448',
+    test_date: '2025-08-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 46,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-449',
+    user_id: 'u-449',
+    test_date: '2025-08-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 45,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-450',
+    user_id: 'u-450',
+    test_date: '2025-07-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 61,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-451',
+    user_id: 'u-451',
+    test_date: '2025-08-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-452',
+    user_id: 'u-452',
+    test_date: '2025-07-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 62,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-453',
+    user_id: 'u-453',
+    test_date: '2025-08-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-454',
+    user_id: 'u-454',
+    test_date: '2025-09-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-455',
+    user_id: 'u-455',
+    test_date: '2025-07-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-456',
+    user_id: 'u-456',
+    test_date: '2025-09-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 81,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-457',
+    user_id: 'u-457',
+    test_date: '2025-07-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 49,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-458',
+    user_id: 'u-458',
+    test_date: '2025-04-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 93,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-459',
+    user_id: 'u-459',
+    test_date: '2025-06-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-460',
+    user_id: 'u-460',
+    test_date: '2025-07-18',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 58,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-461',
+    user_id: 'u-461',
+    test_date: '2025-09-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-462',
+    user_id: 'u-462',
+    test_date: '2025-04-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 55,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-463',
+    user_id: 'u-463',
+    test_date: '2025-07-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 47,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-464',
+    user_id: 'u-464',
+    test_date: '2025-05-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 57,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-465',
+    user_id: 'u-465',
+    test_date: '2025-09-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 43,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-466',
+    user_id: 'u-466',
+    test_date: '2025-04-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-467',
+    user_id: 'u-467',
+    test_date: '2025-07-04',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-468',
+    user_id: 'u-468',
+    test_date: '2025-05-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 48,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-469',
+    user_id: 'u-469',
+    test_date: '2025-06-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 52,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-470',
+    user_id: 'u-470',
+    test_date: '2025-09-13',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 88,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-471',
+    user_id: 'u-471',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 70,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 70,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-472',
+    user_id: 'u-472',
+    test_date: '2025-05-06',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 50,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-473',
+    user_id: 'u-473',
+    test_date: '2025-06-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 41,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-474',
+    user_id: 'u-474',
+    test_date: '2025-08-27',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 40,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-475',
+    user_id: 'u-475',
+    test_date: '2025-04-01',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-476',
+    user_id: 'u-476',
+    test_date: '2025-07-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 59,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 54,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-477',
+    user_id: 'u-477',
+    test_date: '2025-06-23',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 47,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 51,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-478',
+    user_id: 'u-478',
+    test_date: '2025-07-03',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-479',
+    user_id: 'u-479',
+    test_date: '2025-09-02',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 40,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 77,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 74,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-480',
+    user_id: 'u-480',
+    test_date: '2025-06-12',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 58,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 67,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-481',
+    user_id: 'u-481',
+    test_date: '2025-06-07',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 65,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-482',
+    user_id: 'u-482',
+    test_date: '2025-07-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 52,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 84,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-483',
+    user_id: 'u-483',
+    test_date: '2025-04-05',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: '対人スキルが高く、患者・利用者との関係構築に長けている。業務の効率化に関する研修を推奨。'
+  },
+  {
+    id: 'apt-484',
+    user_id: 'u-484',
+    test_date: '2025-08-24',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 89,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 73,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'サポーティブな姿勢が際立っており、後輩指導に適性がある。自己主張のバランスも良好。'
+  },
+  {
+    id: 'apt-485',
+    user_id: 'u-485',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 63,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 95,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 60,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-486',
+    user_id: 'u-486',
+    test_date: '2025-09-16',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 42,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'リーダーシップ資質が認められる。感情のコントロールも安定しており、管理職候補として期待できる。'
+  },
+  {
+    id: 'apt-487',
+    user_id: 'u-487',
+    test_date: '2025-07-08',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 61,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 68,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-488',
+    user_id: 'u-488',
+    test_date: '2025-07-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 84,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 76,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 95,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-489',
+    user_id: 'u-489',
+    test_date: '2025-06-25',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 73,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 76,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-490',
+    user_id: 'u-490',
+    test_date: '2025-05-10',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 71,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 80,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 83,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 50,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 45,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-491',
+    user_id: 'u-491',
+    test_date: '2025-08-17',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 72,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 55,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 66,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 69,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 53,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-492',
+    user_id: 'u-492',
+    test_date: '2025-07-19',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 92,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 57,
+        max_score: 100
+      }
+    ],
+    overall_comment: '全体的にバランスの取れた結果。特にサポーティブな姿勢が高く評価される。'
+  },
+  {
+    id: 'apt-493',
+    user_id: 'u-493',
+    test_date: '2025-05-09',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 44,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 77,
+        max_score: 100
+      }
+    ],
+    overall_comment: '総合的な適性は標準以上。特定の分野での専門性を活かしたキャリア形成を推奨。'
+  },
+  {
+    id: 'apt-494',
+    user_id: 'u-494',
+    test_date: '2025-09-15',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 79,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 82,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 41,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 91,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-495',
+    user_id: 'u-495',
+    test_date: '2025-06-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 53,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 65,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 67,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 69,
+        max_score: 100
+      }
+    ],
+    overall_comment: '感情のコントロールに優れ、安定した業務遂行が期待できる。リーダーシップの発揮に向けた機会の提供を推奨。'
+  },
+  {
+    id: 'apt-496',
+    user_id: 'u-496',
+    test_date: '2025-07-26',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 94,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 81,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 49,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 54,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-497',
+    user_id: 'u-497',
+    test_date: '2025-07-21',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 42,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 68,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 56,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 64,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 60,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 64,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
+  },
+  {
+    id: 'apt-498',
+    user_id: 'u-498',
+    test_date: '2025-09-11',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 43,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 51,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 87,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 85,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 62,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 86,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'コミュニケーション能力が高く、チームワークに優れている。ストレス管理についてはやや課題がみられる。'
+  },
+  {
+    id: 'apt-499',
+    user_id: 'u-499',
+    test_date: '2025-06-28',
+    test_type: '総合適性',
+    scores: [
+      {
+        category: 'ストレス耐性',
+        score: 90,
+        max_score: 100
+      },
+      {
+        category: 'コミュニケーション',
+        score: 86,
+        max_score: 100
+      },
+      {
+        category: 'リーダーシップ',
+        score: 48,
+        max_score: 100
+      },
+      {
+        category: '感情のコントロール',
+        score: 75,
+        max_score: 100
+      },
+      {
+        category: 'サポーティブ',
+        score: 93,
+        max_score: 100
+      },
+      {
+        category: '総合適性',
+        score: 44,
+        max_score: 100
+      }
+    ],
+    overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
   }
 ];

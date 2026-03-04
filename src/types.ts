@@ -98,3 +98,38 @@ export interface FacilityStaffingTarget {
   occupation_id: string;
   target_count: number;
 }
+
+
+// --- 面談記録 ---
+export type InterviewType = '定期面談' | '1on1' | 'フォローアップ' | 'キャリア面談' | 'その他';
+
+export interface InterviewLog {
+  id: string;
+  user_id: string;
+  interviewer_id: string;
+  date: string;
+  type: InterviewType;
+  summary: string;
+  details: string;
+  mood: 1 | 2 | 3 | 4 | 5;
+  action_items: string[];
+  created_at: string;
+}
+
+// --- 適性検査 ---
+export type AptitudeTestType = 'ストレス耐性' | 'コミュニケーション' | 'リーダーシップ' | '感情のコントロール' | 'サポーティブ' | '総合適性';
+
+export interface AptitudeTestScore {
+  category: string;
+  score: number;
+  max_score: number;
+}
+
+export interface AptitudeTest {
+  id: string;
+  user_id: string;
+  test_date: string;
+  test_type: AptitudeTestType;
+  scores: AptitudeTestScore[];
+  overall_comment: string;
+}

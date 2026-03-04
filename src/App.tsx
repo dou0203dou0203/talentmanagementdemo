@@ -5,6 +5,7 @@ import EvaluationForm from './pages/EvaluationForm';
 import SurveyForm from './pages/SurveyForm';
 import SurveyHistory from './pages/SurveyHistory';
 import SurveySettings from './pages/SurveySettings';
+import StaffDetail from './pages/StaffDetail';
 import SurveyMobile from './pages/SurveyMobile';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="evaluation" element={<EvaluationForm />} />
           <Route path="survey" element={<SurveyForm />} />
           <Route path="survey/history" element={<SurveyHistory />} />
+          <Route path="staff/:userId" element={<StaffDetail />} />
           <Route path="survey/settings" element={<SurveySettings />} />
           <Route path="staffing" element={<Dashboard />} />
           <Route path="alerts" element={<Dashboard />} />
