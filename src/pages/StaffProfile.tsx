@@ -16,6 +16,23 @@ export default function StaffProfile() {
     const [ivForm, setIvForm] = useState({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
     const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ' });
 
+    // Qualification modal
+    const [showQualModal, setShowQualModal] = useState(false);
+    const [qualForm, setQualForm] = useState({ name: '', acquired_date: '', expiry_date: '' });
+    const [editingQualIdx, setEditingQualIdx] = useState<number | null>(null);
+
+    // Transfer modal
+    const [showTransferModal, setShowTransferModal] = useState(false);
+    const [transferForm, setTransferForm] = useState({ date: '', from_facility: '', to_facility: '', reason: '' });
+
+    // Promotion modal
+    const [showPromotionModal, setShowPromotionModal] = useState(false);
+    const [promotionForm, setPromotionForm] = useState({ date: '', from_position: '', to_position: '', type: '昇格' as string });
+
+    // Salary modal
+    const [showSalaryModal, setShowSalaryModal] = useState(false);
+    const [salaryForm, setSalaryForm] = useState({ date: '', change_type: '昇給' as string, salary_range: '', note: '' });
+
     // Filter users based on permissions
     const visibleUsers = permissions.canViewAllStaff
         ? users
@@ -47,28 +64,14 @@ export default function StaffProfile() {
         ...(permissions.canViewHRInfo ? [{ key: 'hr' as const, label: '人事情報', icon: '🔒' }] : []),
     ];
 
+    // Basic info edit
     const startEdit = () => {
-        setEditForm({
-            name: selected.name,
-            email: selected.email,
-            birth_date: selected.birth_date || '',
-            hire_date: selected.hire_date || '',
-            position: selected.position || '',
-            employment_type: selected.employment_type || '常勤',
-            work_pattern: selected.work_pattern || '日勤のみ',
-            corporation: selected.corporation || '',
-            occupation_id: selected.occupation_id,
-            facility_id: selected.facility_id,
-            status: selected.status,
-        });
+        setEditForm({ name: selected.name, email: selected.email, birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status });
         setEditMode(true);
     };
+    const saveEdit = () => { alert(`${selected.name} の情報を更新しました（デモ）`); setEditMode(false); };
 
-    const saveEdit = () => {
-        alert(`${selected.name} の情報を更新しました（デモ）`);
-        setEditMode(false);
-    };
-
+    // New staff
     const saveNewStaff = () => {
         if (!newStaffForm.name || !newStaffForm.email) { alert('氏名とメールは必須です'); return; }
         alert(`新規職員「${newStaffForm.name}」を登録しました（デモ）`);
@@ -76,23 +79,28 @@ export default function StaffProfile() {
         setNewStaffForm({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ' });
     };
 
-    const startAddInterview = () => {
-        setIvForm({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
-        setEditingInterview(null);
-        setShowAddInterview(true);
-    };
+    // Interview
+    const startAddInterview = () => { setIvForm({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' }); setEditingInterview(null); setShowAddInterview(true); };
+    const startEditInterview = (iv: InterviewLog) => { setIvForm({ type: iv.type, summary: iv.summary, details: iv.details, mood: iv.mood, action_items: iv.action_items.join('\n') }); setEditingInterview(iv); setShowAddInterview(true); };
+    const saveInterview = () => { if (!ivForm.summary) { alert('概要は必須です'); return; } alert(editingInterview ? '面談記録を更新しました（デモ）' : '新しい面談記録を追加しました（デモ）'); setShowAddInterview(false); };
 
-    const startEditInterview = (iv: InterviewLog) => {
-        setIvForm({ type: iv.type, summary: iv.summary, details: iv.details, mood: iv.mood, action_items: iv.action_items.join('\n') });
-        setEditingInterview(iv);
-        setShowAddInterview(true);
-    };
+    // Qualification
+    const openAddQual = () => { setQualForm({ name: '', acquired_date: '', expiry_date: '' }); setEditingQualIdx(null); setShowQualModal(true); };
+    const openEditQual = (idx: number) => { const q = selected.qualifications![idx]; setQualForm({ name: q.name, acquired_date: q.acquired_date, expiry_date: q.expiry_date || '' }); setEditingQualIdx(idx); setShowQualModal(true); };
+    const saveQual = () => { if (!qualForm.name) { alert('資格名は必須です'); return; } alert(editingQualIdx !== null ? '資格情報を更新しました（デモ）' : '資格情報を追加しました（デモ）'); setShowQualModal(false); };
+    const deleteQual = (idx: number) => { if (confirm(`「${selected.qualifications![idx].name}」を削除しますか？`)) alert('資格情報を削除しました（デモ）'); };
 
-    const saveInterview = () => {
-        if (!ivForm.summary) { alert('概要は必須です'); return; }
-        alert(editingInterview ? `面談記録を更新しました（デモ）` : `新しい面談記録を追加しました（デモ）`);
-        setShowAddInterview(false);
-    };
+    // Transfer
+    const openAddTransfer = () => { setTransferForm({ date: new Date().toISOString().slice(0, 10), from_facility: fac?.name || '', to_facility: '', reason: '' }); setShowTransferModal(true); };
+    const saveTransfer = () => { if (!transferForm.to_facility) { alert('異動先は必須です'); return; } alert('異動履歴を追加しました（デモ）'); setShowTransferModal(false); };
+
+    // Promotion
+    const openAddPromotion = () => { setPromotionForm({ date: new Date().toISOString().slice(0, 10), from_position: selected.position || '', to_position: '', type: '昇格' }); setShowPromotionModal(true); };
+    const savePromotion = () => { if (!promotionForm.to_position) { alert('変更後役職は必須です'); return; } alert('昇格・役職変更履歴を追加しました（デモ）'); setShowPromotionModal(false); };
+
+    // Salary
+    const openAddSalary = () => { setSalaryForm({ date: new Date().toISOString().slice(0, 10), change_type: '昇給', salary_range: '', note: '' }); setShowSalaryModal(true); };
+    const saveSalary = () => { if (!salaryForm.salary_range) { alert('等級は必須です'); return; } alert('昇給履歴を追加しました（デモ）'); setShowSalaryModal(false); };
 
     const employmentTypes: EmploymentType[] = ['常勤', '非常勤', 'パート', '派遣', '契約'];
     const workPatterns: WorkPattern[] = ['日勤のみ', '夜勤あり', '交代制', '変則勤務', 'フレックス'];
@@ -142,6 +150,7 @@ export default function StaffProfile() {
 
             {/* Tab Content */}
             <div className="sp-content card">
+                {/* ===== BASIC INFO ===== */}
                 {activeTab === 'basic' && !editMode && (
                     <div className="sp-grid">
                         <InfoRow label="氏名" value={selected.name} />
@@ -157,7 +166,6 @@ export default function StaffProfile() {
                         <InfoRow label="勤務形態" value={selected.work_pattern || '未登録'} />
                     </div>
                 )}
-
                 {activeTab === 'basic' && editMode && permissions.canEditStaff && (
                     <div className="sp-edit-form">
                         <h3 className="sp-section-title">✏️ 基本情報を編集</h3>
@@ -166,39 +174,12 @@ export default function StaffProfile() {
                             <FormField label="メール" value={editForm.email || ''} onChange={(v) => setEditForm({ ...editForm, email: v })} type="email" />
                             <FormField label="生年月日" value={editForm.birth_date || ''} onChange={(v) => setEditForm({ ...editForm, birth_date: v })} type="date" />
                             <FormField label="入社日" value={editForm.hire_date || ''} onChange={(v) => setEditForm({ ...editForm, hire_date: v })} type="date" />
-                            <div className="sp-form-field">
-                                <label>所属事業所</label>
-                                <select value={editForm.facility_id || ''} onChange={(e) => setEditForm({ ...editForm, facility_id: e.target.value })}>
-                                    {facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>職種</label>
-                                <select value={editForm.occupation_id || ''} onChange={(e) => setEditForm({ ...editForm, occupation_id: e.target.value })}>
-                                    {occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}
-                                </select>
-                            </div>
+                            <div className="sp-form-field"><label>所属事業所</label><select value={editForm.facility_id || ''} onChange={(e) => setEditForm({ ...editForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
+                            <div className="sp-form-field"><label>職種</label><select value={editForm.occupation_id || ''} onChange={(e) => setEditForm({ ...editForm, occupation_id: e.target.value })}>{occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}</select></div>
                             <FormField label="役職" value={editForm.position || ''} onChange={(v) => setEditForm({ ...editForm, position: v })} />
-                            <div className="sp-form-field">
-                                <label>雇用形態</label>
-                                <select value={editForm.employment_type || '常勤'} onChange={(e) => setEditForm({ ...editForm, employment_type: e.target.value as EmploymentType })}>
-                                    {employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>勤務形態</label>
-                                <select value={editForm.work_pattern || '日勤のみ'} onChange={(e) => setEditForm({ ...editForm, work_pattern: e.target.value as WorkPattern })}>
-                                    {workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>ステータス</label>
-                                <select value={editForm.status || 'active'} onChange={(e) => setEditForm({ ...editForm, status: e.target.value as User['status'] })}>
-                                    <option value="active">在籍</option>
-                                    <option value="leave">休職</option>
-                                    <option value="inactive">退職</option>
-                                </select>
-                            </div>
+                            <div className="sp-form-field"><label>雇用形態</label><select value={editForm.employment_type || '常勤'} onChange={(e) => setEditForm({ ...editForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
+                            <div className="sp-form-field"><label>勤務形態</label><select value={editForm.work_pattern || '日勤のみ'} onChange={(e) => setEditForm({ ...editForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
+                            <div className="sp-form-field"><label>ステータス</label><select value={editForm.status || 'active'} onChange={(e) => setEditForm({ ...editForm, status: e.target.value as User['status'] })}><option value="active">在籍</option><option value="leave">休職</option><option value="inactive">退職</option></select></div>
                             <FormField label="所属法人" value={editForm.corporation || ''} onChange={(v) => setEditForm({ ...editForm, corporation: v })} />
                         </div>
                         <div className="sp-form-actions">
@@ -208,14 +189,28 @@ export default function StaffProfile() {
                     </div>
                 )}
 
+                {/* ===== QUALIFICATIONS ===== */}
                 {activeTab === 'qualifications' && (
                     <div>
+                        {permissions.canEditStaff && (
+                            <div style={{ marginBottom: 16, textAlign: 'right' }}>
+                                <button className="btn btn-primary" onClick={openAddQual}>＋ 資格を追加</button>
+                            </div>
+                        )}
                         {selected.qualifications && selected.qualifications.length > 0 ? (
                             <table className="sp-table">
-                                <thead><tr><th>資格名</th><th>取得日</th><th>有効期限</th></tr></thead>
+                                <thead><tr><th>資格名</th><th>取得日</th><th>有効期限</th>{permissions.canEditStaff && <th style={{ width: 80 }}>操作</th>}</tr></thead>
                                 <tbody>
                                     {selected.qualifications.map((q, i) => (
-                                        <tr key={i}><td>{q.name}</td><td>{q.acquired_date}</td><td>{q.expiry_date || '—'}</td></tr>
+                                        <tr key={i}>
+                                            <td>{q.name}</td><td>{q.acquired_date}</td><td>{q.expiry_date || '—'}</td>
+                                            {permissions.canEditStaff && (
+                                                <td>
+                                                    <button className="btn-icon" title="編集" onClick={() => openEditQual(i)}>✏️</button>
+                                                    <button className="btn-icon" title="削除" onClick={() => deleteQual(i)}>🗑️</button>
+                                                </td>
+                                            )}
+                                        </tr>
                                     ))}
                                 </tbody>
                             </table>
@@ -223,9 +218,13 @@ export default function StaffProfile() {
                     </div>
                 )}
 
+                {/* ===== HISTORY (Transfer + Promotion) ===== */}
                 {activeTab === 'history' && (
                     <div>
-                        <h3 className="sp-section-title">異動履歴</h3>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h3 className="sp-section-title">異動履歴</h3>
+                            {permissions.canEditStaff && <button className="btn btn-primary btn-sm" onClick={openAddTransfer}>＋ 異動を追加</button>}
+                        </div>
                         {userTransfers.length > 0 ? (
                             <div className="sp-timeline">
                                 {userTransfers.map((t) => (
@@ -239,7 +238,11 @@ export default function StaffProfile() {
                                 ))}
                             </div>
                         ) : <p className="sp-empty">異動履歴はありません</p>}
-                        <h3 className="sp-section-title" style={{ marginTop: 24 }}>昇格履歴</h3>
+
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 24 }}>
+                            <h3 className="sp-section-title">昇格・役職変更履歴</h3>
+                            {permissions.canEditStaff && <button className="btn btn-primary btn-sm" onClick={openAddPromotion}>＋ 昇格を追加</button>}
+                        </div>
                         {userPromotions.length > 0 ? (
                             <div className="sp-timeline">
                                 {userPromotions.map((p) => (
@@ -256,6 +259,7 @@ export default function StaffProfile() {
                     </div>
                 )}
 
+                {/* ===== INTERVIEWS ===== */}
                 {activeTab === 'interviews' && (
                     <div>
                         {permissions.canEditInterviews && (
@@ -271,9 +275,7 @@ export default function StaffProfile() {
                                             <span className="sp-badge">{iv.type}</span>
                                             <span className="sp-interview-date">{iv.date}</span>
                                             <span>{moodEmoji[iv.mood]}</span>
-                                            {permissions.canEditInterviews && (
-                                                <button className="btn-icon" title="編集" onClick={() => startEditInterview(iv)}>✏️</button>
-                                            )}
+                                            {permissions.canEditInterviews && <button className="btn-icon" title="編集" onClick={() => startEditInterview(iv)}>✏️</button>}
                                         </div>
                                         <p className="sp-interview-summary"><strong>{iv.summary}</strong></p>
                                         <p className="sp-interview-details">{iv.details}</p>
@@ -290,10 +292,16 @@ export default function StaffProfile() {
                     </div>
                 )}
 
+                {/* ===== HR INFO ===== */}
                 {activeTab === 'hr' && permissions.canViewHRInfo && (
                     <div>
-                        <h3 className="sp-section-title">🔒 人事情報（人事本部のみ閲覧可）</h3>
-                        <h4 className="sp-subsection-title">昇給履歴</h4>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h3 className="sp-section-title">🔒 人事情報（人事本部のみ閲覧可）</h3>
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
+                            <h4 className="sp-subsection-title">昇給履歴</h4>
+                            {permissions.canEditStaff && <button className="btn btn-primary btn-sm" onClick={openAddSalary}>＋ 昇給を追加</button>}
+                        </div>
                         {userSalary.length > 0 ? (
                             <table className="sp-table">
                                 <thead><tr><th>日付</th><th>種別</th><th>等級</th><th>備考</th></tr></thead>
@@ -308,44 +316,23 @@ export default function StaffProfile() {
                 )}
             </div>
 
+            {/* ========== MODALS ========== */}
+
             {/* New Staff Modal */}
             {showAddStaff && (
                 <div className="modal-overlay" onClick={() => setShowAddStaff(false)}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h3>➕ 新規職員登録</h3>
-                            <button className="modal-close" onClick={() => setShowAddStaff(false)}>✕</button>
-                        </div>
+                        <div className="modal-header"><h3>➕ 新規職員登録</h3><button className="modal-close" onClick={() => setShowAddStaff(false)}>✕</button></div>
                         <div className="sp-form-grid">
                             <FormField label="氏名 *" value={newStaffForm.name} onChange={(v) => setNewStaffForm({ ...newStaffForm, name: v })} />
                             <FormField label="メール *" value={newStaffForm.email} onChange={(v) => setNewStaffForm({ ...newStaffForm, email: v })} type="email" />
                             <FormField label="生年月日" value={newStaffForm.birth_date} onChange={(v) => setNewStaffForm({ ...newStaffForm, birth_date: v })} type="date" />
                             <FormField label="入社日" value={newStaffForm.hire_date} onChange={(v) => setNewStaffForm({ ...newStaffForm, hire_date: v })} type="date" />
-                            <div className="sp-form-field">
-                                <label>事業所</label>
-                                <select value={newStaffForm.facility_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, facility_id: e.target.value })}>
-                                    {facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>職種</label>
-                                <select value={newStaffForm.occupation_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, occupation_id: e.target.value })}>
-                                    {occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}
-                                </select>
-                            </div>
+                            <div className="sp-form-field"><label>事業所</label><select value={newStaffForm.facility_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
+                            <div className="sp-form-field"><label>職種</label><select value={newStaffForm.occupation_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, occupation_id: e.target.value })}>{occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}</select></div>
                             <FormField label="役職" value={newStaffForm.position} onChange={(v) => setNewStaffForm({ ...newStaffForm, position: v })} />
-                            <div className="sp-form-field">
-                                <label>雇用形態</label>
-                                <select value={newStaffForm.employment_type} onChange={(e) => setNewStaffForm({ ...newStaffForm, employment_type: e.target.value as EmploymentType })}>
-                                    {employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>勤務形態</label>
-                                <select value={newStaffForm.work_pattern} onChange={(e) => setNewStaffForm({ ...newStaffForm, work_pattern: e.target.value as WorkPattern })}>
-                                    {workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}
-                                </select>
-                            </div>
+                            <div className="sp-form-field"><label>雇用形態</label><select value={newStaffForm.employment_type} onChange={(e) => setNewStaffForm({ ...newStaffForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
+                            <div className="sp-form-field"><label>勤務形態</label><select value={newStaffForm.work_pattern} onChange={(e) => setNewStaffForm({ ...newStaffForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
                             <FormField label="所属法人" value={newStaffForm.corporation} onChange={(v) => setNewStaffForm({ ...newStaffForm, corporation: v })} />
                         </div>
                         <div className="sp-form-actions">
@@ -360,41 +347,119 @@ export default function StaffProfile() {
             {showAddInterview && (
                 <div className="modal-overlay" onClick={() => setShowAddInterview(false)}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h3>{editingInterview ? '✏️ 面談記録を編集' : '➕ 面談記録を追加'}</h3>
-                            <button className="modal-close" onClick={() => setShowAddInterview(false)}>✕</button>
-                        </div>
+                        <div className="modal-header"><h3>{editingInterview ? '✏️ 面談記録を編集' : '➕ 面談記録を追加'}</h3><button className="modal-close" onClick={() => setShowAddInterview(false)}>✕</button></div>
                         <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr' }}>
-                            <div className="sp-form-field">
-                                <label>種別</label>
-                                <select value={ivForm.type} onChange={(e) => setIvForm({ ...ivForm, type: e.target.value })}>
-                                    {['定期面談', '1on1', 'フォローアップ', 'キャリア面談', 'その他'].map((t) => <option key={t} value={t}>{t}</option>)}
-                                </select>
-                            </div>
-                            <div className="sp-form-field">
-                                <label>気分スコア</label>
-                                <div style={{ display: 'flex', gap: 8 }}>
-                                    {[1, 2, 3, 4, 5].map((n) => (
-                                        <button key={n} onClick={() => setIvForm({ ...ivForm, mood: n })}
-                                            className={`mood-btn ${ivForm.mood === n ? 'active' : ''}`} type="button">
-                                            {moodEmoji[n]}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+                            <div className="sp-form-field"><label>種別</label><select value={ivForm.type} onChange={(e) => setIvForm({ ...ivForm, type: e.target.value })}>{['定期面談', '1on1', 'フォローアップ', 'キャリア面談', 'その他'].map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
+                            <div className="sp-form-field"><label>気分スコア</label><div style={{ display: 'flex', gap: 8 }}>{[1, 2, 3, 4, 5].map((n) => (<button key={n} onClick={() => setIvForm({ ...ivForm, mood: n })} className={`mood-btn ${ivForm.mood === n ? 'active' : ''}`} type="button">{moodEmoji[n]}</button>))}</div></div>
                             <FormField label="概要 *" value={ivForm.summary} onChange={(v) => setIvForm({ ...ivForm, summary: v })} />
-                            <div className="sp-form-field">
-                                <label>詳細</label>
-                                <textarea className="form-textarea" rows={3} value={ivForm.details} onChange={(e) => setIvForm({ ...ivForm, details: e.target.value })} />
-                            </div>
-                            <div className="sp-form-field">
-                                <label>アクション項目（1行1項目）</label>
-                                <textarea className="form-textarea" rows={3} value={ivForm.action_items} onChange={(e) => setIvForm({ ...ivForm, action_items: e.target.value })} placeholder="各行に1つずつ入力" />
-                            </div>
+                            <div className="sp-form-field"><label>詳細</label><textarea className="form-textarea" rows={3} value={ivForm.details} onChange={(e) => setIvForm({ ...ivForm, details: e.target.value })} /></div>
+                            <div className="sp-form-field"><label>アクション項目（1行1項目）</label><textarea className="form-textarea" rows={3} value={ivForm.action_items} onChange={(e) => setIvForm({ ...ivForm, action_items: e.target.value })} placeholder="各行に1つずつ入力" /></div>
                         </div>
                         <div className="sp-form-actions">
                             <button className="btn btn-secondary" onClick={() => setShowAddInterview(false)}>キャンセル</button>
                             <button className="btn btn-primary" onClick={saveInterview}>{editingInterview ? '更新' : '追加'}</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Qualification Add/Edit Modal */}
+            {showQualModal && (
+                <div className="modal-overlay" onClick={() => setShowQualModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header"><h3>{editingQualIdx !== null ? '✏️ 資格情報を編集' : '➕ 資格情報を追加'}</h3><button className="modal-close" onClick={() => setShowQualModal(false)}>✕</button></div>
+                        <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                            <FormField label="資格名 *" value={qualForm.name} onChange={(v) => setQualForm({ ...qualForm, name: v })} />
+                            <FormField label="取得日" value={qualForm.acquired_date} onChange={(v) => setQualForm({ ...qualForm, acquired_date: v })} type="date" />
+                            <FormField label="有効期限" value={qualForm.expiry_date} onChange={(v) => setQualForm({ ...qualForm, expiry_date: v })} type="date" />
+                        </div>
+                        <div className="sp-form-actions">
+                            <button className="btn btn-secondary" onClick={() => setShowQualModal(false)}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={saveQual}>{editingQualIdx !== null ? '更新' : '追加'}</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Transfer Add Modal */}
+            {showTransferModal && (
+                <div className="modal-overlay" onClick={() => setShowTransferModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header"><h3>➕ 異動履歴を追加</h3><button className="modal-close" onClick={() => setShowTransferModal(false)}>✕</button></div>
+                        <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                            <FormField label="日付" value={transferForm.date} onChange={(v) => setTransferForm({ ...transferForm, date: v })} type="date" />
+                            <div className="sp-form-field">
+                                <label>異動元</label>
+                                <select value={transferForm.from_facility} onChange={(e) => setTransferForm({ ...transferForm, from_facility: e.target.value })}>
+                                    <option value="">選択してください</option>
+                                    {facilities.map((f) => <option key={f.id} value={f.name}>{f.name}</option>)}
+                                </select>
+                            </div>
+                            <div className="sp-form-field">
+                                <label>異動先 *</label>
+                                <select value={transferForm.to_facility} onChange={(e) => setTransferForm({ ...transferForm, to_facility: e.target.value })}>
+                                    <option value="">選択してください</option>
+                                    {facilities.map((f) => <option key={f.id} value={f.name}>{f.name}</option>)}
+                                </select>
+                            </div>
+                            <FormField label="理由" value={transferForm.reason} onChange={(v) => setTransferForm({ ...transferForm, reason: v })} />
+                        </div>
+                        <div className="sp-form-actions">
+                            <button className="btn btn-secondary" onClick={() => setShowTransferModal(false)}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={saveTransfer}>追加</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Promotion Add Modal */}
+            {showPromotionModal && (
+                <div className="modal-overlay" onClick={() => setShowPromotionModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header"><h3>➕ 昇格・役職変更を追加</h3><button className="modal-close" onClick={() => setShowPromotionModal(false)}>✕</button></div>
+                        <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                            <FormField label="日付" value={promotionForm.date} onChange={(v) => setPromotionForm({ ...promotionForm, date: v })} type="date" />
+                            <div className="sp-form-field">
+                                <label>種別</label>
+                                <select value={promotionForm.type} onChange={(e) => setPromotionForm({ ...promotionForm, type: e.target.value })}>
+                                    <option value="昇格">昇格</option>
+                                    <option value="降格">降格</option>
+                                    <option value="役職変更">役職変更</option>
+                                </select>
+                            </div>
+                            <FormField label="変更前役職" value={promotionForm.from_position} onChange={(v) => setPromotionForm({ ...promotionForm, from_position: v })} />
+                            <FormField label="変更後役職 *" value={promotionForm.to_position} onChange={(v) => setPromotionForm({ ...promotionForm, to_position: v })} />
+                        </div>
+                        <div className="sp-form-actions">
+                            <button className="btn btn-secondary" onClick={() => setShowPromotionModal(false)}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={savePromotion}>追加</button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Salary Add Modal */}
+            {showSalaryModal && (
+                <div className="modal-overlay" onClick={() => setShowSalaryModal(false)}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header"><h3>➕ 昇給履歴を追加</h3><button className="modal-close" onClick={() => setShowSalaryModal(false)}>✕</button></div>
+                        <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr' }}>
+                            <FormField label="日付" value={salaryForm.date} onChange={(v) => setSalaryForm({ ...salaryForm, date: v })} type="date" />
+                            <div className="sp-form-field">
+                                <label>種別</label>
+                                <select value={salaryForm.change_type} onChange={(e) => setSalaryForm({ ...salaryForm, change_type: e.target.value })}>
+                                    <option value="昇給">昇給</option>
+                                    <option value="降給">降給</option>
+                                    <option value="初任給">初任給</option>
+                                    <option value="契約更新">契約更新</option>
+                                </select>
+                            </div>
+                            <FormField label="等級 *" value={salaryForm.salary_range} onChange={(v) => setSalaryForm({ ...salaryForm, salary_range: v })} />
+                            <FormField label="備考" value={salaryForm.note} onChange={(v) => setSalaryForm({ ...salaryForm, note: v })} />
+                        </div>
+                        <div className="sp-form-actions">
+                            <button className="btn btn-secondary" onClick={() => setShowSalaryModal(false)}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={saveSalary}>追加</button>
                         </div>
                     </div>
                 </div>
