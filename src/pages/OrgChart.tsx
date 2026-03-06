@@ -2,6 +2,11 @@ import { useMemo } from 'react';
 import { users as allUsers, occupations, facilities as allFacilities } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 
+const FACILITY_ICONS: Record<string, string> = {
+    '病院': '🏥', 'クリニック': '🏪', '介護施設': '🏠', '本部': '🏢',
+    '訪問看護': '🩺', '訪問介護': '🤲', 'ケアプランセンター': '📋',
+};
+
 export default function OrgChart() {
     const { user: currentUser, permissions } = useAuth();
 
@@ -15,24 +20,39 @@ export default function OrgChart() {
         return allFacilities.filter(f => f.id === currentUser?.facility_id);
     }, [currentUser, permissions]);
 
-    // Group users by facility
-    const facilityGroups = facilities.map((fac) => {
-        const facUsers = users.filter((u) => u.facility_id === fac.id && u.status === 'active');
-        const occGroups = occupations.map((occ) => ({
-            ...occ,
-            count: facUsers.filter((u) => u.occupation_id === occ.id).length,
-            users: facUsers.filter((u) => u.occupation_id === occ.id),
-        })).filter((g) => g.count > 0);
-        return { ...fac, users: facUsers, occGroups, total: facUsers.length };
-    });
+    // Group facilities by corporation
+    const corpGroups = useMemo(() => {
+        const map: Record<string, typeof allFacilities> = {};
+        facilities.forEach((f) => {
+            const corp = f.corporation || '未分類';
+            if (!map[corp]) map[corp] = [];
+            map[corp].push(f);
+        });
+        return Object.entries(map).map(([corpName, corpFacilities]) => {
+            const corpUsers = users.filter(u => corpFacilities.some(f => f.id === u.facility_id) && u.status === 'active');
+            const facilityDetails = corpFacilities.map((fac) => {
+                const facUsers = users.filter(u => u.facility_id === fac.id && u.status === 'active');
+                const occGroups = occupations.map(occ => ({
+                    ...occ,
+                    count: facUsers.filter(u => u.occupation_id === occ.id).length,
+                })).filter(g => g.count > 0);
+                return { ...fac, users: facUsers, occGroups, total: facUsers.length };
+            });
+            return { name: corpName, facilities: facilityDetails, totalActive: corpUsers.length };
+        });
+    }, [facilities, users]);
 
-    const totalActive = users.filter((u) => u.status === 'active').length;
-    const totalLeave = users.filter((u) => u.status === 'leave').length;
+    const totalActive = users.filter(u => u.status === 'active').length;
+    const totalLeave = users.filter(u => u.status === 'leave').length;
+    const totalCorps = corpGroups.length;
 
     // Age distribution
     const ageGroups = getAgeDistribution(users);
     // Tenure distribution
     const tenureGroups = getTenureDistribution(users);
+
+    // All facility groups flat for bar chart
+    const allFacilityGroups = corpGroups.flatMap(c => c.facilities);
 
     return (
         <div className="org-page">
@@ -45,6 +65,10 @@ export default function OrgChart() {
                 <div className="org-stat card">
                     <div className="org-stat-value">{totalLeave}</div>
                     <div className="org-stat-label">休職者数</div>
+                </div>
+                <div className="org-stat card">
+                    <div className="org-stat-value">{totalCorps}</div>
+                    <div className="org-stat-label">法人数</div>
                 </div>
                 <div className="org-stat card">
                     <div className="org-stat-value">{facilities.length}</div>
@@ -61,26 +85,37 @@ export default function OrgChart() {
                 <h3 className="org-section-title">🏢 組織図（法人 → 事業所 → 職種）</h3>
                 <div className="org-tree">
                     <div className="org-tree-root">
-                        <div className="org-tree-node org-tree-corp">
-                            <span className="org-tree-icon">🏛️</span>
-                            医療法人さくらの樹
-                            <span className="org-tree-count">{totalActive}名</span>
+                        <div className="org-tree-node org-tree-corp" style={{ background: 'linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500))', color: '#fff', fontWeight: 700 }}>
+                            <span className="org-tree-icon">🌸</span>
+                            さくらの樹グループ
+                            <span className="org-tree-count" style={{ background: 'rgba(255,255,255,0.25)', color: '#fff' }}>{totalActive}名</span>
                         </div>
                         <div className="org-tree-children">
-                            {facilityGroups.map((fac) => (
-                                <div key={fac.id} className="org-tree-branch">
-                                    <div className="org-tree-node org-tree-facility">
-                                        <span className="org-tree-icon">
-                                            {fac.type === '病院' ? '🏥' : fac.type === 'クリニック' ? '🏪' : fac.type === '介護施設' ? '🏠' : '🏢'}
-                                        </span>
-                                        {fac.name}
-                                        <span className="org-tree-badge">{fac.type}</span>
-                                        <span className="org-tree-count">{fac.total}名</span>
+                            {corpGroups.map((corp) => (
+                                <div key={corp.name} className="org-tree-branch">
+                                    <div className="org-tree-node org-tree-corp">
+                                        <span className="org-tree-icon">🏛️</span>
+                                        {corp.name}
+                                        <span className="org-tree-count">{corp.totalActive}名</span>
                                     </div>
-                                    <div className="org-tree-children org-tree-occs">
-                                        {fac.occGroups.map((occ) => (
-                                            <div key={occ.id} className="org-tree-node org-tree-occ">
-                                                {occ.name}: <strong>{occ.count}名</strong>
+                                    <div className="org-tree-children">
+                                        {corp.facilities.map((fac) => (
+                                            <div key={fac.id} className="org-tree-branch">
+                                                <div className="org-tree-node org-tree-facility">
+                                                    <span className="org-tree-icon">
+                                                        {FACILITY_ICONS[fac.type] || '🏢'}
+                                                    </span>
+                                                    {fac.name}
+                                                    <span className="org-tree-badge">{fac.type}</span>
+                                                    <span className="org-tree-count">{fac.total}名</span>
+                                                </div>
+                                                <div className="org-tree-children org-tree-occs">
+                                                    {fac.occGroups.map((occ) => (
+                                                        <div key={occ.id} className="org-tree-node org-tree-occ">
+                                                            {occ.name}: <strong>{occ.count}名</strong>
+                                                        </div>
+                                                    ))}
+                                                </div>
                                             </div>
                                         ))}
                                     </div>
@@ -95,7 +130,7 @@ export default function OrgChart() {
             <div className="card" style={{ padding: 24 }}>
                 <h3 className="org-section-title">📊 事業所別人員構成</h3>
                 <div className="org-bar-chart">
-                    {facilityGroups.map((fac) => (
+                    {allFacilityGroups.map((fac) => (
                         <div key={fac.id} className="org-bar-row">
                             <div className="org-bar-label">{fac.name}</div>
                             <div className="org-bar-track">
