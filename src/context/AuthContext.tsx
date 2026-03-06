@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import { users, occupations, facilities } from '../data/mockData';
-import type { User } from '../types';
+import type { User, UserRole, PermissionSet } from '../types';
 
 interface AuthUser extends User {
     occupation_name: string;
@@ -12,11 +12,42 @@ interface AuthContextType {
     login: (email: string, password: string) => { success: boolean; error?: string };
     logout: () => void;
     isAuthenticated: boolean;
+    permissions: PermissionSet;
+    roleLabel: string;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 const STORAGE_KEY = 'talent_auth_user';
+
+function getPermissions(role: UserRole): PermissionSet {
+    switch (role) {
+        case 'hr_admin':
+            return { canViewAllStaff: true, canEditEvaluation: true, canViewHRInfo: true, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true };
+        case 'corp_head':
+            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true };
+        case 'facility_manager':
+            return { canViewAllStaff: false, canEditEvaluation: true, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: false };
+        case 'staff':
+        default:
+            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false };
+    }
+}
+
+function getRoleLabel(role: UserRole): string {
+    switch (role) {
+        case 'hr_admin': return '人事本部';
+        case 'corp_head': return '法人責任者';
+        case 'facility_manager': return '事業所管理者';
+        case 'staff': return '一般職員';
+        default: return 'スタッフ';
+    }
+}
+
+const defaultPermissions: PermissionSet = {
+    canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false,
+    canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false,
+};
 
 export function AuthProvider({ children }: { children: ReactNode }) {
     const [user, setUser] = useState<AuthUser | null>(() => {
@@ -41,7 +72,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             return { success: false, error: 'メールアドレスが見つかりません' };
         }
 
-        // Demo: accept any password
         const occ = occupations.find((o) => o.id === found.occupation_id);
         const fac = facilities.find((f) => f.id === found.facility_id);
 
@@ -58,8 +88,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(null);
     };
 
+    const permissions = user ? getPermissions(user.role) : defaultPermissions;
+    const roleLabel = user ? getRoleLabel(user.role) : '';
+
     return (
-        <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user }}>
+        <AuthContext.Provider value={{ user, login, logout, isAuthenticated: !!user, permissions, roleLabel }}>
             {children}
         </AuthContext.Provider>
     );

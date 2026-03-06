@@ -1,23 +1,40 @@
 // ============================================
-// タレントマネジメントシステム 型定義
+// さくらの樹グループ タレントマネジメントシステム 型定義
 // ============================================
 
-export type UserRole = 'admin' | 'manager' | 'staff';
+// --- ロール & ステータス ---
+export type UserRole = 'hr_admin' | 'corp_head' | 'facility_manager' | 'staff';
 export type UserStatus = 'active' | 'inactive' | 'leave';
 export type EvaluationStatus = 'draft' | 'submitted' | 'approved';
 export type FacilityType = '病院' | 'クリニック' | '介護施設' | '本部';
+export type EmploymentType = '常勤' | '非常勤' | 'パート' | '派遣' | '契約';
+export type WorkPattern = '日勤のみ' | '夜勤あり' | '交代制' | '変則勤務' | 'フレックス';
 
+// --- 組織 ---
 export interface Occupation {
   id: string;
   name: string;
 }
 
-export interface EvaluationTemplateItem {
+export interface Facility {
   id: string;
+  name: string;
+  type: FacilityType;
+  corporation?: string; // 所属法人名
+}
+
+export interface FacilityStaffingTarget {
+  id: string;
+  facility_id: string;
   occupation_id: string;
-  category: string;
-  question: string;
-  sort_order: number;
+  target_count: number;
+}
+
+// --- ユーザー（基本情報拡張） ---
+export interface Qualification {
+  name: string;
+  acquired_date: string;
+  expiry_date?: string;
 }
 
 export interface User {
@@ -30,6 +47,23 @@ export interface User {
   status: UserStatus;
   evaluator_id: string | null;
   avatar?: string;
+  // 拡張フィールド
+  birth_date?: string;
+  hire_date?: string;
+  position?: string;            // 役職
+  employment_type?: EmploymentType;
+  work_pattern?: WorkPattern;
+  qualifications?: Qualification[];
+  corporation?: string;         // 所属法人
+}
+
+// --- 評価 ---
+export interface EvaluationTemplateItem {
+  id: string;
+  occupation_id: string;
+  category: string;
+  question: string;
+  sort_order: number;
 }
 
 export interface EvaluationScore {
@@ -50,12 +84,13 @@ export interface Evaluation {
   updated_at: string;
 }
 
+// --- サーベイ ---
 export interface Survey {
   id: string;
   user_id: string;
   period_id: string;
-  mental_score: number;    // 1-100
-  motivation_score: number; // 1-100
+  mental_score: number;
+  motivation_score: number;
   survey_date: string;
   answers?: SurveyAnswer[];
   free_comment?: string;
@@ -64,7 +99,7 @@ export interface Survey {
 
 export interface SurveyAnswer {
   question_id: string;
-  score: number; // 1-5
+  score: number;
 }
 
 export type SurveyCategory = '仕事満足度' | '人間関係' | '健康状態' | 'キャリア展望' | 'ワークライフバランス';
@@ -85,20 +120,6 @@ export interface SurveyPeriod {
   end_date: string;
   status: SurveyPeriodStatus;
 }
-
-export interface Facility {
-  id: string;
-  name: string;
-  type: FacilityType;
-}
-
-export interface FacilityStaffingTarget {
-  id: string;
-  facility_id: string;
-  occupation_id: string;
-  target_count: number;
-}
-
 
 // --- 面談記録 ---
 export type InterviewType = '定期面談' | '1on1' | 'フォローアップ' | 'キャリア面談' | 'その他';
@@ -132,4 +153,42 @@ export interface AptitudeTest {
   test_type: AptitudeTestType;
   scores: AptitudeTestScore[];
   overall_comment: string;
+}
+
+// --- 人事情報（HR権限） ---
+export interface TransferHistory {
+  id: string;
+  user_id: string;
+  date: string;
+  from_facility: string;
+  to_facility: string;
+  reason: string;
+}
+
+export interface PromotionHistory {
+  id: string;
+  user_id: string;
+  date: string;
+  from_position: string;
+  to_position: string;
+  type: '昇格' | '降格' | '役職変更';
+}
+
+export interface SalaryHistory {
+  id: string;
+  user_id: string;
+  date: string;
+  change_type: '昇給' | '降給' | '初任給' | '契約更新';
+  salary_range: string; // e.g. "A3" "B2"
+  note: string;
+}
+
+// --- 権限ヘルパー型 ---
+export interface PermissionSet {
+  canViewAllStaff: boolean;
+  canEditEvaluation: boolean;
+  canViewHRInfo: boolean;
+  canViewOwnOnly: boolean;
+  canViewFacility: boolean;
+  canViewCorporation: boolean;
 }

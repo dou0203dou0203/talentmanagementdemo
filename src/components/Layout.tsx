@@ -7,6 +7,7 @@ const navItems = [
         group: 'メイン',
         items: [
             { path: '/', label: 'ダッシュボード', icon: '📊' },
+            { path: '/staff', label: 'スタッフ詳細', icon: '👤' },
             { path: '/evaluation', label: '評価入力', icon: '📝' },
             { path: '/survey', label: 'サーベイ回答', icon: '😊' },
         ],
@@ -15,8 +16,7 @@ const navItems = [
         group: '管理',
         items: [
             { path: '/survey/history', label: 'サーベイ管理', icon: '📋' },
-            { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
-            { path: '/staff/u-1', label: 'スタッフ詳細', icon: '👤' },
+            { path: '/interviews', label: '面談記録', icon: '💬' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
         ],
@@ -25,10 +25,11 @@ const navItems = [
 
 const pageTitles: Record<string, string> = {
     '/': 'ダッシュボード',
+    '/staff': 'スタッフ詳細',
     '/evaluation': '評価入力',
     '/survey': '定期サーベイ',
     '/survey/history': 'サーベイ管理',
-    '/survey/settings': '設問管理',
+    '/interviews': '面談記録',
     '/staffing': '人員配置管理',
     '/alerts': '離職防止アラート',
 };
@@ -37,7 +38,7 @@ export default function Layout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const { user, logout } = useAuth();
+    const { user, logout, roleLabel } = useAuth();
 
     const currentTitle = pageTitles[location.pathname] || 'タレントマネジメント';
 
@@ -92,7 +93,7 @@ export default function Layout() {
                     <div className="sidebar-user-avatar">{user?.name.charAt(0) || '?'}</div>
                     <div className="sidebar-user-info">
                         <div className="sidebar-user-name">{user?.name || 'ゲスト'}</div>
-                        <div className="sidebar-user-role">{user?.facility_name} / {user?.role === 'admin' ? '管理者' : user?.role === 'manager' ? 'マネージャー' : 'スタッフ'}</div>
+                        <div className="sidebar-user-role">{user?.facility_name} / {roleLabel}</div>
                     </div>
                     <button className="sidebar-logout-btn" onClick={handleLogout} title="ログアウト">
                         🚪

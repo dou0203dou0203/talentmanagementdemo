@@ -19,8 +19,14 @@ export default function Login() {
                 setError(result.error || 'ログインに失敗しました');
             }
             setLoading(false);
-        }, 400); // Simulate network delay
+        }, 400);
     };
+
+    const demoAccounts = [
+        { email: 'user1@example.com', role: '人事本部', color: '#d4739b' },
+        { email: 'user11@example.com', role: '事業所管理者', color: '#8db93e' },
+        { email: 'user2@example.com', role: '一般職員', color: '#6b7a87' },
+    ];
 
     return (
         <div className="login-container">
@@ -73,14 +79,17 @@ export default function Login() {
                 <div className="login-demo-info">
                     <p className="login-demo-title">🔑 デモ用アカウント</p>
                     <div className="login-demo-accounts">
-                        <button type="button" className="login-demo-btn" onClick={() => { setEmail('user1@example.com'); setPassword('demo'); }}>
-                            <span className="login-demo-role">管理者</span>
-                            <span className="login-demo-email">user1@example.com</span>
-                        </button>
-                        <button type="button" className="login-demo-btn" onClick={() => { setEmail('user2@example.com'); setPassword('demo'); }}>
-                            <span className="login-demo-role">スタッフ</span>
-                            <span className="login-demo-email">user2@example.com</span>
-                        </button>
+                        {demoAccounts.map((acc) => (
+                            <button
+                                key={acc.email}
+                                type="button"
+                                className="login-demo-btn"
+                                onClick={() => { setEmail(acc.email); setPassword('demo'); }}
+                            >
+                                <span className="login-demo-role" style={{ background: acc.color + '20', color: acc.color }}>{acc.role}</span>
+                                <span className="login-demo-email">{acc.email}</span>
+                            </button>
+                        ))}
                     </div>
                     <p className="login-demo-note">※ パスワードは任意の値で入力可能です</p>
                 </div>

@@ -7,6 +7,8 @@ import EvaluationForm from './pages/EvaluationForm';
 import SurveyForm from './pages/SurveyForm';
 import SurveyHistory from './pages/SurveyHistory';
 import SurveyMobile from './pages/SurveyMobile';
+import StaffProfile from './pages/StaffProfile';
+import InterviewRecords from './pages/InterviewRecords';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -19,13 +21,11 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* Login */}
       <Route
         path="/login"
         element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
       />
 
-      {/* Admin Layout (protected) */}
       <Route
         path="/"
         element={
@@ -38,11 +38,12 @@ function AppRoutes() {
         <Route path="evaluation" element={<EvaluationForm />} />
         <Route path="survey" element={<SurveyForm />} />
         <Route path="survey/history" element={<SurveyHistory />} />
+        <Route path="staff" element={<StaffProfile />} />
+        <Route path="interviews" element={<InterviewRecords />} />
         <Route path="staffing" element={<Dashboard />} />
         <Route path="alerts" element={<Dashboard />} />
       </Route>
 
-      {/* Mobile Survey (no auth needed) */}
       <Route path="/s/:token" element={<SurveyMobile />} />
     </Routes>
   );
