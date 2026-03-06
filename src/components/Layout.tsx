@@ -50,7 +50,7 @@ export default function Layout() {
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
                     <div className="sidebar-logo">
-                        <div className="sidebar-logo-icon">🌸</div>
+                        <div className="sidebar-logo-icon"><img src={import.meta.env.BASE_URL + 'logo.png'} alt="ロゴ" style={{ width: 32, height: 32, objectFit: 'contain' }} /></div>
                         <div>
                             <div className="sidebar-logo-text">さくらの樹グループ</div>
                             <div className="sidebar-logo-subtitle">タレントマネジメント</div>
