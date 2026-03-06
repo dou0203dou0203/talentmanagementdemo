@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const navItems = [
     {
@@ -35,8 +36,15 @@ const pageTitles: Record<string, string> = {
 export default function Layout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
+    const { user, logout } = useAuth();
 
     const currentTitle = pageTitles[location.pathname] || 'タレントマネジメント';
+
+    const handleLogout = () => {
+        logout();
+        navigate('/login');
+    };
 
     return (
         <div className="app-layout">
@@ -81,11 +89,14 @@ export default function Layout() {
                 </nav>
 
                 <div className="sidebar-user">
-                    <div className="sidebar-user-avatar">田</div>
+                    <div className="sidebar-user-avatar">{user?.name.charAt(0) || '?'}</div>
                     <div className="sidebar-user-info">
-                        <div className="sidebar-user-name">田中 太郎</div>
-                        <div className="sidebar-user-role">統括本部 / 管理者</div>
+                        <div className="sidebar-user-name">{user?.name || 'ゲスト'}</div>
+                        <div className="sidebar-user-role">{user?.facility_name} / {user?.role === 'admin' ? '管理者' : user?.role === 'manager' ? 'マネージャー' : 'スタッフ'}</div>
                     </div>
+                    <button className="sidebar-logout-btn" onClick={handleLogout} title="ログアウト">
+                        🚪
+                    </button>
                 </div>
             </aside>
 
