@@ -30,6 +30,7 @@ export default function SurveyForm() {
         existingAnswer?.answers || surveyQuestions.map((q) => ({ question_id: q.id, score: 0 }))
     );
     const [freeComment, setFreeComment] = useState(existingAnswer?.free_comment || '');
+    const [hrMessage, setHrMessage] = useState('');
     const [submitted, setSubmitted] = useState(existingAnswer?.submitted || false);
     const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -387,10 +388,39 @@ export default function SurveyForm() {
                 );
             })}
 
+            {/* Free-text question: HR message */}
+            <div className="card" style={{ marginBottom: 'var(--space-6)' }}>
+                <div className="card-header">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                        <span style={{ fontSize: 'var(--font-size-xl)' }}>📝</span>
+                        <h3 className="card-title">人事部への自由記述</h3>
+                    </div>
+                </div>
+                <div className="card-body">
+                    <div className="survey-question-item" style={{ borderBottom: 'none' }}>
+                        <div className="survey-question-text" style={{ fontWeight: 500 }}>
+                            人事部に伝えたいことがあればご自由にお書きください（任意）
+                        </div>
+                        <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-400)', marginBottom: 'var(--space-3)' }}>
+                            例：職場環境の改善要望、キャリアに関する相談、制度への意見など
+                        </div>
+                        <textarea
+                            className="form-textarea"
+                            placeholder="人事部に伝えたいことをご記入ください..."
+                            value={hrMessage}
+                            onChange={(e) => setHrMessage(e.target.value)}
+                            disabled={submitted || isPastPeriod}
+                            rows={4}
+                            style={{ width: '100%' }}
+                        />
+                    </div>
+                </div>
+            </div>
+
             {/* Free Comment */}
             <div className="card" style={{ marginBottom: 'var(--space-6)' }}>
                 <div className="card-header">
-                    <h3 className="card-title">💬 自由コメント（任意）</h3>
+                    <h3 className="card-title">💬 その他の自由コメント（任意）</h3>
                 </div>
                 <div className="card-body">
                     <textarea
