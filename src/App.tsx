@@ -22,14 +22,32 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+// Routes requiring manager or above
+function ManagerRoute({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  const allowed = ['hr_admin', 'corp_head', 'facility_manager'];
+  if (!user || !allowed.includes(user.role)) return <Navigate to="/staff" replace />;
+  return <>{children}</>;
+}
+
+// Routes requiring HR admin only
+function HRRoute({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  if (!user || user.role !== 'hr_admin') return <Navigate to="/staff" replace />;
+  return <>{children}</>;
+}
+
 function AppRoutes() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
+
+  // Staff default landing = /staff, others = /
+  const defaultPath = user?.role === 'staff' ? '/staff' : '/';
 
   return (
     <Routes>
       <Route
         path="/login"
-        element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
+        element={isAuthenticated ? <Navigate to={defaultPath} replace /> : <Login />}
       />
 
       <Route
@@ -40,19 +58,24 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       >
-        <Route index element={<Dashboard />} />
-        <Route path="evaluation" element={<EvaluationForm />} />
-        <Route path="survey" element={<SurveyForm />} />
-        <Route path="survey/history" element={<SurveyHistory />} />
+        {/* Manager+ pages */}
+        <Route index element={<ManagerRoute><Dashboard /></ManagerRoute>} />
+        <Route path="evaluation" element={<ManagerRoute><EvaluationForm /></ManagerRoute>} />
+        <Route path="survey/history" element={<ManagerRoute><SurveyHistory /></ManagerRoute>} />
+        <Route path="org" element={<ManagerRoute><OrgChart /></ManagerRoute>} />
+        <Route path="analytics" element={<ManagerRoute><Analytics /></ManagerRoute>} />
+        <Route path="staffing" element={<ManagerRoute><StaffingSimulation /></ManagerRoute>} />
+        <Route path="alerts" element={<ManagerRoute><Dashboard /></ManagerRoute>} />
+
+        {/* HR admin only */}
+        <Route path="eval-history" element={<HRRoute><EvaluationHistory /></HRRoute>} />
+        <Route path="recruitment" element={<HRRoute><Recruitment /></HRRoute>} />
+        <Route path="documents" element={<HRRoute><DocumentManager /></HRRoute>} />
+
+        {/* All authenticated users */}
         <Route path="staff" element={<StaffProfile />} />
         <Route path="interviews" element={<InterviewRecords />} />
-        <Route path="org" element={<OrgChart />} />
-        <Route path="analytics" element={<Analytics />} />
-        <Route path="eval-history" element={<EvaluationHistory />} />
-        <Route path="recruitment" element={<Recruitment />} />
-        <Route path="staffing" element={<StaffingSimulation />} />
-        <Route path="documents" element={<DocumentManager />} />
-        <Route path="alerts" element={<Dashboard />} />
+        <Route path="survey" element={<SurveyForm />} />
       </Route>
 
       <Route path="/s/:token" element={<SurveyMobile />} />

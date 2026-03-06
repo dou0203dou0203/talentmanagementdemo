@@ -2,18 +2,33 @@ import { useState } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const navItems = [
+// Navigation items with role restrictions
+// roles: undefined = all, otherwise list of allowed roles
+interface NavItem {
+    path: string;
+    label: string;
+    icon: string;
+    roles?: string[];
+}
+interface NavGroup {
+    group: string;
+    roles?: string[];
+    items: NavItem[];
+}
+
+const navItems: NavGroup[] = [
     {
         group: 'メイン',
         items: [
-            { path: '/', label: 'ダッシュボード', icon: '📊' },
+            { path: '/', label: 'ダッシュボード', icon: '📊', roles: ['hr_admin', 'corp_head', 'facility_manager'] },
             { path: '/staff', label: 'スタッフ詳細', icon: '👤' },
-            { path: '/evaluation', label: '評価入力', icon: '📝' },
+            { path: '/evaluation', label: '評価入力', icon: '📝', roles: ['hr_admin', 'facility_manager'] },
             { path: '/survey', label: 'サーベイ回答', icon: '😊' },
         ],
     },
     {
         group: '管理',
+        roles: ['hr_admin', 'corp_head', 'facility_manager'],
         items: [
             { path: '/survey/history', label: 'サーベイ管理', icon: '📋' },
             { path: '/interviews', label: '面談記録', icon: '💬' },
@@ -25,10 +40,10 @@ const navItems = [
     },
     {
         group: '人事',
+        roles: ['hr_admin'],
         items: [
             { path: '/eval-history', label: '評価履歴', icon: '⭐' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
-            { path: '/staffing', label: '配置シミュレーション', icon: '🔄' },
             { path: '/documents', label: '書類管理', icon: '📄' },
         ],
     },
@@ -57,11 +72,21 @@ export default function Layout() {
     const { user, logout, roleLabel } = useAuth();
 
     const currentTitle = pageTitles[location.pathname] || 'タレントマネジメント';
+    const userRole = user?.role || 'staff';
 
     const handleLogout = () => {
         logout();
         navigate('/login');
     };
+
+    // Filter nav items based on role
+    const visibleNavGroups = navItems
+        .filter((group) => !group.roles || group.roles.includes(userRole))
+        .map((group) => ({
+            ...group,
+            items: group.items.filter((item) => !item.roles || item.roles.includes(userRole)),
+        }))
+        .filter((group) => group.items.length > 0);
 
     return (
         <div className="app-layout">
@@ -84,7 +109,7 @@ export default function Layout() {
                 </div>
 
                 <nav className="sidebar-nav">
-                    {navItems.map((group) => (
+                    {visibleNavGroups.map((group) => (
                         <div key={group.group} className="sidebar-nav-group">
                             <div className="sidebar-nav-label">{group.group}</div>
                             {group.items.map((item) => (
