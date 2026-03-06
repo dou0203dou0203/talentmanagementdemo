@@ -6,7 +6,7 @@
 export type UserRole = 'hr_admin' | 'corp_head' | 'facility_manager' | 'staff';
 export type UserStatus = 'active' | 'inactive' | 'leave';
 export type EvaluationStatus = 'draft' | 'submitted' | 'approved';
-export type FacilityType = '病院' | 'クリニック' | '介護施設' | '本部';
+export type FacilityType = '病院' | 'クリニック' | '介護施設' | '本部' | '訪問看護' | '訪問介護' | 'ケアプランセンター';
 export type EmploymentType = '常勤' | '非常勤' | 'パート' | '派遣' | '契約';
 export type WorkPattern = '日勤のみ' | '夜勤あり' | '交代制' | '変則勤務' | 'フレックス';
 
