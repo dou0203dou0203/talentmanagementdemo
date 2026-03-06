@@ -1,14 +1,16 @@
 import { useState, useMemo } from 'react';
 import { surveyQuestions, surveyPeriods, surveys as existingSurveys, users, facilities, occupations } from '../data/mockData';
 import type { SurveyAnswer, SurveyCategory } from '../types';
+import { useAuth } from '../context/AuthContext';
 
 const MOOD_ICONS = ['😫', '😟', '😐', '🙂', '😊'];
 const MOOD_LABELS = ['とても悪い', 'やや悪い', '普通', 'やや良い', 'とても良い'];
 const MOOD_COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981'];
 
 export default function SurveyForm() {
-    // Simulate current user as u-4 (高橋 美咲)
-    const [currentUserId] = useState('u-4');
+    // Use the actually logged-in user
+    const { user: authUser } = useAuth();
+    const currentUserId = authUser?.id || 'u-1';
     const currentUser = users.find((u) => u.id === currentUserId)!;
     const currentFacility = facilities.find((f) => f.id === currentUser.facility_id);
     const currentOccupation = occupations.find((o) => o.id === currentUser.occupation_id);
