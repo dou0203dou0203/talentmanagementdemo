@@ -1,10 +1,26 @@
-import { useState } from 'react';
-import { users, occupations, facilities, facilityStaffingTargets } from '../data/mockData';
+import { useState, useMemo } from 'react';
+import { users as allUsers, occupations, facilities as allFacilities, facilityStaffingTargets as allTargets } from '../data/mockData';
+import { useAuth } from '../context/AuthContext';
 
 export default function StaffingSimulation() {
+    const { user: currentUser, permissions } = useAuth();
     const [selectedFacility, setSelectedFacility] = useState<string>('all');
     const [simTransfers, setSimTransfers] = useState<{ from: string; to: string; count: number }[]>([]);
     const [newHires, setNewHires] = useState<{ facility: string; occupation: string; count: number }[]>([]);
+
+    const facilities = useMemo(() => {
+        if (permissions.canViewAllStaff) return allFacilities;
+        return allFacilities.filter(f => f.id === currentUser?.facility_id);
+    }, [currentUser, permissions]);
+    const users = useMemo(() => {
+        if (permissions.canViewAllStaff) return allUsers;
+        if (permissions.canViewFacility) return allUsers.filter(u => u.facility_id === currentUser?.facility_id);
+        return allUsers.filter(u => u.id === currentUser?.id);
+    }, [currentUser, permissions]);
+    const facilityStaffingTargets = useMemo(() => {
+        const facIds = new Set(facilities.map(f => f.id));
+        return allTargets.filter(t => facIds.has(t.facility_id));
+    }, [facilities]);
 
     const activeUsers = users.filter((u) => u.status === 'active');
 

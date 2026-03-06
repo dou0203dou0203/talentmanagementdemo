@@ -12,6 +12,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useAuth } from '../context/AuthContext';
 import {
     surveys,
     surveyPeriods,
@@ -51,8 +52,15 @@ export default function SurveyHistory() {
     const [activeTab, setActiveTab] = useState<TabKey>('periods');
     const [selectedUserId, setSelectedUserId] = useState('u-5');
     const [qrModalUser, setQrModalUser] = useState<string | null>(null);
+    const { user: currentUser, permissions } = useAuth();
 
-    const activeStaff = users.filter((u) => u.status === 'active' || u.status === 'leave');
+    const activeStaff = useMemo(() => {
+        let staff = users.filter((u) => u.status === 'active' || u.status === 'leave');
+        if (!permissions.canViewAllStaff && permissions.canViewFacility) {
+            staff = staff.filter((u) => u.facility_id === currentUser?.facility_id);
+        }
+        return staff;
+    }, [currentUser, permissions]);
 
     // ==============================
     // Period Management View

@@ -13,12 +13,13 @@ import {
     Filler,
 } from 'chart.js';
 import {
-    users,
+    users as allUsers,
     occupations,
-    facilities,
-    surveys,
-    facilityStaffingTargets,
+    facilities as allFacilities,
+    surveys as allSurveys,
+    facilityStaffingTargets as allTargets,
 } from '../data/mockData';
+import { useAuth } from '../context/AuthContext';
 
 ChartJS.register(
     CategoryScale,
@@ -48,6 +49,26 @@ interface AlertInfo {
 export default function Dashboard() {
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
     const navigate = useNavigate();
+    const { user: currentUser, permissions } = useAuth();
+
+    // Facility-level filtering for facility_manager
+    const users = useMemo(() => {
+        if (permissions.canViewAllStaff) return allUsers;
+        if (permissions.canViewFacility) return allUsers.filter(u => u.facility_id === currentUser?.facility_id);
+        return allUsers.filter(u => u.id === currentUser?.id);
+    }, [currentUser, permissions]);
+    const facilities = useMemo(() => {
+        if (permissions.canViewAllStaff) return allFacilities;
+        return allFacilities.filter(f => f.id === currentUser?.facility_id);
+    }, [currentUser, permissions]);
+    const surveys = useMemo(() => {
+        const userIds = new Set(users.map(u => u.id));
+        return allSurveys.filter(s => userIds.has(s.user_id));
+    }, [users]);
+    const facilityStaffingTargets = useMemo(() => {
+        const facIds = new Set(facilities.map(f => f.id));
+        return allTargets.filter(t => facIds.has(t.facility_id));
+    }, [facilities]);
 
     // Calculate alerts
     const alerts: AlertInfo[] = useMemo(() => {

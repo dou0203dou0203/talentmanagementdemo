@@ -1,6 +1,28 @@
-import { users, occupations, facilities, surveys, evaluations } from '../data/mockData';
+import { useMemo } from 'react';
+import { users as allUsers, occupations, facilities as allFacilities, surveys as allSurveys, evaluations as allEvaluations } from '../data/mockData';
+import { useAuth } from '../context/AuthContext';
 
 export default function Analytics() {
+    const { user: currentUser, permissions } = useAuth();
+
+    const users = useMemo(() => {
+        if (permissions.canViewAllStaff) return allUsers;
+        if (permissions.canViewFacility) return allUsers.filter(u => u.facility_id === currentUser?.facility_id);
+        return allUsers.filter(u => u.id === currentUser?.id);
+    }, [currentUser, permissions]);
+    const facilities = useMemo(() => {
+        if (permissions.canViewAllStaff) return allFacilities;
+        return allFacilities.filter(f => f.id === currentUser?.facility_id);
+    }, [currentUser, permissions]);
+    const surveys = useMemo(() => {
+        const uids = new Set(users.map(u => u.id));
+        return allSurveys.filter(s => uids.has(s.user_id));
+    }, [users]);
+    const evaluations = useMemo(() => {
+        const uids = new Set(users.map(u => u.id));
+        return allEvaluations.filter(e => uids.has(e.user_id));
+    }, [users]);
+
     const activeUsers = users.filter((u) => u.status === 'active');
     const inactiveUsers = users.filter((u) => u.status === 'inactive');
     const leaveUsers = users.filter((u) => u.status === 'leave');

@@ -1,8 +1,10 @@
 import { useState, useMemo } from 'react';
 import { users, occupations, evaluationTemplateItems, evaluations, facilities } from '../data/mockData';
 import type { EvaluationScore, EvaluationStatus } from '../types';
+import { useAuth } from '../context/AuthContext';
 
 export default function EvaluationForm() {
+    const { user: currentUser, permissions } = useAuth();
     const [selectedUserId, setSelectedUserId] = useState('u-4');
     const [period] = useState('2025-H2');
 
@@ -121,10 +123,16 @@ export default function EvaluationForm() {
         approved: 'badge-success',
     };
 
-    // Filter only staff users for evaluation
+    // Filter only staff users for evaluation (facility_manager: own facility only)
     const staffUsers = useMemo(
-        () => users.filter((u) => u.role === 'staff'),
-        []
+        () => {
+            let filtered = users.filter((u) => u.role === 'staff');
+            if (!permissions.canViewAllStaff && permissions.canViewFacility) {
+                filtered = filtered.filter((u) => u.facility_id === currentUser?.facility_id);
+            }
+            return filtered;
+        },
+        [currentUser, permissions]
     );
 
     return (
