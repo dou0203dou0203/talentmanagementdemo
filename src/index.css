@@ -3040,3 +3040,206 @@ a:hover {
     flex-direction: column;
   }
 }
+
+/* ============================================
+   Evaluation History Page
+   ============================================ */
+.eval-history-page {
+  max-width: 960px;
+}
+
+.ev-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ev-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.ev-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  cursor: pointer;
+  gap: 12px;
+}
+
+.ev-score-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-100), var(--color-accent-100));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ev-score-num {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: var(--color-primary-700);
+}
+
+.ev-period {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+}
+
+.ev-status-draft {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+}
+
+.ev-status-submitted {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.ev-status-approved {
+  background: var(--color-success-bg);
+  color: #16a34a;
+}
+
+.ev-card-body {
+  padding: 0 20px 16px;
+  border-top: 1px solid var(--color-neutral-100);
+  padding-top: 12px;
+}
+
+.ev-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+  margin-bottom: 12px;
+}
+
+.ev-score-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ev-score-bar {
+  width: 100px;
+  height: 8px;
+  background: var(--color-neutral-100);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ev-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary-400), var(--color-accent-400));
+  border-radius: 4px;
+}
+
+.ev-score-bar span {
+  position: absolute;
+  right: -36px;
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-600);
+  white-space: nowrap;
+}
+
+.ev-comment {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+  max-width: 200px;
+}
+
+.ev-overall {
+  margin-top: 12px;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.ev-overall p {
+  margin-top: 4px;
+}
+
+/* ============================================
+   Recruitment Page
+   ============================================ */
+.recruit-page {
+  max-width: 960px;
+}
+
+.rc-source-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rc-source-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  background: #fff;
+}
+
+.rc-source-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.rc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.rc-card {
+  padding: 14px 20px;
+}
+
+.rc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.rc-card-name {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  margin-bottom: 2px;
+}
+
+.rc-card-right {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.rc-card-bottom {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: var(--font-size-sm);
+}
+
+.rc-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-neutral-600);
+}
+
+.rc-cost {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-xs);
+}

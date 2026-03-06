@@ -23,6 +23,13 @@ const navItems = [
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
         ],
     },
+    {
+        group: '人事',
+        items: [
+            { path: '/eval-history', label: '評価履歴', icon: '⭐' },
+            { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
+        ],
+    },
 ];
 
 const pageTitles: Record<string, string> = {
@@ -34,6 +41,8 @@ const pageTitles: Record<string, string> = {
     '/interviews': '面談記録',
     '/org': '組織管理',
     '/analytics': '分析ダッシュボード',
+    '/eval-history': '評価履歴',
+    '/recruitment': '採用管理',
     '/staffing': '人員配置管理',
     '/alerts': '離職防止アラート',
 };
