@@ -35,6 +35,7 @@ const navItems: NavGroup[] = [
             { path: '/org', label: '組織管理', icon: '🏢' },
             { path: '/analytics', label: '分析', icon: '📈' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
+            { path: '/newcomer-checklist', label: '新人チェックシート', icon: '✅' },
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
         ],
     },
@@ -61,6 +62,7 @@ const pageTitles: Record<string, string> = {
     '/eval-history': '評価履歴',
     '/recruitment': '採用管理',
     '/staffing': '配置シミュレーション',
+    '/newcomer-checklist': '新人チェックシート',
     '/documents': '書類管理',
     '/alerts': '離職防止アラート',
 };

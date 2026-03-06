@@ -3659,3 +3659,108 @@ a:hover {
     padding: 20px;
   }
 }
+
+/* ============================================
+   Newcomer Checklist Styles
+   ============================================ */
+.ncl-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-neutral-100);
+  transition: background var(--transition-fast);
+}
+
+.ncl-item:last-child {
+  border-bottom: none;
+}
+
+.ncl-item:hover {
+  background: var(--color-neutral-50);
+}
+
+.ncl-item-text {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.ncl-item-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ncl-score-group {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ncl-score-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-neutral-200);
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-neutral-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.ncl-score-btn:hover {
+  border-color: var(--ncl-color, var(--color-primary-400));
+  color: var(--ncl-color, var(--color-primary-400));
+  transform: scale(1.1);
+}
+
+.ncl-score-btn.active {
+  border-color: var(--ncl-color, var(--color-primary-400));
+  background: var(--ncl-color, var(--color-primary-400));
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ncl-score-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .ncl-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .ncl-score-group {
+    align-self: flex-end;
+  }
+}
