@@ -17,6 +17,8 @@ const navItems = [
         items: [
             { path: '/survey/history', label: 'サーベイ管理', icon: '📋' },
             { path: '/interviews', label: '面談記録', icon: '💬' },
+            { path: '/org', label: '組織管理', icon: '🏢' },
+            { path: '/analytics', label: '分析', icon: '📈' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
         ],
@@ -30,6 +32,8 @@ const pageTitles: Record<string, string> = {
     '/survey': '定期サーベイ',
     '/survey/history': 'サーベイ管理',
     '/interviews': '面談記録',
+    '/org': '組織管理',
+    '/analytics': '分析ダッシュボード',
     '/staffing': '人員配置管理',
     '/alerts': '離職防止アラート',
 };

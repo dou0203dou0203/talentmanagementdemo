@@ -9,6 +9,8 @@ import SurveyHistory from './pages/SurveyHistory';
 import SurveyMobile from './pages/SurveyMobile';
 import StaffProfile from './pages/StaffProfile';
 import InterviewRecords from './pages/InterviewRecords';
+import OrgChart from './pages/OrgChart';
+import Analytics from './pages/Analytics';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -40,6 +42,8 @@ function AppRoutes() {
         <Route path="survey/history" element={<SurveyHistory />} />
         <Route path="staff" element={<StaffProfile />} />
         <Route path="interviews" element={<InterviewRecords />} />
+        <Route path="org" element={<OrgChart />} />
+        <Route path="analytics" element={<Analytics />} />
         <Route path="staffing" element={<Dashboard />} />
         <Route path="alerts" element={<Dashboard />} />
       </Route>
