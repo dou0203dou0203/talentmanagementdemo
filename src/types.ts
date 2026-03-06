@@ -55,6 +55,8 @@ export interface User {
   work_pattern?: WorkPattern;
   qualifications?: Qualification[];
   corporation?: string;         // 所属法人
+  resignation_date?: string;    // 離職日
+  resignation_reason?: string;  // 離職理由
 }
 
 // --- 評価 ---

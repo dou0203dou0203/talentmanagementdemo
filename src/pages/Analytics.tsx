@@ -27,8 +27,15 @@ export default function Analytics() {
     const inactiveUsers = users.filter((u) => u.status === 'inactive');
     const leaveUsers = users.filter((u) => u.status === 'leave');
 
-    // Turnover rate
-    const turnoverRate = users.length > 0 ? ((inactiveUsers.length / users.length) * 100).toFixed(1) : '0';
+    // Turnover rate — annual: resigned in last 12 months / (active + resigned in last 12 months)
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    const recentResigned = inactiveUsers.filter(u => {
+        if (!u.resignation_date) return false;
+        return new Date(u.resignation_date) >= oneYearAgo;
+    });
+    const turnoverBase = activeUsers.length + recentResigned.length;
+    const turnoverRate = turnoverBase > 0 ? ((recentResigned.length / turnoverBase) * 100).toFixed(1) : '0';
 
     // Qualification rate
     const qualifiedUsers = users.filter((u) => u.qualifications && u.qualifications.length > 0);
@@ -76,7 +83,7 @@ export default function Analytics() {
             {/* KPI Cards */}
             <div className="an-kpi-grid">
                 <KPI icon="👥" label="総在籍数" value={`${activeUsers.length}名`} sub={`休職 ${leaveUsers.length}名`} />
-                <KPI icon="📉" label="離職率" value={`${turnoverRate}%`} sub={`退職 ${inactiveUsers.length}名`} color={Number(turnoverRate) > 10 ? '#ef4444' : '#22c55e'} />
+                <KPI icon="📉" label="離職率（年間）" value={`${turnoverRate}%`} sub={`直近1年 ${recentResigned.length}名 / 退職累計 ${inactiveUsers.length}名`} color={Number(turnoverRate) > 10 ? '#ef4444' : '#22c55e'} />
                 <KPI icon="🎓" label="資格保有率" value={`${qualificationRate}%`} sub={`${qualifiedUsers.length}/${activeUsers.length}名`} />
                 <KPI icon="📋" label="サーベイ回答率" value={`${surveyRate}%`} sub={`${submittedSurveys}/${totalSurveys}件`} />
             </div>

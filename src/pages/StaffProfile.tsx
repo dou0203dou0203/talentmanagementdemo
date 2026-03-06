@@ -54,6 +54,7 @@ export default function StaffProfile() {
         : null;
 
     const statusLabel: Record<string, string> = { active: '在籍', inactive: '退職', leave: '休職' };
+    const resignationReasons = ['自己都合', '会社都合', '定年退職', '契約満了', '転職', '家庭の事情', '健康上の理由', 'その他'];
     const moodEmoji = ['', '😫', '😟', '😐', '😊', '😄'];
 
     const tabs = [
@@ -66,7 +67,7 @@ export default function StaffProfile() {
 
     // Basic info edit
     const startEdit = () => {
-        setEditForm({ name: selected.name, email: selected.email, birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status });
+        setEditForm({ name: selected.name, email: selected.email, birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '' });
         setEditMode(true);
     };
     const saveEdit = () => { alert(`${selected.name} の情報を更新しました（デモ）`); setEditMode(false); };
@@ -164,6 +165,12 @@ export default function StaffProfile() {
                         <InfoRow label="役職" value={selected.position || '未登録'} />
                         <InfoRow label="雇用形態" value={selected.employment_type || '未登録'} />
                         <InfoRow label="勤務形態" value={selected.work_pattern || '未登録'} />
+                        {selected.status === 'inactive' && (
+                            <>
+                                <InfoRow label="離職日" value={selected.resignation_date || '未登録'} />
+                                <InfoRow label="離職理由" value={selected.resignation_reason || '未登録'} />
+                            </>
+                        )}
                     </div>
                 )}
                 {activeTab === 'basic' && editMode && permissions.canEditStaff && (
@@ -180,6 +187,12 @@ export default function StaffProfile() {
                             <div className="sp-form-field"><label>雇用形態</label><select value={editForm.employment_type || '常勤'} onChange={(e) => setEditForm({ ...editForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
                             <div className="sp-form-field"><label>勤務形態</label><select value={editForm.work_pattern || '日勤のみ'} onChange={(e) => setEditForm({ ...editForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
                             <div className="sp-form-field"><label>ステータス</label><select value={editForm.status || 'active'} onChange={(e) => setEditForm({ ...editForm, status: e.target.value as User['status'] })}><option value="active">在籍</option><option value="leave">休職</option><option value="inactive">退職</option></select></div>
+                            {editForm.status === 'inactive' && (
+                                <>
+                                    <FormField label="離職日" value={editForm.resignation_date || ''} onChange={(v) => setEditForm({ ...editForm, resignation_date: v })} type="date" />
+                                    <div className="sp-form-field"><label>離職理由</label><select value={editForm.resignation_reason || ''} onChange={(e) => setEditForm({ ...editForm, resignation_reason: e.target.value })}><option value="">選択してください</option>{resignationReasons.map((r) => <option key={r} value={r}>{r}</option>)}</select></div>
+                                </>
+                            )}
                             <FormField label="所属法人" value={editForm.corporation || ''} onChange={(v) => setEditForm({ ...editForm, corporation: v })} />
                         </div>
                         <div className="sp-form-actions">

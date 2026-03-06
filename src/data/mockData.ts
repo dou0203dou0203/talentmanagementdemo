@@ -145,8 +145,10 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-3',
     facility_id: 'fac-5',
-    status: 'leave',
-    evaluator_id: 'u-1'
+    status: 'inactive',
+    evaluator_id: 'u-1',
+    resignation_date: '2025-08-15',
+    resignation_reason: '転職',
   },
   {
     id: 'u-8',
@@ -434,8 +436,10 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-2',
     facility_id: 'fac-13',
-    status: 'leave',
-    evaluator_id: 'u-30'
+    status: 'inactive',
+    evaluator_id: 'u-30',
+    resignation_date: '2025-11-30',
+    resignation_reason: '自己都合',
   },
   {
     id: 'u-36',
@@ -670,7 +674,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-4',
     facility_id: 'fac-1',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-1',
     birth_date: '2000-05-18',
     hire_date: '2024-07-15',
@@ -681,6 +685,8 @@ export const users: User[] = [
     qualifications: [
       { name: '介護職員初任者研修', acquired_date: '2022-10-23' },
     ],
+    resignation_date: '2026-01-31',
+    resignation_reason: '家庭の事情',
   },
   {
     id: 'u-56',
@@ -1127,7 +1133,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-3',
     facility_id: 'fac-4',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-1',
     birth_date: '1998-09-04',
     hire_date: '2022-07-01',
@@ -1138,6 +1144,8 @@ export const users: User[] = [
     qualifications: [
       { name: '理学療法士免許', acquired_date: '2022-08-13' },
     ],
+    resignation_date: '2025-06-30',
+    resignation_reason: '健康上の理由',
   },
   {
     id: 'u-81',
@@ -1863,7 +1871,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-2',
     facility_id: 'fac-9',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-17',
     birth_date: '1993-12-03',
     hire_date: '2017-02-01',
@@ -1874,6 +1882,8 @@ export const users: User[] = [
     qualifications: [
       { name: '看護師免許', acquired_date: '2017-11-21' },
     ],
+    resignation_date: '2025-09-15',
+    resignation_reason: '転職',
   },
   {
     id: 'u-121',
@@ -2330,7 +2340,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-2',
     facility_id: 'fac-11',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-24',
     birth_date: '1974-02-14',
     hire_date: '2022-11-15',
@@ -2341,6 +2351,8 @@ export const users: User[] = [
     qualifications: [
       { name: '看護師免許', acquired_date: '2007-03-25' },
     ],
+    resignation_date: '2026-02-28',
+    resignation_reason: '自己都合',
   },
   {
     id: 'u-146',
@@ -2791,7 +2803,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-1',
     facility_id: 'fac-13',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-30',
     birth_date: '1993-06-02',
     hire_date: '2021-12-01',
@@ -2802,6 +2814,8 @@ export const users: User[] = [
     qualifications: [
       { name: '医師免許', acquired_date: '2019-02-10' },
     ],
+    resignation_date: '2025-12-31',
+    resignation_reason: '契約満了',
   },
   {
     id: 'u-171',
@@ -3159,7 +3173,7 @@ export const users: User[] = [
     role: 'staff',
     occupation_id: 'occ-2',
     facility_id: 'fac-15',
-    status: 'active',
+    status: 'inactive',
     evaluator_id: 'u-45',
     birth_date: '1966-04-25',
     hire_date: '2007-09-01',
@@ -3168,6 +3182,8 @@ export const users: User[] = [
     work_pattern: '日勤のみ',
     corporation: '医療法人桜華会',
     qualifications: [],
+    resignation_date: '2025-10-15',
+    resignation_reason: '自己都合',
   },
   {
     id: 'u-191',
