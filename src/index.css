@@ -195,7 +195,7 @@ a:hover {
 .sidebar-logo-icon {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #efa0b8, #9bc94e);
+  background: #ffffff;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
