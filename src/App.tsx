@@ -15,7 +15,6 @@ import EvaluationHistory from './pages/EvaluationHistory';
 import Recruitment from './pages/Recruitment';
 import StaffingSimulation from './pages/StaffingSimulation';
 import DocumentManager from './pages/DocumentManager';
-import NewcomerChecklist from './pages/NewcomerChecklist';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -66,7 +65,6 @@ function AppRoutes() {
         <Route path="org" element={<ManagerRoute><OrgChart /></ManagerRoute>} />
         <Route path="analytics" element={<ManagerRoute><Analytics /></ManagerRoute>} />
         <Route path="staffing" element={<ManagerRoute><StaffingSimulation /></ManagerRoute>} />
-        <Route path="newcomer-checklist" element={<ManagerRoute><NewcomerChecklist /></ManagerRoute>} />
         <Route path="alerts" element={<ManagerRoute><Dashboard /></ManagerRoute>} />
 
         {/* HR admin only */}
