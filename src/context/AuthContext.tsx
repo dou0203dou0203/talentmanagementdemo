@@ -23,14 +23,14 @@ const STORAGE_KEY = 'talent_auth_user';
 function getPermissions(role: UserRole): PermissionSet {
     switch (role) {
         case 'hr_admin':
-            return { canViewAllStaff: true, canEditEvaluation: true, canViewHRInfo: true, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true };
+            return { canViewAllStaff: true, canEditEvaluation: true, canViewHRInfo: true, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: true, canEditInterviews: true };
         case 'corp_head':
-            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true };
+            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: false, canEditInterviews: false };
         case 'facility_manager':
-            return { canViewAllStaff: false, canEditEvaluation: true, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: false };
+            return { canViewAllStaff: false, canEditEvaluation: true, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: false, canEditStaff: false, canEditInterviews: false };
         case 'staff':
         default:
-            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false };
+            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false, canEditStaff: false, canEditInterviews: false };
     }
 }
 
@@ -47,6 +47,7 @@ function getRoleLabel(role: UserRole): string {
 const defaultPermissions: PermissionSet = {
     canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false,
     canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false,
+    canEditStaff: false, canEditInterviews: false,
 };
 
 export function AuthProvider({ children }: { children: ReactNode }) {

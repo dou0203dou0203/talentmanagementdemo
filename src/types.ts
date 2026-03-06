@@ -191,4 +191,6 @@ export interface PermissionSet {
   canViewOwnOnly: boolean;
   canViewFacility: boolean;
   canViewCorporation: boolean;
+  canEditStaff: boolean;
+  canEditInterviews: boolean;
 }
