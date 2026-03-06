@@ -3243,3 +3243,234 @@ a:hover {
   color: var(--color-neutral-500);
   font-size: var(--font-size-xs);
 }
+
+/* ============================================
+   Staffing Simulation Page
+   ============================================ */
+.sim-page {
+  max-width: 1000px;
+}
+
+.sim-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.sim-table th {
+  text-align: center;
+  padding: 8px 6px;
+  border-bottom: 2px solid var(--color-neutral-200);
+  color: var(--color-neutral-500);
+  font-weight: 600;
+  font-size: var(--font-size-xs);
+}
+
+.sim-table td {
+  text-align: center;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.sim-fac-name {
+  text-align: left !important;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sim-target {
+  color: var(--color-neutral-400);
+  font-size: var(--font-size-xs);
+}
+
+.sim-short {
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.sim-over {
+  background: rgba(34, 197, 94, 0.08);
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.sim-controls {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.sim-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: var(--font-size-sm);
+}
+
+.sim-row select,
+.sim-count-input {
+  padding: 6px 8px;
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+}
+
+.sim-count-input {
+  width: 50px;
+  text-align: center;
+}
+
+.sim-arrow {
+  color: var(--color-primary-500);
+  font-weight: 600;
+}
+
+.sim-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-neutral-400);
+  font-size: 14px;
+  padding: 4px;
+}
+
+.sim-remove:hover {
+  color: #ef4444;
+}
+
+.sim-add-btn {
+  margin-top: 8px;
+  padding: 8px 16px;
+  background: var(--color-neutral-50);
+  border: 1.5px dashed var(--color-neutral-300);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  font-family: var(--font-family);
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.sim-add-btn:hover {
+  border-color: var(--color-primary-300);
+  color: var(--color-primary-500);
+}
+
+.sim-reset-bar {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.sim-reset-btn {
+  padding: 10px 24px;
+  background: var(--color-neutral-100);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  color: var(--color-neutral-600);
+  transition: all var(--transition-fast);
+}
+
+.sim-reset-btn:hover {
+  background: var(--color-neutral-200);
+}
+
+@media (max-width: 768px) {
+  .sim-controls {
+    flex-direction: column;
+  }
+
+  .sim-row {
+    flex-wrap: wrap;
+  }
+}
+
+/* ============================================
+   Document Manager Page
+   ============================================ */
+.doc-page {
+  max-width: 960px;
+}
+
+.doc-cat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  background: #fff;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all var(--transition-fast);
+}
+
+.doc-cat-chip.active {
+  border-color: var(--color-primary-400);
+  background: var(--color-primary-50);
+}
+
+.doc-cat-chip:hover {
+  border-color: var(--color-primary-300);
+}
+
+.doc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.doc-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+}
+
+.doc-card-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.doc-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.doc-card-name {
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doc-card-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-500);
+  margin-top: 2px;
+}
+
+.doc-card-right {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.doc-type-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-500);
+  font-weight: 600;
+}

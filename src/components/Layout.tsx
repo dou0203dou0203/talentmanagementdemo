@@ -28,6 +28,8 @@ const navItems = [
         items: [
             { path: '/eval-history', label: '評価履歴', icon: '⭐' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
+            { path: '/staffing', label: '配置シミュレーション', icon: '🔄' },
+            { path: '/documents', label: '書類管理', icon: '📄' },
         ],
     },
 ];
@@ -43,7 +45,8 @@ const pageTitles: Record<string, string> = {
     '/analytics': '分析ダッシュボード',
     '/eval-history': '評価履歴',
     '/recruitment': '採用管理',
-    '/staffing': '人員配置管理',
+    '/staffing': '配置シミュレーション',
+    '/documents': '書類管理',
     '/alerts': '離職防止アラート',
 };
 

@@ -13,6 +13,8 @@ import OrgChart from './pages/OrgChart';
 import Analytics from './pages/Analytics';
 import EvaluationHistory from './pages/EvaluationHistory';
 import Recruitment from './pages/Recruitment';
+import StaffingSimulation from './pages/StaffingSimulation';
+import DocumentManager from './pages/DocumentManager';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -48,7 +50,8 @@ function AppRoutes() {
         <Route path="analytics" element={<Analytics />} />
         <Route path="eval-history" element={<EvaluationHistory />} />
         <Route path="recruitment" element={<Recruitment />} />
-        <Route path="staffing" element={<Dashboard />} />
+        <Route path="staffing" element={<StaffingSimulation />} />
+        <Route path="documents" element={<DocumentManager />} />
         <Route path="alerts" element={<Dashboard />} />
       </Route>
 
