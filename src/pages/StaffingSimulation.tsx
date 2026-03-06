@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { users as allUsers, occupations, facilities as allFacilities, facilityStaffingTargets as allTargets } from '../data/mockData';
+import type { FacilityStaffingTarget } from '../types';
 import { useAuth } from '../context/AuthContext';
 
 export default function StaffingSimulation() {
@@ -7,6 +8,13 @@ export default function StaffingSimulation() {
     const [selectedFacility, setSelectedFacility] = useState<string>('all');
     const [simTransfers, setSimTransfers] = useState<{ from: string; to: string; count: number }[]>([]);
     const [newHires, setNewHires] = useState<{ facility: string; occupation: string; count: number }[]>([]);
+
+    // Editable targets (initialized from mock data)
+    const [editableTargets, setEditableTargets] = useState<FacilityStaffingTarget[]>(() => [...allTargets]);
+    const [editingTarget, setEditingTarget] = useState<string | null>(null); // key: "facId-occId"
+    const [editValue, setEditValue] = useState<string>('');
+
+    const isHR = currentUser?.role === 'hr_admin';
 
     const facilities = useMemo(() => {
         if (permissions.canViewAllStaff) return allFacilities;
@@ -19,38 +27,55 @@ export default function StaffingSimulation() {
     }, [currentUser, permissions]);
     const facilityStaffingTargets = useMemo(() => {
         const facIds = new Set(facilities.map(f => f.id));
-        return allTargets.filter(t => facIds.has(t.facility_id));
-    }, [facilities]);
+        return editableTargets.filter(t => facIds.has(t.facility_id));
+    }, [facilities, editableTargets]);
 
     const activeUsers = users.filter((u) => u.status === 'active');
 
-    // Current staffing per facility/occupation
     const getStaffCount = (facId: string, occId: string) => {
         let base = activeUsers.filter((u) => u.facility_id === facId && u.occupation_id === occId).length;
-        // apply sim transfers
-        simTransfers.forEach((t) => {
-            if (t.from === facId) base -= t.count;
-            if (t.to === facId) base += t.count;
-        });
-        // apply new hires
-        newHires.forEach((h) => {
-            if (h.facility === facId && h.occupation === occId) base += h.count;
-        });
+        simTransfers.forEach((t) => { if (t.from === facId) base -= t.count; if (t.to === facId) base += t.count; });
+        newHires.forEach((h) => { if (h.facility === facId && h.occupation === occId) base += h.count; });
         return Math.max(0, base);
     };
 
     const facilitiesToShow = selectedFacility === 'all' ? facilities : facilities.filter((f) => f.id === selectedFacility);
 
-    const addTransfer = () => {
-        setSimTransfers([...simTransfers, { from: facilities[0].id, to: facilities[1]?.id || facilities[0].id, count: 1 }]);
-    };
-
-    const addNewHire = () => {
-        setNewHires([...newHires, { facility: facilities[0].id, occupation: occupations[0].id, count: 1 }]);
-    };
-
+    const addTransfer = () => setSimTransfers([...simTransfers, { from: facilities[0].id, to: facilities[1]?.id || facilities[0].id, count: 1 }]);
+    const addNewHire = () => setNewHires([...newHires, { facility: facilities[0].id, occupation: occupations[0].id, count: 1 }]);
     const removeTransfer = (i: number) => setSimTransfers(simTransfers.filter((_, idx) => idx !== i));
     const removeHire = (i: number) => setNewHires(newHires.filter((_, idx) => idx !== i));
+
+    // Target editing handlers
+    const startEdit = (facId: string, occId: string) => {
+        const key = `${facId}-${occId}`;
+        const existing = editableTargets.find(t => t.facility_id === facId && t.occupation_id === occId);
+        setEditingTarget(key);
+        setEditValue(existing ? String(existing.target_count) : '0');
+    };
+
+    const saveEdit = (facId: string, occId: string) => {
+        const val = Math.max(0, parseInt(editValue) || 0);
+        setEditableTargets(prev => {
+            const idx = prev.findIndex(t => t.facility_id === facId && t.occupation_id === occId);
+            if (idx >= 0) {
+                if (val === 0) {
+                    // Remove target
+                    return prev.filter((_, i) => i !== idx);
+                }
+                const next = [...prev];
+                next[idx] = { ...next[idx], target_count: val };
+                return next;
+            } else if (val > 0) {
+                // Add new target
+                return [...prev, { id: `fst-new-${Date.now()}`, facility_id: facId, occupation_id: occId, target_count: val }];
+            }
+            return prev;
+        });
+        setEditingTarget(null);
+    };
+
+    const cancelEdit = () => setEditingTarget(null);
 
     return (
         <div className="sim-page">
@@ -67,7 +92,14 @@ export default function StaffingSimulation() {
 
             {/* Current Staffing Table */}
             <div className="card" style={{ padding: 24, marginBottom: 16 }}>
-                <h3 className="org-section-title">📋 事業所別人員配置状況 {simTransfers.length > 0 || newHires.length > 0 ? '（シミュレーション反映中）' : ''}</h3>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+                    <h3 className="org-section-title" style={{ marginBottom: 0 }}>📋 事業所別人員配置状況 {simTransfers.length > 0 || newHires.length > 0 ? '（シミュレーション反映中）' : ''}</h3>
+                    {isHR && (
+                        <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-primary-500)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <span>✏️</span> 基準値をクリックして編集できます
+                        </div>
+                    )}
+                </div>
                 <div style={{ overflowX: 'auto' }}>
                     <table className="sim-table">
                         <thead>
@@ -94,10 +126,39 @@ export default function StaffingSimulation() {
                                             const target = facilityStaffingTargets.find((t) => t.facility_id === fac.id && t.occupation_id === o.id);
                                             const isShort = target && count < target.target_count;
                                             const isOver = target && count > target.target_count;
+                                            const editKey = `${fac.id}-${o.id}`;
+                                            const isEditing = editingTarget === editKey;
+
                                             return (
                                                 <td key={o.id} className={isShort ? 'sim-short' : isOver ? 'sim-over' : ''}>
-                                                    {count}
-                                                    {target && <span className="sim-target">/{target.target_count}</span>}
+                                                    <span>{count}</span>
+                                                    {isEditing ? (
+                                                        <span className="sim-target-edit">
+                                                            /
+                                                            <input
+                                                                type="number"
+                                                                min={0}
+                                                                max={99}
+                                                                value={editValue}
+                                                                onChange={(e) => setEditValue(e.target.value)}
+                                                                onKeyDown={(e) => {
+                                                                    if (e.key === 'Enter') saveEdit(fac.id, o.id);
+                                                                    if (e.key === 'Escape') cancelEdit();
+                                                                }}
+                                                                onBlur={() => saveEdit(fac.id, o.id)}
+                                                                autoFocus
+                                                                className="sim-target-input"
+                                                            />
+                                                        </span>
+                                                    ) : (
+                                                        <span
+                                                            className={`sim-target ${isHR ? 'sim-target-editable' : ''}`}
+                                                            onClick={() => isHR && startEdit(fac.id, o.id)}
+                                                            title={isHR ? 'クリックして基準値を編集' : ''}
+                                                        >
+                                                            {target ? `/${target.target_count}` : isHR ? '/—' : ''}
+                                                        </span>
+                                                    )}
                                                 </td>
                                             );
                                         })}
