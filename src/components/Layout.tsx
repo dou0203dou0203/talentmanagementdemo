@@ -50,10 +50,10 @@ export default function Layout() {
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
                     <div className="sidebar-logo">
-                        <div className="sidebar-logo-icon">TM</div>
+                        <div className="sidebar-logo-icon">🌸</div>
                         <div>
-                            <div className="sidebar-logo-text">タレントマネジメント</div>
-                            <div className="sidebar-logo-subtitle">医療・介護グループ</div>
+                            <div className="sidebar-logo-text">さくらの樹グループ</div>
+                            <div className="sidebar-logo-subtitle">タレントマネジメント</div>
                         </div>
                     </div>
                 </div>
