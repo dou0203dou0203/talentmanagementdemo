@@ -6,6 +6,11 @@ import Dashboard from './pages/Dashboard';
 import EvaluationForm from './pages/EvaluationForm';
 import SurveyForm from './pages/SurveyForm';
 import SurveyHistory from './pages/SurveyHistory';
+<<<<<<< HEAD
+=======
+import SurveySettings from './pages/SurveySettings';
+import StaffDetail from './pages/StaffDetail';
+import AptitudeTestForm from './pages/AptitudeTestForm';
 import SurveyMobile from './pages/SurveyMobile';
 import StaffProfile from './pages/StaffProfile';
 import InterviewRecords from './pages/InterviewRecords';
@@ -86,9 +91,28 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter basename="/talentmanagementdemo">
+<<<<<<< HEAD
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
+=======
+      <Routes>
+        {/* Admin Layout */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="evaluation" element={<EvaluationForm />} />
+          <Route path="survey" element={<SurveyForm />} />
+          <Route path="survey/history" element={<SurveyHistory />} />
+          <Route path="aptitude/test" element={<AptitudeTestForm />} />
+          <Route path="staff/:userId" element={<StaffDetail />} />
+          <Route path="survey/settings" element={<SurveySettings />} />
+          <Route path="staffing" element={<Dashboard />} />
+          <Route path="alerts" element={<Dashboard />} />
+        </Route>
+
+        {/* Mobile Survey (no sidebar, standalone) */}
+        <Route path="/s/:token" element={<SurveyMobile />} />
+      </Routes>
     </BrowserRouter>
   );
 }
