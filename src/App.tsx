@@ -19,6 +19,8 @@ import Recruitment from './pages/Recruitment';
 import StaffingSimulation from './pages/StaffingSimulation';
 import DocumentManager from './pages/DocumentManager';
 import NewcomerChecklist from './pages/NewcomerChecklist';
+import Notifications from './pages/Notifications';
+import RetiredStaff from './pages/RetiredStaff';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -58,6 +60,8 @@ function AppRoutes() {
         <Route path="recruitment" element={<HRRoute><Recruitment /></HRRoute>} />
         <Route path="documents" element={<HRRoute><DocumentManager /></HRRoute>} />
         <Route path="newcomer-checklist" element={<HRRoute><NewcomerChecklist /></HRRoute>} />
+        <Route path="notifications" element={<HRRoute><Notifications /></HRRoute>} />
+        <Route path="retired-staff" element={<HRRoute><RetiredStaff /></HRRoute>} />
         <Route path="staff" element={<StaffProfile />} />
         <Route path="staff/:userId" element={<StaffDetail />} />
         <Route path="interviews" element={<InterviewRecords />} />

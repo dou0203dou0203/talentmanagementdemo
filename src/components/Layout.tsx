@@ -48,6 +48,8 @@ const navItems: NavGroup[] = [
             { path: '/eval-history', label: '評価履歴', icon: '⭐' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
             { path: '/documents', label: '書類管理', icon: '📄' },
+            { path: '/notifications', label: '通知', icon: '🔔' },
+            { path: '/retired-staff', label: '退職者管理', icon: '📋' },
         ],
     },
 ];

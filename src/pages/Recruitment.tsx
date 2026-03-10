@@ -31,15 +31,22 @@ const statusConfig: Record<string, { color: string; bg: string }> = {
 export default function Recruitment() {
     const [filterStatus, setFilterStatus] = useState<string>('all');
     const [filterSource, setFilterSource] = useState<string>('all');
+    const [filterFacility, setFilterFacility] = useState<string>('all');
+    const [filterPeriod, setFilterPeriod] = useState<string>('all');
+    const [selectedApplicant, setSelectedApplicant] = useState<string|null>(null);
 
     const filtered = applicants
         .filter((a) => filterStatus === 'all' || a.status === filterStatus)
         .filter((a) => filterSource === 'all' || a.source === filterSource)
+        .filter((a) => filterFacility === 'all' || a.facility === filterFacility)
+        .filter((a) => { if (filterPeriod === 'all') return true; const m = a.applied_date.substring(0,7); return m === filterPeriod; })
         .sort((a, b) => b.applied_date.localeCompare(a.applied_date));
 
     const totalCost = applicants.reduce((s, a) => s + a.cost, 0);
     const hired = applicants.filter((a) => a.status === '入社済み').length;
     const sources = [...new Set(applicants.map((a) => a.source))];
+    const facList = [...new Set(applicants.map((a) => a.facility))];
+    const periods = [...new Set(applicants.map((a) => a.applied_date.substring(0,7)))].sort().reverse();
     const statuses = [...new Set(applicants.map((a) => a.status))];
 
     // Source breakdown
@@ -114,6 +121,20 @@ export default function Recruitment() {
                         {sources.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                 </div>
+                <div className="iv-filter-group">
+                    <label>施設:</label>
+                    <select value={filterFacility} onChange={(e) => setFilterFacility(e.target.value)}>
+                        <option value="all">すべて</option>
+                        {facList.map((f) => <option key={f} value={f}>{f}</option>)}
+                    </select>
+                </div>
+                <div className="iv-filter-group">
+                    <label>期間:</label>
+                    <select value={filterPeriod} onChange={(e) => setFilterPeriod(e.target.value)}>
+                        <option value="all">すべて</option>
+                        {periods.map((p) => <option key={p} value={p}>{p}</option>)}
+                    </select>
+                </div>
                 <div className="iv-count">{filtered.length}件</div>
             </div>
 
@@ -122,7 +143,7 @@ export default function Recruitment() {
                 {filtered.map((ap) => {
                     const sc = statusConfig[ap.status] || { color: '#666', bg: '#f5f5f5' };
                     return (
-                        <div key={ap.id} className="rc-card card">
+                        <div key={ap.id} className="rc-card card" onClick={()=>setSelectedApplicant(selectedApplicant===ap.id?null:ap.id)} style={{cursor:'pointer'}}>
                             <div className="rc-card-top">
                                 <div>
                                     <div className="rc-card-name">{ap.name}</div>
@@ -142,6 +163,17 @@ export default function Recruitment() {
                                 </div>
                                 {ap.cost > 0 && <div className="rc-cost">コスト: ¥{ap.cost.toLocaleString()}</div>}
                             </div>
+                            {selectedApplicant===ap.id && (
+                                <div style={{marginTop:12,padding:16,background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',borderTop:'1px solid var(--color-neutral-200)'}}>
+                                    <h4 style={{fontSize:'var(--font-size-sm)',fontWeight:600,marginBottom:8}}>📋 面接記録</h4>
+                                    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12,fontSize:'var(--font-size-sm)'}}>
+                                        <div><strong>印象:</strong> {ap.interview_score>=4?'👍 良好':ap.interview_score>=3?'👌 普通':'👎 不足'}</div>
+                                        <div><strong>経路:</strong> {ap.source}</div>
+                                        <div><strong>コメント:</strong> デモ用面接メモがここに表示されます</div>
+                                        <div><strong>採用コスト:</strong> {ap.cost>0?'¥'+ap.cost.toLocaleString():'—'}</div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     );
                 })}
