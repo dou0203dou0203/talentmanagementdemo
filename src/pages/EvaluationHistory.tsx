@@ -6,6 +6,9 @@ export default function EvaluationHistory() {
     const { user: currentUser, permissions } = useAuth();
     const [filterUser, setFilterUser] = useState<string>('all');
     const [filterPeriod, setFilterPeriod] = useState<string>('all');
+    const [filterFacility, setFilterFacility] = useState<string>('all');
+    const [filterOcc, setFilterOcc] = useState<string>('all');
+    const [filterCorp, setFilterCorp] = useState<string>('all');
     const [expandedId, setExpandedId] = useState<string | null>(null);
 
     const visibleUsers = permissions.canViewAllStaff
@@ -15,10 +18,14 @@ export default function EvaluationHistory() {
             : users.filter((u) => u.id === currentUser?.id);
 
     const periods = [...new Set(evaluations.map((e) => e.period))].sort().reverse();
+    const corporations = [...new Set(facilities.map(f => f.corporation))];
 
     const filtered = evaluations
         .filter((e) => filterUser === 'all' || e.user_id === filterUser)
         .filter((e) => filterPeriod === 'all' || e.period === filterPeriod)
+        .filter((e) => { if (filterFacility === 'all') return true; const s = users.find(u => u.id === e.user_id); return s?.facility_id === filterFacility; })
+        .filter((e) => { if (filterOcc === 'all') return true; const s = users.find(u => u.id === e.user_id); return s?.occupation_id === filterOcc; })
+        .filter((e) => { if (filterCorp === 'all') return true; const s = users.find(u => u.id === e.user_id); const f = facilities.find(fa => fa.id === s?.facility_id); return f?.corporation === filterCorp; })
         .filter((e) => visibleUsers.some((u) => u.id === e.user_id))
         .sort((a, b) => b.period.localeCompare(a.period));
 
@@ -43,6 +50,28 @@ export default function EvaluationHistory() {
                     <select value={filterPeriod} onChange={(e) => setFilterPeriod(e.target.value)}>
                         <option value="all">すべて</option>
                         {periods.map((p) => <option key={p} value={p}>{p}</option>)}
+                    </select>
+                </div>
+                </div>
+                <div className="iv-filter-group">
+                    <label>法人:</label>
+                    <select value={filterCorp} onChange={(e) => setFilterCorp(e.target.value)}>
+                        <option value="all">すべて</option>
+                        {corporations.map((c) => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                </div>
+                <div className="iv-filter-group">
+                    <label>事業所:</label>
+                    <select value={filterFacility} onChange={(e) => setFilterFacility(e.target.value)}>
+                        <option value="all">すべて</option>
+                        {facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
+                    </select>
+                </div>
+                <div className="iv-filter-group">
+                    <label>職種:</label>
+                    <select value={filterOcc} onChange={(e) => setFilterOcc(e.target.value)}>
+                        <option value="all">すべて</option>
+                        {occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}
                     </select>
                 </div>
                 <div className="iv-count">{filtered.length}件</div>

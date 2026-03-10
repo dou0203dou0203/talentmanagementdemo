@@ -27,11 +27,11 @@ export const occupations: Occupation[] = [
   },
   {
     id: 'occ-3',
-    name: '理学療法士（PT）'
+    name: 'リハビリ'
   },
   {
     id: 'occ-4',
-    name: '介護福祉士'
+    name: '介護士'
   },
   {
     id: 'occ-5',
@@ -7604,6 +7604,14 @@ export const facilityStaffingTargets: FacilityStaffingTarget[] = [
     occupation_id: 'occ-2',
     target_count: 3
   }
+
+  { facility_id: 'fac-1', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-2', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-3', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-4', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-5', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-6', occupation_id: 'occ-5', target_count: 2 },
+  { facility_id: 'fac-7', occupation_id: 'occ-5', target_count: 2 },
 ];
 
 export const interviewLogs: InterviewLog[] = [

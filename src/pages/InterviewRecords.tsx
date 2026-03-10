@@ -7,10 +7,11 @@ export default function InterviewRecords() {
     const { user: currentUser, permissions } = useAuth();
     const [filterFacility, setFilterFacility] = useState<string>('all');
     const [filterType, setFilterType] = useState<string>('all');
+    const [searchName, setSearchName] = useState('');
     const [expandedId, setExpandedId] = useState<string | null>(null);
     const [showForm, setShowForm] = useState(false);
     const [editingLog, setEditingLog] = useState<InterviewLog | null>(null);
-    const [form, setForm] = useState({ user_id: '', type: '定期面談' as string, summary: '', details: '', mood: 3 as number, action_items: '' });
+    const [form, setForm] = useState({ user_id: '', type: '定期面談' as string, summary: '', details: '', mood: 3 as number, action_items: '', future_tasks: '', notes: '' });
 
     // Filter users based on permissions
     const visibleUserIds = new Set(
@@ -26,6 +27,7 @@ export default function InterviewRecords() {
         .filter((log) => visibleUserIds.has(log.user_id))
         .filter((log) => filterFacility === 'all' || users.find((u) => u.id === log.user_id)?.facility_id === filterFacility)
         .filter((log) => filterType === 'all' || log.type === filterType)
+        .filter((log) => { if (!searchName.trim()) return true; const s = users.find(u => u.id === log.user_id); return s?.name.includes(searchName.trim()) || log.summary.includes(searchName.trim()); })
         .sort((a, b) => b.date.localeCompare(a.date));
 
     const interviewTypes: InterviewType[] = ['定期面談', '1on1', 'フォローアップ', 'キャリア面談', 'その他'];
@@ -39,13 +41,13 @@ export default function InterviewRecords() {
             : users.filter((u) => u.id === currentUser?.id);
 
     const startAdd = () => {
-        setForm({ user_id: visibleUsers[0]?.id || '', type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
+        setForm({ user_id: visibleUsers[0]?.id || '', type: '定期面談', summary: '', details: '', mood: 3, action_items: '', future_tasks: '', notes: '' });
         setEditingLog(null);
         setShowForm(true);
     };
 
     const startEdit = (log: InterviewLog) => {
-        setForm({ user_id: log.user_id, type: log.type, summary: log.summary, details: log.details, mood: log.mood, action_items: log.action_items.join('\n') });
+        setForm({ user_id: log.user_id, type: log.type, summary: log.summary, details: log.details, mood: log.mood, action_items: log.action_items.join('\n'), future_tasks: '', notes: '' });
         setEditingLog(log);
         setShowForm(true);
     };
@@ -74,6 +76,11 @@ export default function InterviewRecords() {
                         <option value="all">すべて</option>
                         {interviewTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
+                </div>
+                </div>
+                <div className="iv-filter-group">
+                    <label>検索:</label>
+                    <input type="text" className="form-input" placeholder="名前・概要で検索..." value={searchName} onChange={(e) => setSearchName(e.target.value)} style={{ width: 180 }} />
                 </div>
                 <div className="iv-count">{filteredLogs.length}件の面談記録</div>
                 {permissions.canEditInterviews && (
