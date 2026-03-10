@@ -31,11 +31,9 @@ const navItems: NavGroup[] = [
         roles: ['hr_admin', 'corp_head', 'facility_manager'],
         items: [
             { path: '/survey/history', label: 'サーベイ管理', icon: '📋' },
-<<<<<<< HEAD
             { path: '/interviews', label: '面談記録', icon: '💬' },
             { path: '/org', label: '組織管理', icon: '🏢' },
             { path: '/analytics', label: '分析', icon: '📈' },
-=======
             { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
             { path: '/staff/u-1', label: 'スタッフ詳細', icon: '👤' },
             { path: '/aptitude/test', label: '適性検査実施', icon: '🧪' },

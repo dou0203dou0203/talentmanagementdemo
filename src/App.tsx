@@ -6,8 +6,6 @@ import Dashboard from './pages/Dashboard';
 import EvaluationForm from './pages/EvaluationForm';
 import SurveyForm from './pages/SurveyForm';
 import SurveyHistory from './pages/SurveyHistory';
-<<<<<<< HEAD
-=======
 import SurveySettings from './pages/SurveySettings';
 import StaffDetail from './pages/StaffDetail';
 import AptitudeTestForm from './pages/AptitudeTestForm';
@@ -20,6 +18,7 @@ import EvaluationHistory from './pages/EvaluationHistory';
 import Recruitment from './pages/Recruitment';
 import StaffingSimulation from './pages/StaffingSimulation';
 import DocumentManager from './pages/DocumentManager';
+import NewcomerChecklist from './pages/NewcomerChecklist';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -27,7 +26,6 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-// Routes requiring manager or above
 function ManagerRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const allowed = ['hr_admin', 'corp_head', 'facility_manager'];
@@ -35,7 +33,6 @@ function ManagerRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-// Routes requiring HR admin only
 function HRRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   if (!user || user.role !== 'hr_admin') return <Navigate to="/staff" replace />;
@@ -44,26 +41,12 @@ function HRRoute({ children }: { children: React.ReactNode }) {
 
 function AppRoutes() {
   const { isAuthenticated, user } = useAuth();
-
-  // Staff default landing = /staff, others = /
   const defaultPath = user?.role === 'staff' ? '/staff' : '/';
 
   return (
     <Routes>
-      <Route
-        path="/login"
-        element={isAuthenticated ? <Navigate to={defaultPath} replace /> : <Login />}
-      />
-
-      <Route
-        path="/"
-        element={
-          <ProtectedRoute>
-            <Layout />
-          </ProtectedRoute>
-        }
-      >
-        {/* Manager+ pages */}
+      <Route path="/login" element={isAuthenticated ? <Navigate to={defaultPath} replace /> : <Login />} />
+      <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route index element={<ManagerRoute><Dashboard /></ManagerRoute>} />
         <Route path="evaluation" element={<ManagerRoute><EvaluationForm /></ManagerRoute>} />
         <Route path="survey/history" element={<ManagerRoute><SurveyHistory /></ManagerRoute>} />
@@ -71,18 +54,17 @@ function AppRoutes() {
         <Route path="analytics" element={<ManagerRoute><Analytics /></ManagerRoute>} />
         <Route path="staffing" element={<ManagerRoute><StaffingSimulation /></ManagerRoute>} />
         <Route path="alerts" element={<ManagerRoute><Dashboard /></ManagerRoute>} />
-
-        {/* HR admin only */}
         <Route path="eval-history" element={<HRRoute><EvaluationHistory /></HRRoute>} />
         <Route path="recruitment" element={<HRRoute><Recruitment /></HRRoute>} />
         <Route path="documents" element={<HRRoute><DocumentManager /></HRRoute>} />
-
-        {/* All authenticated users */}
+        <Route path="newcomer-checklist" element={<HRRoute><NewcomerChecklist /></HRRoute>} />
         <Route path="staff" element={<StaffProfile />} />
+        <Route path="staff/:userId" element={<StaffDetail />} />
         <Route path="interviews" element={<InterviewRecords />} />
         <Route path="survey" element={<SurveyForm />} />
+        <Route path="survey/settings" element={<SurveySettings />} />
+        <Route path="aptitude/test" element={<AptitudeTestForm />} />
       </Route>
-
       <Route path="/s/:token" element={<SurveyMobile />} />
     </Routes>
   );
@@ -91,28 +73,9 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter basename="/talentmanagementdemo">
-<<<<<<< HEAD
       <AuthProvider>
         <AppRoutes />
       </AuthProvider>
-=======
-      <Routes>
-        {/* Admin Layout */}
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="evaluation" element={<EvaluationForm />} />
-          <Route path="survey" element={<SurveyForm />} />
-          <Route path="survey/history" element={<SurveyHistory />} />
-          <Route path="aptitude/test" element={<AptitudeTestForm />} />
-          <Route path="staff/:userId" element={<StaffDetail />} />
-          <Route path="survey/settings" element={<SurveySettings />} />
-          <Route path="staffing" element={<Dashboard />} />
-          <Route path="alerts" element={<Dashboard />} />
-        </Route>
-
-        {/* Mobile Survey (no sidebar, standalone) */}
-        <Route path="/s/:token" element={<SurveyMobile />} />
-      </Routes>
     </BrowserRouter>
   );
 }

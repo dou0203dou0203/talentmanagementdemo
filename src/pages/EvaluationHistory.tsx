@@ -52,7 +52,6 @@ export default function EvaluationHistory() {
                         {periods.map((p) => <option key={p} value={p}>{p}</option>)}
                     </select>
                 </div>
-                </div>
                 <div className="iv-filter-group">
                     <label>法人:</label>
                     <select value={filterCorp} onChange={(e) => setFilterCorp(e.target.value)}>

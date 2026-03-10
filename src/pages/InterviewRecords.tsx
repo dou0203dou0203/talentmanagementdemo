@@ -77,7 +77,6 @@ export default function InterviewRecords() {
                         {interviewTypes.map((t) => <option key={t} value={t}>{t}</option>)}
                     </select>
                 </div>
-                </div>
                 <div className="iv-filter-group">
                     <label>検索:</label>
                     <input type="text" className="form-input" placeholder="名前・概要で検索..." value={searchName} onChange={(e) => setSearchName(e.target.value)} style={{ width: 180 }} />

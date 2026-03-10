@@ -7603,15 +7603,15 @@ export const facilityStaffingTargets: FacilityStaffingTarget[] = [
     facility_id: 'fac-7',
     occupation_id: 'occ-2',
     target_count: 3
-  }
+  },
 
-  { facility_id: 'fac-1', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-2', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-3', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-4', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-5', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-6', occupation_id: 'occ-5', target_count: 2 },
-  { facility_id: 'fac-7', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-1', facility_id: 'fac-1', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-2', facility_id: 'fac-2', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-3', facility_id: 'fac-3', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-4', facility_id: 'fac-4', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-5', facility_id: 'fac-5', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-6', facility_id: 'fac-6', occupation_id: 'occ-5', target_count: 2 },
+  { id: 'fst-occ5-7', facility_id: 'fac-7', occupation_id: 'occ-5', target_count: 2 },
 ];
 
 export const interviewLogs: InterviewLog[] = [
