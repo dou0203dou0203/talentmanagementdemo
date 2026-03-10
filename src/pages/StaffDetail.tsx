@@ -85,7 +85,7 @@ export default function StaffDetail() {
         </div>
       </div>
       <div className='tab-nav'>
-        <button className={'tab-item '+(activeTab==='survey'?'active':'')} onClick={()=>setActiveTab('survey')}>📊 サーベイ推移</button>
+        <button className={'tab-item '+(activeTab==='survey'?'active':'')} onClick={()=>setActiveTab('survey')}>📊 スコア推移</button>
         <button className={'tab-item '+(activeTab==='interviews'?'active':'')} onClick={()=>setActiveTab('interviews')}>📝 面談記録</button>
         <button className={'tab-item '+(activeTab==='aptitude'?'active':'')} onClick={()=>setActiveTab('aptitude')}>🧪 適性検査</button>
         <button className={'tab-item '+(activeTab==='ai'?'active':'')} onClick={()=>setActiveTab('ai')}>🤖 AIアドバイス</button>
