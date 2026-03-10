@@ -50,6 +50,7 @@ const navItems: NavGroup[] = [
             { path: '/documents', label: '書類管理', icon: '📄' },
             { path: '/notifications', label: '通知', icon: '🔔' },
             { path: '/retired-staff', label: '退職者管理', icon: '📋' },
+            { path: '/attrition-analysis', label: 'AI離職分析', icon: '🧠' },
         ],
     },
 ];
