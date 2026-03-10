@@ -86,6 +86,9 @@ type ScoreMap = Record<string, number>;
 export default function EvaluationForm() {
     const { user: currentUser, permissions } = useAuth();
     const [activeMode, setActiveMode] = useState<'evaluation' | 'checklist'>('evaluation');
+    const [searchFilter, setSearchFilter] = useState('');
+    const [facFilter, setFacFilter] = useState('all');
+    const [occFilter, setOccFilter] = useState('all');
 
     // ===== Evaluation State =====
     const [selectedUserId, setSelectedUserId] = useState('u-4');
@@ -122,11 +125,14 @@ export default function EvaluationForm() {
     // Staff list
     const staffUsers = useMemo(() => {
         let filtered = users.filter((u) => u.role === 'staff');
+        if (facFilter !== 'all') filtered = filtered.filter(u => u.facility_id === facFilter);
+        if (occFilter !== 'all') filtered = filtered.filter(u => u.occupation_id === occFilter);
+        if (searchFilter.trim()) filtered = filtered.filter(u => u.name.includes(searchFilter.trim()));
         if (!permissions.canViewAllStaff && permissions.canViewFacility) {
             filtered = filtered.filter((u) => u.facility_id === currentUser?.facility_id);
         }
         return filtered;
-    }, [currentUser, permissions]);
+    }, [currentUser, permissions, facFilter, occFilter, searchFilter]);
 
     const allStaffActive = useMemo(() => {
         let filtered = users.filter((u) => u.status === 'active');
@@ -194,6 +200,18 @@ export default function EvaluationForm() {
                     <div className="card" style={{ marginBottom: 'var(--space-6)' }}>
                         <div className="card-body">
                             <div style={{ display: 'flex', gap: 'var(--space-4)', flexWrap: 'wrap', alignItems: 'end' }}>
+                                <div className='form-group' style={{flex:'1 1 150px',marginBottom:0}}>
+                                    <label className='form-label'>事業所</label>
+                                    <select className='form-select' value={facFilter} onChange={e=>setFacFilter(e.target.value)}><option value='all'>すべて</option>{facilities.map(f=><option key={f.id} value={f.id}>{f.name}</option>)}</select>
+                                </div>
+                                <div className='form-group' style={{flex:'0 0 120px',marginBottom:0}}>
+                                    <label className='form-label'>職種</label>
+                                    <select className='form-select' value={occFilter} onChange={e=>setOccFilter(e.target.value)}><option value='all'>すべて</option>{occupations.map(o=><option key={o.id} value={o.id}>{o.name}</option>)}</select>
+                                </div>
+                                <div className='form-group' style={{flex:'0 0 160px',marginBottom:0}}>
+                                    <label className='form-label'>名前検索</label>
+                                    <input type='text' className='form-input' placeholder='名前で検索...' value={searchFilter} onChange={e=>setSearchFilter(e.target.value)} />
+                                </div>
                                 <div className="form-group" style={{ flex: '1 1 250px', marginBottom: 0 }}>
                                     <label className="form-label">対象者</label>
                                     <select className="form-select" value={selectedUserId} onChange={(e) => handleUserChange(e.target.value)} id="user-select">

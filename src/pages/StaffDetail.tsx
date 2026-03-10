@@ -7,7 +7,7 @@ import type { InterviewLog, InterviewType } from '../types';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend);
 
-type TabKey = 'survey' | 'interviews' | 'aptitude' | 'ai';
+type TabKey = 'survey' | 'interviews' | 'aptitude' | 'ai' | 'hr';
 const MOOD_ICONS = ['😫','😟','😐','🙂','😊'];
 const INT_ICONS: Record<InterviewType,string> = {'定期面談':'📅','1on1':'🤝','フォローアップ':'🔄','キャリア面談':'🎯','その他':'📝'};
 
@@ -89,6 +89,7 @@ export default function StaffDetail() {
         <button className={'tab-item '+(activeTab==='interviews'?'active':'')} onClick={()=>setActiveTab('interviews')}>📝 面談記録</button>
         <button className={'tab-item '+(activeTab==='aptitude'?'active':'')} onClick={()=>setActiveTab('aptitude')}>🧪 適性検査</button>
         <button className={'tab-item '+(activeTab==='ai'?'active':'')} onClick={()=>setActiveTab('ai')}>🤖 AIアドバイス</button>
+        <button className={'tab-item '+(activeTab==='hr'?'active':'')} onClick={()=>setActiveTab('hr')}>💼 人事情報</button>
       </div>
       {activeTab==='survey'&&(<div className='card'><div className='card-header'><h3 className='card-title'>📈 スコア推移</h3></div><div className='card-body'>{uSurveys.length>0?(<div className='chart-container'><Line data={trendData} options={cOpts}/></div>):(<div style={{textAlign:'center',padding:'var(--space-8)',color:'var(--color-neutral-400)'}}>サーベイデータがありません</div>)}</div></div>)}
       {activeTab==='interviews'&&(<div>
@@ -120,6 +121,49 @@ export default function StaffDetail() {
           <div className='card-header'><div style={{display:'flex',alignItems:'center',gap:'var(--space-2)'}}><span style={{fontSize:'var(--font-size-xl)'}}>{a.icon}</span><h3 className='card-title'>{a.title}</h3></div><span className='badge' style={{background:pBgs[a.priority],color:pCols[a.priority]}}>{pLbls[a.priority]}</span></div>
           <div className='card-body'><p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)',marginBottom:'var(--space-4)',lineHeight:'var(--line-height-relaxed)'}}>{a.description}</p><div style={{padding:'var(--space-3) var(--space-4)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)'}}><div style={{fontWeight:600,fontSize:'var(--font-size-xs)',color:'var(--color-primary-600)',marginBottom:'var(--space-2)'}}>💡 推奨アクション</div>{a.actions.map((act,j)=>(<div key={j} style={{display:'flex',alignItems:'center',gap:'var(--space-2)',fontSize:'var(--font-size-sm)',padding:'3px 0'}}><span style={{color:'var(--color-primary-400)'}}>▶</span> {act}</div>))}</div></div>
         </div>))}
+      </div>)}
+      {activeTab==='hr'&&(<div>
+        <div className='card' style={{marginBottom:'var(--space-5)'}}>
+          <div className='card-header'><h3 className='card-title'>💰 昇給履歴</h3></div>
+          <div className='card-body'>
+            <table className='sp-table'>
+              <thead><tr><th>年月日</th><th>昇給額</th><th>備考</th></tr></thead>
+              <tbody>
+                {[
+                  {date:'2025-04-01',amount:'+15,000円',note:'定期昇給'},
+                  {date:'2024-04-01',amount:'+12,000円',note:'定期昇給'},
+                  {date:'2023-10-01',amount:'+20,000円',note:'役職手当追加'},
+                  {date:'2023-04-01',amount:'+10,000円',note:'定期昇給'},
+                  {date:'2022-04-01',amount:'+8,000円',note:'入社時'},
+                ].map((r,i)=>(
+                  <tr key={i}>
+                    <td style={{fontWeight:500}}>{r.date}</td>
+                    <td style={{color:'var(--color-success)',fontWeight:600}}>{r.amount}</td>
+                    <td style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-500)'}}>{r.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className='card'>
+          <div className='card-header'><h3 className='card-title'>📋 人事情報サマリ</h3></div>
+          <div className='card-body'>
+            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:'var(--space-4)'}}>
+              {[
+                {label:'入社日',value:user?.hire_date||'未登録',icon:'📅'},
+                {label:'雇用形態',value:user?.employment_type||'未登録',icon:'📝'},
+                {label:'勤務形態',value:user?.work_pattern||'未登録',icon:'⏰'},
+                {label:'役職',value:user?.position||'未登録',icon:'🎖️'},
+              ].map((item,i)=>(
+                <div key={i} style={{padding:'var(--space-3)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
+                  <span style={{fontSize:'var(--font-size-lg)'}}>{item.icon}</span>
+                  <div><div style={{fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>{item.label}</div><div style={{fontWeight:600,fontSize:'var(--font-size-sm)'}}>{item.value}</div></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>)}
     </div>
   );
