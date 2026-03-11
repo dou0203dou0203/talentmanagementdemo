@@ -24,6 +24,7 @@ const navItems: NavGroup[] = [
             { path: '/staff', label: 'スタッフ詳細', icon: '👤' },
             { path: '/evaluation', label: '評価入力', icon: '📝', roles: ['hr_admin', 'facility_manager'] },
             { path: '/survey', label: 'サーベイ回答', icon: '😊' },
+            { path: '/thanks', label: 'ありがとうポイント', icon: '💝' },
         ],
     },
     {
@@ -69,6 +70,7 @@ const pageTitles: Record<string, string> = {
     '/staffing': '配置シミュレーション',
     '/documents': '書類管理',
     '/alerts': '離職防止アラート',
+    '/thanks': 'ありがとうポイント',
 };
 
 export default function Layout() {

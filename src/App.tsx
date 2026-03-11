@@ -22,6 +22,7 @@ import NewcomerChecklist from './pages/NewcomerChecklist';
 import Notifications from './pages/Notifications';
 import RetiredStaff from './pages/RetiredStaff';
 import AttritionAnalysis from './pages/AttritionAnalysis';
+import ThanksPoints from './pages/ThanksPoints';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -70,6 +71,7 @@ function AppRoutes() {
         <Route path="survey" element={<SurveyForm />} />
         <Route path="survey/settings" element={<SurveySettings />} />
         <Route path="aptitude/test" element={<AptitudeTestForm />} />
+        <Route path="thanks" element={<ThanksPoints />} />
       </Route>
       <Route path="/s/:token" element={<SurveyMobile />} />
     </Routes>
