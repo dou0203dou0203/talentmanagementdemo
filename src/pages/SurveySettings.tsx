@@ -10,6 +10,30 @@ const CATEGORY_ICONS: Record<SurveyCategory, string> = {
     'ワークライフバランス': '⚖️',
 };
 
+// Newcomer survey questions
+const newcomerQuestions: SurveyQuestion[] = [
+    { id: 'nq-1', category: '業務理解' as SurveyCategory, question: '業務内容を理解できていますか？', sort_order: 1 },
+    { id: 'nq-2', category: '業務理解' as SurveyCategory, question: '必要な研修やOJTを受けられていますか？', sort_order: 2 },
+    { id: 'nq-3', category: '職場環境' as SurveyCategory, question: '職場の雰囲気に馴染めていますか？', sort_order: 1 },
+    { id: 'nq-4', category: '職場環境' as SurveyCategory, question: '団ったときに相談できる人がいますか？', sort_order: 2 },
+    { id: 'nq-5', category: 'メンタル' as SurveyCategory, question: '不安やストレスを感じていませんか？', sort_order: 1 },
+    { id: 'nq-6', category: 'メンタル' as SurveyCategory, question: '体調は良好ですか？', sort_order: 2 },
+    { id: 'nq-7', category: '今後の展望' as SurveyCategory, question: 'この職場で長く働きたいと思いますか？', sort_order: 1 },
+    { id: 'nq-8', category: '今後の展望' as SurveyCategory, question: '今後身につけたいスキルや知識はありますか？', sort_order: 2 },
+];
+
+// Leader aptitude survey questions
+const leaderSurveyQuestions: SurveyQuestion[] = [
+    { id: 'lsq-1', category: '信頼性' as SurveyCategory, question: '他のスタッフから相談されることが多い', sort_order: 1 },
+    { id: 'lsq-2', category: '判断力' as SurveyCategory, question: '困難な場面でも冷静に判断できる', sort_order: 1 },
+    { id: 'lsq-3', category: 'コミュニケーション' as SurveyCategory, question: 'チームの目標を明確に伝えられる', sort_order: 1 },
+    { id: 'lsq-4', category: '育成力' as SurveyCategory, question: '後輩の指導・育成に積極的に取り組んでいる', sort_order: 1 },
+    { id: 'lsq-5', category: '主体性' as SurveyCategory, question: '業務改善の提案を自発的に行っている', sort_order: 1 },
+    { id: 'lsq-6', category: '調整力' as SurveyCategory, question: '他職種との連携を円滑に進められる', sort_order: 1 },
+    { id: 'lsq-7', category: '耐性' as SurveyCategory, question: 'ストレスの高い状況でも安定したパフォーマンスを発揮する', sort_order: 1 },
+    { id: 'lsq-8', category: '規律性' as SurveyCategory, question: '組織のルールや理念を理解し、模範となる行動ができる', sort_order: 1 },
+];
+
 const MOOD_ICONS = ['😫', '😟', '😐', '🙂', '😊'];
 const MOOD_LABELS = ['とても悪い', 'やや悪い', '普通', 'やや良い', 'とても良い'];
 
@@ -17,7 +41,10 @@ type ViewMode = 'edit' | 'preview';
 
 export default function SurveySettings() {
     const [questions, setQuestions] = useState<SurveyQuestion[]>([...initialQuestions]);
+    const [ncQuestions, setNcQuestions] = useState<SurveyQuestion[]>([...newcomerQuestions]);
+    const [ldQuestions, setLdQuestions] = useState<SurveyQuestion[]>([...leaderSurveyQuestions]);
     const [viewMode, setViewMode] = useState<ViewMode>('edit');
+    const [surveyType, setSurveyType] = useState<'regular'|'newcomer'|'leader'>('regular');
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editText, setEditText] = useState('');
     const [showAddForm, setShowAddForm] = useState(false);
@@ -28,22 +55,26 @@ export default function SurveySettings() {
     const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
+    // Active questions based on survey type
+    const activeQuestions = surveyType === 'regular' ? questions : surveyType === 'newcomer' ? ncQuestions : ldQuestions;
+    const setActiveQuestions = surveyType === 'regular' ? setQuestions : surveyType === 'newcomer' ? setNcQuestions : setLdQuestions;
+
     // Get unique categories
     const categories = useMemo(() => {
-        const cats = [...new Set(questions.map(q => q.category))];
+        const cats = [...new Set(activeQuestions.map(q => q.category))];
         return cats;
-    }, [questions]);
+    }, [activeQuestions]);
 
     // Group questions by category
     const groupedQuestions = useMemo(() => {
         return categories.map(cat => ({
             category: cat,
             icon: CATEGORY_ICONS[cat] || '📝',
-            questions: questions
+            questions: activeQuestions
                 .filter(q => q.category === cat)
                 .sort((a, b) => a.sort_order - b.sort_order),
         }));
-    }, [questions, categories]);
+    }, [activeQuestions, categories]);
 
     const showToast = (message: string, type: 'success' | 'error' = 'success') => {
         setToast({ message, type });
@@ -54,7 +85,7 @@ export default function SurveySettings() {
     const handleAddQuestion = () => {
         if (!newQuestion.trim()) return;
 
-        const categoryQuestions = questions.filter(q => q.category === newCategory);
+        const categoryQuestions = activeQuestions.filter(q => q.category === newCategory);
         const maxOrder = categoryQuestions.length > 0
             ? Math.max(...categoryQuestions.map(q => q.sort_order))
             : 0;
@@ -66,7 +97,7 @@ export default function SurveySettings() {
             sort_order: maxOrder + 1,
         };
 
-        setQuestions(prev => [...prev, newQ]);
+        setActiveQuestions(prev => [...prev, newQ]);
         setNewQuestion('');
         setShowAddForm(false);
         showToast('設問を追加しました');
@@ -88,7 +119,7 @@ export default function SurveySettings() {
             sort_order: 1,
         };
 
-        setQuestions(prev => [...prev, newQ]);
+        setActiveQuestions(prev => [...prev, newQ]);
         setNewCategoryName('');
         setShowNewCategoryInput(false);
         showToast(`カテゴリ「${catName}」を追加しました`);
@@ -102,7 +133,7 @@ export default function SurveySettings() {
 
     const saveEdit = () => {
         if (!editingId || !editText.trim()) return;
-        setQuestions(prev =>
+        setActiveQuestions(prev =>
             prev.map(q => q.id === editingId ? { ...q, question: editText.trim() } : q)
         );
         setEditingId(null);
@@ -117,14 +148,14 @@ export default function SurveySettings() {
 
     // --- Delete Question ---
     const handleDelete = (id: string) => {
-        setQuestions(prev => prev.filter(q => q.id !== id));
+        setActiveQuestions(prev => prev.filter(q => q.id !== id));
         setDeleteConfirmId(null);
         showToast('設問を削除しました');
     };
 
     // --- Reorder ---
     const moveQuestion = (id: string, direction: 'up' | 'down') => {
-        setQuestions(prev => {
+        setActiveQuestions(prev => {
             const q = prev.find(x => x.id === id);
             if (!q) return prev;
 
@@ -146,7 +177,7 @@ export default function SurveySettings() {
     };
 
     // --- Stats ---
-    const totalQuestions = questions.length;
+    const totalQuestions = activeQuestions.length;
     const totalCategories = categories.length;
 
     // ========================================
@@ -420,8 +451,21 @@ export default function SurveySettings() {
         <div className="fade-in">
             <h2 className="page-title">サーベイ設問管理</h2>
             <p className="page-subtitle">
-                サーベイで使用する設問の追加・編集・並び替えを行えます。
+                各サーベイ種別（定期・新人・リーダー適性）の設問を管理できます。
             </p>
+
+            {/* Survey Type Tabs */}
+            <div className='sp-tabs' style={{marginBottom:'var(--space-5)'}}>
+                <button className={'sp-tab '+(surveyType==='regular'?'active':'')} onClick={()=>{setSurveyType('regular');setEditingId(null);}}>
+                    <span>📋</span> 定期サーベイ
+                </button>
+                <button className={'sp-tab '+(surveyType==='newcomer'?'active':'')} onClick={()=>{setSurveyType('newcomer');setEditingId(null);}}>
+                    <span>🌱</span> 新人サーベイ
+                </button>
+                <button className={'sp-tab '+(surveyType==='leader'?'active':'')} onClick={()=>{setSurveyType('leader');setEditingId(null);}}>
+                    <span>👑</span> リーダー適性
+                </button>
+            </div>
 
             {/* Stats */}
             <div className="stats-grid">

@@ -35,7 +35,6 @@ const navItems: NavGroup[] = [
             { path: '/interviews', label: '面談記録', icon: '💬' },
             { path: '/org', label: '組織管理', icon: '🏢' },
             { path: '/analytics', label: '分析', icon: '📈' },
-            { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
             { path: '/staff/u-1', label: 'スタッフ詳細', icon: '👤' },
             { path: '/aptitude/test', label: '適性検査実施', icon: '🧪' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
@@ -47,6 +46,7 @@ const navItems: NavGroup[] = [
         roles: ['hr_admin'],
         items: [
             { path: '/eval-history', label: '評価履歴', icon: '⭐' },
+            { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
             { path: '/documents', label: '書類管理', icon: '📄' },
             { path: '/notifications', label: '通知', icon: '🔔' },
