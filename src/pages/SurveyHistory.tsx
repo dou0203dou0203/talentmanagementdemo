@@ -255,8 +255,20 @@ export default function SurveyHistory() {
         <div className="fade-in">
             <h2 className="page-title">サーベイ管理</h2>
             <p className="page-subtitle">
-                定期サーベイの配信履歴・回答率・個人別の推移を確認できます。
+定期サーベイの配信履歴・回答率・個人別の推移を確認できます。
             </p>
+            <div style={{display:'flex',gap:'var(--space-4)',marginBottom:'var(--space-5)',flexWrap:'wrap'}}>
+                <div style={{flex:1,padding:'var(--space-3) var(--space-4)',background:'#fffbeb',borderRadius:'var(--radius-md)',border:'1px solid #fde68a',fontSize:'var(--font-size-sm)'}}>
+                    <strong>🌱 新人（入職後3ヶ月）:</strong> 毎月実施
+                </div>
+                <div style={{flex:1,padding:'var(--space-3) var(--space-4)',background:'var(--color-primary-50)',borderRadius:'var(--radius-md)',border:'1px solid var(--color-primary-100)',fontSize:'var(--font-size-sm)'}}>
+                    <strong>📅 通常:</strong> 3ヶ月に1回実施
+                </div>
+                <div style={{flex:1,padding:'var(--space-3) var(--space-4)',background:'#f5f3ff',borderRadius:'var(--radius-md)',border:'1px solid #ddd6fe',fontSize:'var(--font-size-sm)'}}>
+                    <strong>👑 リーダー適性:</strong> 年に1回実施
+                </div>
+            </div>
+            
 
             {/* Stats */}
             <div className="stats-grid">

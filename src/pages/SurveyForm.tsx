@@ -33,6 +33,9 @@ export default function SurveyForm() {
     const [hrMessage, setHrMessage] = useState('');
     const [submitted, setSubmitted] = useState(existingAnswer?.submitted || false);
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [surveyMode, setSurveyMode] = useState<'regular'|'leader'>('regular');
+    const [thanksTargets, setThanksTargets] = useState<{userId:string;message:string}[]>([]);
+    const [thanksInput, setThanksInput] = useState({userId:'',message:''});
 
     // Group questions by category
     const categories = useMemo(() => {
@@ -113,6 +116,42 @@ export default function SurveyForm() {
     );
 
     const isPastPeriod = selectedPeriod.status === 'closed';
+
+    // Survey frequency calculation
+    const monthsSinceHire = useMemo(() => {
+        if (!currentUser.hire_date) return 999;
+        const hire = new Date(currentUser.hire_date);
+        const now = new Date();
+        return (now.getFullYear()-hire.getFullYear())*12 + (now.getMonth()-hire.getMonth());
+    }, [currentUser]);
+    const isNewcomer = monthsSinceHire <= 3;
+    const frequencyLabel = isNewcomer ? '毎月実施（入職後3ヶ月以内）' : '3ヶ月に1回実施';
+
+    // Leader survey questions
+    const leaderQuestions = [
+        { id: 'lq-1', q: '他のスタッフから相談されることが多い', cat: '信頼性' },
+        { id: 'lq-2', q: '困難な場面でも冷静に判断できる', cat: '判断力' },
+        { id: 'lq-3', q: 'チームの目標を明確に伝えられる', cat: 'コミュニケーション' },
+        { id: 'lq-4', q: '後輩の指導・育成に積極的に取り組んでいる', cat: '育成力' },
+        { id: 'lq-5', q: '業務改善の提案を自発的に行っている', cat: '主体性' },
+        { id: 'lq-6', q: '他職種との連携を円滑に進められる', cat: '調整力' },
+        { id: 'lq-7', q: 'ストレスの高い状況でも安定したパフォーマンスを発揮する', cat: '耐性' },
+        { id: 'lq-8', q: '組織のルールや理念を理解し、模範となる行動ができる', cat: '規律性' },
+    ];
+    const [leaderScores, setLeaderScores] = useState<Record<string,number>>({});
+    const [leaderTarget, setLeaderTarget] = useState('u-4');
+    const leaderAllAnswered = leaderQuestions.every(q => (leaderScores[q.id]||0) > 0);
+    const leaderAvg = (() => { const vals = Object.values(leaderScores).filter(v=>v>0); return vals.length>0 ? (vals.reduce((a,b)=>a+b,0)/vals.length) : 0; })();
+
+    // Other staff for thanks points (exclude self)
+    const otherStaff = users.filter(u => u.id !== currentUserId && u.status === 'active');
+    const addThanksTarget = () => {
+        if (!thanksInput.userId || thanksTargets.length >= 3) return;
+        if (thanksTargets.some(t => t.userId === thanksInput.userId)) return;
+        setThanksTargets(prev => [...prev, { ...thanksInput }]);
+        setThanksInput({ userId: '', message: '' });
+    };
+    const removeThanksTarget = (userId: string) => setThanksTargets(prev => prev.filter(t => t.userId !== userId));
 
     if (showConfirmation) {
         return (
@@ -209,11 +248,29 @@ export default function SurveyForm() {
 
     return (
         <div className="fade-in">
-            <h2 className="page-title">定期サーベイ</h2>
-            <p className="page-subtitle">
-                あなたの現在の気持ちを教えてください。回答は匿名で集計され、職場環境の改善に活用されます。
-            </p>
+            <h2 className="page-title">サーベイ</h2>
+            <p className="page-subtitle">あなたの現在の気持ちを教えてください。回答は匿名で集計され、職場環境の改善に活用されます。</p>
 
+            {/* Survey Mode Tabs */}
+            <div className="sp-tabs" style={{marginBottom:'var(--space-5)'}}>
+                <button className={'sp-tab '+(surveyMode==='regular'?'active':'')} onClick={()=>setSurveyMode('regular')}>
+                    <span>📋</span> 定期サーベイ
+                </button>
+                <button className={'sp-tab '+(surveyMode==='leader'?'active':'')} onClick={()=>setSurveyMode('leader')}>
+                    <span>👑</span> リーダー適性サーベイ
+                </button>
+            </div>
+
+            {/* Frequency Info */}
+            <div style={{display:'flex',alignItems:'center',gap:'var(--space-3)',padding:'var(--space-3) var(--space-4)',background:isNewcomer?'#fffbeb':'var(--color-primary-50)',borderRadius:'var(--radius-md)',marginBottom:'var(--space-5)',border:'1px solid '+(isNewcomer?'#fde68a':'var(--color-primary-100)'),fontSize:'var(--font-size-sm)'}}>
+                <span style={{fontSize:'var(--font-size-lg)'}}>{isNewcomer?'🌱':'📅'}</span>
+                <div>
+                    <strong>実施頻度:</strong> {frequencyLabel}
+                    {isNewcomer && <span style={{marginLeft:8,color:'#f59e0b',fontWeight:600}}>★ 新人期間中</span>}
+                </div>
+            </div>
+
+            {surveyMode==='regular' && (<>
             {/* User Info & Period Selection */}
             <div className="card" style={{ marginBottom: 'var(--space-6)' }}>
                 <div className="card-body">
@@ -437,6 +494,47 @@ export default function SurveyForm() {
                 </div>
             </div>
 
+            {/* Thanks Points Section */}
+            {!submitted && !isPastPeriod && (
+            <div className="card" style={{marginBottom:'var(--space-6)'}}>
+                <div className="card-header">
+                    <div style={{display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
+                        <span style={{fontSize:'var(--font-size-xl)'}}>💝</span>
+                        <h3 className="card-title">ありがとうポイントを送る（最大3名）</h3>
+                    </div>
+                    <span className="badge badge-neutral">{thanksTargets.length}/3</span>
+                </div>
+                <div className="card-body">
+                    <p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-500)',marginBottom:'var(--space-3)'}}>感謝を伝えたい同僚を選んで、メッセージを送りましょう。</p>
+                    {thanksTargets.map(t => {
+                        const tu = users.find(u2=>u2.id===t.userId);
+                        return (
+                            <div key={t.userId} style={{display:'flex',alignItems:'center',gap:8,padding:'8px 12px',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',marginBottom:8}}>
+                                <span>💝</span>
+                                <strong style={{fontSize:'var(--font-size-sm)'}}>{tu?.name}</strong>
+                                <span style={{flex:1,fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>{t.message}</span>
+                                <button className="btn btn-sm" style={{padding:'2px 8px',fontSize:12}} onClick={()=>removeThanksTarget(t.userId)}>✕</button>
+                            </div>
+                        );
+                    })}
+                    {thanksTargets.length < 3 && (
+                        <div style={{display:'flex',gap:8,alignItems:'end',flexWrap:'wrap'}}>
+                            <div className="form-group" style={{flex:'0 0 200px',marginBottom:0}}>
+                                <select className="form-select" value={thanksInput.userId} onChange={e=>setThanksInput(p=>({...p,userId:e.target.value}))}>
+                                    <option value="">選択してください</option>
+                                    {otherStaff.filter(u=>!thanksTargets.some(t=>t.userId===u.id)).map(u=><option key={u.id} value={u.id}>{u.name}</option>)}
+                                </select>
+                            </div>
+                            <div className="form-group" style={{flex:1,marginBottom:0}}>
+                                <input type="text" className="form-input" placeholder="メッセージ（任意）" value={thanksInput.message} onChange={e=>setThanksInput(p=>({...p,message:e.target.value}))} />
+                            </div>
+                            <button className="btn btn-primary btn-sm" onClick={addThanksTarget} disabled={!thanksInput.userId}>💝 追加</button>
+                        </div>
+                    )}
+                </div>
+            </div>
+            )}
+
             {/* Submit */}
             <div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--space-4) 0 var(--space-8)' }}>
                 {!submitted && !isPastPeriod && (
@@ -464,6 +562,70 @@ export default function SurveyForm() {
                     </div>
                 )}
             </div>
+            </>)}
+
+            {/* ===== LEADER SURVEY MODE ===== */}
+            {surveyMode==='leader' && (
+            <div>
+                <div className='card' style={{marginBottom:'var(--space-5)'}}>
+                    <div className='card-header'>
+                        <div style={{display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
+                            <span style={{fontSize:'var(--font-size-xl)'}}>👑</span>
+                            <h3 className='card-title'>リーダー適性サーベイ（年次）</h3>
+                        </div>
+                        <span className='badge badge-primary'>管理職候補発見用</span>
+                    </div>
+                    <div className='card-body'>
+                        <p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)',marginBottom:'var(--space-4)'}}>次のスタッフのリーダーとしての適性を評価してください。年に1回実施されます。</p>
+                        <div className='form-group' style={{maxWidth:300}}>
+                            <label className='form-label'>評価対象者</label>
+                            <select className='form-select' value={leaderTarget} onChange={e=>{setLeaderTarget(e.target.value);setLeaderScores({});}}>
+                                {otherStaff.map(u=><option key={u.id} value={u.id}>{u.name}</option>)}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {leaderQuestions.map((lq) => {
+                    const sc = leaderScores[lq.id]||0;
+                    return (
+                        <div key={lq.id} className='card' style={{marginBottom:'var(--space-3)'}}>
+                            <div className='card-body'>
+                                <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:8}}>
+                                    <div style={{fontSize:'var(--font-size-sm)',fontWeight:500}}>{lq.q}</div>
+                                    <span className='badge badge-neutral' style={{fontSize:10,flexShrink:0}}>{lq.cat}</span>
+                                </div>
+                                <div className='survey-mood-group'>
+                                    {MOOD_ICONS.map((icon,idx) => {
+                                        const val = idx+1;
+                                        return (
+                                            <button key={val} className={'survey-mood-btn '+(sc===val?'active':'')}
+                                                onClick={()=>setLeaderScores(p=>({...p,[lq.id]:val}))}
+                                                title={MOOD_LABELS[idx]}
+                                                style={{'--mood-color':MOOD_COLORS[idx]} as React.CSSProperties}>
+                                                <span className='survey-mood-icon'>{icon}</span>
+                                                <span className='survey-mood-label'>{MOOD_LABELS[idx]}</span>
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+                {leaderAvg > 0 && (
+                    <div style={{textAlign:'center',padding:'var(--space-4)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-lg)',marginBottom:'var(--space-4)'}}>
+                        <div style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-500)'}}>リーダー適性スコア</div>
+                        <div style={{fontSize:'var(--font-size-xl)',fontWeight:700,color:leaderAvg>=4?'var(--color-success)':leaderAvg>=3?'var(--color-warning)':'var(--color-danger)'}}>{leaderAvg.toFixed(1)} / 5.0</div>
+                    </div>
+                )}
+                <div style={{display:'flex',justifyContent:'center',padding:'var(--space-4) 0 var(--space-8)'}}>
+                    <button className='btn btn-primary btn-lg' disabled={!leaderAllAnswered}
+                        onClick={()=>alert(users.find(u=>u.id===leaderTarget)?.name+'さんのリーダー適性評価を送信しました（デモ）')} style={{minWidth:200}}>
+                        {leaderAllAnswered ? '👑 評価を送信する' : '全設問に回答してください'}
+                    </button>
+                </div>
+            </div>
+            )}
         </div>
     );
 }
