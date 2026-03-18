@@ -53,6 +53,7 @@ const navItems: NavGroup[] = [
             { path: '/retired-staff', label: '退職者管理', icon: '📋' },
             { path: '/staff-data', label: 'データ管理', icon: '📊' },
             { path: '/attrition-analysis', label: 'AI離職分析', icon: '🧠' },
+            { path: '/supabase-test', label: 'DB接続確認', icon: '🔌' },
         ],
     },
 ];
