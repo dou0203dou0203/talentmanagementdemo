@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react';
+import { useData } from '../context/DataContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend } from 'chart.js';
-import { users, facilities, occupations, surveys, interviewLogs as initialLogs, aptitudeTests } from '../data/mockData';
 import type { InterviewLog, InterviewType } from '../types';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend);
@@ -12,6 +12,7 @@ const MOOD_ICONS = ['😫','😟','😐','🙂','😊'];
 const INT_ICONS: Record<InterviewType,string> = {'定期面談':'📅','1on1':'🤝','フォローアップ':'🔄','キャリア面談':'🎯','その他':'📝'};
 
 export default function StaffDetail() {
+    const { users, facilities, occupations, surveys, interviewLogs: initialLogs, aptitudeTests } = useData();
   const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabKey>('survey');
@@ -21,12 +22,12 @@ export default function StaffDetail() {
   const user = users.find(u=>u.id===userId);
   const fac = facilities.find(f=>f.id===user?.facility_id);
   const occ = occupations.find(o=>o.id===user?.occupation_id);
-  const uSurveys = useMemo(()=>surveys.filter(s=>s.user_id===userId).sort((a,b)=>new Date(a.survey_date).getTime()-new Date(b.survey_date).getTime()),[userId]);
+  const uSurveys = useMemo(()=>surveys.filter((s: any)=>s.user_id===userId).sort((a,b)=>new Date(a.survey_date).getTime()-new Date(b.survey_date).getTime()),[userId]);
   const uLogs = useMemo(()=>interviewLogs.filter(l=>l.user_id===userId).sort((a,b)=>new Date(b.date).getTime()-new Date(a.date).getTime()),[userId,interviewLogs]);
   const uApt = useMemo(()=>aptitudeTests.filter(t=>t.user_id===userId),[userId]);
   if(!user) return(<div className='fade-in' style={{textAlign:'center',padding:'var(--space-12)'}}><span style={{fontSize:'3rem'}}>🔍</span><h2>スタッフが見つかりません</h2><button className='btn btn-primary' onClick={()=>navigate('/')}>ダッシュボードへ戻る</button></div>);
-  const trendData = useMemo(()=>({labels:uSurveys.map(s=>{const d=new Date(s.survey_date);return d.getFullYear()+'/'+(d.getMonth()+1);}),datasets:[{label:'メンタルスコア',data:uSurveys.map(s=>s.mental_score),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.1)',fill:true,tension:0.4,pointRadius:5},{label:'モチベーション',data:uSurveys.map(s=>s.motivation_score),borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.1)',fill:true,tension:0.4,pointRadius:5}]}),[uSurveys]);
-  const aptRadar = useMemo(()=>{if(uApt.length===0)return null;const l=uApt[0];return{labels:l.scores.map(s=>s.category),datasets:[{label:user.name,data:l.scores.map(s=>s.score),backgroundColor:'rgba(13,158,158,0.2)',borderColor:'rgba(13,158,158,0.8)',borderWidth:2,pointBackgroundColor:'rgba(13,158,158,1)',pointRadius:4}]};},[uApt,user]);
+  const trendData = useMemo(()=>({labels:uSurveys.map((s: any)=>{const d=new Date(s.survey_date);return d.getFullYear()+'/'+(d.getMonth()+1);}),datasets:[{label:'メンタルスコア',data:uSurveys.map((s: any)=>s.mental_score),borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,0.1)',fill:true,tension:0.4,pointRadius:5},{label:'モチベーション',data:uSurveys.map((s: any)=>s.motivation_score),borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,0.1)',fill:true,tension:0.4,pointRadius:5}]}),[uSurveys]);
+  const aptRadar = useMemo(()=>{if(uApt.length===0)return null;const l=uApt[0];return{labels:l.scores.map((s: any)=>s.category),datasets:[{label:user.name,data:l.scores.map((s: any)=>s.score),backgroundColor:'rgba(13,158,158,0.2)',borderColor:'rgba(13,158,158,0.8)',borderWidth:2,pointBackgroundColor:'rgba(13,158,158,1)',pointRadius:4}]};},[uApt,user]);
   const aiAdvice = useMemo(()=>{
     const adv: {icon:string;title:string;description:string;priority:'high'|'medium'|'low';actions:string[]}[]=[];
     if(uSurveys.length>=2){const r=uSurveys.slice(-3);const mt=r.length>=2?r[r.length-1].mental_score-r[0].mental_score:0;const vt=r.length>=2?r[r.length-1].motivation_score-r[0].motivation_score:0;const lm=r[r.length-1].mental_score;const lv=r[r.length-1].motivation_score;
@@ -39,10 +40,10 @@ export default function StaffDetail() {
     const rl=uLogs.filter(l=>{const d=new Date(l.date);const a=new Date();a.setMonth(a.getMonth()-6);return d>=a;});
     if(rl.length===0)adv.push({icon:'💬',title:'面談が未実施',description:'最近の面談記録がありません。',priority:'medium',actions:['1on1を今週中に設定','定期面談の確立']});
     else if(rl.length<=1)adv.push({icon:'📅',title:'面談頻度が低め',description:'過去6ヶ月で'+rl.length+'回のみ。',priority:'medium',actions:['月次1on1の定例化','声かけを増やす']});
-    if(uApt.length>0){const a=uApt[0];const lo=a.scores.filter(s=>s.score<50);const hi=a.scores.filter(s=>s.score>=80);
+    if(uApt.length>0){const a=uApt[0];const lo=a.scores.filter((s: any)=>s.score<50);const hi=a.scores.filter((s: any)=>s.score>=80);
       const am: Record<string,string[]>={'ストレス耐性':['ストレスマネジメント研修','リラクゼーション技法の指導'],'コミュニケーション':['コミュニケーション研修','ペアワーク機会を増やす'],'リーダーシップ':['小規模PJリーダーを任せる','リーダーシップ研修'],'感情のコントロール':['アンガーマネジメント研修','マインドフルネス'],'サポーティブ':['チームビルディング活動','後輩指導の機会提供']};
-      lo.forEach(s=>adv.push({icon:'🧪',title:'適性検査: '+s.category+'が低め',description:s.category+'のスコアが'+s.score+'点。強化を検討。',priority:'medium',actions:am[s.category]||['専門研修を推薦']}));
-      if(hi.length>0)adv.push({icon:'💪',title:'強みを活かす',description:hi.map(s=>s.category).join('・')+'が強みです。',priority:'low',actions:['強みを活かせるPJへのアサイン','メンタリング役割']});
+      lo.forEach((s: any)=>adv.push({icon:'🧪',title:'適性検査: '+s.category+'が低め',description:s.category+'のスコアが'+s.score+'点。強化を検討。',priority:'medium',actions:am[s.category]||['専門研修を推薦']}));
+      if(hi.length>0)adv.push({icon:'💪',title:'強みを活かす',description:hi.map((s: any)=>s.category).join('・')+'が強みです。',priority:'low',actions:['強みを活かせるPJへのアサイン','メンタリング役割']});
     }
     if(adv.length===0)adv.push({icon:'✅',title:'憸念事項なし',description:'大きなリスクは検出されていません。',priority:'low',actions:['定期面談の継続','サーベイ回答の促進']});
     return adv.sort((a,b)=>{const o: Record<string,number>={high:0,medium:1,low:2};return o[a.priority]-o[b.priority];});
@@ -113,7 +114,7 @@ export default function StaffDetail() {
       </div>)}
       {activeTab==='aptitude'&&(<div><div style={{display:'flex',justifyContent:'flex-end',marginBottom:'var(--space-4)'}}><button className='btn btn-primary' onClick={()=>navigate('/aptitude/test')}>🧪 新しい検査を実施</button></div>{uApt.length===0?(<div className='card'><div className='card-body' style={{textAlign:'center',color:'var(--color-neutral-400)',padding:'var(--space-8)'}}>適性検査データがありません</div></div>):(<div className='grid-2'>
         <div className='card'><div className='card-header'><h3 className='card-title'>🕸️ スコアレーダー</h3></div><div className='card-body'>{aptRadar&&<div style={{height:320}}><Radar data={aptRadar} options={rOpts}/></div>}</div></div>
-        <div className='card'><div className='card-header'><h3 className='card-title'>📋 詳細スコア</h3><span style={{fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>検査日: {uApt[0].test_date}</span></div><div className='card-body'>{uApt[0].scores.map(s=>(<div key={s.category} style={{display:'flex',alignItems:'center',gap:'var(--space-3)',padding:'var(--space-3) 0',borderBottom:'1px solid var(--color-neutral-100)'}}><span style={{fontSize:'var(--font-size-sm)',flex:1,fontWeight:500}}>{s.category}</span><div style={{width:120,height:8,borderRadius:4,background:'var(--color-neutral-100)',overflow:'hidden'}}><div style={{width:s.score+'%',height:'100%',borderRadius:4,background:s.score>=70?'var(--color-success)':s.score>=50?'var(--color-warning)':'var(--color-danger)',transition:'width 0.5s'}}/></div><span style={{fontSize:'var(--font-size-sm)',fontWeight:700,width:40,textAlign:'right',color:s.score>=70?'var(--color-success)':s.score>=50?'var(--color-warning)':'var(--color-danger)'}}>{s.score}</span></div>))}<div style={{marginTop:'var(--space-4)',padding:'var(--space-3)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',fontSize:'var(--font-size-sm)',fontStyle:'italic',color:'var(--color-neutral-600)'}}>💬 {uApt[0].overall_comment}</div></div></div>
+        <div className='card'><div className='card-header'><h3 className='card-title'>📋 詳細スコア</h3><span style={{fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>検査日: {uApt[0].test_date}</span></div><div className='card-body'>{uApt[0].scores.map((s: any)=>(<div key={s.category} style={{display:'flex',alignItems:'center',gap:'var(--space-3)',padding:'var(--space-3) 0',borderBottom:'1px solid var(--color-neutral-100)'}}><span style={{fontSize:'var(--font-size-sm)',flex:1,fontWeight:500}}>{s.category}</span><div style={{width:120,height:8,borderRadius:4,background:'var(--color-neutral-100)',overflow:'hidden'}}><div style={{width:s.score+'%',height:'100%',borderRadius:4,background:s.score>=70?'var(--color-success)':s.score>=50?'var(--color-warning)':'var(--color-danger)',transition:'width 0.5s'}}/></div><span style={{fontSize:'var(--font-size-sm)',fontWeight:700,width:40,textAlign:'right',color:s.score>=70?'var(--color-success)':s.score>=50?'var(--color-warning)':'var(--color-danger)'}}>{s.score}</span></div>))}<div style={{marginTop:'var(--space-4)',padding:'var(--space-3)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',fontSize:'var(--font-size-sm)',fontStyle:'italic',color:'var(--color-neutral-600)'}}>💬 {uApt[0].overall_comment}</div></div></div>
       </div>)}</div>)}
       {activeTab==='ai'&&(<div>
         <div style={{padding:'var(--space-4) var(--space-5)',background:'linear-gradient(135deg,rgba(99,102,241,0.08),rgba(13,158,158,0.08))',borderRadius:'var(--radius-lg)',marginBottom:'var(--space-6)',border:'1px solid rgba(99,102,241,0.15)'}}><div style={{display:'flex',alignItems:'center',gap:'var(--space-2)',fontWeight:600,marginBottom:'var(--space-1)'}}>🤖 AIアドバイスエンジン</div><div style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)'}}>サーベイ推移・面談記録・適性検査のデータを分析し、{user.name}さんへの最適なアプローチを提案します。</div></div>

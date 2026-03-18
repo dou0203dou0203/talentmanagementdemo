@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
-import { occupations, facilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 export default function RetiredStaff() {
+    const { occupations, facilities } = useData();
   const [searchName, setSearchName] = useState('');
   const [filterFac, setFilterFac] = useState('all');
   const [filterOcc, setFilterOcc] = useState('all');

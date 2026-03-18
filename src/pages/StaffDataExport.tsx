@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { users, occupations, facilities, surveys, surveyPeriods, evaluations } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 // Column definitions
 type ColKey = 'name'|'email'|'facility'|'occupation'|'status'|'role'|'hire_date'|'position'|'employment_type'|'work_pattern'|'corporation'|'qualifications'|'mental'|'motivation'|'eval_score';
@@ -25,6 +25,7 @@ const STATUS_LABELS: Record<string,string> = { active: '在籍', leave: '休職�
 const ROLE_LABELS: Record<string,string> = { staff: 'スタッフ', facility_manager: '事業所管理者', hr_admin: '人事部', corp_head: '法人代表' };
 
 export default function StaffDataExport() {
+    const { users, occupations, facilities, surveys, surveyPeriods, evaluations } = useData();
   const [mode, setMode] = useState<'export'|'import'>('export');
   const [importFile, setImportFile] = useState<File|null>(null);
   const [importData, setImportData] = useState<string[][]>([]);

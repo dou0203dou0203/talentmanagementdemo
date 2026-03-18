@@ -1,8 +1,9 @@
 import { useMemo } from 'react';
-import { users as allUsers, occupations, facilities as allFacilities, surveys as allSurveys, evaluations as allEvaluations } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 
 export default function Analytics() {
+    const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, evaluations: allEvaluations } = useData();
     const { user: currentUser, permissions } = useAuth();
 
     const users = useMemo(() => {

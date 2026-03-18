@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { users, occupations, facilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 
 // Checklist data from Excel
@@ -94,6 +94,7 @@ const PERIODS = ['3ヵ月', '6ヵ月', '12ヵ月'] as const;
 type ScoreMap = Record<string, number>; // key = "catIdx-itemIdx"
 
 export default function NewcomerChecklist() {
+    const { users, occupations, facilities } = useData();
     const { user: currentUser, permissions } = useAuth();
     const [selectedUserId, setSelectedUserId] = useState('u-4');
     const [selectedPeriod, setSelectedPeriod] = useState<string>('3ヵ月');

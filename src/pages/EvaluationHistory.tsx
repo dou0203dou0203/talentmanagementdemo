@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { users, occupations, facilities, evaluations, evaluationTemplateItems } from '../data/mockData';
+import { useData } from '../context/DataContext';
+import { evaluationTemplateItems } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 
 export default function EvaluationHistory() {
+    const { users, occupations, facilities, evaluations } = useData();
     const { user: currentUser, permissions } = useAuth();
     const [filterUser, setFilterUser] = useState<string>('all');
     const [filterPeriod, setFilterPeriod] = useState<string>('all');

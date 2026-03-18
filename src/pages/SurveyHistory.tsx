@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useData } from '../context/DataContext';
 import { Radar, Line } from 'react-chartjs-2';
 import { QRCodeSVG } from 'qrcode.react';
 import {
@@ -13,14 +14,6 @@ import {
     Legend,
 } from 'chart.js';
 import { useAuth } from '../context/AuthContext';
-import {
-    surveys,
-    surveyPeriods,
-    surveyQuestions,
-    users,
-    facilities,
-    occupations,
-} from '../data/mockData';
 import type { SurveyCategory } from '../types';
 
 ChartJS.register(
@@ -49,6 +42,7 @@ const categoryIcons: Record<SurveyCategory, string> = {
 };
 
 export default function SurveyHistory() {
+    const { surveys, surveyPeriods, surveyQuestions, users, facilities, occupations } = useData();
     const [activeTab, setActiveTab] = useState<TabKey>('periods');
     const [selectedUserId, setSelectedUserId] = useState('u-5');
     const [qrModalUser, setQrModalUser] = useState<string | null>(null);

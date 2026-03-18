@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { users, aptitudeTests } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 // Mock recruitment data
 const applicants = [
@@ -29,6 +29,7 @@ const statusConfig: Record<string, { color: string; bg: string }> = {
 };
 
 export default function Recruitment() {
+    const { users, aptitudeTests } = useData();
     const [filterStatus, setFilterStatus] = useState<string>('all');
     const [filterSource, setFilterSource] = useState<string>('all');
     const [filterFacility, setFilterFacility] = useState<string>('all');
@@ -187,7 +188,7 @@ export default function Recruitment() {
                     <tbody>
                         {recentTests.map((t) => {
                             const u = users.find((u) => u.id === t.user_id);
-                            const avgScore = t.scores.length > 0 ? (t.scores.reduce((s, sc) => s + sc.score, 0) / t.scores.length).toFixed(0) : '—';
+                            const avgScore = t.scores.length > 0 ? (t.scores.reduce((s: number, sc: any) => s + sc.score, 0) / t.scores.length).toFixed(0) : '—';
                             return (
                                 <tr key={t.id}>
                                     <td>{u?.name || t.user_id}</td>

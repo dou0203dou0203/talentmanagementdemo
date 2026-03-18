@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 import {
@@ -12,13 +13,6 @@ import {
     Legend,
     Filler,
 } from 'chart.js';
-import {
-    users as allUsers,
-    occupations,
-    facilities as allFacilities,
-    surveys as allSurveys,
-    facilityStaffingTargets as allTargets,
-} from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 
 ChartJS.register(
@@ -47,6 +41,7 @@ interface AlertInfo {
 }
 
 export default function Dashboard() {
+    const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, facilityStaffingTargets: allTargets } = useData();
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
     const navigate = useNavigate();
     const { user: currentUser, permissions } = useAuth();

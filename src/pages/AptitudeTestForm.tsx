@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react';
+import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
-import { users, facilities } from '../data/mockData';
 import type { AptitudeTestScore } from '../types';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
@@ -57,6 +57,7 @@ const SCALE_ICONS = ['🟥', '🟧', '🟨', '🟩', '🟦'];
 type Step = 'select' | 'test' | 'result';
 
 export default function AptitudeTestForm() {
+    const { users, facilities } = useData();
   const navigate = useNavigate();
   const [step, setStep] = useState<Step>('select');
   const [selectedUserId, setSelectedUserId] = useState('');

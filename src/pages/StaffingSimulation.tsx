@@ -1,9 +1,10 @@
 import { useState, useMemo } from 'react';
-import { users as allUsers, occupations, facilities as allFacilities, facilityStaffingTargets as allTargets } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import type { FacilityStaffingTarget } from '../types';
 import { useAuth } from '../context/AuthContext';
 
 export default function StaffingSimulation() {
+    const { users: allUsers, occupations, facilities: allFacilities, facilityStaffingTargets: allTargets } = useData();
     const { user: currentUser, permissions } = useAuth();
     const [selectedFacility, setSelectedFacility] = useState<string>('all');
     const [simTransfers, setSimTransfers] = useState<{ from: string; to: string; count: number }[]>([]);

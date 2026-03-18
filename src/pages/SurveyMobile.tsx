@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
+import { useData } from '../context/DataContext';
 import { useParams } from 'react-router-dom';
-import { surveyQuestions, surveyPeriods, surveys as existingSurveys, users, facilities, occupations } from '../data/mockData';
 import type { SurveyAnswer, SurveyCategory } from '../types';
 
 const MOOD_ICONS = ['😫', '😟', '😐', '🙂', '😊'];
@@ -16,6 +16,7 @@ const categoryIcons: Record<SurveyCategory, string> = {
 };
 
 export default function SurveyMobile() {
+    const { surveyQuestions, surveyPeriods, surveys: existingSurveys, users, facilities, occupations } = useData();
     const { token } = useParams<{ token: string }>();
 
     // Parse token: format "u{userId}-sp{periodId}"

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { users } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 const mockNotifications = [
   { id: 'n-1', type: 'alert', icon: '⚠️', title: '離職リスクアラート', message: '佐藤美咲さんのサーベイスコアが低下しています', date: '2026-03-10', read: false, userId: 'u-4' },
@@ -22,6 +22,7 @@ const typeConfig: Record<string,{label:string;color:string;bg:string}> = {
 };
 
 export default function Notifications() {
+    const { users } = useData();
   const [filterType, setFilterType] = useState('all');
   const [notifications, setNotifications] = useState(mockNotifications);
   const types = Object.keys(typeConfig);

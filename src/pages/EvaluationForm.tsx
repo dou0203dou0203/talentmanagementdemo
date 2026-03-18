@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { users, occupations, evaluationTemplateItems, evaluations, facilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
+import { evaluationTemplateItems } from '../data/mockData';
 import type { EvaluationScore, EvaluationStatus } from '../types';
 import { useAuth } from '../context/AuthContext';
 
@@ -84,6 +85,7 @@ const NCL_PERIODS = ['3ヵ月', '6ヵ月', '12ヵ月'];
 type ScoreMap = Record<string, number>;
 
 export default function EvaluationForm() {
+    const { users, occupations, evaluations, facilities } = useData();
     const { user: currentUser, permissions } = useAuth();
     const [activeMode, setActiveMode] = useState<'evaluation' | 'checklist'>('evaluation');
     const [searchFilter, setSearchFilter] = useState('');

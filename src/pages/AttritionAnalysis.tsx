@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { users, occupations, facilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 
 // Attrition risk word dictionary
@@ -55,6 +55,7 @@ const mockTexts: { userId: string; source: string; date: string; text: string }[
 ];
 
 export default function AttritionAnalysis() {
+    const { users, occupations, facilities } = useData();
   const navigate = useNavigate();
   const [filterFac, setFilterFac] = useState('all');
 

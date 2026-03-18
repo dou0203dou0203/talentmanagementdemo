@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { users as allUsers, occupations, facilities as allFacilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 
 const FACILITY_ICONS: Record<string, string> = {
@@ -8,6 +8,7 @@ const FACILITY_ICONS: Record<string, string> = {
 };
 
 export default function OrgChart() {
+    const { users: allUsers, occupations, facilities: allFacilities } = useData();
     const { user: currentUser, permissions } = useAuth();
 
     const [showAddCorp, setShowAddCorp] = useState(false);
@@ -262,7 +263,7 @@ export default function OrgChart() {
 
 const occColors = ['#d4739b', '#8db93e', '#3b82f6', '#f59e0b', '#6b7a87', '#ef4444', '#8b5cf6'];
 
-function getAgeDistribution(users: typeof allUsers) {
+function getAgeDistribution(users: any[]) {
     const now = new Date();
     const groups = [
         { label: '~29', min: 0, max: 29, count: 0 },
@@ -281,7 +282,7 @@ function getAgeDistribution(users: typeof allUsers) {
     return groups;
 }
 
-function getTenureDistribution(users: typeof allUsers) {
+function getTenureDistribution(users: any[]) {
     const now = new Date();
     const groups = [
         { label: '~1年', min: 0, max: 1, count: 0 },

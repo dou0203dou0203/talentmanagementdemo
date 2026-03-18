@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { users } from '../data/mockData';
+import { useData } from '../context/DataContext';
 
 type DocCategory = '雇用契約書' | '誓約書' | '資格証' | 'マイナンバー' | '健康診断' | '同意書' | 'その他';
 
@@ -48,6 +48,7 @@ const statusConfig: Record<string, { color: string; bg: string }> = {
 };
 
 export default function DocumentManager() {
+    const { users } = useData();
     const [filterCategory, setFilterCategory] = useState<string>('all');
     const [filterUser, setFilterUser] = useState<string>('all');
     const [filterStatus, setFilterStatus] = useState<string>('all');

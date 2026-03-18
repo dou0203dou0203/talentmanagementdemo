@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { users as allUsers, facilities } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 
 // ==========================================
@@ -64,6 +64,7 @@ const pastAwards: AwardRecord[] = [
 // Component
 // ==========================================
 export default function ThanksPoints() {
+    const { users: allUsers, facilities } = useData();
     const { user: currentUser } = useAuth();
     const [transactions, setTransactions] = useState<ThanksTransaction[]>(initialTransactions);
     const [selectedUserId, setSelectedUserId] = useState<string>('');

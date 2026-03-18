@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { users, occupations, facilities, interviewLogs } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { transferHistories, promotionHistories, salaryHistories } from '../data/hrData';
 import { useAuth } from '../context/AuthContext';
 import type { User, EmploymentType, WorkPattern, InterviewLog } from '../types';
 
 export default function StaffProfile() {
+    const { users, occupations, facilities, interviewLogs } = useData();
     const { user: currentUser, permissions, roleLabel: _rl } = useAuth();
     const [selectedUserId, setSelectedUserId] = useState<string>(currentUser?.id || 'u-1');
     const [activeTab, setActiveTab] = useState<'basic' | 'qualifications' | 'history' | 'interviews' | 'hr'>('basic');
@@ -295,7 +296,7 @@ export default function StaffProfile() {
                                         {iv.action_items.length > 0 && (
                                             <div className="sp-interview-actions">
                                                 <strong>アクション項目:</strong>
-                                                <ul>{iv.action_items.map((a, i) => <li key={i}>{a}</li>)}</ul>
+                                                <ul>{iv.action_items.map((a: any, i: number) => <li key={i}>{a}</li>)}</ul>
                                             </div>
                                         )}
                                     </div>

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { users, occupations, facilities, interviewLogs } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
 import type { InterviewType, InterviewLog } from '../types';
 
 export default function InterviewRecords() {
+    const { users, occupations, facilities, interviewLogs } = useData();
     const { user: currentUser, permissions } = useAuth();
     const [filterFacility, setFilterFacility] = useState<string>('all');
     const [filterType, setFilterType] = useState<string>('all');
@@ -131,7 +132,7 @@ export default function InterviewRecords() {
                                         {log.action_items.length > 0 && (
                                             <div className="iv-card-actions">
                                                 <strong>アクション項目:</strong>
-                                                <ul>{log.action_items.map((a, i) => <li key={i}>{a}</li>)}</ul>
+                                                <ul>{log.action_items.map((a: any, i: number) => <li key={i}>{a}</li>)}</ul>
                                             </div>
                                         )}
                                     </div>

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { surveyQuestions, surveyPeriods, surveys as existingSurveys, users, facilities, occupations } from '../data/mockData';
+import { useData } from '../context/DataContext';
 import type { SurveyAnswer, SurveyCategory } from '../types';
 import { useAuth } from '../context/AuthContext';
 
@@ -8,6 +8,7 @@ const MOOD_LABELS = ['とても悪い', 'やや悪い', '普通', 'やや良い'
 const MOOD_COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981'];
 
 export default function SurveyForm() {
+    const { surveyQuestions, surveyPeriods, surveys: existingSurveys, users, facilities, occupations } = useData();
     // Use the actually logged-in user
     const { user: authUser } = useAuth();
     const currentUserId = authUser?.id || 'u-1';
