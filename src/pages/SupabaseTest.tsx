@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { useData } from '../context/DataContext';
 
 export default function SupabaseTest() {
+  const dataCtx = useData();
   const [status, setStatus] = useState<'checking'|'ok'|'error'>('checking');
   const [tables, setTables] = useState<{name:string;count:number}[]>([]);
   const [error, setError] = useState('');
@@ -50,6 +52,24 @@ export default function SupabaseTest() {
             <div style={{display:'flex',justifyContent:'space-between'}}><span>Key:</span><code style={{fontSize:'var(--font-size-xs)'}}>{(import.meta.env.VITE_SUPABASE_ANON_KEY||'').substring(0,20)}...</code></div>
           </div>
           {error && <div style={{marginTop:12,color:'var(--color-danger)',fontSize:'var(--font-size-sm)'}}>{error}</div>}
+        </div>
+      </div>
+
+      <div className='card' style={{marginBottom:'var(--space-5)'}}>
+        <div className='card-header'>
+          <h3 className='card-title'>📦 データソース</h3>
+          <span className={'badge '+(dataCtx.source==='supabase'?'badge-success':'badge-warning')}>
+            {dataCtx.source==='supabase'?'🔌 Supabase':'📁 MockData'}
+          </span>
+        </div>
+        <div className='card-body'>
+          <div style={{display:'grid',gap:8,fontSize:'var(--font-size-sm)'}}>
+            <div style={{display:'flex',justifyContent:'space-between'}}><span>ユーザー数:</span><strong>{dataCtx.users.length}</strong></div>
+            <div style={{display:'flex',justifyContent:'space-between'}}><span>施設数:</span><strong>{dataCtx.facilities.length}</strong></div>
+            <div style={{display:'flex',justifyContent:'space-between'}}><span>サーベイ回答:</span><strong>{dataCtx.surveys.length}</strong></div>
+            <div style={{display:'flex',justifyContent:'space-between'}}><span>面談記録:</span><strong>{dataCtx.interviewLogs.length}</strong></div>
+            <div style={{display:'flex',justifyContent:'space-between'}}><span>ローディング:</span><strong>{dataCtx.loading?'読み込み中...':'完了'}</strong></div>
+          </div>
         </div>
       </div>
 
