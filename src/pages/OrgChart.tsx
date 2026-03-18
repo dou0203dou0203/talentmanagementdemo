@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { users as allUsers, occupations, facilities as allFacilities } from '../data/mockData';
 import { useAuth } from '../context/AuthContext';
 
@@ -9,6 +9,17 @@ const FACILITY_ICONS: Record<string, string> = {
 
 export default function OrgChart() {
     const { user: currentUser, permissions } = useAuth();
+
+    const [showAddCorp, setShowAddCorp] = useState(false);
+    const [showAddFac, setShowAddFac] = useState(false);
+    const [newCorpName, setNewCorpName] = useState('');
+    const [newFacName, setNewFacName] = useState('');
+    const [newFacType, setNewFacType] = useState('病院');
+    const [newFacCorp, setNewFacCorp] = useState('');
+    const [addToast, setAddToast] = useState<string|null>(null);
+    const handleAddCorp = () => { if (!newCorpName.trim()) return; setAddToast('法人「'+newCorpName.trim()+'」を追加しました（デモ）'); setNewCorpName(''); setShowAddCorp(false); setTimeout(()=>setAddToast(null),3000); };
+    const handleAddFac = () => { if (!newFacName.trim()||!newFacCorp) return; setAddToast('事業所「'+newFacName.trim()+'」を追加しました（デモ）'); setNewFacName(''); setShowAddFac(false); setTimeout(()=>setAddToast(null),3000); };
+    const corpNames = useMemo(() => [...new Set(allFacilities.map(f=>f.corporation||'未分類'))], []);
 
     const users = useMemo(() => {
         if (permissions.canViewAllStaff) return allUsers;
@@ -79,6 +90,64 @@ export default function OrgChart() {
                     <div className="org-stat-label">職種数</div>
                 </div>
             </div>
+
+            {/* Add Corporation / Facility */}
+            {permissions.canEditStaff && (
+              <div style={{display:'flex',gap:'var(--space-3)',marginBottom:'var(--space-5)',flexWrap:'wrap'}}>
+                <button className='btn btn-primary' onClick={()=>{setShowAddCorp(true);setShowAddFac(false);}}>🏛️ 法人追加</button>
+                <button className='btn btn-secondary' onClick={()=>{setShowAddFac(true);setShowAddCorp(false);}}>🏥 事業所追加</button>
+              </div>
+            )}
+
+            {showAddCorp && (
+              <div className='card' style={{marginBottom:'var(--space-5)',borderColor:'var(--color-primary-200)',borderStyle:'dashed'}}>
+                <div className='card-header'><h3 className='card-title'>🏛️ 新規法人追加</h3></div>
+                <div className='card-body'>
+                  <div style={{display:'flex',gap:'var(--space-3)',alignItems:'end',flexWrap:'wrap'}}>
+                    <div className='form-group' style={{flex:'1 1 250px',marginBottom:0}}>
+                      <label className='form-label'>法人名</label>
+                      <input type='text' className='form-input' placeholder='例: 株式会社XXX' value={newCorpName} onChange={e=>setNewCorpName(e.target.value)} />
+                    </div>
+                    <button className='btn btn-primary' onClick={handleAddCorp} disabled={!newCorpName.trim()}>追加</button>
+                    <button className='btn btn-secondary' onClick={()=>setShowAddCorp(false)}>キャンセル</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {showAddFac && (
+              <div className='card' style={{marginBottom:'var(--space-5)',borderColor:'var(--color-primary-200)',borderStyle:'dashed'}}>
+                <div className='card-header'><h3 className='card-title'>🏥 新規事業所追加</h3></div>
+                <div className='card-body'>
+                  <div style={{display:'flex',gap:'var(--space-3)',alignItems:'end',flexWrap:'wrap'}}>
+                    <div className='form-group' style={{flex:'1 1 200px',marginBottom:0}}>
+                      <label className='form-label'>事業所名</label>
+                      <input type='text' className='form-input' placeholder='例: さくらの樹南院' value={newFacName} onChange={e=>setNewFacName(e.target.value)} />
+                    </div>
+                    <div className='form-group' style={{flex:'0 0 150px',marginBottom:0}}>
+                      <label className='form-label'>種別</label>
+                      <select className='form-select' value={newFacType} onChange={e=>setNewFacType(e.target.value)}>
+                        <option>病院</option><option>クリニック</option><option>介護施設</option><option>訪問看護</option><option>訪問介護</option><option>ケアプランセンター</option><option>本部</option>
+                      </select>
+                    </div>
+                    <div className='form-group' style={{flex:'0 0 200px',marginBottom:0}}>
+                      <label className='form-label'>所属法人</label>
+                      <select className='form-select' value={newFacCorp} onChange={e=>setNewFacCorp(e.target.value)}>
+                        <option value=''>選択してください</option>
+                        {corpNames.map(c=><option key={c} value={c}>{c}</option>)}
+                      </select>
+                    </div>
+                    <button className='btn btn-primary' onClick={handleAddFac} disabled={!newFacName.trim()||!newFacCorp}>追加</button>
+                    <button className='btn btn-secondary' onClick={()=>setShowAddFac(false)}>キャンセル</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Toast */}
+            {addToast && (
+              <div style={{position:'fixed',bottom:24,right:24,padding:'12px 24px',background:'var(--color-success)',color:'#fff',borderRadius:'var(--radius-lg)',fontWeight:600,boxShadow:'var(--shadow-lg)',zIndex:9999,animation:'fadeIn 0.3s'}}>✅ {addToast}</div>
+            )}
 
             {/* Organization Tree */}
             <div className="card" style={{ padding: 24 }}>
