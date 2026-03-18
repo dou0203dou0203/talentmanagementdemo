@@ -22,6 +22,7 @@ import NewcomerChecklist from './pages/NewcomerChecklist';
 import Notifications from './pages/Notifications';
 import RetiredStaff from './pages/RetiredStaff';
 import AttritionAnalysis from './pages/AttritionAnalysis';
+import StaffDataExport from './pages/StaffDataExport';
 import ThanksPoints from './pages/ThanksPoints';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -64,6 +65,7 @@ function AppRoutes() {
         <Route path="newcomer-checklist" element={<HRRoute><NewcomerChecklist /></HRRoute>} />
         <Route path="notifications" element={<HRRoute><Notifications /></HRRoute>} />
         <Route path="retired-staff" element={<HRRoute><RetiredStaff /></HRRoute>} />
+        <Route path="staff-data" element={<HRRoute><StaffDataExport /></HRRoute>} />
         <Route path="attrition-analysis" element={<HRRoute><AttritionAnalysis /></HRRoute>} />
         <Route path="staff" element={<StaffProfile />} />
         <Route path="staff/:userId" element={<StaffDetail />} />
