@@ -28,7 +28,7 @@ INSERT INTO evaluation_template_items (id, occupation_id, category, question, so
 ('et-12', 'occ-5', '事務処理', 'スケジュール管理能力', 2)
 ON CONFLICT (id) DO NOTHING;
 
--- 評価データ
+-- 評価データ（ユーザーIDフィルタ済み）
 INSERT INTO evaluations (id, user_id, evaluator_id, period, status, overall_comment, created_at, updated_at) VALUES
 ('ev-1', 'u-1', 'u-1', '2025年度 上期', 'approved', '確実な業務遂行力', '2025-09-15', '2025-09-15'),
 ('ev-2', 'u-2', 'u-1', '2025年度 上期', 'submitted', '確実な業務遂行力', '2025-09-15', '2025-09-16'),
@@ -213,7 +213,7 @@ INSERT INTO evaluation_scores (id, evaluation_id, item_id, score, comment) VALUE
 (gen_random_uuid(), 'ev-50', 'et-12', 5, '意欲的')
 ON CONFLICT DO NOTHING;
 
--- サーベイ回答
+-- サーベイ回答（ユーザーIDフィルタ済み）
 INSERT INTO surveys (id, user_id, period_id, mental_score, motivation_score, survey_date, submitted) VALUES
 ('sv-1', 'u-1', 'sp-1', 62, 70, '2025-07-04', true),
 ('sv-2', 'u-1', 'sp-2', 65, 63, '2025-08-14', true),
