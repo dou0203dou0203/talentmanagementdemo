@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useData } from '../context/DataContext';
+import { thanksMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
 
 // ==========================================
@@ -120,6 +121,7 @@ export default function ThanksPoints() {
             message: msg,
             date: new Date().toISOString().split('T')[0],
         };
+        thanksMutations.sendThanks(currentUser.id, selectedUserId, msg);
         setTransactions([...transactions, newTx]);
         const toUser = allUsers.find(u => u.id === selectedUserId);
         setSendSuccess(`${toUser?.name} さんに1ポイント送りました！`);

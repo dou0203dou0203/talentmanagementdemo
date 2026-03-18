@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useData } from '../context/DataContext';
+import { surveyMutations } from '../lib/mutations';
 import type { SurveyAnswer, SurveyCategory } from '../types';
 import { useAuth } from '../context/AuthContext';
 
@@ -621,7 +622,7 @@ export default function SurveyForm() {
                 )}
                 <div style={{display:'flex',justifyContent:'center',padding:'var(--space-4) 0 var(--space-8)'}}>
                     <button className='btn btn-primary btn-lg' disabled={!leaderAllAnswered}
-                        onClick={()=>alert(users.find(u=>u.id===leaderTarget)?.name+'さんのリーダー適性評価を送信しました（デモ）')} style={{minWidth:200}}>
+                        onClick={()=>{surveyMutations.submitSurvey({id:'sv-l-'+Date.now(),user_id:leaderTarget,period_id:'leader-'+new Date().getFullYear(),mental_score:0,motivation_score:0,survey_date:new Date().toISOString().slice(0,10),submitted:true},Object.entries(leaderScores).map(([k,v])=>({question_id:k,score:v})));alert('✅ '+users.find(u=>u.id===leaderTarget)?.name+'さんのリーダー適性評価を送信しました')}} style={{minWidth:200}}>
                         {leaderAllAnswered ? '👑 評価を送信する' : '全設問に回答してください'}
                     </button>
                 </div>

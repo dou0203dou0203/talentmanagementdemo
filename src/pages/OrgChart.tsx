@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useData } from '../context/DataContext';
+import { facilityMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
 
 const FACILITY_ICONS: Record<string, string> = {
@@ -19,7 +20,8 @@ export default function OrgChart() {
     const [newFacCorp, setNewFacCorp] = useState('');
     const [addToast, setAddToast] = useState<string|null>(null);
     const handleAddCorp = () => { if (!newCorpName.trim()) return; setAddToast('法人「'+newCorpName.trim()+'」を追加しました（デモ）'); setNewCorpName(''); setShowAddCorp(false); setTimeout(()=>setAddToast(null),3000); };
-    const handleAddFac = () => { if (!newFacName.trim()||!newFacCorp) return; setAddToast('事業所「'+newFacName.trim()+'」を追加しました（デモ）'); setNewFacName(''); setShowAddFac(false); setTimeout(()=>setAddToast(null),3000); };
+    const handleAddFac = () => { if (!newFacName.trim()||!newFacCorp) return; facilityMutations.addFacility({ id:'fac-'+Date.now(), name:newFacName.trim(), type:newFacType, corporation:newFacCorp });
+    setAddToast('事業所「'+newFacName.trim()+'」を追加しました'); setNewFacName(''); setShowAddFac(false); setTimeout(()=>setAddToast(null),3000); };
     const corpNames = useMemo(() => [...new Set(allFacilities.map(f=>f.corporation||'未分類'))], []);
 
     const users = useMemo(() => {

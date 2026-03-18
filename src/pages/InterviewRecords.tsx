@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useData } from '../context/DataContext';
+import { interviewMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
 import type { InterviewType, InterviewLog } from '../types';
 
@@ -56,7 +57,8 @@ export default function InterviewRecords() {
     const saveForm = () => {
         if (!form.summary || !form.user_id) { alert('対象者と概要は必須です'); return; }
         const staffName = users.find((u) => u.id === form.user_id)?.name || '';
-        alert(editingLog ? `${staffName}の面談記録を更新しました（デモ）` : `${staffName}の面談記録を追加しました（デモ）`);
+        interviewMutations.addInterview({id:'il-'+Date.now(),user_id:form.user_id,interviewer_id:currentUser?.id||'',date:new Date().toISOString().slice(0,10),type:form.type,summary:form.summary,details:form.details,mood:form.mood as any,action_items:form.action_items ? form.action_items.split(',').map((s: string)=>s.trim()) : []});
+        alert(editingLog ? staffName + 'の面談記録を更新しました' : staffName + 'の面談記録を追加しました');
         setShowForm(false);
     };
 

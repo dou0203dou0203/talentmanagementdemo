@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useData } from '../context/DataContext';
+import { evaluationMutations } from '../lib/mutations';
 import { evaluationTemplateItems } from '../data/mockData';
 import type { EvaluationScore, EvaluationStatus } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -155,9 +156,9 @@ export default function EvaluationForm() {
     };
     const handleScoreChange = (itemId: string, score: number) => setScores((prev) => prev.map((s) => (s.item_id === itemId ? { ...s, score } : s)));
     const handleCommentChange = (itemId: string, comment: string) => setScores((prev) => prev.map((s) => (s.item_id === itemId ? { ...s, comment } : s)));
-    const handleSubmit = () => { setStatus('submitted'); alert('評価を提出しました。評価者の承認をお待ちください。'); };
-    const handleApprove = () => { setStatus('approved'); alert('評価を承認しました。'); };
-    const handleSaveDraft = () => alert('下書きを保存しました。');
+    const handleSubmit = () => { setStatus('submitted'); evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'submitted',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 評価を提出しました。'); };
+    const handleApprove = () => { setStatus('approved'); evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'approved',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 評価を承認しました。'); };
+    const handleSaveDraft = () => { evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'draft',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 下書きを保存しました。'); };
 
     const evaluator = useMemo(() => users.find((u) => u.id === selectedUser?.evaluator_id), [selectedUser]);
     const categories = useMemo(() => {
