@@ -90,9 +90,29 @@ export const thanksMutations = {
 };
 
 // ===== User/Staff Operations =====
+// Columns that exist in the Supabase users table
+const USER_DB_COLUMNS = [
+  'name', 'email', 'role', 'occupation_id', 'facility_id', 'status',
+  'evaluator_id', 'birth_date', 'hire_date', 'position', 'employment_type',
+  'work_pattern', 'corporation', 'resignation_date', 'resignation_reason',
+  'updated_at',
+];
+
+function filterUserColumns(data: Record<string, any>): Record<string, any> {
+  const filtered: Record<string, any> = {};
+  for (const key of USER_DB_COLUMNS) {
+    if (key in data && data[key] !== undefined) {
+      filtered[key] = data[key];
+    }
+  }
+  return filtered;
+}
+
 export const userMutations = {
   async updateUser(id: string, data: any) {
-    return mutate('users', 'update', { ...data, updated_at: new Date().toISOString() }, { id });
+    const safeData = filterUserColumns({ ...data, updated_at: new Date().toISOString() });
+    console.log('[DB] updateUser:', id, safeData);
+    return mutate('users', 'update', safeData, { id });
   },
   async addUser(data: any) {
     return mutate('users', 'insert', data);

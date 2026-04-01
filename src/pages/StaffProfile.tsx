@@ -2,16 +2,19 @@ import { useState } from 'react';
 import { useData } from '../context/DataContext';
 import { transferHistories, promotionHistories, salaryHistories } from '../data/hrData';
 import { useAuth } from '../context/AuthContext';
+import { userMutations } from '../lib/saveHelper';
 import type { User, EmploymentType, WorkPattern, InterviewLog } from '../types';
 
 export default function StaffProfile() {
-    const { users, occupations, facilities, interviewLogs } = useData();
+    const { users, occupations, facilities, interviewLogs, updateUser } = useData();
     const { user: currentUser, permissions, roleLabel: _rl } = useAuth();
     const [selectedUserId, setSelectedUserId] = useState<string>(currentUser?.id || 'u-1');
     const [activeTab, setActiveTab] = useState<'basic' | 'qualifications' | 'history' | 'interviews' | 'hr'>('basic');
     const [editMode, setEditMode] = useState(false);
     const [showAddStaff, setShowAddStaff] = useState(false);
     const [editForm, setEditForm] = useState<Partial<User>>({});
+    const [saving, setSaving] = useState(false);
+    const [toast, setToast] = useState<string | null>(null);
     const [showAddInterview, setShowAddInterview] = useState(false);
     const [editingInterview, setEditingInterview] = useState<InterviewLog | null>(null);
     const [ivForm, setIvForm] = useState({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
@@ -71,7 +74,41 @@ export default function StaffProfile() {
         setEditForm({ name: selected.name, email: selected.email, birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '' });
         setEditMode(true);
     };
-    const saveEdit = () => { alert(`${selected.name} の情報を更新しました（デモ）`); setEditMode(false); };
+    const saveEdit = async () => {
+        setSaving(true);
+        const updates: Partial<User> = {
+            name: editForm.name?.trim() || selected.name,
+            email: editForm.email?.trim() || selected.email,
+            birth_date: editForm.birth_date?.trim() || undefined,
+            hire_date: editForm.hire_date?.trim() || undefined,
+            facility_id: editForm.facility_id || selected.facility_id,
+            occupation_id: editForm.occupation_id || selected.occupation_id,
+            position: editForm.position?.trim() || undefined,
+            employment_type: editForm.employment_type || undefined,
+            work_pattern: editForm.work_pattern || undefined,
+            corporation: editForm.corporation?.trim() || undefined,
+            status: editForm.status || selected.status,
+            resignation_date: editForm.resignation_date?.trim() || undefined,
+            resignation_reason: editForm.resignation_reason?.trim() || undefined,
+        };
+        // Update in-memory state
+        updateUser(selected.id, updates);
+        // Save to Supabase
+        try {
+            const result = await userMutations.updateUser(selected.id, updates);
+            if (result.success) {
+                setToast('✅ 基本情報をデータベースに保存しました');
+            } else {
+                setToast('⚠️ ローカル更新済み（DB保存失敗: ' + (result.error || '') + '）');
+            }
+        } catch (e: any) {
+            console.warn('Supabase保存失敗:', e);
+            setToast('⚠️ ローカル更新済み（DB保存失敗）');
+        }
+        setSaving(false);
+        setEditMode(false);
+        setTimeout(() => setToast(null), 4000);
+    };
 
     // New staff
     const saveNewStaff = () => {
@@ -197,8 +234,8 @@ export default function StaffProfile() {
                             <FormField label="所属法人" value={editForm.corporation || ''} onChange={(v) => setEditForm({ ...editForm, corporation: v })} />
                         </div>
                         <div className="sp-form-actions">
-                            <button className="btn btn-secondary" onClick={() => setEditMode(false)}>キャンセル</button>
-                            <button className="btn btn-primary" onClick={saveEdit}>💾 保存</button>
+                            <button className="btn btn-secondary" onClick={() => setEditMode(false)} disabled={saving}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={saveEdit} disabled={saving}>{saving ? '⏳ 保存中...' : '💾 保存'}</button>
                         </div>
                     </div>
                 )}
@@ -477,6 +514,16 @@ export default function StaffProfile() {
                         </div>
                     </div>
                 </div>
+            )}
+            {/* Toast Notification */}
+            {toast && (
+                <div style={{
+                    position: 'fixed', bottom: 24, right: 24, padding: '12px 24px',
+                    borderRadius: 12, background: toast.startsWith('✅') ? '#16a34a' : '#f59e0b',
+                    color: '#fff', fontWeight: 600, fontSize: '0.9rem',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.15)', zIndex: 9999,
+                    animation: 'fadeIn 0.3s ease',
+                }}>{toast}</div>
             )}
         </div>
     );
