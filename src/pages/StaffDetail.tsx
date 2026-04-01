@@ -3,6 +3,7 @@ import { useData } from '../context/DataContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend } from 'chart.js';
+import { userMutations } from '../lib/saveHelper';
 import type { InterviewLog, InterviewType } from '../types';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend);
@@ -12,7 +13,7 @@ const MOOD_ICONS = ['😫','😟','😐','🙂','😊'];
 const INT_ICONS: Record<InterviewType,string> = {'定期面談':'📅','1on1':'🤝','フォローアップ':'🔄','キャリア面談':'🎯','その他':'📝'};
 
 export default function StaffDetail() {
-    const { users, facilities, occupations, surveys, interviewLogs: initialLogs, aptitudeTests } = useData();
+    const { users, facilities, occupations, surveys, interviewLogs: initialLogs, aptitudeTests, updateUser } = useData();
   const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabKey>('survey');
@@ -123,49 +124,342 @@ export default function StaffDetail() {
           <div className='card-body'><p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)',marginBottom:'var(--space-4)',lineHeight:'var(--line-height-relaxed)'}}>{a.description}</p><div style={{padding:'var(--space-3) var(--space-4)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)'}}><div style={{fontWeight:600,fontSize:'var(--font-size-xs)',color:'var(--color-primary-600)',marginBottom:'var(--space-2)'}}>💡 推奨アクション</div>{a.actions.map((act,j)=>(<div key={j} style={{display:'flex',alignItems:'center',gap:'var(--space-2)',fontSize:'var(--font-size-sm)',padding:'3px 0'}}><span style={{color:'var(--color-primary-400)'}}>▶</span> {act}</div>))}</div></div>
         </div>))}
       </div>)}
-      {activeTab==='hr'&&(<div>
-        <div className='card' style={{marginBottom:'var(--space-5)'}}>
-          <div className='card-header'><h3 className='card-title'>💰 昇給履歴</h3></div>
-          <div className='card-body'>
-            <table className='sp-table'>
-              <thead><tr><th>年月日</th><th>昇給額</th><th>備考</th></tr></thead>
-              <tbody>
-                {[
-                  {date:'2025-04-01',amount:'+15,000円',note:'定期昇給'},
-                  {date:'2024-04-01',amount:'+12,000円',note:'定期昇給'},
-                  {date:'2023-10-01',amount:'+20,000円',note:'役職手当追加'},
-                  {date:'2023-04-01',amount:'+10,000円',note:'定期昇給'},
-                  {date:'2022-04-01',amount:'+8,000円',note:'入社時'},
-                ].map((r,i)=>(
-                  <tr key={i}>
-                    <td style={{fontWeight:500}}>{r.date}</td>
-                    <td style={{color:'var(--color-success)',fontWeight:600}}>{r.amount}</td>
-                    <td style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-500)'}}>{r.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+      {activeTab==='hr'&&(<HrInfoTab user={user} fac={fac} occ={occ} facilities={facilities} occupations={occupations} updateUser={updateUser} />)}
+    </div>
+  );
+}
+
+// ===== HrInfoTab Component with Edit Mode =====
+import type { User, Facility, Occupation, Qualification } from '../types';
+
+interface HrInfoTabProps {
+  user: User;
+  fac: Facility | undefined;
+  occ: Occupation | undefined;
+  facilities: Facility[];
+  occupations: Occupation[];
+  updateUser: (id: string, updates: Partial<User>) => void;
+}
+
+interface EditForm {
+  name: string;
+  gender: string;
+  birth_date: string;
+  facility_id: string;
+  occupation_id: string;
+  position: string;
+  employment_type: string;
+  address: string;
+  phone: string;
+  hire_date: string;
+  qualifications_str: string;
+  notes: string;
+  health_check_date: string;
+  status: string;
+  resignation_date: string;
+  resignation_reason: string;
+}
+
+function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser }: HrInfoTabProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+
+  const buildForm = (): EditForm => ({
+    name: user.name || '',
+    gender: user.gender || '',
+    birth_date: user.birth_date || '',
+    facility_id: user.facility_id || '',
+    occupation_id: user.occupation_id || '',
+    position: user.position || '',
+    employment_type: user.employment_type || '',
+    address: user.address || '',
+    phone: user.phone || '',
+    hire_date: user.hire_date || '',
+    qualifications_str: user.qualifications?.map(q => q.name).join(', ') || '',
+    notes: user.notes || '',
+    health_check_date: user.health_check_date || '',
+    status: user.status || 'active',
+    resignation_date: user.resignation_date || '',
+    resignation_reason: user.resignation_reason || '',
+  });
+
+  const [form, setForm] = useState<EditForm>(buildForm);
+  const set = (key: keyof EditForm, val: string) => setForm(prev => ({ ...prev, [key]: val }));
+
+  const handleEdit = () => {
+    setForm(buildForm());
+    setIsEditing(true);
+  };
+
+  const handleCancel = () => {
+    setForm(buildForm());
+    setIsEditing(false);
+  };
+
+  const handleSave = async () => {
+    setSaving(true);
+    const quals: Qualification[] = form.qualifications_str
+      .split(/[,、]/)
+      .map(q => ({ name: q.trim(), acquired_date: '' }))
+      .filter(q => q.name);
+
+    const updates: Partial<User> = {
+      name: form.name.trim(),
+      gender: form.gender.trim() || undefined,
+      birth_date: form.birth_date.trim() || undefined,
+      facility_id: form.facility_id,
+      occupation_id: form.occupation_id,
+      position: form.position.trim() || undefined,
+      employment_type: (form.employment_type.trim() || undefined) as User['employment_type'],
+      address: form.address.trim() || undefined,
+      phone: form.phone.trim() || undefined,
+      hire_date: form.hire_date.trim() || undefined,
+      qualifications: quals.length > 0 ? quals : undefined,
+      notes: form.notes.trim() || undefined,
+      health_check_date: form.health_check_date.trim() || undefined,
+      status: form.status as User['status'],
+      resignation_date: form.resignation_date.trim() || undefined,
+      resignation_reason: form.resignation_reason.trim() || undefined,
+    };
+
+    // Update DataContext
+    updateUser(user.id, updates);
+
+    // Save to Supabase
+    try {
+      await userMutations.updateUser(user.id, {
+        ...updates,
+        qualifications: quals.length > 0 ? quals : null,
+      });
+    } catch (e) {
+      console.warn('Supabase更新失敗:', e);
+    }
+
+    setSaving(false);
+    setIsEditing(false);
+    setToast('基本情報を更新しました');
+    setTimeout(() => setToast(null), 3000);
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%', padding: '6px 10px', borderRadius: 'var(--radius-md)',
+    border: '1px solid var(--color-neutral-300)', fontSize: 'var(--font-size-sm)',
+    background: '#fff', transition: 'border-color 0.15s',
+  };
+
+  const fieldCardStyle: React.CSSProperties = {
+    padding: 'var(--space-3) var(--space-4)', background: 'var(--color-neutral-50)',
+    borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center',
+    gap: 'var(--space-3)', border: '1px solid var(--color-neutral-100)',
+  };
+
+
+
+  // View-mode display items
+  const displayItems = [
+    { label: '氏名', value: user.name, icon: '👤' },
+    { label: '性別', value: user.gender || '未登録', icon: '🚻' },
+    { label: '生年月日', value: user.birth_date || '未登録', icon: '🎂' },
+    { label: '所属', value: fac?.name || '未登録', icon: '🏥' },
+    { label: '職種', value: occ?.name || '未登録', icon: '💼' },
+    { label: '役職', value: user.position || '未登録', icon: '🎖️' },
+    { label: '雇用形態', value: user.employment_type || '未登録', icon: '📝' },
+    { label: '住所', value: user.address || '未登録', icon: '🏠' },
+    { label: '連絡先', value: user.phone || '未登録', icon: '📞' },
+    { label: '雇用年月日', value: user.hire_date || '未登録', icon: '📅' },
+    { label: '保有資格', value: user.qualifications?.map(q => q.name).join(', ') || '未登録', icon: '📜' },
+    { label: '備考', value: user.notes || '—', icon: '📎' },
+    { label: '健康診断時期', value: user.health_check_date || '未登録', icon: '🩺' },
+  ];
+
+  return (
+    <div>
+      {/* Toast */}
+      {toast && (
+        <div style={{ position: 'fixed', bottom: 24, right: 24, padding: '12px 24px', background: 'var(--color-success)', color: '#fff', borderRadius: 'var(--radius-lg)', fontWeight: 600, boxShadow: 'var(--shadow-lg)', zIndex: 9999, animation: 'fadeIn 0.3s' }}>✅ {toast}</div>
+      )}
+
+      <div className='card' style={{ marginBottom: 'var(--space-5)' }}>
+        <div className='card-header'>
+          <h3 className='card-title'>📋 基本情報</h3>
+          {!isEditing ? (
+            <button className='btn btn-primary btn-sm' onClick={handleEdit}>✏️ 編集</button>
+          ) : (
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className='btn btn-primary btn-sm' onClick={handleSave} disabled={saving || !form.name.trim()}>
+                {saving ? '⏳ 保存中...' : '💾 保存'}
+              </button>
+              <button className='btn btn-secondary btn-sm' onClick={handleCancel} disabled={saving}>✕ キャンセル</button>
+            </div>
+          )}
         </div>
-        <div className='card'>
-          <div className='card-header'><h3 className='card-title'>📋 人事情報サマリ</h3></div>
-          <div className='card-body'>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))',gap:'var(--space-4)'}}>
-              {[
-                {label:'入社日',value:user?.hire_date||'未登録',icon:'📅'},
-                {label:'雇用形態',value:user?.employment_type||'未登録',icon:'📝'},
-                {label:'勤務形態',value:user?.work_pattern||'未登録',icon:'⏰'},
-                {label:'役職',value:user?.position||'未登録',icon:'🎖️'},
-              ].map((item,i)=>(
-                <div key={i} style={{padding:'var(--space-3)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)',display:'flex',alignItems:'center',gap:'var(--space-2)'}}>
-                  <span style={{fontSize:'var(--font-size-lg)'}}>{item.icon}</span>
-                  <div><div style={{fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>{item.label}</div><div style={{fontWeight:600,fontSize:'var(--font-size-sm)'}}>{item.value}</div></div>
+        <div className='card-body'>
+          {!isEditing ? (
+            /* ===== View Mode ===== */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 'var(--space-4)' }}>
+              {displayItems.map((item, i) => (
+                <div key={i} style={fieldCardStyle}>
+                  <span style={{ fontSize: '1.3rem', flexShrink: 0 }}>{item.icon}</span>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', marginBottom: 2 }}>{item.label}</div>
+                    <div style={{ fontWeight: 600, fontSize: 'var(--font-size-sm)', wordBreak: 'break-word', color: item.value === '未登録' || item.value === '—' ? 'var(--color-neutral-400)' : 'var(--color-neutral-800)' }}>{item.value}</div>
+                  </div>
                 </div>
               ))}
             </div>
+          ) : (
+            /* ===== Edit Mode ===== */
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 'var(--space-4)' }}>
+              {/* 氏名 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>👤 氏名 <span style={{ color: 'var(--color-danger)' }}>*</span></label>
+                <input type='text' style={inputStyle} value={form.name} onChange={e => set('name', e.target.value)} placeholder='氏名' />
+              </div>
+              {/* 性別 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🚻 性別</label>
+                <select style={inputStyle} value={form.gender} onChange={e => set('gender', e.target.value)}>
+                  <option value=''>未選択</option>
+                  <option value='男性'>男性</option>
+                  <option value='女性'>女性</option>
+                  <option value='その他'>その他</option>
+                </select>
+              </div>
+              {/* 生年月日 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🎂 生年月日</label>
+                <input type='date' style={inputStyle} value={form.birth_date} onChange={e => set('birth_date', e.target.value)} />
+              </div>
+              {/* 所属 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🏥 所属</label>
+                <select style={inputStyle} value={form.facility_id} onChange={e => set('facility_id', e.target.value)}>
+                  {facilities.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
+                </select>
+              </div>
+              {/* 職種 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>💼 職種</label>
+                <select style={inputStyle} value={form.occupation_id} onChange={e => set('occupation_id', e.target.value)}>
+                  {occupations.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}
+                </select>
+              </div>
+              {/* 役職 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🎖️ 役職</label>
+                <input type='text' style={inputStyle} value={form.position} onChange={e => set('position', e.target.value)} placeholder='例: 一般、主任、課長' />
+              </div>
+              {/* 雇用形態 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📝 雇用形態</label>
+                <select style={inputStyle} value={form.employment_type} onChange={e => set('employment_type', e.target.value)}>
+                  <option value=''>未選択</option>
+                  <option value='常勤'>常勤</option>
+                  <option value='非常勤'>非常勤</option>
+                  <option value='パート'>パート</option>
+                  <option value='派遣'>派遣</option>
+                  <option value='契約'>契約</option>
+                </select>
+              </div>
+              {/* 住所 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🏠 住所</label>
+                <input type='text' style={inputStyle} value={form.address} onChange={e => set('address', e.target.value)} placeholder='例: 大阪府大阪市...' />
+              </div>
+              {/* 連絡先 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📞 連絡先</label>
+                <input type='tel' style={inputStyle} value={form.phone} onChange={e => set('phone', e.target.value)} placeholder='例: 090-1234-5678' />
+              </div>
+              {/* 雇用年月日 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📅 雇用年月日</label>
+                <input type='date' style={inputStyle} value={form.hire_date} onChange={e => set('hire_date', e.target.value)} />
+              </div>
+              {/* 保有資格 */}
+              <div style={{ gridColumn: 'span 1' }}>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📜 保有資格（カンマ区切り）</label>
+                <input type='text' style={inputStyle} value={form.qualifications_str} onChange={e => set('qualifications_str', e.target.value)} placeholder='例: 看護師免許, 介護福祉士' />
+              </div>
+              {/* 健康診断時期 */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🩺 健康診断時期</label>
+                <input type='text' style={inputStyle} value={form.health_check_date} onChange={e => set('health_check_date', e.target.value)} placeholder='例: 2025-10 or 毎年4月' />
+              </div>
+              {/* ステータス */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📊 ステータス</label>
+                <select style={inputStyle} value={form.status} onChange={e => set('status', e.target.value)}>
+                  <option value='active'>在籍</option>
+                  <option value='leave'>休職中</option>
+                  <option value='inactive'>退職</option>
+                </select>
+              </div>
+              {/* 備考 - full width */}
+              <div style={{ gridColumn: '1 / -1' }}>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>📎 備考</label>
+                <textarea style={{ ...inputStyle, minHeight: 60, resize: 'vertical' }} value={form.notes} onChange={e => set('notes', e.target.value)} placeholder='備考を入力...' />
+              </div>
+              {/* Resignation fields (shown when status is inactive) */}
+              {form.status === 'inactive' && (<>
+                <div>
+                  <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-danger)', display: 'block', marginBottom: 4 }}>📅 離職日</label>
+                  <input type='date' style={{ ...inputStyle, borderColor: 'var(--color-danger)' }} value={form.resignation_date} onChange={e => set('resignation_date', e.target.value)} />
+                </div>
+                <div>
+                  <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-danger)', display: 'block', marginBottom: 4 }}>💬 離職理由</label>
+                  <input type='text' style={{ ...inputStyle, borderColor: 'var(--color-danger)' }} value={form.resignation_reason} onChange={e => set('resignation_reason', e.target.value)} placeholder='離職理由を入力' />
+                </div>
+              </>)}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Resignation info (view-only for inactive, shown outside edit) */}
+      {!isEditing && user.status === 'inactive' && (
+        <div className='card' style={{ marginBottom: 'var(--space-5)', borderLeft: '4px solid var(--color-danger)' }}>
+          <div className='card-header'><h3 className='card-title'>🚪 離職情報</h3></div>
+          <div className='card-body'>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 'var(--space-4)' }}>
+              <div style={fieldCardStyle}>
+                <span style={{ fontSize: '1.3rem' }}>📅</span>
+                <div><div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', marginBottom: 2 }}>離職日</div><div style={{ fontWeight: 600, fontSize: 'var(--font-size-sm)', color: 'var(--color-danger)' }}>{user.resignation_date || '未登録'}</div></div>
+              </div>
+              <div style={fieldCardStyle}>
+                <span style={{ fontSize: '1.3rem' }}>💬</span>
+                <div><div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', marginBottom: 2 }}>離職理由</div><div style={{ fontWeight: 600, fontSize: 'var(--font-size-sm)', color: 'var(--color-danger)' }}>{user.resignation_reason || '未登録'}</div></div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>)}
+      )}
+
+      {/* 昇給履歴 */}
+      <div className='card' style={{ marginBottom: 'var(--space-5)' }}>
+        <div className='card-header'><h3 className='card-title'>💰 昇給履歴</h3></div>
+        <div className='card-body'>
+          <table className='sp-table'>
+            <thead><tr><th>年月日</th><th>昇給額</th><th>備考</th></tr></thead>
+            <tbody>
+              {[
+                { date: '2025-04-01', amount: '+15,000円', note: '定期昇給' },
+                { date: '2024-04-01', amount: '+12,000円', note: '定期昇給' },
+                { date: '2023-10-01', amount: '+20,000円', note: '役職手当追加' },
+                { date: '2023-04-01', amount: '+10,000円', note: '定期昇給' },
+                { date: '2022-04-01', amount: '+8,000円', note: '入社時' },
+              ].map((r, i) => (
+                <tr key={i}>
+                  <td style={{ fontWeight: 500 }}>{r.date}</td>
+                  <td style={{ color: 'var(--color-success)', fontWeight: 600 }}>{r.amount}</td>
+                  <td style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-neutral-500)' }}>{r.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

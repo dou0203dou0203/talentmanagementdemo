@@ -48,6 +48,7 @@ export interface User {
   evaluator_id: string | null;
   avatar?: string;
   // 拡張フィールド
+  gender?: string;              // 性別
   birth_date?: string;
   hire_date?: string;
   position?: string;            // 役職
@@ -55,6 +56,10 @@ export interface User {
   work_pattern?: WorkPattern;
   qualifications?: Qualification[];
   corporation?: string;         // 所属法人
+  address?: string;             // 住所
+  phone?: string;               // 連絡先
+  notes?: string;               // 備考
+  health_check_date?: string;   // 健康診断時期
   resignation_date?: string;    // 離職日
   resignation_reason?: string;  // 離職理由
 }

@@ -1,10 +1,10 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import * as mock from '../data/mockData';
 import type { User, Facility, Occupation, Evaluation, Survey, SurveyQuestion, SurveyPeriod, FacilityStaffingTarget } from '../types';
 
-interface DataState {
+interface DataOnly {
   users: User[];
   facilities: Facility[];
   occupations: Occupation[];
@@ -19,7 +19,12 @@ interface DataState {
   source: 'mock' | 'supabase';
 }
 
-const DataContext = createContext<DataState>({
+interface DataState extends DataOnly {
+  addUsers: (newUsers: User[]) => void;
+  updateUser: (id: string, updates: Partial<User>) => void;
+}
+
+const defaultData: DataOnly = {
   users: mock.users,
   facilities: mock.facilities,
   occupations: mock.occupations,
@@ -32,22 +37,18 @@ const DataContext = createContext<DataState>({
   aptitudeTests: mock.aptitudeTests,
   loading: false,
   source: 'mock',
+};
+
+const DataContext = createContext<DataState>({
+  ...defaultData,
+  addUsers: () => {},
+  updateUser: () => {},
 });
 
 export function DataProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<DataState>({
-    users: mock.users,
-    facilities: mock.facilities,
-    occupations: mock.occupations,
-    evaluations: mock.evaluations,
-    surveys: mock.surveys,
-    surveyQuestions: mock.surveyQuestions,
-    surveyPeriods: mock.surveyPeriods,
-    facilityStaffingTargets: mock.facilityStaffingTargets,
-    interviewLogs: mock.interviewLogs,
-    aptitudeTests: mock.aptitudeTests,
+  const [data, setData] = useState<DataOnly>({
+    ...defaultData,
     loading: true,
-    source: 'mock',
   });
 
   useEffect(() => {
@@ -117,7 +118,24 @@ export function DataProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  return <DataContext.Provider value={data}>{children}</DataContext.Provider>;
+  const addUsers = (newUsers: User[]) => {
+    setData(prev => ({ ...prev, users: [...prev.users, ...newUsers] }));
+  };
+
+  const updateUser = (id: string, updates: Partial<User>) => {
+    setData(prev => ({
+      ...prev,
+      users: prev.users.map(u => u.id === id ? { ...u, ...updates } : u),
+    }));
+  };
+
+  const value = useMemo<DataState>(() => ({
+    ...data,
+    addUsers,
+    updateUser,
+  }), [data]);
+
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
 
 export const useData = () => useContext(DataContext);

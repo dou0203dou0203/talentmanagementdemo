@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useData } from '../context/DataContext';
 import { facilityMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const FACILITY_ICONS: Record<string, string> = {
     '病院': '🏥', 'クリニック': '🏪', '介護施設': '🏠', '本部': '🏢',
@@ -11,6 +12,22 @@ const FACILITY_ICONS: Record<string, string> = {
 export default function OrgChart() {
     const { users: allUsers, occupations, facilities: allFacilities } = useData();
     const { user: currentUser, permissions } = useAuth();
+    const navigate = useNavigate();
+
+    // Toggle state for expanding staff lists
+    const [expandedCorps, setExpandedCorps] = useState<Set<string>>(new Set());
+    const [expandedFacs, setExpandedFacs] = useState<Set<string>>(new Set());
+    const [expandedOccs, setExpandedOccs] = useState<Set<string>>(new Set());
+
+    const toggleCorp = (name: string) => {
+        setExpandedCorps(prev => { const next = new Set(prev); if (next.has(name)) next.delete(name); else next.add(name); return next; });
+    };
+    const toggleFac = (id: string) => {
+        setExpandedFacs(prev => { const next = new Set(prev); if (next.has(id)) next.delete(id); else next.add(id); return next; });
+    };
+    const toggleOcc = (key: string) => {
+        setExpandedOccs(prev => { const next = new Set(prev); if (next.has(key)) next.delete(key); else next.add(key); return next; });
+    };
 
     const [showAddCorp, setShowAddCorp] = useState(false);
     const [showAddFac, setShowAddFac] = useState(false);
@@ -154,7 +171,7 @@ export default function OrgChart() {
 
             {/* Organization Tree */}
             <div className="card" style={{ padding: 24 }}>
-                <h3 className="org-section-title">🏢 組織図（法人 → 事業所 → 職種）</h3>
+                <h3 className="org-section-title">🏢 組織図（法人 → 事業所 → 職種）<span style={{fontSize:'var(--font-size-xs)',fontWeight:400,color:'var(--color-neutral-400)',marginLeft:8}}>※クリックで職員一覧を展開</span></h3>
                 <div className="org-tree">
                     <div className="org-tree-root">
                         <div className="org-tree-node org-tree-corp" style={{ background: 'linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500))', color: '#fff', fontWeight: 700 }}>
@@ -163,36 +180,178 @@ export default function OrgChart() {
                             <span className="org-tree-count" style={{ background: 'rgba(255,255,255,0.25)', color: '#fff' }}>{totalActive}名</span>
                         </div>
                         <div className="org-tree-children">
-                            {corpGroups.map((corp) => (
+                            {corpGroups.map((corp) => {
+                                const corpKey = 'corp-' + corp.name;
+                                const isCorpExpanded = expandedCorps.has(corpKey);
+                                const corpUsers = corp.facilities.flatMap(f => f.users);
+                                return (
                                 <div key={corp.name} className="org-tree-branch">
-                                    <div className="org-tree-node org-tree-corp">
+                                    <div
+                                        className="org-tree-node org-tree-corp"
+                                        onClick={() => toggleCorp(corpKey)}
+                                        style={{ cursor: 'pointer', userSelect: 'none', transition: 'all 0.15s' }}
+                                        title="クリックで職員一覧を展開"
+                                    >
                                         <span className="org-tree-icon">🏛️</span>
+                                        <span style={{ marginRight: 4, fontSize: '0.7em', opacity: 0.6 }}>{isCorpExpanded ? '▼' : '▶'}</span>
                                         {corp.name}
                                         <span className="org-tree-count">{corp.totalActive}名</span>
                                     </div>
+                                    {/* Corporation staff list */}
+                                    {isCorpExpanded && (
+                                        <div style={{
+                                            margin: '4px 0 8px 24px', padding: '8px 12px',
+                                            background: 'var(--color-neutral-50)', borderRadius: 'var(--radius-md)',
+                                            border: '1px solid var(--color-neutral-200)',
+                                            animation: 'fadeIn 0.2s ease',
+                                        }}>
+                                            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', marginBottom: 6, fontWeight: 600 }}>👥 {corp.name} 所属職員（{corpUsers.length}名）</div>
+                                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 4 }}>
+                                                {corpUsers.map(u => {
+                                                    const occ = occupations.find(o => o.id === u.occupation_id);
+                                                    return (
+                                                        <div key={u.id}
+                                                            onClick={(e) => { e.stopPropagation(); navigate('/staff/' + u.id); }}
+                                                            style={{
+                                                                fontSize: 'var(--font-size-xs)', padding: '4px 8px',
+                                                                borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                                                                display: 'flex', alignItems: 'center', gap: 6,
+                                                                transition: 'background 0.15s',
+                                                            }}
+                                                            onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-primary-50)')}
+                                                            onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                                                        >
+                                                            <span style={{
+                                                                width: 22, height: 22, borderRadius: '50%',
+                                                                background: 'var(--color-primary-100)', color: 'var(--color-primary-700)',
+                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                                fontSize: '0.65rem', fontWeight: 700, flexShrink: 0,
+                                                            }}>{u.name.charAt(0)}</span>
+                                                            <span style={{ fontWeight: 500 }}>{u.name}</span>
+                                                            <span style={{ color: 'var(--color-neutral-400)', marginLeft: 'auto' }}>{occ?.name || ''}</span>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="org-tree-children">
-                                        {corp.facilities.map((fac) => (
+                                        {corp.facilities.map((fac) => {
+                                            const facKey = 'fac-' + fac.id;
+                                            const isFacExpanded = expandedFacs.has(facKey);
+                                            return (
                                             <div key={fac.id} className="org-tree-branch">
-                                                <div className="org-tree-node org-tree-facility">
+                                                <div
+                                                    className="org-tree-node org-tree-facility"
+                                                    onClick={() => toggleFac(facKey)}
+                                                    style={{ cursor: 'pointer', userSelect: 'none', transition: 'all 0.15s' }}
+                                                    title="クリックで職員一覧を展開"
+                                                >
                                                     <span className="org-tree-icon">
                                                         {FACILITY_ICONS[fac.type] || '🏢'}
                                                     </span>
+                                                    <span style={{ marginRight: 4, fontSize: '0.7em', opacity: 0.6 }}>{isFacExpanded ? '▼' : '▶'}</span>
                                                     {fac.name}
                                                     <span className="org-tree-badge">{fac.type}</span>
                                                     <span className="org-tree-count">{fac.total}名</span>
                                                 </div>
-                                                <div className="org-tree-children org-tree-occs">
-                                                    {fac.occGroups.map((occ) => (
-                                                        <div key={occ.id} className="org-tree-node org-tree-occ">
-                                                            {occ.name}: <strong>{occ.count}名</strong>
+                                                {/* Facility staff list */}
+                                                {isFacExpanded && (
+                                                    <div style={{
+                                                        margin: '4px 0 8px 24px', padding: '8px 12px',
+                                                        background: 'var(--color-neutral-50)', borderRadius: 'var(--radius-md)',
+                                                        border: '1px solid var(--color-neutral-200)',
+                                                        animation: 'fadeIn 0.2s ease',
+                                                    }}>
+                                                        <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', marginBottom: 6, fontWeight: 600 }}>👥 {fac.name} 所属職員（{fac.total}名）</div>
+                                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 4 }}>
+                                                            {fac.users.map(u => {
+                                                                const occ = occupations.find(o => o.id === u.occupation_id);
+                                                                return (
+                                                                    <div key={u.id}
+                                                                        onClick={(e) => { e.stopPropagation(); navigate('/staff/' + u.id); }}
+                                                                        style={{
+                                                                            fontSize: 'var(--font-size-xs)', padding: '4px 8px',
+                                                                            borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                                                                            display: 'flex', alignItems: 'center', gap: 6,
+                                                                            transition: 'background 0.15s',
+                                                                        }}
+                                                                        onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-primary-50)')}
+                                                                        onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                                                                    >
+                                                                        <span style={{
+                                                                            width: 22, height: 22, borderRadius: '50%',
+                                                                            background: 'var(--color-accent-100)', color: 'var(--color-accent-700)',
+                                                                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                                            fontSize: '0.65rem', fontWeight: 700, flexShrink: 0,
+                                                                        }}>{u.name.charAt(0)}</span>
+                                                                        <span style={{ fontWeight: 500 }}>{u.name}</span>
+                                                                        <span style={{ color: 'var(--color-neutral-400)' }}>{u.position || ''}</span>
+                                                                        <span style={{ color: 'var(--color-neutral-400)', marginLeft: 'auto', fontSize: '0.65rem' }}>{occ?.name || ''}</span>
+                                                                    </div>
+                                                                );
+                                                            })}
                                                         </div>
-                                                    ))}
+                                                    </div>
+                                                )}
+                                                <div className="org-tree-children org-tree-occs">
+                                                    {fac.occGroups.map((occ) => {
+                                                        const occKey = fac.id + '-' + occ.id;
+                                                        const isOccExpanded = expandedOccs.has(occKey);
+                                                        const occUsers = fac.users.filter(u => u.occupation_id === occ.id);
+                                                        return (
+                                                            <div key={occ.id}>
+                                                                <div
+                                                                    className="org-tree-node org-tree-occ"
+                                                                    onClick={() => toggleOcc(occKey)}
+                                                                    style={{ cursor: 'pointer', userSelect: 'none', transition: 'all 0.15s' }}
+                                                                    title="クリックで職員一覧を展開"
+                                                                >
+                                                                    <span style={{ fontSize: '0.7em', opacity: 0.6, marginRight: 4 }}>{isOccExpanded ? '▼' : '▶'}</span>
+                                                                    {occ.name}: <strong>{occ.count}名</strong>
+                                                                </div>
+                                                                {isOccExpanded && (
+                                                                    <div style={{
+                                                                        margin: '2px 0 6px 16px', padding: '6px 10px',
+                                                                        background: 'var(--color-neutral-50)', borderRadius: 'var(--radius-sm)',
+                                                                        border: '1px solid var(--color-neutral-100)',
+                                                                        animation: 'fadeIn 0.2s ease',
+                                                                    }}>
+                                                                        {occUsers.map(u => (
+                                                                            <div key={u.id}
+                                                                                onClick={(e) => { e.stopPropagation(); navigate('/staff/' + u.id); }}
+                                                                                style={{
+                                                                                    fontSize: 'var(--font-size-xs)', padding: '3px 6px',
+                                                                                    borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+                                                                                    display: 'flex', alignItems: 'center', gap: 6,
+                                                                                    transition: 'background 0.15s',
+                                                                                }}
+                                                                                onMouseEnter={e => (e.currentTarget.style.background = 'var(--color-primary-50)')}
+                                                                                onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+                                                                            >
+                                                                                <span style={{
+                                                                                    width: 20, height: 20, borderRadius: '50%',
+                                                                                    background: 'var(--color-success-bg, #e8f5e9)', color: 'var(--color-success)',
+                                                                                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                                                    fontSize: '0.6rem', fontWeight: 700, flexShrink: 0,
+                                                                                }}>{u.name.charAt(0)}</span>
+                                                                                <span style={{ fontWeight: 500 }}>{u.name}</span>
+                                                                                <span style={{ color: 'var(--color-neutral-400)', marginLeft: 'auto' }}>{u.position || u.employment_type || ''}</span>
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        );
+                                                    })}
                                                 </div>
                                             </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
