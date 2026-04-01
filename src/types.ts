@@ -62,6 +62,7 @@ export interface User {
   health_check_date?: string;   // 健康診断時期
   resignation_date?: string;    // 離職日
   resignation_reason?: string;  // 離職理由
+  auth_uid?: string;            // Supabase Auth UUID
 }
 
 // --- 評価 ---

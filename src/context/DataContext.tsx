@@ -62,7 +62,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const loadFromSupabase = async () => {
     try {
       const [usersRes, facRes, occRes, evRes, svRes, sqRes, spRes, fstRes, ilRes, atRes] = await Promise.all([
-        supabase.from('users').select('*'),
+        supabase.from('users').select('id, name, email, role, occupation_id, facility_id, status, evaluator_id, birth_date, hire_date, position, employment_type, work_pattern, corporation, resignation_date, resignation_reason'),
         supabase.from('facilities').select('*'),
         supabase.from('occupations').select('*'),
         supabase.from('evaluations').select('*, evaluation_scores(*)'),

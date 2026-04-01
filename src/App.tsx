@@ -26,9 +26,11 @@ import AttritionAnalysis from './pages/AttritionAnalysis';
 import StaffDataExport from './pages/StaffDataExport';
 import SupabaseTest from './pages/SupabaseTest';
 import ThanksPoints from './pages/ThanksPoints';
+import AdminSetup from './pages/AdminSetup';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
+  if (isLoading) return <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh',fontSize:'1.2rem',color:'#6b7280'}}>⏳ 読み込み中...</div>;
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   return <>{children}</>;
 }
@@ -53,6 +55,7 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/login" element={isAuthenticated ? <Navigate to={defaultPath} replace /> : <Login />} />
+      <Route path="/admin-setup" element={<AdminSetup />} />
       <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route index element={<ManagerRoute><Dashboard /></ManagerRoute>} />
         <Route path="evaluation" element={<ManagerRoute><EvaluationForm /></ManagerRoute>} />
