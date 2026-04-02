@@ -100,7 +100,7 @@ interface ImportRowResult {
 }
 
 export default function StaffDataExport() {
-  const { users, occupations, facilities, surveys, surveyPeriods, evaluations, addUsers, removeUsers } = useData();
+  const { users, occupations, facilities, surveys, surveyPeriods, evaluations, addUsers, removeUsers, updateUser } = useData();
   const navigate = useNavigate();
 
   // --- Mode & Export state ---
@@ -115,6 +115,12 @@ export default function StaffDataExport() {
   const [showColPicker, setShowColPicker] = useState(false);
   const [selectedUserIds, setSelectedUserIds] = useState<Set<string>>(new Set());
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  
+  // --- Bulk Edit State ---
+  const [showBulkEditModal, setShowBulkEditModal] = useState(false);
+  const [bulkEditField, setBulkEditField] = useState<string>('');
+  const [bulkEditValue, setBulkEditValue] = useState<string>('');
+  const [isBulkEditing, setIsBulkEditing] = useState(false);
 
   // --- Import state ---
   const [importStep, setImportStep] = useState<ImportStep>('upload');
@@ -218,6 +224,37 @@ export default function StaffDataExport() {
     } else {
       alert('削除に失敗しました: ' + res.error);
     }
+  };
+
+  const handleBulkEditClick = () => {
+    if (selectedUserIds.size === 0) return;
+    setBulkEditField('');
+    setBulkEditValue('');
+    setShowBulkEditModal(true);
+  };
+
+  const executeBulkEdit = async () => {
+    if (!bulkEditField || bulkEditValue === '') {
+      alert('変更項目と変更後の値を指定してください。');
+      return;
+    }
+    setIsBulkEditing(true);
+    const ids = Array.from(selectedUserIds);
+    const updates = { [bulkEditField]: bulkEditValue };
+    
+    const res = await userMutations.bulkUpdateUsers(ids, updates);
+    
+    if (res.success) {
+      // 即時にローカルステートも更新
+      ids.forEach(id => {
+        updateUser(id, updates);
+      });
+      setSelectedUserIds(new Set());
+      setShowBulkEditModal(false);
+    } else {
+      alert('一括更新に失敗しました: ' + res.error);
+    }
+    setIsBulkEditing(false);
   };
 
   // CSV Export
@@ -574,9 +611,14 @@ export default function StaffDataExport() {
         {mode==='export' && (
           <div style={{display:'flex',gap:8}}>
             {selectedUserIds.size > 0 && (
-              <button className='btn btn-danger' onClick={handleBulkDeleteClick} style={{whiteSpace:'nowrap',background:'var(--color-danger)',color:'#fff'}}>
-                🗑️ {selectedUserIds.size}件を削除
-              </button>
+              <>
+                <button className='btn' onClick={handleBulkEditClick} style={{whiteSpace:'nowrap', background:'var(--color-primary-100)', color:'var(--color-primary-700)'}}>
+                  ✏️ {selectedUserIds.size}件を一括編集
+                </button>
+                <button className='btn btn-danger' onClick={handleBulkDeleteClick} style={{whiteSpace:'nowrap',background:'var(--color-danger)',color:'#fff'}}>
+                  🗑️ {selectedUserIds.size}件を削除
+                </button>
+              </>
             )}
             <button className='btn btn-primary' onClick={exportCSV} style={{whiteSpace:'nowrap'}}>
               📥 CSV出力（{filtered.length}件）
@@ -1021,6 +1063,124 @@ export default function StaffDataExport() {
           )}
         </div>
       )}
+
+      {/* ===== Bulk Edit Modal ===== */}
+      {showBulkEditModal && (
+        <div className="modal-overlay" onClick={() => setShowBulkEditModal(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()} style={{maxWidth: 500}}>
+            <div className="modal-header">
+              <h3>✏️ 選択した {selectedUserIds.size} 件のデータを一括編集</h3>
+              <button className="modal-close" onClick={() => setShowBulkEditModal(false)}>✕</button>
+            </div>
+            
+            <div className="sp-form-grid" style={{ gridTemplateColumns: '1fr', marginTop: 16 }}>
+              <div className="sp-form-field">
+                <label>変更する項目</label>
+                <select value={bulkEditField} onChange={(e) => {
+                  setBulkEditField(e.target.value);
+                  setBulkEditValue(''); // Reset value when field changes
+                }}>
+                  <option value="">-- 項目の選択 --</option>
+                  <option value="facility_id">所属事業所</option>
+                  <option value="occupation_id">職種</option>
+                  <option value="role">権限</option>
+                  <option value="status">ステータス</option>
+                  <option value="employment_type">雇用形態</option>
+                  <option value="work_pattern">勤務形態</option>
+                  <option value="position">役職</option>
+                </select>
+              </div>
+
+              {bulkEditField && (
+                <div className="sp-form-field">
+                  <label>新しい値</label>
+                  {bulkEditField === 'facility_id' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 事業所を選択 --</option>
+                      {facilities.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
+                    </select>
+                  ) : bulkEditField === 'occupation_id' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 職種を選択 --</option>
+                      {occupations.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}
+                    </select>
+                  ) : bulkEditField === 'role' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 権限を選択 --</option>
+                      <option value="staff">スタッフ</option>
+                      <option value="facility_manager">事業所管理者</option>
+                      <option value="hr_admin">人事部</option>
+                      <option value="corp_head">法人代表</option>
+                    </select>
+                  ) : bulkEditField === 'status' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- ステータスを選択 --</option>
+                      <option value="active">在籍</option>
+                      <option value="leave">休職中</option>
+                      <option value="inactive">退職</option>
+                    </select>
+                  ) : bulkEditField === 'employment_type' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 雇用形態を選択 --</option>
+                      <option value="常勤">常勤</option>
+                      <option value="非常勤">非常勤</option>
+                      <option value="パート">パート</option>
+                      <option value="派遣">派遣</option>
+                      <option value="契約">契約</option>
+                    </select>
+                  ) : bulkEditField === 'work_pattern' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 勤務形態を選択 --</option>
+                      <option value="日勤のみ">日勤のみ</option>
+                      <option value="夜勤あり">夜勤あり</option>
+                      <option value="交代制">交代制</option>
+                      <option value="変則勤務">変則勤務</option>
+                      <option value="フレックス">フレックス</option>
+                    </select>
+                  ) : (
+                    <input 
+                      type="text" 
+                      className="form-input"
+                      value={bulkEditValue} 
+                      onChange={e => setBulkEditValue(e.target.value)} 
+                      placeholder="新しい値を入力..." 
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className="sp-form-actions" style={{ marginTop: 24 }}>
+              <button className="btn btn-secondary" onClick={() => setShowBulkEditModal(false)} disabled={isBulkEditing}>キャンセル</button>
+              <button 
+                className="btn btn-primary" 
+                onClick={executeBulkEdit}
+                disabled={!bulkEditField || bulkEditValue === '' || isBulkEditing}
+              >
+                {isBulkEditing ? '更新中...' : '一括更新を実行'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Modal */}
+      {showDeleteModal && (
+        <div className="modal-overlay" onClick={() => setShowDeleteModal(false)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()} style={{maxWidth: 400}}>
+            <div className="modal-header">
+              <h3 style={{color:'var(--color-danger)'}}>🗑️ {selectedUserIds.size}件のデータを削除</h3>
+              <button className="modal-close" onClick={() => setShowDeleteModal(false)}>✕</button>
+            </div>
+            <p>選択したスタッフを削除します。<br/>関連する評価データや面談記録もすべて削除されます。<br/>本当によろしいですか？</p>
+            <div className="sp-form-actions" style={{ marginTop: 24 }}>
+              <button className="btn btn-secondary" onClick={() => setShowDeleteModal(false)}>キャンセル</button>
+              <button className="btn btn-danger" style={{background:'var(--color-danger)',color:'#fff'}} onClick={executeBulkDelete}>削除を実行</button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

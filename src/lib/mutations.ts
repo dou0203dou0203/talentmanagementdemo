@@ -145,6 +145,20 @@ export const userMutations = {
       return { success: false, error: e.message };
     }
   },
+  async bulkUpdateUsers(ids: string[], updates: any) {
+    if (!isSupabaseConfigured() || ids.length === 0) {
+      return { success: true };
+    }
+    const safeData = filterUserColumns({ ...updates, updated_at: new Date().toISOString() });
+    delete safeData.id;
+    try {
+      const { error } = await supabase.from('users').update(safeData).in('id', ids);
+      if (error) return { success: false, error: error.message };
+      return { success: true };
+    } catch (e: any) {
+      return { success: false, error: e.message };
+    }
+  },
 };
 
 // ===== Facility/Corp Operations =====
