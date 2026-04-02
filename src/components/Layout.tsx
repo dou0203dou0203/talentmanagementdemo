@@ -84,6 +84,9 @@ export default function Layout() {
     const currentTitle = pageTitles[location.pathname] || 'タレントマネジメント';
     const userRole = user?.role || 'staff';
 
+    const now = new Date();
+    const currentMonthStr = `${now.getFullYear()}年${now.getMonth() + 1}月`;
+
     const handleLogout = () => {
         logout();
         navigate('/login');
@@ -167,7 +170,7 @@ export default function Layout() {
                     </div>
                     <div className="main-header-actions">
                         <span style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-neutral-500)' }}>
-                            2026年3月
+                            {currentMonthStr}
                         </span>
                     </div>
                 </header>
