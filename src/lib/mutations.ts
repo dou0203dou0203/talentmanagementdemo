@@ -90,12 +90,12 @@ export const thanksMutations = {
 };
 
 // ===== User/Staff Operations =====
-// Columns that exist in the Supabase users table
+// Columns that exist in the Supabase users table (Including new ones we will add via SQL)
 const USER_DB_COLUMNS = [
-  'name', 'email', 'role', 'occupation_id', 'facility_id', 'status',
-  'evaluator_id', 'birth_date', 'hire_date', 'position', 'employment_type',
-  'work_pattern', 'corporation', 'resignation_date', 'resignation_reason',
-  'updated_at',
+  'id', 'name', 'email', 'role', 'occupation_id', 'facility_id', 'status',
+  'evaluator_id', 'gender', 'birth_date', 'hire_date', 'position', 'employment_type',
+  'work_pattern', 'corporation', 'address', 'phone', 'notes', 'health_check_date',
+  'resignation_date', 'resignation_reason', 'updated_at',
 ];
 
 function filterUserColumns(data: Record<string, any>): Record<string, any> {
@@ -111,14 +111,39 @@ function filterUserColumns(data: Record<string, any>): Record<string, any> {
 export const userMutations = {
   async updateUser(id: string, data: any) {
     const safeData = filterUserColumns({ ...data, updated_at: new Date().toISOString() });
+    delete safeData.id; // UPDATEの場合はidを更新フィールドから除外
     console.log('[DB] updateUser:', id, safeData);
     return mutate('users', 'update', safeData, { id });
   },
   async addUser(data: any) {
-    return mutate('users', 'insert', data);
+    return mutate('users', 'insert', filterUserColumns(data));
   },
   async importUsers(users: any[]) {
-    return mutate('users', 'insert', users);
+    const safeUsers = users.map(u => filterUserColumns(u));
+    return mutate('users', 'insert', safeUsers);
+  },
+  async deleteUsers(ids: string[]) {
+    if (!isSupabaseConfigured()) {
+      return { success: true };
+    }
+    try {
+      // Delete child records first to satisfy foreign key constraints
+      await supabase.from('evaluations').delete().in('user_id', ids);
+      await supabase.from('surveys').delete().in('user_id', ids);
+      await supabase.from('interview_logs').delete().in('user_id', ids);
+      await supabase.from('aptitude_tests').delete().in('user_id', ids);
+      await supabase.from('thanks_points').delete().in('from_user_id', ids);
+      await supabase.from('thanks_points').delete().in('to_user_id', ids);
+      await supabase.from('transfer_history').delete().in('user_id', ids);
+      await supabase.from('promotion_history').delete().in('user_id', ids);
+      await supabase.from('salary_history').delete().in('user_id', ids);
+
+      const { error } = await supabase.from('users').delete().in('id', ids);
+      if (error) return { success: false, error: error.message };
+      return { success: true };
+    } catch (e: any) {
+      return { success: false, error: e.message };
+    }
   },
 };
 

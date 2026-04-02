@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useData } from '../context/DataContext';
 import { userMutations } from '../lib/saveHelper';
 import * as XLSX from 'xlsx';
@@ -99,7 +100,8 @@ interface ImportRowResult {
 }
 
 export default function StaffDataExport() {
-  const { users, occupations, facilities, surveys, surveyPeriods, evaluations, addUsers } = useData();
+  const { users, occupations, facilities, surveys, surveyPeriods, evaluations, addUsers, removeUsers } = useData();
+  const navigate = useNavigate();
 
   // --- Mode & Export state ---
   const [mode, setMode] = useState<'export'|'import'>('export');
@@ -111,6 +113,8 @@ export default function StaffDataExport() {
   const [sortAsc, setSortAsc] = useState(true);
   const [visibleCols, setVisibleCols] = useState<Set<ColKey>>(new Set(ALL_COLUMNS.filter(c=>c.default).map(c=>c.key)));
   const [showColPicker, setShowColPicker] = useState(false);
+  const [selectedUserIds, setSelectedUserIds] = useState<Set<string>>(new Set());
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // --- Import state ---
   const [importStep, setImportStep] = useState<ImportStep>('upload');
@@ -195,6 +199,25 @@ export default function StaffDataExport() {
 
   const handleSort = (key: ColKey) => {
     if (sortKey === key) { setSortAsc(!sortAsc); } else { setSortKey(key); setSortAsc(true); }
+  };
+
+  const handleBulkDeleteClick = () => {
+    if (selectedUserIds.size === 0) return;
+    setShowDeleteModal(true);
+  };
+
+  const executeBulkDelete = async () => {
+    const ids = Array.from(selectedUserIds);
+    const res = await userMutations.deleteUsers(ids);
+    
+    if (res.success) {
+      removeUsers(ids);
+      setSelectedUserIds(new Set());
+      setShowDeleteModal(false);
+      /* Use a small div alert or just ignore since UI updates automatically */
+    } else {
+      alert('削除に失敗しました: ' + res.error);
+    }
   };
 
   // CSV Export
@@ -387,8 +410,8 @@ export default function StaffDataExport() {
           name: rowData.name?.trim() || '',
           email: (rowData.name?.trim() || '').replace(/\s/g, '') + '@import.local',
           role: (ROLE_REVERSE[rowData.role?.trim() || ''] || 'staff') as User['role'],
-          occupation_id: occId || occupations[0]?.id || '',
-          facility_id: facilityId || facilities[0]?.id || '',
+          occupation_id: occId || occupations[0]?.id || undefined,
+          facility_id: facilityId || facilities[0]?.id || undefined,
           status: (STATUS_REVERSE[rowData.status?.trim() || ''] || 'active') as User['status'],
           evaluator_id: null,
           gender: gender || undefined,
@@ -423,7 +446,18 @@ export default function StaffDataExport() {
 
   const normalizeDate = (dateStr?: string): string | undefined => {
     if (!dateStr?.trim()) return undefined;
-    return dateStr.trim().replace(/\//g, '-');
+    let s = dateStr.trim();
+    // Excelシリアル値 (例: 44197 -> 2021-01-01) ※5桁の数字（1927年以降〜2173年まで対応）
+    if (/^\d{5}$/.test(s)) {
+      const serial = parseInt(s, 10);
+      const d = new Date(Math.round((serial - 25569) * 86400 * 1000));
+      return d.toISOString().split('T')[0];
+    }
+    // ハイフンなしの YYYYMMDD (例: 19901015 -> 1990-10-15)
+    if (/^\d{8}$/.test(s)) {
+      return `${s.substring(0,4)}-${s.substring(4,6)}-${s.substring(6,8)}`;
+    }
+    return s.replace(/\//g, '-');
   };
 
   // Execute Import
@@ -468,9 +502,11 @@ export default function StaffDataExport() {
           newUsers.push(user);
           success++;
         } else {
+          console.error('[Import Error]', user.name, result.error);
           failed++;
         }
-      } catch {
+      } catch (err: any) {
+        console.error('[Import Exception]', row.parsedUser?.name, err.message);
         failed++;
       }
       setImportProgress(Math.round(((i + 1) / total) * 100));
@@ -537,6 +573,11 @@ export default function StaffDataExport() {
         </div>
         {mode==='export' && (
           <div style={{display:'flex',gap:8}}>
+            {selectedUserIds.size > 0 && (
+              <button className='btn btn-danger' onClick={handleBulkDeleteClick} style={{whiteSpace:'nowrap',background:'var(--color-danger)',color:'#fff'}}>
+                🗑️ {selectedUserIds.size}件を削除
+              </button>
+            )}
             <button className='btn btn-primary' onClick={exportCSV} style={{whiteSpace:'nowrap'}}>
               📥 CSV出力（{filtered.length}件）
             </button>
@@ -588,17 +629,39 @@ export default function StaffDataExport() {
         <table className='data-table' style={{minWidth:cols.length*110}}>
           <thead>
             <tr>
+              <th style={{width:40,textAlign:'center'}}>
+                <input 
+                  type="checkbox" 
+                  checked={filtered.length > 0 && selectedUserIds.size === filtered.length}
+                  onChange={(e) => setSelectedUserIds(e.target.checked ? new Set(filtered.map(u => u.id)) : new Set())}
+                  style={{cursor:'pointer',accentColor:'var(--color-primary-500)'}}
+                />
+              </th>
               <th style={{width:40,textAlign:'center'}}>#</th>
               {cols.map(c => (
                 <th key={c.key} onClick={()=>handleSort(c.key)} style={{cursor:'pointer',whiteSpace:'nowrap',userSelect:'none'}}>
                   {c.label} {sortKey===c.key ? (sortAsc?'▲':'▼') : ''}
                 </th>
               ))}
+              <th style={{width:80,textAlign:'center'}}>操作</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((u,i) => (
-              <tr key={u.id}>
+              <tr key={u.id} style={{background: selectedUserIds.has(u.id) ? 'var(--color-primary-50)' : 'transparent'}}>
+                <td style={{textAlign:'center'}}>
+                  <input 
+                    type="checkbox" 
+                    checked={selectedUserIds.has(u.id)}
+                    onChange={(e) => {
+                      const next = new Set(selectedUserIds);
+                      if (e.target.checked) next.add(u.id);
+                      else next.delete(u.id);
+                      setSelectedUserIds(next);
+                    }}
+                    style={{cursor:'pointer',accentColor:'var(--color-primary-500)'}}
+                  />
+                </td>
                 <td style={{textAlign:'center',color:'var(--color-neutral-400)',fontSize:'var(--font-size-xs)'}}>{i+1}</td>
                 {cols.map(c => {
                   const val = getCellValue(u, c.key);
@@ -614,6 +677,15 @@ export default function StaffDataExport() {
                   }
                   return <td key={c.key} style={style}>{val||'—'}</td>;
                 })}
+                <td style={{textAlign:'center'}}>
+                  <button 
+                    className="btn btn-sm btn-secondary" 
+                    style={{padding: '4px 8px', fontSize: 'var(--font-size-xs)'}}
+                    onClick={() => navigate('/staff/' + u.id)}
+                  >
+                    ✏️ 編集
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -622,6 +694,25 @@ export default function StaffDataExport() {
           <div style={{textAlign:'center',padding:'var(--space-8)',color:'var(--color-neutral-400)'}}>該当するスタッフがいません</div>
         )}
       </div>
+
+      {showDeleteModal && (
+        <div style={{
+          position:'fixed', top:0, left:0, right:0, bottom:0, background:'rgba(0,0,0,0.5)', zIndex:9999,
+          display:'flex', alignItems:'center', justifyContent:'center'
+        }}>
+          <div className='card' style={{width: 400, maxWidth:'90%', padding:'var(--space-6)'}}>
+            <h3 style={{marginBottom:'var(--space-3)', color:'var(--color-danger)'}}>🗑️ スタッフデータの一括削除</h3>
+            <p style={{marginBottom:'var(--space-5)', fontSize:'var(--font-size-sm)', color:'var(--color-neutral-700)'}}>
+              選択された <strong>{selectedUserIds.size} 件</strong> のスタッフデータを完全に削除しますか？<br/><br/>
+              （この操作は元に戻せません。関連する評価やアンケートデータにも影響する可能性があります）
+            </p>
+            <div style={{display:'flex', gap:12, justifyContent:'flex-end'}}>
+              <button className='btn btn-secondary' onClick={() => setShowDeleteModal(false)}>キャンセル</button>
+              <button className='btn btn-danger' onClick={executeBulkDelete} style={{background:'var(--color-danger)', color:'#fff'}}>削除を実行する</button>
+            </div>
+          </div>
+        </div>
+      )}
       </>)}
 
       {/* ===== IMPORT MODE ===== */}

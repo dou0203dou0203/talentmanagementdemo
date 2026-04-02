@@ -22,6 +22,7 @@ interface DataOnly {
 interface DataState extends DataOnly {
   addUsers: (newUsers: User[]) => void;
   updateUser: (id: string, updates: Partial<User>) => void;
+  removeUsers: (ids: string[]) => void;
 }
 
 const defaultData: DataOnly = {
@@ -43,6 +44,7 @@ const DataContext = createContext<DataState>({
   ...defaultData,
   addUsers: () => {},
   updateUser: () => {},
+  removeUsers: () => {},
 });
 
 export function DataProvider({ children }: { children: ReactNode }) {
@@ -62,7 +64,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const loadFromSupabase = async () => {
     try {
       const [usersRes, facRes, occRes, evRes, svRes, sqRes, spRes, fstRes, ilRes, atRes] = await Promise.all([
-        supabase.from('users').select('id, name, email, role, occupation_id, facility_id, status, evaluator_id, birth_date, hire_date, position, employment_type, work_pattern, corporation, resignation_date, resignation_reason'),
+        supabase.from('users').select('*'),
         supabase.from('facilities').select('*'),
         supabase.from('occupations').select('*'),
         supabase.from('evaluations').select('*, evaluation_scores(*)'),
@@ -129,10 +131,18 @@ export function DataProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const removeUsers = (ids: string[]) => {
+    setData(prev => ({
+      ...prev,
+      users: prev.users.filter(u => !ids.includes(u.id)),
+    }));
+  };
+
   const value = useMemo<DataState>(() => ({
     ...data,
     addUsers,
     updateUser,
+    removeUsers,
   }), [data]);
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
