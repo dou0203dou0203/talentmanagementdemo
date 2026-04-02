@@ -86,15 +86,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const useSupabase = isSupabaseConfigured();
 
     // Look up user profile from users table (direct REST to avoid auth lock conflicts)
-    const findUserProfile = useCallback(async (email: string, _authUid?: string): Promise<User | null> => {
+    const findUserProfile = useCallback(async (email: string, accessToken?: string): Promise<User | null> => {
         if (useSupabase) {
             try {
                 const url = import.meta.env.VITE_SUPABASE_URL;
                 const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
                 const columns = 'id,name,email,role,occupation_id,facility_id,status,evaluator_id,birth_date,hire_date,position,employment_type,work_pattern,corporation,resignation_date,resignation_reason';
+                // Use the user's access token if available, to pass RLS
+                const token = accessToken || key;
                 const res = await fetch(
                     `${url}/rest/v1/users?select=${columns}&email=eq.${encodeURIComponent(email)}&limit=1`,
-                    { headers: { 'apikey': key, 'Authorization': `Bearer ${key}` } }
+                    { headers: { 'apikey': key, 'Authorization': `Bearer ${token}` } }
                 );
                 if (res.ok) {
                     const rows = await res.json();
@@ -136,21 +138,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 try {
                     const profile = await findUserProfile(
                         newSession.user.email || '',
-                        newSession.user.id
+                        newSession.access_token
                     );
                     if (profile) {
                         setUser(buildAuthUser(profile));
                     } else {
-                        // User exists in Auth but not in users table - create minimal profile
-                        const tempUser: AuthUser = {
+                        // User exists in Auth but not in users table - actively create the profile in DB
+                        const newProfileBase = {
                             id: newSession.user.id,
                             name: newSession.user.user_metadata?.name || newSession.user.email?.split('@')[0] || 'ユーザー',
                             email: newSession.user.email || '',
                             role: 'staff',
-                            occupation_id: 'occ-1',
+                            occupation_id: 'occ-1', // Set defaults
                             facility_id: 'fac-1',
                             status: 'active',
                             evaluator_id: null,
+                        };
+
+                        try {
+                            // Supabase client uses session token automatically, passing RLS "users_insert" policy
+                            await supabase.from('users').insert(newProfileBase);
+                            console.log('[Auth] データベースに初回プロフィールを作成しました');
+                        } catch (e) {
+                            console.warn('[Auth] 初回プロフィールの作成に失敗しました:', e);
+                        }
+
+                        const tempUser: AuthUser = {
+                            ...newProfileBase,
+                            status: 'active' as const, // Strict type for status
+                            role: 'staff' as const,
                             auth_uid: newSession.user.id,
                             occupation_name: '',
                             facility_name: '',

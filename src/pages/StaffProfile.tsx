@@ -45,6 +45,11 @@ export default function StaffProfile() {
             : users.filter((u) => u.id === currentUser?.id);
 
     const selected = users.find((u) => u.id === selectedUserId) || users[0];
+
+    if (!selected) {
+        return <div style={{ padding: 40, textAlign: 'center' }}>🔄 スタッフ情報を取得中、またはデータが存在しません...</div>;
+    }
+
     const occ = occupations.find((o) => o.id === selected.occupation_id);
     const fac = facilities.find((f) => f.id === selected.facility_id);
 
