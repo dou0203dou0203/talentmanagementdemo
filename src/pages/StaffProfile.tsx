@@ -76,7 +76,7 @@ export default function StaffProfile() {
 
     // Basic info edit
     const startEdit = () => {
-        setEditForm({ name: selected.name, email: selected.email, birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '' });
+        setEditForm({ name: selected.name, email: selected.email, gender: selected.gender || '', birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '' });
         setEditMode(true);
     };
     const saveEdit = async () => {
@@ -84,6 +84,7 @@ export default function StaffProfile() {
         const updates: Partial<User> = {
             name: editForm.name?.trim() || selected.name,
             email: editForm.email?.trim() || selected.email,
+            gender: editForm.gender?.trim() || undefined,
             birth_date: editForm.birth_date?.trim() || undefined,
             hire_date: editForm.hire_date?.trim() || undefined,
             facility_id: editForm.facility_id || selected.facility_id,
@@ -199,6 +200,7 @@ export default function StaffProfile() {
                     <div className="sp-grid">
                         <InfoRow label="氏名" value={selected.name} />
                         <InfoRow label="メール" value={selected.email} />
+                        <InfoRow label="性別" value={selected.gender || '未登録'} />
                         <InfoRow label="生年月日" value={selected.birth_date || '未登録'} />
                         <InfoRow label="入社日" value={selected.hire_date || '未登録'} />
                         <InfoRow label="勤続年数" value={tenure !== null ? `${tenure}年` : '未登録'} />
@@ -222,6 +224,7 @@ export default function StaffProfile() {
                         <div className="sp-form-grid">
                             <FormField label="氏名" value={editForm.name || ''} onChange={(v) => setEditForm({ ...editForm, name: v })} />
                             <FormField label="メール" value={editForm.email || ''} onChange={(v) => setEditForm({ ...editForm, email: v })} type="email" />
+                            <div className="sp-form-field"><label>性別</label><select value={editForm.gender || ''} onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}><option value="">未選択</option><option value="男性">男性</option><option value="女性">女性</option><option value="その他">その他</option><option value="未回答">未回答</option></select></div>
                             <FormField label="生年月日" value={editForm.birth_date || ''} onChange={(v) => setEditForm({ ...editForm, birth_date: v })} type="date" />
                             <FormField label="入社日" value={editForm.hire_date || ''} onChange={(v) => setEditForm({ ...editForm, hire_date: v })} type="date" />
                             <div className="sp-form-field"><label>所属事業所</label><select value={editForm.facility_id || ''} onChange={(e) => setEditForm({ ...editForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
