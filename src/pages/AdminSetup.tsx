@@ -9,7 +9,7 @@ interface AdminAccount {
 
 const INITIAL_ADMINS: AdminAccount[] = [
     { email: 'dosaka@sakuranoki-group.com', password: 'Sakuranoki1', name: '大坂' },
-    { email: 'mitsuemoon@st-sakura.com', password: 'Sakuranoki1', name: '三枝' },
+    { email: 'mitsue@sakuranoki-group.com', password: 'Sakuranoki1', name: '三枝' },
     { email: 'hasegawa2@st-sakura.com', password: 'Sakuranoki1', name: '長谷川' },
     { email: 'matsuura@st-sakura.com', password: 'Sakuranoki1', name: '松浦' },
 ];

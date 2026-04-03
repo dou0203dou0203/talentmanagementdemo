@@ -89,11 +89,11 @@ function AppRoutes() {
 function App() {
   return (
     <BrowserRouter basename="/talentmanagementdemo">
-      <DataProvider>
       <AuthProvider>
-        <AppRoutes />
+        <DataProvider>
+          <AppRoutes />
+        </DataProvider>
       </AuthProvider>
-      </DataProvider>
     </BrowserRouter>
   );
 }

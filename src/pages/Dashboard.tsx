@@ -51,19 +51,19 @@ export default function Dashboard() {
         if (permissions.canViewAllStaff) return allUsers;
         if (permissions.canViewFacility) return allUsers.filter(u => u.facility_id === currentUser?.facility_id);
         return allUsers.filter(u => u.id === currentUser?.id);
-    }, [currentUser, permissions]);
+    }, [allUsers, currentUser, permissions]);
     const facilities = useMemo(() => {
         if (permissions.canViewAllStaff) return allFacilities;
         return allFacilities.filter(f => f.id === currentUser?.facility_id);
-    }, [currentUser, permissions]);
+    }, [allFacilities, currentUser, permissions]);
     const surveys = useMemo(() => {
         const userIds = new Set(users.map(u => u.id));
         return allSurveys.filter(s => userIds.has(s.user_id));
-    }, [users]);
+    }, [users, allSurveys]);
     const facilityStaffingTargets = useMemo(() => {
         const facIds = new Set(facilities.map(f => f.id));
         return allTargets.filter(t => facIds.has(t.facility_id));
-    }, [facilities]);
+    }, [facilities, allTargets]);
 
     // Calculate alerts
     const alerts: AlertInfo[] = useMemo(() => {
@@ -112,7 +112,7 @@ export default function Dashboard() {
                 const order = { red: 0, yellow: 1, green: 2 };
                 return order[a.level] - order[b.level];
             });
-    }, []);
+    }, [surveys, users, facilities, occupations]);
 
     const redAlerts = alerts.filter((a) => a.level === 'red');
     const yellowAlerts = alerts.filter((a) => a.level === 'yellow');
@@ -154,12 +154,12 @@ export default function Dashboard() {
                     cells,
                 };
             });
-    }, []);
+    }, [facilities, facilityStaffingTargets, occupations, users]);
 
     const relevantOccs = useMemo(() => {
         const relevantOccIds = [...new Set(facilityStaffingTargets.map((t) => t.occupation_id))];
         return occupations.filter((o) => relevantOccIds.includes(o.id));
-    }, []);
+    }, [facilityStaffingTargets, occupations]);
 
     // Get chart data for selected alert user
     const chartData = useMemo(() => {
@@ -201,7 +201,7 @@ export default function Dashboard() {
             ],
             userName: user?.name || '',
         };
-    }, [alerts, redAlerts]);
+    }, [alerts, redAlerts, surveys, users]);
 
     const chartOptions = {
         responsive: true,

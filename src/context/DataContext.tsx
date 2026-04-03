@@ -1,7 +1,7 @@
-import { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { createContext, useContext, useState, useEffect, useMemo, useCallback } from 'react';
 import type { ReactNode } from 'react';
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
-import * as mock from '../data/mockData';
+import { supabase } from '../lib/supabase';
+import { useAuth } from './AuthContext';
 import type { User, Facility, Occupation, Evaluation, Survey, SurveyQuestion, SurveyPeriod, FacilityStaffingTarget } from '../types';
 
 interface DataOnly {
@@ -16,52 +16,45 @@ interface DataOnly {
   interviewLogs: any[];
   aptitudeTests: any[];
   loading: boolean;
-  source: 'mock' | 'supabase';
+  source: 'supabase' | 'none';
 }
 
 interface DataState extends DataOnly {
   addUsers: (newUsers: User[]) => void;
   updateUser: (id: string, updates: Partial<User>) => void;
   removeUsers: (ids: string[]) => void;
+  reload: () => Promise<void>;
 }
 
-const defaultData: DataOnly = {
-  users: mock.users,
-  facilities: mock.facilities,
-  occupations: mock.occupations,
-  evaluations: mock.evaluations,
-  surveys: mock.surveys,
-  surveyQuestions: mock.surveyQuestions,
-  surveyPeriods: mock.surveyPeriods,
-  facilityStaffingTargets: mock.facilityStaffingTargets,
-  interviewLogs: mock.interviewLogs,
-  aptitudeTests: mock.aptitudeTests,
-  loading: false,
-  source: 'mock',
+const emptyData: DataOnly = {
+  users: [],
+  facilities: [],
+  occupations: [],
+  evaluations: [],
+  surveys: [],
+  surveyQuestions: [],
+  surveyPeriods: [],
+  facilityStaffingTargets: [],
+  interviewLogs: [],
+  aptitudeTests: [],
+  loading: true,
+  source: 'none',
 };
 
 const DataContext = createContext<DataState>({
-  ...defaultData,
+  ...emptyData,
   addUsers: () => {},
   updateUser: () => {},
   removeUsers: () => {},
+  reload: async () => {},
 });
 
 export function DataProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<DataOnly>({
-    ...defaultData,
-    loading: true,
-  });
+  const { isAuthenticated, session } = useAuth();
+  const [data, setData] = useState<DataOnly>(emptyData);
 
-  useEffect(() => {
-    if (!isSupabaseConfigured()) {
-      setData(prev => ({ ...prev, loading: false }));
-      return;
-    }
-    loadFromSupabase();
-  }, []);
-
-  const loadFromSupabase = async () => {
+  const loadFromSupabase = useCallback(async () => {
+    setData(prev => ({ ...prev, loading: true }));
     try {
       const [usersRes, facRes, occRes, evRes, svRes, sqRes, spRes, fstRes, ilRes, atRes] = await Promise.all([
         supabase.from('users').select('*'),
@@ -99,26 +92,40 @@ export function DataProvider({ children }: { children: ReactNode }) {
       }));
 
       setData({
-        users: (usersRes.data as User[]) || mock.users,
-        facilities: (facRes.data as Facility[]) || mock.facilities,
-        occupations: (occRes.data as Occupation[]) || mock.occupations,
-        evaluations: evaluations.length > 0 ? evaluations : mock.evaluations,
-        surveys: (svRes.data as Survey[]) || mock.surveys,
-        surveyQuestions: (sqRes.data as SurveyQuestion[]) || mock.surveyQuestions,
-        surveyPeriods: (spRes.data as SurveyPeriod[]) || mock.surveyPeriods,
-        facilityStaffingTargets: (fstRes.data as FacilityStaffingTarget[]) || mock.facilityStaffingTargets,
-        interviewLogs: interviewLogs.length > 0 ? interviewLogs : mock.interviewLogs,
-        aptitudeTests: aptitudeTests.length > 0 ? aptitudeTests : mock.aptitudeTests,
+        users: (usersRes.data as User[]) || [],
+        facilities: (facRes.data as Facility[]) || [],
+        occupations: (occRes.data as Occupation[]) || [],
+        evaluations,
+        surveys: (svRes.data as Survey[]) || [],
+        surveyQuestions: (sqRes.data as SurveyQuestion[]) || [],
+        surveyPeriods: (spRes.data as SurveyPeriod[]) || [],
+        facilityStaffingTargets: (fstRes.data as FacilityStaffingTarget[]) || [],
+        interviewLogs,
+        aptitudeTests,
         loading: false,
         source: 'supabase',
       });
 
-      console.log('\u2705 Supabaseからデータを取得しました');
+      console.log('✅ Supabaseからデータを取得しました',
+        `users: ${usersRes.data?.length ?? 0}`,
+        `facilities: ${facRes.data?.length ?? 0}`,
+        `occupations: ${occRes.data?.length ?? 0}`,
+      );
     } catch (err) {
-      console.warn('Supabaseデータ取得失敗、mockDataで継続:', err);
+      console.error('❌ Supabaseデータ取得失敗:', err);
       setData(prev => ({ ...prev, loading: false }));
     }
-  };
+  }, []);
+
+  // Load data when authentication state changes
+  useEffect(() => {
+    if (isAuthenticated && session) {
+      loadFromSupabase();
+    } else {
+      // Not authenticated - clear data
+      setData({ ...emptyData, loading: false });
+    }
+  }, [isAuthenticated, session, loadFromSupabase]);
 
   const addUsers = (newUsers: User[]) => {
     setData(prev => ({ ...prev, users: [...prev.users, ...newUsers] }));
@@ -143,7 +150,8 @@ export function DataProvider({ children }: { children: ReactNode }) {
     addUsers,
     updateUser,
     removeUsers,
-  }), [data]);
+    reload: loadFromSupabase,
+  }), [data, loadFromSupabase]);
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
