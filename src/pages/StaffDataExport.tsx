@@ -6,12 +6,27 @@ import * as XLSX from 'xlsx';
 import type { User, Qualification } from '../types';
 
 // ===== Column definitions =====
-type ColKey = 'name'|'gender'|'birth_date'|'facility'|'occupation'|'position'|'employment_type'|'address'|'phone'|'hire_date'|'qualifications'|'notes'|'health_check_date'|'status'|'role'|'work_pattern'|'corporation'|'resignation_date'|'resignation_reason'|'mental'|'motivation'|'eval_score';
+type ColKey = 'name'|'gender'|'birth_date'|'age'|'facility'|'occupation'|'position'|'employment_type'|'address'|'phone'|'hire_date'|'qualifications'|'notes'|'health_check_date'|'status'|'role'|'work_pattern'|'corporation'|'resignation_date'|'resignation_reason'|'mental'|'motivation'|'eval_score';
+
+// 生年月日から年齢を計算
+function calculateAge(birthDate?: string): number | null {
+  if (!birthDate) return null;
+  const birth = new Date(birthDate);
+  if (isNaN(birth.getTime())) return null;
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+  return age;
+}
 
 const ALL_COLUMNS: {key:ColKey;label:string;default:boolean;exportOnly?:boolean}[] = [
   {key:'name',label:'氏名',default:true},
   {key:'gender',label:'性別',default:true},
   {key:'birth_date',label:'生年月日',default:true},
+  {key:'age',label:'年齢',default:true},
   {key:'facility',label:'所属',default:true},
   {key:'occupation',label:'職種',default:true},
   {key:'position',label:'役職',default:true},
@@ -166,6 +181,7 @@ export default function StaffDataExport() {
       case 'name': return u.name;
       case 'gender': return u.gender||'';
       case 'birth_date': return u.birth_date||'';
+      case 'age': { const age = calculateAge(u.birth_date); return age !== null ? `${age}歳` : ''; }
       case 'facility': return fac?.name||'';
       case 'occupation': return occ?.name||'';
       case 'position': return u.position||'';
@@ -196,6 +212,17 @@ export default function StaffDataExport() {
       .filter(u => filterStatus==='all' || u.status===filterStatus)
       .filter(u => !searchName.trim() || u.name.includes(searchName.trim()))
       .sort((a,b) => {
+        // 年齢・スコア系は数値でソート
+        if (sortKey === 'age') {
+          const ageA = calculateAge(a.birth_date) ?? -1;
+          const ageB = calculateAge(b.birth_date) ?? -1;
+          return sortAsc ? ageA - ageB : ageB - ageA;
+        }
+        if (sortKey === 'mental' || sortKey === 'motivation' || sortKey === 'eval_score') {
+          const na = parseFloat(getCellValue(a, sortKey)) || 0;
+          const nb = parseFloat(getCellValue(b, sortKey)) || 0;
+          return sortAsc ? na - nb : nb - na;
+        }
         const va = getCellValue(a, sortKey);
         const vb = getCellValue(b, sortKey);
         const cmp = va.localeCompare(vb, 'ja');
