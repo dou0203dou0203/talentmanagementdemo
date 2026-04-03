@@ -35,7 +35,7 @@ const navItems: NavGroup[] = [
             { path: '/interviews', label: '面談記録', icon: '💬' },
             { path: '/org', label: '組織管理', icon: '🏢' },
             { path: '/analytics', label: '分析', icon: '📈' },
-            { path: '/staff/u-1', label: 'スタッフ詳細', icon: '👤' },
+            { path: '/staff', label: 'スタッフ詳細', icon: '👤' },
             { path: '/aptitude/test', label: '適性検査実施', icon: '🧪' },
             { path: '/staffing', label: '人員配置', icon: '🏥' },
             { path: '/alerts', label: '離職アラート', icon: '🔔' },
