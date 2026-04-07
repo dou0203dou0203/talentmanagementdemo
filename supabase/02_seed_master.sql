@@ -13,7 +13,11 @@ INSERT INTO occupations (id, name) VALUES
   ('occ-8', '管理栄養士'),
   ('occ-9', '介護福祉士'),
   ('occ-10', '介護支援専門員'),
-  ('occ-11', '経理')
+  ('occ-11', '経理'),
+  ('occ-12', '技師'),
+  ('occ-13', '准看護師'),
+  ('occ-14', '保育士'),
+  ('occ-15', '保育補助')
 ON CONFLICT (id) DO NOTHING;
 
 -- 施設マスタ
