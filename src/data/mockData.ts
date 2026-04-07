@@ -36,7 +36,13 @@ export const occupations: Occupation[] = [
   {
     id: 'occ-5',
     name: '事務職'
-  }
+  },
+  { id: 'occ-6', name: '営業職' },
+  { id: 'occ-7', name: '栄養士' },
+  { id: 'occ-8', name: '管理栄養士' },
+  { id: 'occ-9', name: '介護福祉士' },
+  { id: 'occ-10', name: '介護支援専門員' },
+  { id: 'occ-11', name: '経理' }
 ];
 
 export const facilities: Facility[] = [

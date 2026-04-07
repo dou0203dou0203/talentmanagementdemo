@@ -1164,6 +1164,11 @@ export default function StaffDataExport() {
                       <option value="変則勤務">変則勤務</option>
                       <option value="フレックス">フレックス</option>
                     </select>
+                  ) : bulkEditField === 'position' ? (
+                    <select value={bulkEditValue} onChange={e => setBulkEditValue(e.target.value)}>
+                      <option value="">-- 役職を選択 --</option>
+                      {['院長', '理事長兼院長', '医事課係長', '看護師長', '事務長', '事務長代理', '主任', '医療事業部長', 'エリアマネージャー', '施設長'].map(p => <option key={p} value={p}>{p}</option>)}
+                    </select>
                   ) : (
                     <input 
                       type="text" 

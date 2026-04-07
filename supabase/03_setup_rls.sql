@@ -8,7 +8,6 @@ DROP POLICY IF EXISTS "enable_all_facilities" ON facilities;
 DROP POLICY IF EXISTS "enable_all_occupations" ON occupations;
 DROP POLICY IF EXISTS "enable_all_evaluations" ON evaluations;
 DROP POLICY IF EXISTS "enable_all_eval_scores" ON evaluation_scores;
-DROP POLICY IF EXISTS "enable_all_eval_workflow" ON evaluation_workflow;
 DROP POLICY IF EXISTS "enable_all_survey_periods" ON survey_periods;
 DROP POLICY IF EXISTS "enable_all_surveys" ON surveys;
 DROP POLICY IF EXISTS "enable_all_interviews" ON interview_logs;
@@ -188,8 +187,8 @@ CREATE POLICY "common_user_data_all" ON aptitude_tests FOR ALL TO authenticated 
 CREATE POLICY "qualifications_select" ON qualifications FOR SELECT TO authenticated USING (get_my_role() IN ('hr_admin', 'corp_head') OR (get_my_role() = 'facility_manager' AND EXISTS(SELECT 1 FROM users u WHERE u.id = user_id AND u.facility_id = get_my_facility_id())) OR user_id = get_my_id());
 CREATE POLICY "qualifications_all" ON qualifications FOR ALL TO authenticated USING (get_my_role() = 'hr_admin' OR user_id = get_my_id());
 
-CREATE POLICY "thanks_points_select" ON thanks_points FOR SELECT TO authenticated USING (get_my_role() IN ('hr_admin', 'corp_head') OR (get_my_role() = 'facility_manager' AND EXISTS(SELECT 1 FROM users u WHERE u.id = receiver_id AND u.facility_id = get_my_facility_id())) OR sender_id = get_my_id() OR receiver_id = get_my_id());
-CREATE POLICY "thanks_points_all" ON thanks_points FOR ALL TO authenticated USING (get_my_role() = 'hr_admin' OR sender_id = get_my_id());
+CREATE POLICY "thanks_points_select" ON thanks_points FOR SELECT TO authenticated USING (get_my_role() IN ('hr_admin', 'corp_head') OR (get_my_role() = 'facility_manager' AND EXISTS(SELECT 1 FROM users u WHERE u.id = to_user_id AND u.facility_id = get_my_facility_id())) OR from_user_id = get_my_id() OR to_user_id = get_my_id());
+CREATE POLICY "thanks_points_all" ON thanks_points FOR ALL TO authenticated USING (get_my_role() = 'hr_admin' OR from_user_id = get_my_id());
 
 -- NOTE: Public/Anon roles remain fully blocked since we did not create policies for them!
 -- Security setup is complete.

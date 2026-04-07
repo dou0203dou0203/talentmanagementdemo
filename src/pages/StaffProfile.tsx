@@ -149,6 +149,7 @@ export default function StaffProfile() {
 
     const employmentTypes: EmploymentType[] = ['常勤', '非常勤', 'パート', '派遣', '契約'];
     const workPatterns: WorkPattern[] = ['日勤のみ', '夜勤あり', '交代制', '変則勤務', 'フレックス'];
+    const POSITIONS: string[] = ['院長', '理事長兼院長', '医事課係長', '看護師長', '事務長', '事務長代理', '主任', '医療事業部長', 'エリアマネージャー', '施設長'];
 
     return (
         <div className="staff-profile-page">
@@ -229,7 +230,7 @@ export default function StaffProfile() {
                             <FormField label="入社日" value={editForm.hire_date || ''} onChange={(v) => setEditForm({ ...editForm, hire_date: v })} type="date" />
                             <div className="sp-form-field"><label>所属事業所</label><select value={editForm.facility_id || ''} onChange={(e) => setEditForm({ ...editForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
                             <div className="sp-form-field"><label>職種</label><select value={editForm.occupation_id || ''} onChange={(e) => setEditForm({ ...editForm, occupation_id: e.target.value })}>{occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}</select></div>
-                            <FormField label="役職" value={editForm.position || ''} onChange={(v) => setEditForm({ ...editForm, position: v })} />
+                            <div className="sp-form-field"><label>役職</label><select value={editForm.position || ''} onChange={(e) => setEditForm({ ...editForm, position: e.target.value })}><option value="">（役職なし）</option>{POSITIONS.map((p) => <option key={p} value={p}>{p}</option>)}</select></div>
                             <div className="sp-form-field"><label>雇用形態</label><select value={editForm.employment_type || '常勤'} onChange={(e) => setEditForm({ ...editForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
                             <div className="sp-form-field"><label>勤務形態</label><select value={editForm.work_pattern || '日勤のみ'} onChange={(e) => setEditForm({ ...editForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
                             <div className="sp-form-field"><label>ステータス</label><select value={editForm.status || 'active'} onChange={(e) => setEditForm({ ...editForm, status: e.target.value as User['status'] })}><option value="active">在籍</option><option value="leave">休職</option><option value="inactive">退職</option></select></div>
@@ -389,7 +390,7 @@ export default function StaffProfile() {
                             <FormField label="入社日" value={newStaffForm.hire_date} onChange={(v) => setNewStaffForm({ ...newStaffForm, hire_date: v })} type="date" />
                             <div className="sp-form-field"><label>事業所</label><select value={newStaffForm.facility_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
                             <div className="sp-form-field"><label>職種</label><select value={newStaffForm.occupation_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, occupation_id: e.target.value })}>{occupations.map((o) => <option key={o.id} value={o.id}>{o.name}</option>)}</select></div>
-                            <FormField label="役職" value={newStaffForm.position} onChange={(v) => setNewStaffForm({ ...newStaffForm, position: v })} />
+                            <div className="sp-form-field"><label>役職</label><select value={newStaffForm.position} onChange={(e) => setNewStaffForm({ ...newStaffForm, position: e.target.value })}><option value="">（役職なし）</option>{POSITIONS.map((p) => <option key={p} value={p}>{p}</option>)}</select></div>
                             <div className="sp-form-field"><label>雇用形態</label><select value={newStaffForm.employment_type} onChange={(e) => setNewStaffForm({ ...newStaffForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
                             <div className="sp-form-field"><label>勤務形態</label><select value={newStaffForm.work_pattern} onChange={(e) => setNewStaffForm({ ...newStaffForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
                             <FormField label="所属法人" value={newStaffForm.corporation} onChange={(v) => setNewStaffForm({ ...newStaffForm, corporation: v })} />
