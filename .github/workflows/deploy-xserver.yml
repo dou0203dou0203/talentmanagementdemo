@@ -27,8 +27,8 @@ jobs:
     - name: 🔨 Build Project
       run: npm run build
       env:
-        # もし本番用の環境変数があればここに追加
-        CI: false
+        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
     - name: 📂 Sync files (FTP Deploy)
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
