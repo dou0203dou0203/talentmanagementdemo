@@ -88,7 +88,7 @@ function AppRoutes() {
 
 function App() {
   return (
-    <BrowserRouter basename="/talentmanagementdemo">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AuthProvider>
         <DataProvider>
           <AppRoutes />
