@@ -9,6 +9,12 @@ const FACILITY_ICONS: Record<string, string> = {
     '訪問看護': '🩺', '訪問介護': '🤲', 'ケアプランセンター': '📋',
 };
 
+const occColors = [
+    '#d4739b', '#8db93e', '#3b82f6', '#f59e0b', '#6b7a87', 
+    '#ef4444', '#8b5cf6', '#14b8a6', '#f43f5e', '#a855f7', 
+    '#ec4899', '#6366f1', '#10b981', '#0ea5e9', '#eab308'
+];
+
 export default function OrgChart() {
     const { users: allUsers, occupations, facilities: allFacilities } = useData();
     const { user: currentUser, permissions } = useAuth();
@@ -365,17 +371,19 @@ export default function OrgChart() {
                         <div key={fac.id} className="org-bar-row">
                             <div className="org-bar-label">{fac.name}</div>
                             <div className="org-bar-track">
-                                {fac.occGroups.map((occ, i) => (
+                                {fac.occGroups.map((occ) => {
+                                    const globalIndex = occupations.findIndex(o => o.id === occ.id);
+                                    return (
                                     <div
                                         key={occ.id}
                                         className="org-bar-segment"
                                         style={{
                                             width: `${(occ.count / Math.max(fac.total, 1)) * 100}%`,
-                                            background: occColors[i % occColors.length],
+                                            background: occColors[Math.max(0, globalIndex) % occColors.length],
                                         }}
                                         title={`${occ.name}: ${occ.count}名`}
                                     />
-                                ))}
+                                )})}
                             </div>
                             <div className="org-bar-total">{fac.total}</div>
                         </div>
@@ -421,8 +429,6 @@ export default function OrgChart() {
         </div>
     );
 }
-
-const occColors = ['#d4739b', '#8db93e', '#3b82f6', '#f59e0b', '#6b7a87', '#ef4444', '#8b5cf6'];
 
 function getAgeDistribution(users: any[]) {
     const now = new Date();
