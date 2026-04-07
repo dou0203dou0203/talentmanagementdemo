@@ -27,6 +27,7 @@ import StaffDataExport from './pages/StaffDataExport';
 import SupabaseTest from './pages/SupabaseTest';
 import ThanksPoints from './pages/ThanksPoints';
 import AdminSetup from './pages/AdminSetup';
+import PayrollImport from './pages/PayrollImport';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -67,6 +68,7 @@ function AppRoutes() {
         <Route path="eval-history" element={<HRRoute><EvaluationHistory /></HRRoute>} />
         <Route path="recruitment" element={<HRRoute><Recruitment /></HRRoute>} />
         <Route path="documents" element={<HRRoute><DocumentManager /></HRRoute>} />
+        <Route path="payroll-import" element={<HRRoute><PayrollImport /></HRRoute>} />
         <Route path="newcomer-checklist" element={<HRRoute><NewcomerChecklist /></HRRoute>} />
         <Route path="notifications" element={<HRRoute><Notifications /></HRRoute>} />
         <Route path="retired-staff" element={<HRRoute><RetiredStaff /></HRRoute>} />

@@ -184,3 +184,15 @@ export const surveyQuestionMutations = {
     return mutate('survey_questions', 'delete', null, { id });
   },
 };
+
+// ===== Payroll Operations =====
+export const payrollMutations = {
+  async addRecords(records: any[]) {
+    // Inject created_at and IDs if needed inside the mutation helper
+    const payload = records.map(r => ({
+      ...r,
+      created_at: new Date().toISOString()
+    }));
+    return mutate('payroll_records', 'insert', payload);
+  }
+};

@@ -49,6 +49,7 @@ const navItems: NavGroup[] = [
             { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
             { path: '/documents', label: '書類管理', icon: '📄' },
+            { path: '/payroll-import', label: '給与データ取込', icon: '💰' },
             { path: '/notifications', label: '通知', icon: '🔔' },
             { path: '/retired-staff', label: '退職者管理', icon: '📋' },
             { path: '/staff-data', label: 'データ管理', icon: '📊' },

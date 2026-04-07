@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useMemo, useCallback } 
 import type { ReactNode } from 'react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from './AuthContext';
-import type { User, Facility, Occupation, Evaluation, Survey, SurveyQuestion, SurveyPeriod, FacilityStaffingTarget } from '../types';
+import type { User, Facility, Occupation, Evaluation, Survey, SurveyQuestion, SurveyPeriod, FacilityStaffingTarget, PayrollRecord } from '../types';
 
 interface DataOnly {
   users: User[];
@@ -13,6 +13,7 @@ interface DataOnly {
   surveyQuestions: SurveyQuestion[];
   surveyPeriods: SurveyPeriod[];
   facilityStaffingTargets: FacilityStaffingTarget[];
+  payrollRecords: PayrollRecord[];
   interviewLogs: any[];
   aptitudeTests: any[];
   loading: boolean;
@@ -24,6 +25,7 @@ interface DataState extends DataOnly {
   updateUser: (id: string, updates: Partial<User>) => void;
   removeUsers: (ids: string[]) => void;
   updateStaffingTarget: (facilityId: string, occupationId: string, targetCount: number) => void;
+  addPayrollRecords: (records: PayrollRecord[]) => void;
   reload: () => Promise<void>;
 }
 
@@ -36,6 +38,7 @@ const emptyData: DataOnly = {
   surveyQuestions: [],
   surveyPeriods: [],
   facilityStaffingTargets: [],
+  payrollRecords: [],
   interviewLogs: [],
   aptitudeTests: [],
   loading: true,
@@ -48,6 +51,7 @@ const DataContext = createContext<DataState>({
   updateUser: () => {},
   removeUsers: () => {},
   updateStaffingTarget: () => {},
+  addPayrollRecords: () => {},
   reload: async () => {},
 });
 
@@ -58,7 +62,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const loadFromSupabase = useCallback(async () => {
     setData(prev => ({ ...prev, loading: true }));
     try {
-      const [usersRes, facRes, occRes, evRes, svRes, sqRes, spRes, fstRes, ilRes, atRes] = await Promise.all([
+      const [usersRes, facRes, occRes, evRes, svRes, sqRes, spRes, fstRes, ilRes, atRes, prRes] = await Promise.all([
         supabase.from('users').select('*'),
         supabase.from('facilities').select('*'),
         supabase.from('occupations').select('*'),
@@ -69,6 +73,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
         supabase.from('facility_staffing_targets').select('*'),
         supabase.from('interview_logs').select('*'),
         supabase.from('aptitude_tests').select('*'),
+        supabase.from('payroll_records').select('*'),
       ]);
 
       // Map evaluations to include scores array
@@ -102,6 +107,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
         surveyQuestions: (sqRes.data as SurveyQuestion[]) || [],
         surveyPeriods: (spRes.data as SurveyPeriod[]) || [],
         facilityStaffingTargets: (fstRes.data as FacilityStaffingTarget[]) || [],
+        payrollRecords: (prRes.data as PayrollRecord[]) || [],
         interviewLogs,
         aptitudeTests,
         loading: false,
@@ -160,12 +166,20 @@ export function DataProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const addPayrollRecords = (records: PayrollRecord[]) => {
+    setData(prev => ({
+      ...prev,
+      payrollRecords: [...prev.payrollRecords, ...records],
+    }));
+  };
+
   const value = useMemo<DataState>(() => ({
     ...data,
     addUsers,
     updateUser,
     removeUsers,
     updateStaffingTarget,
+    addPayrollRecords,
     reload: loadFromSupabase,
   }), [data, loadFromSupabase]);
 
