@@ -23,6 +23,7 @@ interface DataState extends DataOnly {
   addUsers: (newUsers: User[]) => void;
   updateUser: (id: string, updates: Partial<User>) => void;
   removeUsers: (ids: string[]) => void;
+  updateStaffingTarget: (facilityId: string, occupationId: string, targetCount: number) => void;
   reload: () => Promise<void>;
 }
 
@@ -46,6 +47,7 @@ const DataContext = createContext<DataState>({
   addUsers: () => {},
   updateUser: () => {},
   removeUsers: () => {},
+  updateStaffingTarget: () => {},
   reload: async () => {},
 });
 
@@ -145,11 +147,25 @@ export function DataProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const updateStaffingTarget = (facilityId: string, occupationId: string, targetCount: number) => {
+    setData(prev => {
+      const existingIdx = prev.facilityStaffingTargets.findIndex(t => t.facility_id === facilityId && t.occupation_id === occupationId);
+      const newTargets = [...prev.facilityStaffingTargets];
+      if (existingIdx >= 0) {
+        newTargets[existingIdx] = { ...newTargets[existingIdx], target_count: targetCount };
+      } else {
+        newTargets.push({ id: `fst-${facilityId}-${occupationId}`, facility_id: facilityId, occupation_id: occupationId, target_count: targetCount });
+      }
+      return { ...prev, facilityStaffingTargets: newTargets };
+    });
+  };
+
   const value = useMemo<DataState>(() => ({
     ...data,
     addUsers,
     updateUser,
     removeUsers,
+    updateStaffingTarget,
     reload: loadFromSupabase,
   }), [data, loadFromSupabase]);
 

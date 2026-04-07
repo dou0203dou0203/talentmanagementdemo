@@ -166,6 +166,10 @@ export const facilityMutations = {
   async addFacility(data: { id: string; name: string; type: string; corporation: string }) {
     return mutate('facilities', 'insert', data);
   },
+  async updateStaffingTarget(facility_id: string, occupation_id: string, target_count: number) {
+    const id = `fst-${facility_id}-${occupation_id}`;
+    return mutate('facility_staffing_targets', 'upsert', { id, facility_id, occupation_id, target_count });
+  },
 };
 
 // ===== Survey Question Management =====

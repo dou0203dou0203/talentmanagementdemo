@@ -26,6 +26,8 @@ ChartJS.register(
     Filler
 );
 
+import { facilityMutations } from '../lib/mutations';
+
 type TabKey = 'overview' | 'alerts' | 'staffing';
 
 interface AlertInfo {
@@ -40,9 +42,19 @@ interface AlertInfo {
     level: 'red' | 'yellow' | 'green';
 }
 
+interface EditTargetState {
+    facilityId: string;
+    facilityName: string;
+    occupationId: string;
+    occupationName: string;
+    targetCount: number;
+}
+
 export default function Dashboard() {
-    const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, facilityStaffingTargets: allTargets } = useData();
+    const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, facilityStaffingTargets: allTargets, updateStaffingTarget } = useData();
     const [activeTab, setActiveTab] = useState<TabKey>('overview');
+    const [editTarget, setEditTarget] = useState<EditTargetState | null>(null);
+    const [isSaving, setIsSaving] = useState(false);
     const navigate = useNavigate();
     const { user: currentUser, permissions } = useAuth();
 
@@ -119,15 +131,11 @@ export default function Dashboard() {
 
     // Staffing heatmap data
     const heatmapData = useMemo(() => {
-        // Get occupations that have targets
-        const relevantOccIds = [...new Set(facilityStaffingTargets.map((t) => t.occupation_id))];
-        const relevantOccs = occupations.filter((o) => relevantOccIds.includes(o.id));
-
-        // For each facility, compute actual vs target
+        // Use ALL occupations directly instead of relevantOccs
         return facilities
             .filter((f) => f.type !== '本部')
             .map((facility) => {
-                const cells = relevantOccs.map((occ) => {
+                const cells = occupations.map((occ) => {
                     const target = facilityStaffingTargets.find(
                         (t) => t.facility_id === facility.id && t.occupation_id === occ.id
                     );
@@ -155,11 +163,6 @@ export default function Dashboard() {
                 };
             });
     }, [facilities, facilityStaffingTargets, occupations, users]);
-
-    const relevantOccs = useMemo(() => {
-        const relevantOccIds = [...new Set(facilityStaffingTargets.map((t) => t.occupation_id))];
-        return occupations.filter((o) => relevantOccIds.includes(o.id));
-    }, [facilityStaffingTargets, occupations]);
 
     // Get chart data for selected alert user
     const chartData = useMemo(() => {
@@ -367,15 +370,15 @@ export default function Dashboard() {
                         <thead>
                             <tr>
                                 <th>拠点</th>
-                                {relevantOccs.map((occ) => (
-                                    <th key={occ.id}>{occ.name.replace('（理学療法士）', '')}</th>
+                                {occupations.map((occ) => (
+                                    <th key={occ.id} style={{ minWidth: 60 }}>{occ.name.replace('（理学療法士）', '')}</th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
                             {heatmapData.map((row) => (
                                 <tr key={row.facilityId}>
-                                    <th>
+                                    <th style={{ minWidth: 120 }}>
                                         <div>{row.facilityName}</div>
                                         <span style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-400)', fontWeight: 400 }}>
                                             {row.facilityType}
@@ -385,9 +388,22 @@ export default function Dashboard() {
                                         <td
                                             key={cell.occupationId}
                                             className={`heatmap-cell ${getCellLevel(cell.ratio)}`}
+                                            onClick={() => {
+                                                if (permissions.canEditStaff) {
+                                                    setEditTarget({
+                                                        facilityId: row.facilityId,
+                                                        facilityName: row.facilityName,
+                                                        occupationId: cell.occupationId,
+                                                        occupationName: occupations.find(o=>o.id === cell.occupationId)?.name || '',
+                                                        targetCount: cell.target
+                                                    });
+                                                }
+                                            }}
+                                            style={{ cursor: permissions.canEditStaff ? 'pointer' : 'default', position: 'relative' }}
+                                            title={permissions.canEditStaff ? 'クリックして目標人数を設定' : ''}
                                         >
                                             {cell.target === 0 ? (
-                                                '—'
+                                                <div style={{ opacity: 0.3 }}>—</div>
                                             ) : (
                                                 <>
                                                     {cell.ratio >= 0 ? `${Math.round(cell.ratio * 100)}%` : '—'}
@@ -395,6 +411,9 @@ export default function Dashboard() {
                                                         {cell.actual}/{cell.target}
                                                     </span>
                                                 </>
+                                            )}
+                                            {permissions.canEditStaff && (
+                                                <div className="heatmap-edit-icon" style={{ position: 'absolute', top: 2, right: 2, fontSize: 10, opacity: 0 }}>✏️</div>
                                             )}
                                         </td>
                                     ))}
@@ -482,6 +501,57 @@ export default function Dashboard() {
             )}
 
             {activeTab === 'staffing' && renderHeatmap()}
+
+            {/* Edit Target Modal */}
+            {editTarget && (
+                <div className="modal-overlay" style={{ display: 'flex' }} onClick={() => setEditTarget(null)}>
+                    <div className="modal-content" style={{ maxWidth: 400 }} onClick={e => e.stopPropagation()}>
+                        <h2 className="modal-title">目標人数の設定</h2>
+                        
+                        <div style={{ marginBottom: 'var(--space-4)', background: 'var(--color-neutral-50)', padding: 'var(--space-3)', borderRadius: 'var(--radius-md)' }}>
+                            <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-neutral-500)' }}>対象拠点</div>
+                            <div style={{ fontWeight: 600, marginBottom: 'var(--space-2)' }}>{editTarget.facilityName}</div>
+                            <div style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-neutral-500)' }}>職種</div>
+                            <div style={{ fontWeight: 600 }}>{editTarget.occupationName}</div>
+                        </div>
+
+                        <div className="form-group">
+                            <label className="form-label" htmlFor="targetCount">目標人数（既定値）</label>
+                            <input 
+                                id="targetCount" 
+                                type="number" 
+                                min="0" 
+                                className="form-input" 
+                                value={editTarget.targetCount}
+                                onChange={(e) => setEditTarget({...editTarget, targetCount: parseInt(e.target.value) || 0})}
+                            />
+                            <p className="form-help">※0を指定すると「設定なし」になります。</p>
+                        </div>
+
+                        <div className="modal-actions">
+                            <button className="btn btn-secondary" onClick={() => setEditTarget(null)} disabled={isSaving}>キャンセル</button>
+                            <button className="btn btn-primary" disabled={isSaving} onClick={async () => {
+                                setIsSaving(true);
+                                const res = await facilityMutations.updateStaffingTarget(editTarget.facilityId, editTarget.occupationId, editTarget.targetCount);
+                                if (res.success) {
+                                    updateStaffingTarget(editTarget.facilityId, editTarget.occupationId, editTarget.targetCount);
+                                    setEditTarget(null);
+                                } else {
+                                    alert('保存に失敗しました');
+                                }
+                                setIsSaving(false);
+                            }}>
+                                {isSaving ? '保存中...' : '保存する'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Hacky hover CSS for edit icon */}
+            <style dangerouslySetInnerHTML={{__html: `
+                .heatmap-cell:hover .heatmap-edit-icon { opacity: 1 !important; }
+            `}} />
         </div>
     );
 }
