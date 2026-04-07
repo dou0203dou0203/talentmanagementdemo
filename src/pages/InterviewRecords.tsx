@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useData } from '../context/DataContext';
 import { interviewMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { InterviewType, InterviewLog } from '../types';
 
 export default function InterviewRecords() {
@@ -14,6 +15,12 @@ export default function InterviewRecords() {
     const [showForm, setShowForm] = useState(false);
     const [editingLog, setEditingLog] = useState<InterviewLog | null>(null);
     const [form, setForm] = useState({ user_id: '', type: '定期面談' as string, summary: '', details: '', mood: 3 as number, action_items: '', future_tasks: '', notes: '' });
+    
+    // AI Variables
+    const [isProcessingAI, setIsProcessingAI] = useState(false);
+    const [rawMemo, setRawMemo] = useState('');
+    const [audioFile, setAudioFile] = useState<File | null>(null);
+    const [aiCoaching, setAiCoaching] = useState('');
 
     // Filter users based on permissions
     const visibleUserIds = new Set(
@@ -57,9 +64,80 @@ export default function InterviewRecords() {
     const saveForm = () => {
         if (!form.summary || !form.user_id) { alert('対象者と概要は必須です'); return; }
         const staffName = users.find((u) => u.id === form.user_id)?.name || '';
-        interviewMutations.addInterview({id:'il-'+Date.now(),user_id:form.user_id,interviewer_id:currentUser?.id||'',date:new Date().toISOString().slice(0,10),type:form.type,summary:form.summary,details:form.details,mood:form.mood as any,action_items:form.action_items ? form.action_items.split(',').map((s: string)=>s.trim()) : []});
+        
+        const payloadActions = form.action_items ? form.action_items.split('\n').map((s: string)=>s.trim()).filter(s => s) : [];
+        if (aiCoaching) payloadActions.push('【AI助言】 ' + aiCoaching);
+
+        interviewMutations.addInterview({id:'il-'+Date.now(),user_id:form.user_id,interviewer_id:currentUser?.id||'',date:new Date().toISOString().slice(0,10),type:form.type,summary:form.summary,details:form.details,mood:form.mood as any,action_items:payloadActions});
         alert(editingLog ? staffName + 'の面談記録を更新しました' : staffName + 'の面談記録を追加しました');
         setShowForm(false);
+        setAiCoaching('');
+        setRawMemo('');
+        setAudioFile(null);
+    };
+
+    const handleRunAI = async () => {
+        const apiKey = localStorage.getItem('gemini_api_key');
+        if (!apiKey) {
+            alert('Gemini APIキーが設定されていません。「給与データ取込」画面から設定してください。');
+            return;
+        }
+        if (!rawMemo && !audioFile) {
+            alert('音声ファイルを選択するか、生のメモを入力してください。');
+            return;
+        }
+
+        setIsProcessingAI(true);
+        try {
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generationConfig: { responseMimeType: "application/json" } });
+
+            const promptText = `あなたは優秀な人事マネージャーのメンターです。
+アップロードされた面談の音声ファイルの文字起こし内容、または上司（面談者）が書き殴った生のメモデータを分析し、以下のJSON形式で出力してください。
+
+{
+  "summary": "15文字〜30文字程度の端的な要約タイトル",
+  "details": "面談内容の詳細な清書（200文字程度）",
+  "action_items": ["本人の次のアクション1", "本人の次のアクション2"],
+  "coaching": "上司へのマネジメント助言。この部下に対して今後どのように接するべきか、評価すべき点や気を付けるべき点を、メンターとしてプロ目線で50〜100文字でアドバイスしてください。"
+}`;
+
+            let inputs: any[] = [promptText];
+
+            if (audioFile) {
+                // 音声ファイルがある場合
+                const base64Str = await new Promise<string>((resolve) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => {
+                        const result = reader.result as string;
+                        resolve(result.split(',')[1]);
+                    };
+                    reader.readAsDataURL(audioFile);
+                });
+                inputs.push({ inlineData: { data: base64Str, mimeType: audioFile.type } });
+            } else if (rawMemo) {
+                // テキストメモの場合
+                inputs.push(`入力された生の面談メモ:\n${rawMemo}`);
+            }
+
+            const result = await model.generateContent(inputs);
+            const data = JSON.parse(result.response.text());
+
+            setForm(prev => ({
+                ...prev,
+                summary: data.summary || prev.summary,
+                details: data.details || prev.details,
+                action_items: Array.isArray(data.action_items) ? data.action_items.join('\n') : prev.action_items
+            }));
+            
+            if (data.coaching) {
+                setAiCoaching(data.coaching);
+            }
+        } catch (err: any) {
+            alert('AIの解析に失敗しました: ' + err.message);
+        } finally {
+            setIsProcessingAI(false);
+        }
     };
 
     return (
@@ -180,6 +258,44 @@ export default function InterviewRecords() {
                                     ))}
                                 </div>
                             </div>
+                            {currentUser?.role === 'hr_admin' && (
+                                <div className="sp-form-field" style={{ background: '#f8fafc', padding: 16, borderRadius: 8, border: '1px solid #e2e8f0', marginBottom: 16 }}>
+                                    <h4 style={{ margin: '0 0 12px 0', display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.9rem', color: '#1e293b' }}>
+                                        <span>🎙️</span> AIによる自動要約＆助言（人事システム専用）
+                                    </h4>
+                                    
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                                        <div>
+                                            <label style={{ fontSize: '0.8rem', color: '#475569', marginBottom: 4 }}>音声ファイル (面談の録音データ)</label>
+                                            <input type="file" accept="audio/*" onChange={(e) => setAudioFile(e.target.files?.[0] || null)} className="form-input" style={{ padding: 4 }} />
+                                        </div>
+                                        
+                                        <div style={{ position: 'relative' }}>
+                                            <div style={{ textAlign: 'center', color: '#94a3b8', fontSize: '0.8rem', margin: '4px 0' }}>または</div>
+                                            <label style={{ fontSize: '0.8rem', color: '#475569', marginBottom: 4 }}>書き殴りの生メモ</label>
+                                            <textarea className="form-textarea" rows={3} value={rawMemo} onChange={(e) => setRawMemo(e.target.value)} placeholder="箇条書きや乱雑なメモでも構いません" />
+                                        </div>
+
+                                        <button 
+                                            className="btn btn-primary" 
+                                            type="button" 
+                                            onClick={handleRunAI} 
+                                            disabled={isProcessingAI || (!audioFile && !rawMemo)}
+                                            style={{ background: 'linear-gradient(to right, #8b5cf6, #3b82f6)', border: 'none' }}
+                                        >
+                                            {isProcessingAI ? '⏳ AIが解析中（数秒〜数十秒かかります）...' : '✨ 音声/メモを解析して要約＆助言を生成'}
+                                        </button>
+                                    </div>
+
+                                    {aiCoaching && (
+                                        <div style={{ marginTop: 16, padding: 12, background: '#f0fdf4', borderLeft: '4px solid #22c55e', borderRadius: '0 8px 8px 0' }}>
+                                            <strong style={{ display: 'block', color: '#166534', fontSize: '0.85rem', marginBottom: 4 }}>💡 AIからのマネジメント助言</strong>
+                                            <p style={{ fontSize: '0.85rem', color: '#14532d', margin: 0, lineHeight: 1.5 }}>{aiCoaching}</p>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
                             <div className="sp-form-field">
                                 <label>概要 *</label>
                                 <input type="text" className="form-input" value={form.summary} onChange={(e) => setForm({ ...form, summary: e.target.value })} />

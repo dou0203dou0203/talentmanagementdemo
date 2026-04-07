@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { useAuth } from '../context/AuthContext';
 
 // Attrition risk word dictionary
 const RISK_WORDS: { word: string; weight: number; category: string }[] = [
@@ -55,9 +57,14 @@ const mockTexts: { userId: string; source: string; date: string; text: string }[
 ];
 
 export default function AttritionAnalysis() {
-    const { users, occupations, facilities } = useData();
+  const { users, occupations, facilities, interviewLogs, surveys } = useData();
+  const { user: currentUser } = useAuth();
   const navigate = useNavigate();
   const [filterFac, setFilterFac] = useState('all');
+  
+  // AI State
+  const [isAiScanning, setIsAiScanning] = useState(false);
+  const [aiSuggestions, setAiSuggestions] = useState<any[]>([]);
 
   // Analyze each user
   const userAnalysis = useMemo(() => {
@@ -85,12 +92,67 @@ export default function AttritionAnalysis() {
   }, []);
 
   const filteredAnalysis = useMemo(() => {
-    if (filterFac === 'all') return userAnalysis;
-    return userAnalysis.filter(a => {
+    let base = userAnalysis;
+    // AI結果があれば上書き
+    if (aiSuggestions.length > 0) {
+      base = aiSuggestions.map(aiItem => {
+        return {
+          userId: aiItem.userId,
+          score: aiItem.riskLevel === 'High' ? 10 : aiItem.riskLevel === 'Medium' ? 5 : 0,
+          maxWeight: 3,
+          words: [],
+          texts: [{ userId: aiItem.userId, source: 'AI判定', date: 'Now', text: aiItem.reason }],
+          aiAction: aiItem.suggestedAction
+        };
+      });
+    }
+
+    if (filterFac === 'all') return base;
+    return base.filter(a => {
       const u = users.find(u2 => u2.id === a.userId);
       return u?.facility_id === filterFac;
     });
-  }, [userAnalysis, filterFac]);
+  }, [userAnalysis, filterFac, aiSuggestions]);
+
+  const handleRunAiScan = async () => {
+    const apiKey = localStorage.getItem('gemini_api_key');
+    if (!apiKey) {
+      alert('Gemini APIキーが設定されていません。「給与データ取込」から設定してください。');
+      return;
+    }
+
+    setIsAiScanning(true);
+    try {
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generationConfig: { responseMimeType: "application/json" } });
+
+      // Create a prompt with recent interview logs and survey scores
+      const contextData = users.map(u => {
+        const uLogs = interviewLogs.filter(l => l.user_id === u.id).slice(0, 2).map(l => l.summary).join(',');
+        const uSurveys = surveys.filter(s => s.user_id === u.id).slice(0, 1).map(s => s.motivation_score).join(',');
+        return `ID:${u.id},Name:${u.name},Logs:${uLogs||'None'},SurveyScore:${uSurveys||'None'}`;
+      }).join('\n');
+
+      const prompt = `あなたはプロの人事コンサルタントです。以下の社員のデータ（直近の面談ログとモチベーションスコア(5満点)）を分析し、離職リスクのある社員をリストアップしてください。
+以下のJSON形式の配列で返してください。スコアが低かったり、ログにネガティブな兆候がある人をハイライトしてください。
+[
+  { "userId": "ID文字列", "riskLevel": "High または Medium", "reason": "その理由（30字程度）", "suggestedAction": "上司が取るべきアクション" }
+]
+
+社員データ：
+${contextData}
+`;
+
+      const result = await model.generateContent(prompt);
+      const data = JSON.parse(result.response.text());
+      setAiSuggestions(data);
+      alert('AIスキャンが完了しました。ハイリスクな従業員を表示します。');
+    } catch (e: any) {
+      alert('AIスキャン失敗: ' + e.message);
+    } finally {
+      setIsAiScanning(false);
+    }
+  };
 
   // Category breakdown
   const categoryBreakdown = useMemo(() => {
@@ -111,8 +173,22 @@ export default function AttritionAnalysis() {
 
   return (
     <div className='fade-in'>
-      <h2 className='page-title'>🧠 AI離職リスク分析</h2>
-      <p className='page-subtitle'>サーベイ・面談記録から離職リスクワードをAIが抽出・スコア化します</p>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h2 className='page-title'>🧠 AI離職リスク分析</h2>
+          <p className='page-subtitle'>サーベイ・面談記録から離職リスクワードをAIが抽出・スコア化します</p>
+        </div>
+        {currentUser?.role === 'hr_admin' && (
+          <button 
+            className="btn btn-primary btn-lg" 
+            onClick={handleRunAiScan} 
+            disabled={isAiScanning}
+            style={{ background: 'linear-gradient(to right, #ef4444, #f97316)', border: 'none', boxShadow: '0 4px 6px rgba(239, 68, 68, 0.2)' }}
+          >
+            {isAiScanning ? '⏳ AI全社スキャン中...' : '⚠️ ✨ 全社AIリスクスキャンを実行'}
+          </button>
+        )}
+      </div>
 
       {/* KPI Cards */}
       <div className='an-kpi-grid'>
@@ -187,6 +263,12 @@ export default function AttritionAnalysis() {
                     <span style={{color:'var(--color-neutral-600)'}}>{t.text}</span>
                   </div>
                 ))}
+                {(a as any).aiAction && (
+                  <div style={{marginTop: 8, paddingTop: 8, borderTop: '1px solid #e5e7eb'}}>
+                    <strong style={{color: '#d97706', fontSize: '0.8rem'}}>💡 AIからのアクション助言：</strong>
+                    <span style={{fontSize: '0.8rem', color: '#92400e'}}>{(a as any).aiAction}</span>
+                  </div>
+                )}
               </div>
             </div>
           );

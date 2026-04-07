@@ -4,6 +4,7 @@ import { evaluationMutations } from '../lib/mutations';
 import { evaluationTemplateItems } from '../data/mockData';
 import type { EvaluationScore, EvaluationStatus } from '../types';
 import { useAuth } from '../context/AuthContext';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // ============= Newcomer Checklist Data =============
 const checklistCategories = [
@@ -92,6 +93,9 @@ export default function EvaluationForm() {
     const [searchFilter, setSearchFilter] = useState('');
     const [facFilter, setFacFilter] = useState('all');
     const [occFilter, setOccFilter] = useState('all');
+    
+    // AI Loading State
+    const [isGeneratingDraft, setIsGeneratingDraft] = useState(false);
 
     // ===== Evaluation State =====
     const [selectedUserId, setSelectedUserId] = useState('u-4');
@@ -159,6 +163,41 @@ export default function EvaluationForm() {
     const handleSubmit = () => { setStatus('submitted'); evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'submitted',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 評価を提出しました。'); };
     const handleApprove = () => { setStatus('approved'); evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'approved',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 評価を承認しました。'); };
     const handleSaveDraft = () => { evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'draft',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 下書きを保存しました。'); };
+
+    const handleGenerateAIDraft = async () => {
+        const apiKey = localStorage.getItem('gemini_api_key');
+        if (!apiKey) {
+            alert('Gemini APIキーが設定されていません。「給与データ取込」画面の最上部で設定してください。');
+            return;
+        }
+
+        setIsGeneratingDraft(true);
+        try {
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+            // プロンプトを組み立てる
+            const scoredItems = scores.filter(s => s.score > 0).map(s => {
+                const itemDef = templateItems.find(t => t.id === s.item_id);
+                return `- ${itemDef?.question}: ${s.score}点`;
+            }).join('\n');
+
+            const promptText = `あなたはプロフェッショナルな人事・施設長です。以下の情報を元に、部下（${selectedUser?.name}）への「期末評価の総合コメント（総評）」を作成してください。
+字数は約200文字〜300文字で、最初は労いと強みの称賛から入り、後半に改善点や次期への期待を込める構成にしてください。口調は「〜ですね。」「〜を期待しています。」のような丁寧な言葉遣い（です・ます調）にしてください。
+
+【評価データ】
+${scoredItems || 'まだ点数が入力されていません'}
+
+※上記以外の細かい補足情報なしで、そのまま入力欄に貼り付けられる純粋なコメント本文のみを出力してください。`;
+
+            const result = await model.generateContent(promptText);
+            setOverallComment(result.response.text().trim());
+        } catch (e: any) {
+            alert('AIによる下書き作成に失敗しました: ' + e.message);
+        } finally {
+            setIsGeneratingDraft(false);
+        }
+    };
 
     const evaluator = useMemo(() => users.find((u) => u.id === selectedUser?.evaluator_id), [selectedUser]);
     const categories = useMemo(() => {
@@ -299,7 +338,19 @@ export default function EvaluationForm() {
 
                     {/* Overall Comment */}
                     <div className="card" style={{ marginBottom: 'var(--space-6)' }}>
-                        <div className="card-header"><h3 className="card-title">総合コメント</h3></div>
+                        <div className="card-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <h3 className="card-title">総合コメント</h3>
+                            {currentUser?.role === 'hr_admin' && (
+                                <button 
+                                    className="btn btn-secondary" 
+                                    style={{ fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: 4 }}
+                                    onClick={handleGenerateAIDraft}
+                                    disabled={isGeneratingDraft || status === 'approved'}
+                                >
+                                    {isGeneratingDraft ? '⏳ AIが執筆中...' : '✨ AIで下書きを生成'}
+                                </button>
+                            )}
+                        </div>
                         <div className="card-body">
                             <textarea className="form-textarea" placeholder="総合的な評価コメントを入力してください" value={overallComment}
                                 onChange={(e) => setOverallComment(e.target.value)} disabled={status === 'approved'} rows={4} id="overall-comment" />
