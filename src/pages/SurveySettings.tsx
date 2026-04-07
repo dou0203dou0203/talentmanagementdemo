@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { surveyQuestions as initialQuestions } from '../data/mockData';
 import type { SurveyQuestion, SurveyCategory } from '../types';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const CATEGORY_ICONS: Record<SurveyCategory, string> = {
     '仕事満足度': '💼',
@@ -47,6 +48,11 @@ export default function SurveySettings() {
     const [surveyType, setSurveyType] = useState<'regular'|'newcomer'|'leader'>('regular');
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editText, setEditText] = useState('');
+    
+    // AI Generation State
+    const [showAiModal, setShowAiModal] = useState(false);
+    const [aiTheme, setAiTheme] = useState('');
+    const [isGeneratingAi, setIsGeneratingAi] = useState(false);
     const [showAddForm, setShowAddForm] = useState(false);
     const [newQuestion, setNewQuestion] = useState('');
     const [newCategory, setNewCategory] = useState<SurveyCategory>('仕事満足度');
@@ -179,6 +185,55 @@ export default function SurveySettings() {
     // --- Stats ---
     const totalQuestions = activeQuestions.length;
     const totalCategories = categories.length;
+
+    // --- AI Generator ---
+    const handleGenerateAiQuestions = async () => {
+        if (!aiTheme.trim()) return;
+        const apiKey = localStorage.getItem('gemini_api_key');
+        if (!apiKey) {
+            alert('Gemini APIキーが設定されていません。「給与データ取込」から設定してください。');
+            return;
+        }
+
+        setIsGeneratingAi(true);
+        try {
+            const genAI = new GoogleGenerativeAI(apiKey);
+            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generationConfig: { responseMimeType: "application/json" } });
+
+            const targetLabel = surveyType === 'regular' ? '全スタッフ向け定期サーベイ' : surveyType === 'newcomer' ? '新入社員向けサーベイ' : 'リーダー適性サーベイ';
+            const existingCatLabels = categories.join(', ');
+
+            const prompt = `あなたはプロフェッショナルな組織コンサルタントです。「${targetLabel}」に利用するアンケート設問を作成してください。
+今回は特に「${aiTheme}」というテーマ・課題にフォーカスした設問を5個生成してください。
+
+以下の形式のJSON配列のみを出力してください。
+[
+  { "category": "既存のカテゴリ（${existingCatLabels}）または新規のカテゴリ名", "question": "質問のテキスト（ はい/いいえ、あるいは5段階評価で答えやすい文章にしてください ）" }
+]`;
+
+            const result = await model.generateContent(prompt);
+            const data = JSON.parse(result.response.text());
+            
+            // Add to active questions
+            if (Array.isArray(data)) {
+                let maxOrderBase = activeQuestions.length > 0 ? Math.max(...activeQuestions.map(q => q.sort_order)) : 0;
+                const newQs: SurveyQuestion[] = data.map((item: any, idx: number) => ({
+                    id: `sq-ai-${Date.now()}-${idx}`,
+                    category: item.category as SurveyCategory,
+                    question: item.question,
+                    sort_order: maxOrderBase + idx + 1
+                }));
+                setActiveQuestions(prev => [...prev, ...newQs]);
+                showToast('✨ AIが設問を5個作成し、追加しました！');
+                setShowAiModal(false);
+                setAiTheme('');
+            }
+        } catch (e: any) {
+            showToast('AI生成失敗: ' + e.message, 'error');
+        } finally {
+            setIsGeneratingAi(false);
+        }
+    };
 
     // ========================================
     // EDIT MODE
@@ -382,6 +437,9 @@ export default function SurveySettings() {
                             📂 カテゴリを追加
                         </button>
                     )}
+                    <button className="btn btn-primary" onClick={() => setShowAiModal(true)} style={{ background: 'linear-gradient(to right, #8b5cf6, #d946ef)', border: 'none' }}>
+                        ✨ AIにおまかせ生成
+                    </button>
                 </div>
             )}
         </div>
@@ -523,6 +581,41 @@ export default function SurveySettings() {
             {toast && (
                 <div className={`sq-toast ${toast.type}`}>
                     {toast.type === 'success' ? '✅' : '⚠️'} {toast.message}
+                </div>
+            )}
+
+            {/* AI Generator Modal */}
+            {showAiModal && (
+                <div className="modal-overlay" onClick={() => setShowAiModal(false)}>
+                    <div className="modal-content fade-in" onClick={e => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h3 className="modal-title">✨ AIに設問を一括生成してもらう</h3>
+                            <button className="modal-close" onClick={() => setShowAiModal(false)}>✕</button>
+                        </div>
+                        <div className="modal-body">
+                            <p style={{ fontSize: 'var(--font-size-sm)', color: 'var(--color-neutral-600)', marginBottom: 'var(--space-4)' }}>
+                                現在のサーベイ種別（{surveyType === 'regular' ? '定期' : surveyType === 'newcomer' ? '新人' : 'リーダー'}）に合わせて、AIが最適な設問を5つ自動生成します。重点的に測りたいテーマを入力してください。
+                            </p>
+                            <textarea 
+                                className="form-textarea" 
+                                placeholder="例: リモートワーク下でのコミュニケーション不足や、最近の残業増加によるメンタル不調の兆候を測りたい"
+                                rows={4}
+                                value={aiTheme}
+                                onChange={e => setAiTheme(e.target.value)}
+                            />
+                        </div>
+                        <div className="modal-footer">
+                            <button className="btn btn-secondary" onClick={() => setShowAiModal(false)}>キャンセル</button>
+                            <button 
+                                className="btn btn-primary" 
+                                onClick={handleGenerateAiQuestions}
+                                disabled={isGeneratingAi || !aiTheme.trim()}
+                                style={{ background: 'linear-gradient(to right, #8b5cf6, #d946ef)', border: 'none' }}
+                            >
+                                {isGeneratingAi ? '⏳ 生成中...' : '✨ 生成する'}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
