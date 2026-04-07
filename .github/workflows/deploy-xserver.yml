@@ -1,0 +1,44 @@
+name: Deploy to XServer
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにプッシュされた時のみ実行
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: ⚙️ Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: 📦 Install dependencies
+      run: npm ci
+
+    - name: 🔨 Build Project
+      run: npm run build
+      env:
+        # もし本番用の環境変数があればここに追加
+        CI: false
+
+    - name: 📂 Sync files (FTP Deploy)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/                   # ビルド結果のフォルダ
+        server-dir: /plusd.jp/public_html/hr/ # エックスサーバー上のデプロイ先フォルダ
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
