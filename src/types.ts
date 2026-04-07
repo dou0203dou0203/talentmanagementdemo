@@ -63,6 +63,7 @@ export interface User {
   resignation_date?: string;    // 離職日
   resignation_reason?: string;  // 離職理由
   auth_uid?: string;            // Supabase Auth UUID
+  master_user_id?: string;      // 主務アカウントのID（サブアカウントの場合のみ）
 }
 
 // --- 評価 ---

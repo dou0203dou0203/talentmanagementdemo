@@ -67,7 +67,7 @@ export default function StaffDetail() {
       <div style={{display:'flex',alignItems:'center',gap:'var(--space-4)',marginBottom:'var(--space-6)',flexWrap:'wrap'}}>
         <button className='btn btn-secondary btn-sm' onClick={()=>navigate('/')}>← 戻る</button>
         <div style={{width:56,height:56,borderRadius:'var(--radius-full)',background:'linear-gradient(135deg,var(--color-primary-400),var(--color-accent-400))',display:'flex',alignItems:'center',justifyContent:'center',color:'#fff',fontWeight:700,fontSize:'var(--font-size-xl)',flexShrink:0}}>{user.name.charAt(0)}</div>
-        <div><h2 className='page-title' style={{marginBottom:0}}>{user.name}</h2><p className='page-subtitle' style={{margin:0}}>{fac?.name} / {occ?.name}{user.status==='leave'&&<span className='badge badge-danger' style={{marginLeft:'var(--space-2)'}}>休職中</span>}</p></div>
+        <div><h2 className='page-title' style={{marginBottom:0}}>{user.name}</h2><p className='page-subtitle' style={{margin:0}}>{fac?.name} / {occ?.name}{user.status==='leave'&&<span className='badge badge-danger' style={{marginLeft:'var(--space-2)'}}>休職中</span>}{user.master_user_id&&<span className='badge' style={{marginLeft:'var(--space-2)',background:'#fef2f2',color:'#ef4444',border:'1px solid #fca5a5'}}>兼務アカウント</span>}</p></div>
         {uSurveys.length>0&&<div style={{marginLeft:'auto',textAlign:'right'}}><div style={{fontSize:'var(--font-size-xs)',color:'var(--color-neutral-500)'}}>最新スコア</div><div style={{fontSize:'var(--font-size-xl)',fontWeight:700}}>M:{uSurveys[uSurveys.length-1].mental_score} / V:{uSurveys[uSurveys.length-1].motivation_score}</div></div>}
       </div>
       <div className='stats-grid'>

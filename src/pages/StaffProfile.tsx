@@ -18,7 +18,7 @@ export default function StaffProfile() {
     const [showAddInterview, setShowAddInterview] = useState(false);
     const [editingInterview, setEditingInterview] = useState<InterviewLog | null>(null);
     const [ivForm, setIvForm] = useState({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
-    const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ' });
+    const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ', master_user_id: '' });
 
     // Qualification modal
     const [showQualModal, setShowQualModal] = useState(false);
@@ -76,7 +76,7 @@ export default function StaffProfile() {
 
     // Basic info edit
     const startEdit = () => {
-        setEditForm({ name: selected.name, email: selected.email, gender: selected.gender || '', birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '' });
+        setEditForm({ name: selected.name, email: selected.email, gender: selected.gender || '', birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '', master_user_id: selected.master_user_id || '' });
         setEditMode(true);
     };
     const saveEdit = async () => {
@@ -96,6 +96,7 @@ export default function StaffProfile() {
             status: editForm.status || selected.status,
             resignation_date: editForm.resignation_date?.trim() || undefined,
             resignation_reason: editForm.resignation_reason?.trim() || undefined,
+            master_user_id: editForm.master_user_id || undefined,
         };
         // Update in-memory state
         updateUser(selected.id, updates);
@@ -121,7 +122,7 @@ export default function StaffProfile() {
         if (!newStaffForm.name || !newStaffForm.email) { alert('氏名とメールは必須です'); return; }
         alert(`新規職員「${newStaffForm.name}」を登録しました（デモ）`);
         setShowAddStaff(false);
-        setNewStaffForm({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ' });
+        setNewStaffForm({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ', master_user_id: '' });
     };
 
     // Interview
@@ -177,6 +178,7 @@ export default function StaffProfile() {
                             {statusLabel[selected.status] || selected.status}
                         </span>
                         {selected.position && <span className="sp-badge sp-badge-outline">{selected.position}</span>}
+                        {selected.master_user_id && <span className="sp-badge" style={{ background: '#fef2f2', color: '#ef4444', border: '1px solid #fca5a5' }}>兼務（主務: {users.find(u => u.id === selected.master_user_id)?.name}）</span>}
                     </div>
                     {tenure !== null && <p className="sp-tenure">勤続 {tenure}年（{selected.hire_date} 入社）</p>}
                 </div>
@@ -207,6 +209,7 @@ export default function StaffProfile() {
                         <InfoRow label="勤続年数" value={tenure !== null ? `${tenure}年` : '未登録'} />
                         <InfoRow label="所属法人" value={selected.corporation || '未登録'} />
                         <InfoRow label="所属事業所" value={fac?.name || '未登録'} />
+                        <InfoRow label="主務アカウント" value={selected.master_user_id ? users.find(u => u.id === selected.master_user_id)?.name || selected.master_user_id : 'なし'} />
                         <InfoRow label="職種" value={occ?.name || '未登録'} />
                         <InfoRow label="役職" value={selected.position || '未登録'} />
                         <InfoRow label="雇用形態" value={selected.employment_type || '未登録'} />
@@ -241,6 +244,13 @@ export default function StaffProfile() {
                                 </>
                             )}
                             <FormField label="所属法人" value={editForm.corporation || ''} onChange={(v) => setEditForm({ ...editForm, corporation: v })} />
+                            <div className="sp-form-field">
+                                <label>主務アカウント（兼務の場合のみ）</label>
+                                <select value={editForm.master_user_id || ''} onChange={(e) => setEditForm({ ...editForm, master_user_id: e.target.value })}>
+                                    <option value="">（独立アカウント）</option>
+                                    {users.filter(u => u.id !== selected.id).map((u) => <option key={u.id} value={u.id}>{u.name} ({facilities.find(f => f.id === u.facility_id)?.name})</option>)}
+                                </select>
+                            </div>
                         </div>
                         <div className="sp-form-actions">
                             <button className="btn btn-secondary" onClick={() => setEditMode(false)} disabled={saving}>キャンセル</button>
@@ -394,6 +404,13 @@ export default function StaffProfile() {
                             <div className="sp-form-field"><label>雇用形態</label><select value={newStaffForm.employment_type} onChange={(e) => setNewStaffForm({ ...newStaffForm, employment_type: e.target.value as EmploymentType })}>{employmentTypes.map((t) => <option key={t} value={t}>{t}</option>)}</select></div>
                             <div className="sp-form-field"><label>勤務形態</label><select value={newStaffForm.work_pattern} onChange={(e) => setNewStaffForm({ ...newStaffForm, work_pattern: e.target.value as WorkPattern })}>{workPatterns.map((w) => <option key={w} value={w}>{w}</option>)}</select></div>
                             <FormField label="所属法人" value={newStaffForm.corporation} onChange={(v) => setNewStaffForm({ ...newStaffForm, corporation: v })} />
+                            <div className="sp-form-field">
+                                <label>主務アカウント（兼務の場合のみ）</label>
+                                <select value={newStaffForm.master_user_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, master_user_id: e.target.value })}>
+                                    <option value="">（独立アカウント）</option>
+                                    {users.map((u) => <option key={u.id} value={u.id}>{u.name} ({facilities.find(f => f.id === u.facility_id)?.name})</option>)}
+                                </select>
+                            </div>
                         </div>
                         <div className="sp-form-actions">
                             <button className="btn btn-secondary" onClick={() => setShowAddStaff(false)}>キャンセル</button>
