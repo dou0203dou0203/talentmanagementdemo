@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { surveyQuestions as initialQuestions } from '../data/mockData';
 import type { SurveyQuestion, SurveyCategory } from '../types';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { useAI } from '../context/AIContext';
 
 const CATEGORY_ICONS: Record<SurveyCategory, string> = {
     '仕事満足度': '💼',
@@ -41,6 +42,7 @@ const MOOD_LABELS = ['とても悪い', 'やや悪い', '普通', 'やや良い'
 type ViewMode = 'edit' | 'preview';
 
 export default function SurveySettings() {
+    const { getValidApiKey, handleApiError } = useAI();
     const [questions, setQuestions] = useState<SurveyQuestion[]>([...initialQuestions]);
     const [ncQuestions, setNcQuestions] = useState<SurveyQuestion[]>([...newcomerQuestions]);
     const [ldQuestions, setLdQuestions] = useState<SurveyQuestion[]>([...leaderSurveyQuestions]);
@@ -189,11 +191,8 @@ export default function SurveySettings() {
     // --- AI Generator ---
     const handleGenerateAiQuestions = async () => {
         if (!aiTheme.trim()) return;
-        const apiKey = localStorage.getItem('gemini_api_key');
-        if (!apiKey) {
-            alert('Gemini APIキーが設定されていません。「給与データ取込」から設定してください。');
-            return;
-        }
+        const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
         setIsGeneratingAi(true);
         try {
@@ -229,6 +228,8 @@ export default function SurveySettings() {
                 setAiTheme('');
             }
         } catch (e: any) {
+            handleApiError(e);
+            handleApiError(e);
             showToast('AI生成失敗: ' + e.message, 'error');
         } finally {
             setIsGeneratingAi(false);

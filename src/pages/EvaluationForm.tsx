@@ -4,6 +4,7 @@ import { evaluationMutations } from '../lib/mutations';
 import { evaluationTemplateItems } from '../data/mockData';
 import type { EvaluationScore, EvaluationStatus } from '../types';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // ============= Newcomer Checklist Data =============
@@ -89,6 +90,7 @@ type ScoreMap = Record<string, number>;
 export default function EvaluationForm() {
     const { users, occupations, evaluations, facilities } = useData();
     const { user: currentUser, permissions } = useAuth();
+    const { getValidApiKey, handleApiError } = useAI();
     const [activeMode, setActiveMode] = useState<'evaluation' | 'checklist'>('evaluation');
     const [searchFilter, setSearchFilter] = useState('');
     const [facFilter, setFacFilter] = useState('all');
@@ -165,11 +167,8 @@ export default function EvaluationForm() {
     const handleSaveDraft = () => { evaluationMutations.submitEvaluation({id:'ev-'+Date.now(),user_id:selectedUserId,evaluator_id:currentUser?.id||'',period:'2025年度 上期',status:'draft',overall_comment:overallComment},scores.map(s=>({item_id:s.item_id,score:s.score,comment:s.comment}))); alert('✅ 下書きを保存しました。'); };
 
     const handleGenerateAIDraft = async () => {
-        const apiKey = localStorage.getItem('gemini_api_key');
-        if (!apiKey) {
-            alert('Gemini APIキーが設定されていません。「給与データ取込」画面の最上部で設定してください。');
-            return;
-        }
+        const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
         setIsGeneratingDraft(true);
         try {
@@ -193,7 +192,7 @@ ${scoredItems || 'まだ点数が入力されていません'}
             const result = await model.generateContent(promptText);
             setOverallComment(result.response.text().trim());
         } catch (e: any) {
-            alert('AIによる下書き作成に失敗しました: ' + e.message);
+            handleApiError(e);
         } finally {
             setIsGeneratingDraft(false);
         }

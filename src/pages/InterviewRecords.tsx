@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { useData } from '../context/DataContext';
 import { interviewMutations } from '../lib/mutations';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { InterviewType, InterviewLog } from '../types';
 
 export default function InterviewRecords() {
     const { users, occupations, facilities, interviewLogs } = useData();
     const { user: currentUser, permissions } = useAuth();
+    const { getValidApiKey, handleApiError } = useAI();
     const [filterFacility, setFilterFacility] = useState<string>('all');
     const [filterType, setFilterType] = useState<string>('all');
     const [searchName, setSearchName] = useState('');
@@ -77,15 +79,13 @@ export default function InterviewRecords() {
     };
 
     const handleRunAI = async () => {
-        const apiKey = localStorage.getItem('gemini_api_key');
-        if (!apiKey) {
-            alert('Gemini APIキーが設定されていません。「給与データ取込」画面から設定してください。');
-            return;
-        }
         if (!rawMemo && !audioFile) {
             alert('音声ファイルを選択するか、生のメモを入力してください。');
             return;
         }
+
+        const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
         setIsProcessingAI(true);
         try {
@@ -134,7 +134,7 @@ export default function InterviewRecords() {
                 setAiCoaching(data.coaching);
             }
         } catch (err: any) {
-            alert('AIの解析に失敗しました: ' + err.message);
+            handleApiError(err);
         } finally {
             setIsProcessingAI(false);
         }

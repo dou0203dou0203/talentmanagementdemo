@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { DataProvider } from './context/DataContext';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import { AIProvider } from './context/AIContext';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -93,7 +94,9 @@ function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <AuthProvider>
         <DataProvider>
-          <AppRoutes />
+          <AIProvider>
+            <AppRoutes />
+          </AIProvider>
         </DataProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import { useData } from '../context/DataContext';
 import { useNavigate } from 'react-router-dom';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 
 // Attrition risk word dictionary
 const RISK_WORDS: { word: string; weight: number; category: string }[] = [
@@ -59,6 +60,7 @@ const mockTexts: { userId: string; source: string; date: string; text: string }[
 export default function AttritionAnalysis() {
   const { users, occupations, facilities, interviewLogs, surveys } = useData();
   const { user: currentUser } = useAuth();
+    const { getValidApiKey, handleApiError } = useAI();
   const navigate = useNavigate();
   const [filterFac, setFilterFac] = useState('all');
   
@@ -115,11 +117,8 @@ export default function AttritionAnalysis() {
   }, [userAnalysis, filterFac, aiSuggestions]);
 
   const handleRunAiScan = async () => {
-    const apiKey = localStorage.getItem('gemini_api_key');
-    if (!apiKey) {
-      alert('Gemini APIキーが設定されていません。「給与データ取込」から設定してください。');
-      return;
-    }
+    const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
     setIsAiScanning(true);
     try {
@@ -148,7 +147,7 @@ ${contextData}
       setAiSuggestions(data);
       alert('AIスキャンが完了しました。ハイリスクな従業員を表示します。');
     } catch (e: any) {
-      alert('AIスキャン失敗: ' + e.message);
+      handleApiError(e);
     } finally {
       setIsAiScanning(false);
     }

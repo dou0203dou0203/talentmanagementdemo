@@ -5,6 +5,7 @@ import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
 import type { AptitudeTestScore } from '../types';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
@@ -61,6 +62,7 @@ type Step = 'select' | 'test' | 'result' | 'settings';
 export default function AptitudeTestForm() {
   const { users, facilities } = useData();
   const { user: currentUser } = useAuth();
+    const { getValidApiKey, handleApiError } = useAI();
   const navigate = useNavigate();
   const [step, setStep] = useState<Step>('select');
   const [selectedUserId, setSelectedUserId] = useState('');
@@ -103,11 +105,8 @@ export default function AptitudeTestForm() {
 
   const handleGenerateAiTest = async () => {
     if (!aiObjective.trim()) return;
-    const apiKey = localStorage.getItem('gemini_api_key');
-    if (!apiKey) {
-      alert('Gemini APIキーが設定されていません。「給与データ取込」画面から設定してください。');
-      return;
-    }
+    const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
     setIsGeneratingAi(true);
     try {
@@ -141,7 +140,7 @@ export default function AptitudeTestForm() {
         setStep('select');
       }
     } catch (e: any) {
-      alert('AI設計失敗: ' + e.message);
+      handleApiError(e);
     } finally {
       setIsGeneratingAi(false);
     }

@@ -1,12 +1,14 @@
 import { useMemo } from 'react';
 import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useState } from 'react';
 
 export default function Analytics() {
     const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, evaluations: allEvaluations } = useData();
     const { user: currentUser, permissions } = useAuth();
+    const { getValidApiKey, handleApiError } = useAI();
     
     const [activeTab, setActiveTab] = useState<'basic' | 'ai-salary'>('basic');
     const [isAiScanning, setIsAiScanning] = useState(false);
@@ -86,11 +88,8 @@ export default function Analytics() {
     const facColors = ['#d4739b', '#8db93e', '#3b82f6', '#f59e0b', '#6b7a87', '#ef4444', '#8b5cf6', '#10b981'];
 
     const handleRunAiSalaryScan = async () => {
-        const apiKey = localStorage.getItem('gemini_api_key');
-        if (!apiKey) {
-            alert('Gemini APIキーが設定されていません。「給与データ取込」から設定してください。');
-            return;
-        }
+        const apiKey = await getValidApiKey();
+        if (!apiKey) return;
 
         setIsAiScanning(true);
         try {
@@ -122,7 +121,7 @@ ${payrollData}`;
             const result = await model.generateContent(prompt);
             setAiReport(result.response.text());
         } catch (e: any) {
-            alert('AI分析失敗: ' + e.message);
+            handleApiError(e);
         } finally {
             setIsAiScanning(false);
         }

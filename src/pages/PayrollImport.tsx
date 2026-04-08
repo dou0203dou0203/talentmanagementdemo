@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useData } from '../context/DataContext';
 import { useAuth } from '../context/AuthContext';
+import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import * as XLSX from 'xlsx';
 import { payrollMutations } from '../lib/mutations';
@@ -24,9 +25,8 @@ interface MatchResult extends ParsedRow {
 export default function PayrollImport() {
   const { users, addPayrollRecords } = useData();
   const { permissions } = useAuth();
+  const { getValidApiKey, handleApiError } = useAI();
   
-  const [apiKey, setApiKey] = useState(localStorage.getItem('gemini_api_key') || '');
-  const [isEditingKey, setIsEditingKey] = useState(!localStorage.getItem('gemini_api_key'));
   const [yearMonth, setYearMonth] = useState('');
   
   const [file, setFile] = useState<File | null>(null);
@@ -42,12 +42,6 @@ export default function PayrollImport() {
     return <div style={{ padding: 20 }}>アクセス権限がありません。</div>;
   }
 
-  const saveApiKey = () => {
-    if (!apiKey) return;
-    localStorage.setItem('gemini_api_key', apiKey);
-    setIsEditingKey(false);
-  };
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
@@ -55,10 +49,13 @@ export default function PayrollImport() {
   };
 
   const handleProcess = async () => {
-    if (!file || !yearMonth || !apiKey) {
-      alert('ファイル、対象年月、APIキーがすべて設定されているか確認してください。');
+    if (!file || !yearMonth) {
+      alert('ファイルと対象年月を設定してください。');
       return;
     }
+    
+    const apiKey = await getValidApiKey();
+    if (!apiKey) return;
     
     setIsProcessing(true);
     setResults(null);
@@ -164,7 +161,7 @@ export default function PayrollImport() {
       setResults(matchedData);
 
     } catch (e: any) {
-      alert(`処理に失敗しました: ${e.message}`);
+      handleApiError(e);
     } finally {
       setIsProcessing(false);
       setProcessStatus('');
@@ -216,38 +213,6 @@ export default function PayrollImport() {
         毎月の給与一覧（Excel/CSV/PDF）をGemini AIが自動解析し、スタッフと紐付けてデータベースに蓄積します。
       </p>
 
-      {/* Gemini API Key Config */}
-      <div className="card" style={{ marginBottom: 24, borderLeft: '4px solid #4f46e5' }}>
-        <div className="card-body">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>Gemini API キー設定</h3>
-            {!isEditingKey && (
-              <button className="btn btn-secondary" style={{ padding: '4px 12px', fontSize: '0.8rem' }} onClick={() => setIsEditingKey(true)}>
-                キーを変更
-              </button>
-            )}
-          </div>
-          
-          {isEditingKey ? (
-            <div style={{ display: 'flex', gap: 12 }}>
-              <input 
-                type="password" 
-                className="form-input" 
-                placeholder="AIzaSy..." 
-                value={apiKey}
-                onChange={e => setApiKey(e.target.value)}
-                style={{ flex: 1 }}
-              />
-              <button className="btn btn-primary" onClick={saveApiKey}>保存（ブラウザ内）</button>
-            </div>
-          ) : (
-            <div style={{ color: '#16a34a', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: 8 }}>
-              ✅ APIキーがブラウザに設定されています
-            </div>
-          )}
-        </div>
-      </div>
-
       <div className="card" style={{ marginBottom: 24 }}>
          <div className="card-body">
            <div className="grid-2">
@@ -275,9 +240,9 @@ export default function PayrollImport() {
            </div>
 
            <div style={{ marginTop: 24, textAlign: 'right' }}>
-             <button 
+              <button 
                 className="btn btn-primary" 
-                disabled={isProcessing || !file || !yearMonth || !apiKey}
+                disabled={isProcessing || !file || !yearMonth}
                 onClick={handleProcess}
                 style={{ minWidth: 200 }}
              >
