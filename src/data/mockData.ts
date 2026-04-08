@@ -53985,5 +53985,4 @@ export const aptitudeTests: AptitudeTest[] = [
     overall_comment: 'ストレス耐性が高く、困難な状況でも冷静に対処できる。コミュニケーション面でのさらなる成長に期待。'
   }
 ];
-e x p o r t   c o n s t   p a y r o l l R e c o r d s :   a n y [ ]   =   [ ] ;  
- 
+export const payrollRecords: any[] = [];
