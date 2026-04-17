@@ -134,7 +134,7 @@ ${payrollData}`;
                 <button className={`sp-tab ${activeTab === 'basic' ? 'active' : ''}`} onClick={() => setActiveTab('basic')}>
                     <span>📊</span> 基本統計
                 </button>
-                {currentUser?.role === 'hr_admin' && (
+                {permissions.canViewPayroll && (
                     <button className={`sp-tab ${activeTab === 'ai-salary' ? 'active' : ''}`} onClick={() => setActiveTab('ai-salary')}>
                         <span>⚖️</span> AI給与バランス診断
                     </button>

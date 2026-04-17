@@ -26,18 +26,30 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 const STORAGE_KEY = 'talent_auth_user';
 
-function getPermissions(role: UserRole): PermissionSet {
+function getPermissions(user: User): PermissionSet {
+    const role = user.role;
+    let perms: PermissionSet = { ...defaultPermissions };
     switch (role) {
         case 'hr_admin':
-            return { canViewAllStaff: true, canEditEvaluation: true, canViewHRInfo: true, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: true, canEditInterviews: true };
+            perms = { canViewAllStaff: true, canEditEvaluation: true, canViewHRInfo: true, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: true, canEditInterviews: true, canViewPayroll: false };
+            break;
         case 'corp_head':
-            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: false, canEditInterviews: false };
+            perms = { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: true, canEditStaff: false, canEditInterviews: false, canViewPayroll: false };
+            break;
         case 'facility_manager':
-            return { canViewAllStaff: false, canEditEvaluation: true, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: false, canEditStaff: false, canEditInterviews: false };
+            perms = { canViewAllStaff: false, canEditEvaluation: true, canViewHRInfo: false, canViewOwnOnly: false, canViewFacility: true, canViewCorporation: false, canEditStaff: false, canEditInterviews: false, canViewPayroll: false };
+            break;
         case 'staff':
         default:
-            return { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false, canEditStaff: false, canEditInterviews: false };
+            perms = { canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false, canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false, canEditStaff: false, canEditInterviews: false, canViewPayroll: false };
+            break;
     }
+    
+    // Override payroll view based on user specific flag
+    if (user.has_payroll_access) {
+        perms.canViewPayroll = true;
+    }
+    return perms;
 }
 
 function getRoleLabel(role: UserRole): string {
@@ -53,7 +65,7 @@ function getRoleLabel(role: UserRole): string {
 const defaultPermissions: PermissionSet = {
     canViewAllStaff: false, canEditEvaluation: false, canViewHRInfo: false,
     canViewOwnOnly: true, canViewFacility: false, canViewCorporation: false,
-    canEditStaff: false, canEditInterviews: false,
+    canEditStaff: false, canEditInterviews: false, canViewPayroll: false
 };
 
 // Build AuthUser from a User record
@@ -255,7 +267,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem(STORAGE_KEY);
     };
 
-    const permissions = user ? getPermissions(user.role) : defaultPermissions;
+    const permissions = user ? getPermissions(user) : defaultPermissions;
     const roleLabel = user ? getRoleLabel(user.role) : '';
 
     return (

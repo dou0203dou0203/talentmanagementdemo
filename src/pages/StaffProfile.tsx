@@ -370,18 +370,22 @@ export default function StaffProfile() {
                         </div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 8 }}>
                             <h4 className="sp-subsection-title">昇給履歴</h4>
-                            {permissions.canEditStaff && <button className="btn btn-primary btn-sm" onClick={openAddSalary}>＋ 昇給を追加</button>}
+                            {permissions.canEditStaff && permissions.canViewPayroll && <button className="btn btn-primary btn-sm" onClick={openAddSalary}>＋ 昇給を追加</button>}
                         </div>
-                        {userSalary.length > 0 ? (
-                            <table className="sp-table">
-                                <thead><tr><th>日付</th><th>種別</th><th>等級</th><th>備考</th></tr></thead>
-                                <tbody>
-                                    {userSalary.map((s) => (
-                                        <tr key={s.id}><td>{s.date}</td><td><span className="sp-badge">{s.change_type}</span></td><td>{s.salary_range}</td><td>{s.note}</td></tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        ) : <p className="sp-empty">昇給履歴はありません</p>}
+                        {permissions.canViewPayroll ? (
+                            userSalary.length > 0 ? (
+                                <table className="sp-table">
+                                    <thead><tr><th>日付</th><th>種別</th><th>等級</th><th>備考</th></tr></thead>
+                                    <tbody>
+                                        {userSalary.map((s) => (
+                                            <tr key={s.id}><td>{s.date}</td><td><span className="sp-badge">{s.change_type}</span></td><td>{s.salary_range}</td><td>{s.note}</td></tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            ) : <p className="sp-empty">昇給履歴はありません</p>
+                        ) : (
+                            <p className="sp-empty">🔒 給与情報を閲覧する権限がありません</p>
+                        )}
                     </div>
                 )}
             </div>

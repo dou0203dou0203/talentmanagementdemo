@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import surveyRoutes from './routes/surveys.js';
 import evaluationRoutes from './routes/evaluations.js';
+import payrollRoutes from './routes/payroll.js';
 import { authMiddleware, optionalAuth } from './middleware/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', optionalAuth, userRoutes);
 app.use('/api/surveys', optionalAuth, surveyRoutes);
 app.use('/api/evaluations', authMiddleware, evaluationRoutes);
+app.use('/api/payroll', payrollRoutes);
 
 // Health check
 app.get('/api/health', (_req, res) => {

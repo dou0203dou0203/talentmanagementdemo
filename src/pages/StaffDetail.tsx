@@ -3,6 +3,7 @@ import { useData } from '../context/DataContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, RadialLinearScale, Filler, Tooltip, Legend } from 'chart.js';
+import { useAuth } from '../context/AuthContext';
 import { userMutations } from '../lib/saveHelper';
 import type { InterviewLog, InterviewType } from '../types';
 
@@ -14,6 +15,7 @@ const INT_ICONS: Record<InterviewType,string> = {'定期面談':'📅','1on1':'�
 
 export default function StaffDetail() {
     const { users, facilities, occupations, surveys, interviewLogs: initialLogs, aptitudeTests, updateUser } = useData();
+    const { permissions } = useAuth();
   const { userId } = useParams<{ userId: string }>();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabKey>('survey');
@@ -91,7 +93,9 @@ export default function StaffDetail() {
         <button className={'tab-item '+(activeTab==='interviews'?'active':'')} onClick={()=>setActiveTab('interviews')}>📝 面談記録</button>
         <button className={'tab-item '+(activeTab==='aptitude'?'active':'')} onClick={()=>setActiveTab('aptitude')}>🧪 適性検査</button>
         <button className={'tab-item '+(activeTab==='ai'?'active':'')} onClick={()=>setActiveTab('ai')}>🤖 AIアドバイス</button>
-        <button className={'tab-item '+(activeTab==='hr'?'active':'')} onClick={()=>setActiveTab('hr')}>💼 人事情報</button>
+        {permissions.canViewHRInfo && (
+            <button className={'tab-item '+(activeTab==='hr'?'active':'')} onClick={()=>setActiveTab('hr')}>💼 人事情報</button>
+        )}
       </div>
       {activeTab==='survey'&&(<div className='card'><div className='card-header'><h3 className='card-title'>📈 スコア推移</h3></div><div className='card-body'>{uSurveys.length>0?(<div className='chart-container'><Line data={trendData} options={cOpts}/></div>):(<div style={{textAlign:'center',padding:'var(--space-8)',color:'var(--color-neutral-400)'}}>サーベイデータがありません</div>)}</div></div>)}
       {activeTab==='interviews'&&(<div>
@@ -124,7 +128,8 @@ export default function StaffDetail() {
           <div className='card-body'><p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)',marginBottom:'var(--space-4)',lineHeight:'var(--line-height-relaxed)'}}>{a.description}</p><div style={{padding:'var(--space-3) var(--space-4)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)'}}><div style={{fontWeight:600,fontSize:'var(--font-size-xs)',color:'var(--color-primary-600)',marginBottom:'var(--space-2)'}}>💡 推奨アクション</div>{a.actions.map((act,j)=>(<div key={j} style={{display:'flex',alignItems:'center',gap:'var(--space-2)',fontSize:'var(--font-size-sm)',padding:'3px 0'}}><span style={{color:'var(--color-primary-400)'}}>▶</span> {act}</div>))}</div></div>
         </div>))}
       </div>)}
-      {activeTab==='hr'&&(<HrInfoTab user={user} fac={fac} occ={occ} facilities={facilities} occupations={occupations} updateUser={updateUser} />)}
+      </div>)}
+      {activeTab==='hr' && permissions.canViewHRInfo && (<HrInfoTab user={user} fac={fac} occ={occ} facilities={facilities} occupations={occupations} updateUser={updateUser} permissions={permissions} />)}
     </div>
   );
 }
@@ -139,6 +144,7 @@ interface HrInfoTabProps {
   facilities: Facility[];
   occupations: Occupation[];
   updateUser: (id: string, updates: Partial<User>) => void;
+  permissions: any;
 }
 
 interface EditForm {
@@ -160,7 +166,7 @@ interface EditForm {
   resignation_reason: string;
 }
 
-function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser }: HrInfoTabProps) {
+function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permissions }: HrInfoTabProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
@@ -437,6 +443,7 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser }: HrIn
       )}
 
       {/* 昇給履歴 */}
+      {permissions.canViewPayroll ? (
       <div className='card' style={{ marginBottom: 'var(--space-5)' }}>
         <div className='card-header'><h3 className='card-title'>💰 昇給履歴</h3></div>
         <div className='card-body'>
@@ -460,6 +467,14 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser }: HrIn
           </table>
         </div>
       </div>
+      ) : (
+      <div className='card' style={{ marginBottom: 'var(--space-5)' }}>
+        <div className='card-header'><h3 className='card-title'>💰 昇給履歴</h3></div>
+        <div className='card-body'>
+          <p className="sp-empty" style={{ textAlign: 'center', color: 'var(--color-neutral-400)', padding: 'var(--space-8)' }}>🔒 給与情報を閲覧する権限がありません</p>
+        </div>
+      </div>
+      )}
     </div>
   );
 }

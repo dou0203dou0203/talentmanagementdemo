@@ -83,6 +83,7 @@ export const users: User[] = [
     employment_type: '常勤',
     work_pattern: '日勤のみ',
     corporation: '株式会社プラスディー',
+    has_payroll_access: true,
     qualifications: [
       { name: '医師免許', acquired_date: '2000-03-20' },
       { name: '産業医', acquired_date: '2010-06-01' },

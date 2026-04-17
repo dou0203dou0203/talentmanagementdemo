@@ -64,6 +64,7 @@ export interface User {
   resignation_reason?: string;  // 離職理由
   auth_uid?: string;            // Supabase Auth UUID
   master_user_id?: string;      // 主務アカウントのID（サブアカウントの場合のみ）
+  has_payroll_access?: boolean; // 給与データへのアクセス権限
 }
 
 // --- 評価 ---
@@ -214,4 +215,5 @@ export interface PermissionSet {
   canViewCorporation: boolean;
   canEditStaff: boolean;
   canEditInterviews: boolean;
+  canViewPayroll: boolean;
 }

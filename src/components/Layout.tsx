@@ -9,10 +9,12 @@ interface NavItem {
     label: string;
     icon: string;
     roles?: string[];
+    requiredPermission?: keyof import('../types').PermissionSet;
 }
 interface NavGroup {
     group: string;
     roles?: string[];
+    requiredPermission?: keyof import('../types').PermissionSet;
     items: NavItem[];
 }
 
@@ -49,12 +51,18 @@ const navItems: NavGroup[] = [
             { path: '/survey/settings', label: '設問管理', icon: '⚙️' },
             { path: '/recruitment', label: '採用管理', icon: '🧑‍💼' },
             { path: '/documents', label: '書類管理', icon: '📄' },
-            { path: '/payroll-import', label: '給与データ取込', icon: '💰' },
             { path: '/notifications', label: '通知', icon: '🔔' },
             { path: '/retired-staff', label: '退職者管理', icon: '📋' },
             { path: '/staff-data', label: 'データ管理', icon: '📊' },
             { path: '/attrition-analysis', label: 'AI離職分析', icon: '🧠' },
             { path: '/supabase-test', label: 'DB接続確認', icon: '🔌' },
+        ],
+    },
+    {
+        group: '給与',
+        requiredPermission: 'canViewPayroll',
+        items: [
+            { path: '/payroll-import', label: '給与データ取込', icon: '💰' },
         ],
     },
 ];
@@ -80,7 +88,7 @@ export default function Layout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const { user, logout, roleLabel } = useAuth();
+    const { user, logout, roleLabel, permissions } = useAuth();
 
     const currentTitle = pageTitles[location.pathname] || 'タレントマネジメント';
     const userRole = user?.role || 'staff';
@@ -93,12 +101,18 @@ export default function Layout() {
         navigate('/login');
     };
 
-    // Filter nav items based on role
+    // Filter nav items based on role and extended permissions
     const visibleNavGroups = navItems
-        .filter((group) => !group.roles || group.roles.includes(userRole))
+        .filter((group) => {
+            if (group.requiredPermission && !permissions[group.requiredPermission]) return false;
+            return !group.roles || group.roles.includes(userRole);
+        })
         .map((group) => ({
             ...group,
-            items: group.items.filter((item) => !item.roles || item.roles.includes(userRole)),
+            items: group.items.filter((item) => {
+                if (item.requiredPermission && !permissions[item.requiredPermission]) return false;
+                return !item.roles || item.roles.includes(userRole);
+            }),
         }))
         .filter((group) => group.items.length > 0);
 
