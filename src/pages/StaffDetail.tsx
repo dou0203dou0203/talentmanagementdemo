@@ -128,7 +128,6 @@ export default function StaffDetail() {
           <div className='card-body'><p style={{fontSize:'var(--font-size-sm)',color:'var(--color-neutral-600)',marginBottom:'var(--space-4)',lineHeight:'var(--line-height-relaxed)'}}>{a.description}</p><div style={{padding:'var(--space-3) var(--space-4)',background:'var(--color-neutral-50)',borderRadius:'var(--radius-md)'}}><div style={{fontWeight:600,fontSize:'var(--font-size-xs)',color:'var(--color-primary-600)',marginBottom:'var(--space-2)'}}>💡 推奨アクション</div>{a.actions.map((act,j)=>(<div key={j} style={{display:'flex',alignItems:'center',gap:'var(--space-2)',fontSize:'var(--font-size-sm)',padding:'3px 0'}}><span style={{color:'var(--color-primary-400)'}}>▶</span> {act}</div>))}</div></div>
         </div>))}
       </div>)}
-      </div>)}
       {activeTab==='hr' && permissions.canViewHRInfo && (<HrInfoTab user={user} fac={fac} occ={occ} facilities={facilities} occupations={occupations} updateUser={updateUser} permissions={permissions} />)}
     </div>
   );
