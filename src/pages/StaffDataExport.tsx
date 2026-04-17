@@ -533,41 +533,59 @@ export default function StaffDataExport() {
     let failed = 0;
     const warnings = validationResults.filter(r => r.status === 'warning').length;
     const newUsers: User[] = [];
+    const updatedUsers: User[] = [];
 
     for (let i = 0; i < validRows.length; i++) {
       const row = validRows[i];
       try {
         const user = row.parsedUser as User;
-        const result = await userMutations.importUsers([{
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          occupation_id: user.occupation_id,
-          facility_id: user.facility_id,
-          status: user.status,
-          evaluator_id: user.evaluator_id,
-          gender: user.gender || null,
-          birth_date: user.birth_date || null,
-          hire_date: user.hire_date || null,
-          position: user.position || null,
-          employment_type: user.employment_type || null,
-          work_pattern: user.work_pattern || null,
-          corporation: user.corporation || null,
-          qualifications: user.qualifications || null,
-          address: user.address || null,
-          phone: user.phone || null,
-          notes: user.notes || null,
-          health_check_date: user.health_check_date || null,
-          resignation_date: user.resignation_date || null,
-          resignation_reason: user.resignation_reason || null,
-        }]);
-        if (result.success) {
-          newUsers.push(user);
-          success++;
+        const existingUser = users.find(u => u.name === user.name);
+        
+        let result;
+        if (existingUser) {
+          // Update existing user
+          const updateData = { ...user, id: existingUser.id };
+          result = await userMutations.updateUser(existingUser.id, updateData);
+          if (result.success) {
+            updatedUsers.push(updateData as User);
+            success++;
+          } else {
+            console.error('[Import Update Error]', user.name, result.error);
+            failed++;
+          }
         } else {
-          console.error('[Import Error]', user.name, result.error);
-          failed++;
+          // Insert new user
+          result = await userMutations.importUsers([{
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            occupation_id: user.occupation_id,
+            facility_id: user.facility_id,
+            status: user.status,
+            evaluator_id: user.evaluator_id,
+            gender: user.gender || null,
+            birth_date: user.birth_date || null,
+            hire_date: user.hire_date || null,
+            position: user.position || null,
+            employment_type: user.employment_type || null,
+            work_pattern: user.work_pattern || null,
+            corporation: user.corporation || null,
+            qualifications: user.qualifications || null,
+            address: user.address || null,
+            phone: user.phone || null,
+            notes: user.notes || null,
+            health_check_date: user.health_check_date || null,
+            resignation_date: user.resignation_date || null,
+            resignation_reason: user.resignation_reason || null,
+          }]);
+          if (result.success) {
+            newUsers.push(user);
+            success++;
+          } else {
+            console.error('[Import Insert Error]', user.name, result.error);
+            failed++;
+          }
         }
       } catch (err: any) {
         console.error('[Import Exception]', row.parsedUser?.name, err.message);
@@ -579,6 +597,11 @@ export default function StaffDataExport() {
     if (newUsers.length > 0) {
       addUsers(newUsers);
     }
+    
+    // Update local state for existing users
+    updatedUsers.forEach(u => {
+      updateUser(u.id, u);
+    });
 
     setImportSummary({ total, success, failed, warnings });
     setImportStep('done');
