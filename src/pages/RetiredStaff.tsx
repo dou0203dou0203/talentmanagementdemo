@@ -2,23 +2,32 @@ import { useState, useMemo } from 'react';
 import { useData } from '../context/DataContext';
 
 export default function RetiredStaff() {
-    const { occupations, facilities } = useData();
+  const { occupations, facilities, users } = useData();
   const [searchName, setSearchName] = useState('');
   const [filterFac, setFilterFac] = useState('all');
   const [filterOcc, setFilterOcc] = useState('all');
 
-  // Mock retired staff (users with status 'inactive' or we add mock data)
+  // Load real inactive users from the database context
   const retiredStaff = useMemo(() => {
-    // Add mock retired data if none exist
-    const mockRetired = [
-      { id: 'ret-1', name: '山田太郎', occupation_id: 'occ-2', facility_id: 'fac-1', hire_date: '2019-04-01', retired_date: '2025-09-30', reason: '転職', years: 6.5 },
-      { id: 'ret-2', name: '小川美樹', occupation_id: 'occ-4', facility_id: 'fac-3', hire_date: '2021-10-01', retired_date: '2025-06-15', reason: '家庭の事情', years: 3.7 },
-      { id: 'ret-3', name: '渡辺健一', occupation_id: 'occ-3', facility_id: 'fac-2', hire_date: '2020-04-01', retired_date: '2025-03-31', reason: '体調不良', years: 5.0 },
-      { id: 'ret-4', name: '松崎かおり', occupation_id: 'occ-5', facility_id: 'fac-4', hire_date: '2022-01-15', retired_date: '2025-12-31', reason: '転職', years: 3.9 },
-      { id: 'ret-5', name: '村上淳', occupation_id: 'occ-1', facility_id: 'fac-5', hire_date: '2018-07-01', retired_date: '2026-01-31', reason: '定年退職', years: 7.6 },
-    ];
-    return mockRetired;
-  }, []);
+    return users.filter(u => u.status === 'inactive').map(u => {
+      let years = 0;
+      if (u.hire_date && u.resignation_date) {
+        const hire = new Date(u.hire_date);
+        const retired = new Date(u.resignation_date);
+        years = Math.round((retired.getTime() - hire.getTime()) / (1000 * 60 * 60 * 24 * 365.25) * 10) / 10;
+      }
+      return {
+        id: u.id,
+        name: u.name,
+        occupation_id: u.occupation_id,
+        facility_id: u.facility_id,
+        hire_date: u.hire_date || '-',
+        retired_date: u.resignation_date || '-',
+        reason: u.resignation_reason || '不明',
+        years: Math.max(0, years)
+      };
+    });
+  }, [users]);
 
   const filtered = retiredStaff
     .filter(s => filterFac === 'all' || s.facility_id === filterFac)
