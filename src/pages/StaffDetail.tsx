@@ -84,7 +84,22 @@ export default function StaffDetail() {
         <div style={{display:'flex',alignItems:'center',gap:'var(--space-3)',flexWrap:'wrap'}}>
           <label style={{fontWeight:600,fontSize:'var(--font-size-sm)',whiteSpace:'nowrap'}}>👥 スタッフ選択:</label>
           <select className='form-select' value={userId} onChange={(e)=>navigate('/staff/'+e.target.value)} style={{flex:1,minWidth:200}}>
-            {users.map(u=>(<option key={u.id} value={u.id}>{u.name} - {facilities.find(f=>f.id===u.facility_id)?.name}</option>))}
+            {facilities.map(f => {
+              const facUsers = users.filter(u => u.facility_id === f.id);
+              if (facUsers.length === 0) return null;
+              return (
+                <optgroup key={f.id} label={f.name}>
+                  {facUsers.map(u => <option key={u.id} value={u.id}>{u.name}</option>)}
+                </optgroup>
+              );
+            })}
+            {users.filter(u => !u.facility_id || !facilities.some(f => f.id === u.facility_id)).length > 0 && (
+              <optgroup label="所属不明">
+                {users.filter(u => !u.facility_id || !facilities.some(f => f.id === u.facility_id)).map(u => (
+                  <option key={u.id} value={u.id}>{u.name}</option>
+                ))}
+              </optgroup>
+            )}
           </select>
         </div>
       </div>
