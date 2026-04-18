@@ -157,9 +157,22 @@ export default function StaffProfile() {
             {/* User Selector + Add Button */}
             <div className="sp-selector card">
                 <select className="sp-select" value={selectedUserId} onChange={(e) => { setSelectedUserId(e.target.value); setEditMode(false); }}>
-                    {visibleUsers.map((u) => (
-                        <option key={u.id} value={u.id}>{u.name} ({occupations.find((o) => o.id === u.occupation_id)?.name})</option>
-                    ))}
+                    {facilities.map(f => {
+                       const facUsers = visibleUsers.filter(u => u.facility_id === f.id);
+                       if (facUsers.length === 0) return null;
+                       return (
+                           <optgroup key={f.id} label={f.name}>
+                               {facUsers.map(u => <option key={u.id} value={u.id}>{u.name} ({occupations.find((o) => o.id === u.occupation_id)?.name})</option>)}
+                           </optgroup>
+                       );
+                    })}
+                    {visibleUsers.filter(u => !u.facility_id || !facilities.some(f => f.id === u.facility_id)).length > 0 && (
+                        <optgroup label="所属不明">
+                            {visibleUsers.filter(u => !u.facility_id || !facilities.some(f => f.id === u.facility_id)).map(u => (
+                                <option key={u.id} value={u.id}>{u.name} ({occupations.find((o) => o.id === u.occupation_id)?.name})</option>
+                            ))}
+                        </optgroup>
+                    )}
                 </select>
                 {permissions.canEditStaff && (
                     <button className="btn btn-primary" style={{ marginLeft: 8, whiteSpace: 'nowrap' }} onClick={() => setShowAddStaff(true)}>＋ 新規職員</button>
