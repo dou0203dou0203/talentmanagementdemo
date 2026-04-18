@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { useData } from '../context/DataContext';
 
 // Mock recruitment data
-const applicants = [
-    { id: 'ap-1', name: '佐々木健太', position: '看護師', facility: '中央病院', source: '転職サイト', status: '選考中', interview_score: 4.2, applied_date: '2026-01-15', cost: 85000 },
-    { id: 'ap-2', name: '小林愛', position: '介護福祉士', facility: '西部介護センター', source: 'ハローワーク', status: '内定', interview_score: 4.5, applied_date: '2026-01-08', cost: 0 },
-    { id: 'ap-3', name: '吉田大輔', position: '理学療法士', facility: '南リハビリ病院', source: '紹介', status: '入社済み', interview_score: 3.8, applied_date: '2025-12-20', cost: 200000 },
-    { id: 'ap-4', name: '松田奈々', position: '事務職', facility: '統括本部', source: '自社HP', status: '不採用', interview_score: 2.9, applied_date: '2025-12-10', cost: 0 },
-    { id: 'ap-5', name: '森田翼', position: '医師', facility: '駅前クリニック', source: '人材紹介', status: '選考中', interview_score: 4.0, applied_date: '2026-02-01', cost: 350000 },
-    { id: 'ap-6', name: '高木美咲', position: '看護師', facility: '中央病院', source: '転職サイト', status: '入社済み', interview_score: 4.3, applied_date: '2025-11-15', cost: 90000 },
-    { id: 'ap-7', name: '田村誠一', position: '介護福祉士', facility: '北部介護施設', source: 'ハローワーク', status: '内定', interview_score: 3.5, applied_date: '2026-02-10', cost: 0 },
-    { id: 'ap-8', name: '渡部千春', position: '看護師', facility: '東クリニック', source: '紹介', status: '不採用', interview_score: 2.5, applied_date: '2026-01-20', cost: 0 },
-];
+const applicants: Array<{
+    id: string;
+    name: string;
+    position: string;
+    facility: string;
+    source: string;
+    status: string;
+    interview_score: number;
+    applied_date: string;
+    cost: number;
+}> = [];
 
 const sourceColors: Record<string, string> = {
     '転職サイト': '#d4739b',

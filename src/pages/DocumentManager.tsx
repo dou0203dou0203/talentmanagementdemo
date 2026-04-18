@@ -14,20 +14,7 @@ interface MockDocument {
     status: '有効' | '期限切れ' | '更新待ち';
 }
 
-const mockDocuments: MockDocument[] = [
-    { id: 'doc-1', user_id: 'u-1', category: '雇用契約書', name: '雇用契約書_高橋拓海_2024.pdf', file_type: 'PDF', upload_date: '2024-04-01', status: '有効' },
-    { id: 'doc-2', user_id: 'u-1', category: '資格証', name: '医師免許証.pdf', file_type: 'PDF', upload_date: '2020-05-15', status: '有効' },
-    { id: 'doc-3', user_id: 'u-2', category: '雇用契約書', name: '雇用契約書_石井誠_2024.pdf', file_type: 'PDF', upload_date: '2024-04-01', status: '有効' },
-    { id: 'doc-4', user_id: 'u-2', category: '資格証', name: '看護師免許証.pdf', file_type: 'PDF', upload_date: '2015-06-01', status: '有効' },
-    { id: 'doc-5', user_id: 'u-2', category: '資格証', name: '認定看護師証.pdf', file_type: 'PDF', upload_date: '2020-09-15', expiry_date: '2025-09-14', status: '期限切れ' },
-    { id: 'doc-6', user_id: 'u-3', category: '健康診断', name: '健康診断結果_2025.pdf', file_type: 'PDF', upload_date: '2025-06-20', status: '有効' },
-    { id: 'doc-7', user_id: 'u-11', category: '雇用契約書', name: '雇用契約書_太田健一_2024.pdf', file_type: 'PDF', upload_date: '2024-04-01', status: '有効' },
-    { id: 'doc-8', user_id: 'u-11', category: 'マイナンバー', name: 'マイナンバー届出書.pdf', file_type: 'PDF', upload_date: '2023-01-10', status: '有効' },
-    { id: 'doc-9', user_id: 'u-5', category: '誓約書', name: '誓約書_山田悠真.pdf', file_type: 'PDF', upload_date: '2018-04-01', status: '有効' },
-    { id: 'doc-10', user_id: 'u-5', category: '同意書', name: '個人情報同意書.pdf', file_type: 'PDF', upload_date: '2018-04-01', status: '有効' },
-    { id: 'doc-11', user_id: 'u-6', category: '健康診断', name: '健康診断結果_2024.pdf', file_type: 'PDF', upload_date: '2024-07-15', expiry_date: '2025-07-14', status: '更新待ち' },
-    { id: 'doc-12', user_id: 'u-4', category: '資格証', name: '管理栄養士免許証.pdf', file_type: 'PDF', upload_date: '2019-04-01', status: '有効' },
-];
+const mockDocuments: MockDocument[] = [];
 
 const categories: DocCategory[] = ['雇用契約書', '誓約書', '資格証', 'マイナンバー', '健康診断', '同意書', 'その他'];
 

@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useData } from '../context/DataContext';
 
-const mockNotifications = [
-  { id: 'n-1', type: 'alert', icon: '⚠️', title: '離職リスクアラート', message: '佐藤美咲さんのサーベイスコアが低下しています', date: '2026-03-10', read: false, userId: 'u-4' },
-  { id: 'n-2', type: 'eval', icon: '📝', title: '評価完了通知', message: '田中太郎さんの2025年度下期評価が承認されました', date: '2026-03-09', read: false, userId: 'u-3' },
-  { id: 'n-3', type: 'interview', icon: '💬', title: '面談予定', message: '鈴木花子さんとの定期面談が明日予定されています', date: '2026-03-09', read: true, userId: 'u-5' },
-  { id: 'n-4', type: 'survey', icon: '📊', title: 'サーベイ回答依頼', message: '3月度サーベイの回答期限が近づいています', date: '2026-03-08', read: true, userId: '' },
-  { id: 'n-5', type: 'recruit', icon: '🧑‍💼', title: '新規応募', message: '看護師職に新しい応募がありました', date: '2026-03-07', read: true, userId: '' },
-  { id: 'n-6', type: 'system', icon: '🔔', title: 'システム通知', message: '月次レポートが生成されました', date: '2026-03-06', read: true, userId: '' },
-  { id: 'n-7', type: 'alert', icon: '⚠️', title: '欠勤アラート', message: '山田一郎さんの欠勤が続いています', date: '2026-03-05', read: true, userId: 'u-6' },
-  { id: 'n-8', type: 'eval', icon: '📝', title: '評価提出依頼', message: '未提出の評価が3件あります', date: '2026-03-04', read: true, userId: '' },
-];
+const mockNotifications: Array<{
+  id: string;
+  type: string;
+  icon: string;
+  title: string;
+  message: string;
+  date: string;
+  read: boolean;
+  userId: string;
+}> = [];
 
 const typeConfig: Record<string,{label:string;color:string;bg:string}> = {
   alert: {label:'アラート',color:'#ef4444',bg:'#fef2f2'},
