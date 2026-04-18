@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useData } from '../context/DataContext';
 import { usePayrollUpload } from '../hooks/usePayrollUpload';
 
 export default function PayrollImport() {
   const { permissions } = useAuth();
+  const { users } = useData();
   const fileRef = useRef<HTMLInputElement>(null);
   const [yearMonth, setYearMonth] = useState(new Date().toISOString().slice(0, 7));
   const { state, upload, reset } = usePayrollUpload();
@@ -16,7 +18,7 @@ export default function PayrollImport() {
     e.preventDefault();
     const file = fileRef.current?.files?.[0];
     if (!file) return;
-    await upload(file, yearMonth);
+    await upload(file, yearMonth, users);
   };
 
   return (
