@@ -103,7 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             try {
                 const url = import.meta.env.VITE_SUPABASE_URL;
                 const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
-                const columns = 'id,name,email,role,occupation_id,facility_id,status,evaluator_id,birth_date,hire_date,position,employment_type,work_pattern,corporation,resignation_date,resignation_reason';
+                const columns = 'id,name,email,role,occupation_id,facility_id,status,evaluator_id,birth_date,hire_date,position,employment_type,work_pattern,corporation,resignation_date,resignation_reason,has_payroll_access';
                 // Use the user's access token if available, to pass RLS
                 const token = accessToken || key;
                 const res = await fetch(
