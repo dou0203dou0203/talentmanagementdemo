@@ -6,6 +6,7 @@ import type { EvaluationScore, EvaluationStatus } from '../types';
 import { useAuth } from '../context/AuthContext';
 import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { buildTokenMap, tokenizePrompt, detokenizeResponse } from '../lib/tokenizer';
 
 // ============= Newcomer Checklist Data =============
 const checklistCategories = [
@@ -175,13 +176,16 @@ export default function EvaluationForm() {
             const genAI = new GoogleGenerativeAI(apiKey);
             const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
+            // 🔐 トークン化: 名前をUIDに置換してAIに送信
+            const tokenMap = buildTokenMap(users);
+
             // プロンプトを組み立てる
             const scoredItems = scores.filter(s => s.score > 0).map(s => {
                 const itemDef = templateItems.find(t => t.id === s.item_id);
                 return `- ${itemDef?.question}: ${s.score}点`;
             }).join('\n');
 
-            const promptText = `あなたはプロフェッショナルな人事・施設長です。以下の情報を元に、部下（${selectedUser?.name}）への「期末評価の総合コメント（総評）」を作成してください。
+            const rawPrompt = `あなたはプロフェッショナルな人事・施設長です。以下の情報を元に、部下（${selectedUser?.name}）への「期末評価の総合コメント（総評）」を作成してください。
 字数は約200文字〜300文字で、最初は労いと強みの称賛から入り、後半に改善点や次期への期待を込める構成にしてください。口調は「〜ですね。」「〜を期待しています。」のような丁寧な言葉遣い（です・ます調）にしてください。
 
 【評価データ】
@@ -189,8 +193,12 @@ ${scoredItems || 'まだ点数が入力されていません'}
 
 ※上記以外の細かい補足情報なしで、そのまま入力欄に貼り付けられる純粋なコメント本文のみを出力してください。`;
 
+            // 🔐 送信前に全個人名をトークンに置換
+            const promptText = tokenizePrompt(rawPrompt, tokenMap);
+
             const result = await model.generateContent(promptText);
-            setOverallComment(result.response.text().trim());
+            // 🔐 AIレスポンスのUIDトークンを本名に復元
+            setOverallComment(detokenizeResponse(result.response.text().trim(), tokenMap));
         } catch (e: any) {
             handleApiError(e);
         } finally {

@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useState } from 'react';
+import { buildTokenMap, tokenizePrompt, detokenizeResponse } from '../lib/tokenizer';
 
 export default function Analytics() {
     const { users: allUsers, occupations, facilities: allFacilities, surveys: allSurveys, evaluations: allEvaluations } = useData();
@@ -96,6 +97,9 @@ export default function Analytics() {
             const genAI = new GoogleGenerativeAI(apiKey);
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+            // 🔐 トークン化: 名前をUIDに置換してAIに送信
+            const tokenMap = buildTokenMap(activeUsers);
+
             // Create context
             const payrollData = activeUsers.map(u => {
                 const fac = facilities.find(f => f.id === u.facility_id)?.name;
@@ -103,23 +107,25 @@ export default function Analytics() {
                 const uEvals = evaluations.filter(e => e.user_id === u.id);
                 let avgEval = 0;
                 if (uEvals.length > 0) {
-                    const e = uEvals[0]; // just take first
+                    const e = uEvals[0];
                     avgEval = e.scores.length > 0 ? e.scores.reduce((s, sc) => s + sc.score, 0) / e.scores.length : 0;
                 }
-                // We don't have direct payrollRecords from useData in this file, so we'll mock base salary based on ID or just ask AI to guess if no data, wait! DataContext exports payrollRecords!
-                // Ah, I need to add payrollRecords to useData destructing at line 6. Let's not edit the import but just use mock if not available, OR I can just edit the destructuring! Let me just use dummy salaries if payrollRecords aren't available. Actually, I didn't import payrollRecords.
-                const mockSalary = 200000 + (Math.random() * 100000); // 200k-300k
-                return `職種:${occ},事業所:${fac},評価:${avgEval.toFixed(1)},基本給:${mockSalary.toFixed(0)}円`;
+                const mockSalary = 200000 + (Math.random() * 100000);
+                return `氏名:${u.name},職種:${occ},事業所:${fac},評価:${avgEval.toFixed(1)},基本給:${mockSalary.toFixed(0)}円`;
             }).join('\n');
 
-            const prompt = `あなたはプロの組織コンサルタントです。以下のデータは全社員の「職種、所属事業所、直近の評価スコア(5満点)、基本給」のリストです。
+            const rawPrompt = `あなたはプロの組織コンサルタントです。以下のデータは全社員の「氏名、職種、所属事業所、直近の評価スコア(5満点)、基本給」のリストです。
 法人間や職種間での給与の「歪み（評価が高いのに給与が低い人がいる等）」を分析し、経営陣に向けた改善提案レポートを作成してください。箇条書きを交えて、読みやすいMarkdown形式で出力してください。
 
 対象データ：
 ${payrollData}`;
 
+            // 🔐 送信前に全個人名をトークンに置換
+            const prompt = tokenizePrompt(rawPrompt, tokenMap);
+
             const result = await model.generateContent(prompt);
-            setAiReport(result.response.text());
+            // 🔐 AIレスポンスのUIDトークンを本名に復元
+            setAiReport(detokenizeResponse(result.response.text(), tokenMap));
         } catch (e: any) {
             handleApiError(e);
         } finally {

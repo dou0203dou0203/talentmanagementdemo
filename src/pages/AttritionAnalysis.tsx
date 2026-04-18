@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { useAuth } from '../context/AuthContext';
 import { useAI } from '../context/AIContext';
+import { buildTokenMap, tokenizePrompt, detokenizeResponse } from '../lib/tokenizer';
 
 // Attrition risk word dictionary
 const RISK_WORDS: { word: string; weight: number; category: string }[] = [
@@ -125,6 +126,9 @@ export default function AttritionAnalysis() {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash", generationConfig: { responseMimeType: "application/json" } });
 
+      // 🔐 トークン化: 名前をUIDに置換してAIに送信
+      const tokenMap = buildTokenMap(users);
+
       // Create a prompt with recent interview logs and survey scores
       const contextData = users.map(u => {
         const uLogs = interviewLogs.filter(l => l.user_id === u.id).slice(0, 2).map(l => l.summary).join(',');
@@ -132,7 +136,7 @@ export default function AttritionAnalysis() {
         return `ID:${u.id},Name:${u.name},Logs:${uLogs||'None'},SurveyScore:${uSurveys||'None'}`;
       }).join('\n');
 
-      const prompt = `あなたはプロの人事コンサルタントです。以下の社員のデータ（直近の面談ログとモチベーションスコア(5満点)）を分析し、離職リスクのある社員をリストアップしてください。
+      const rawPrompt = `あなたはプロの人事コンサルタントです。以下の社員のデータ（直近の面談ログとモチベーションスコア(5満点)）を分析し、離職リスクのある社員をリストアップしてください。
 以下のJSON形式の配列で返してください。スコアが低かったり、ログにネガティブな兆候がある人をハイライトしてください。
 [
   { "userId": "ID文字列", "riskLevel": "High または Medium", "reason": "その理由（30字程度）", "suggestedAction": "上司が取るべきアクション" }
@@ -142,8 +146,13 @@ export default function AttritionAnalysis() {
 ${contextData}
 `;
 
+      // 🔐 送信前に全個人名をトークンに置換
+      const prompt = tokenizePrompt(rawPrompt, tokenMap);
+
       const result = await model.generateContent(prompt);
-      const data = JSON.parse(result.response.text());
+      // 🔐 AIレスポンスのUIDトークンを本名に復元
+      const rawResponse = detokenizeResponse(result.response.text(), tokenMap);
+      const data = JSON.parse(rawResponse);
       setAiSuggestions(data);
       alert('AIスキャンが完了しました。ハイリスクな従業員を表示します。');
     } catch (e: any) {

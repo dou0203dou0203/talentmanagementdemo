@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import { useAI } from '../context/AIContext';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import type { InterviewType, InterviewLog } from '../types';
+import { buildTokenMap, tokenizePrompt, detokenizeResponse } from '../lib/tokenizer';
 
 export default function InterviewRecords() {
     const { users, occupations, facilities, interviewLogs } = useData();
@@ -102,6 +103,9 @@ export default function InterviewRecords() {
   "coaching": "上司へのマネジメント助言。この部下に対して今後どのように接するべきか、評価すべき点や気を付けるべき点を、メンターとしてプロ目線で50〜100文字でアドバイスしてください。"
 }`;
 
+            // 🔐 トークン化: 名前をUIDに置換してAIに送信
+            const tokenMap = buildTokenMap(users);
+
             let inputs: any[] = [promptText];
 
             if (audioFile) {
@@ -116,12 +120,14 @@ export default function InterviewRecords() {
                 });
                 inputs.push({ inlineData: { data: base64Str, mimeType: audioFile.type } });
             } else if (rawMemo) {
-                // テキストメモの場合
-                inputs.push(`入力された生の面談メモ:\n${rawMemo}`);
+                // 🔐 テキストメモ内の名前もトークン化
+                inputs.push(`入力された生の面談メモ:\n${tokenizePrompt(rawMemo, tokenMap)}`);
             }
 
             const result = await model.generateContent(inputs);
-            const data = JSON.parse(result.response.text());
+            // 🔐 AIレスポンスのUIDトークンを本名に復元
+            const rawResponse = detokenizeResponse(result.response.text(), tokenMap);
+            const data = JSON.parse(rawResponse);
 
             setForm(prev => ({
                 ...prev,
