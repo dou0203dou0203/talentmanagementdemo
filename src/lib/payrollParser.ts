@@ -79,14 +79,13 @@ async function extractPageRows(pdf: any): Promise<TRow[][]> {
 function detectColumns(rows: TRow[]): number[] {
   if (rows.length === 0) return [];
 
-  // Step 1: データ行（数値が多い行）の列間隔を分析して適切な閾値を決める
-  // 数値アイテムは必ず1列=1アイテムなので、数値行のアイテム間隔＝列間隔
+  // Step 1: データ行から「期待される列数」と「列間隔」を分析
   const dataGaps: number[] = [];
+  const itemCounts: number[] = [];
   for (const row of rows) {
-    // 数値アイテムが2個以上ある行を「データ行」と判断
     const numericItems = row.items.filter(it => /[\d,]+/.test(it.str) && parseFloat(it.str.replace(/[,\s]/g, '')) > 0);
     if (numericItems.length >= 2) {
-      // X座標でソートして、隣接間隔を収集
+      itemCounts.push(row.items.length);
       const sorted = [...numericItems].sort((a, b) => a.x - b.x);
       for (let i = 1; i < sorted.length; i++) {
         dataGaps.push(sorted[i].x - sorted[i - 1].x);
@@ -94,31 +93,35 @@ function detectColumns(rows: TRow[]): number[] {
     }
   }
 
-  // 列間隔の中央値を求める。なければデフォルト50pt
+  // データ行のアイテム数の最頻値 → 期待される列数
+  let expectedCols = 0;
+  if (itemCounts.length > 0) {
+    const freq = new Map<number, number>();
+    for (const n of itemCounts) freq.set(n, (freq.get(n) || 0) + 1);
+    let maxFreq = 0;
+    for (const [n, f] of freq) { if (f > maxFreq) { maxFreq = f; expectedCols = n; } }
+  }
+
   let colSpacing = 50;
   if (dataGaps.length > 0) {
     dataGaps.sort((a, b) => a - b);
     colSpacing = dataGaps[Math.floor(dataGaps.length / 2)];
   }
-  // 閾値 = 列間隔の40%（列内の分割テキストは統合、列間は分離）
   const CLUSTER_THRESHOLD = Math.max(colSpacing * 0.4, 10);
-  console.log(`[Payroll] 列間隔中央値: ${colSpacing.toFixed(1)}pt, クラスタ閾値: ${CLUSTER_THRESHOLD.toFixed(1)}pt`);
+  console.log(`[Payroll] 列間隔中央値: ${colSpacing.toFixed(1)}pt, 閾値: ${CLUSTER_THRESHOLD.toFixed(1)}pt, 期待列数: ${expectedCols}`);
 
   // Step 2: 全アイテムのX座標をクラスタリング
   const allX: number[] = [];
   for (const row of rows) {
-    for (const item of row.items) {
-      allX.push(item.x);
-    }
+    for (const item of row.items) allX.push(item.x);
   }
   if (allX.length === 0) return [];
 
   allX.sort((a, b) => a - b);
-  const clusters: number[][] = [[allX[0]]];
+  let clusters: number[][] = [[allX[0]]];
 
   for (let i = 1; i < allX.length; i++) {
     const lastCluster = clusters[clusters.length - 1];
-    // クラスタの中央値との差で判定（端からの差ではなくクラスタ中心との距離）
     const clusterCenter = lastCluster[Math.floor(lastCluster.length / 2)];
     if (allX[i] - clusterCenter <= CLUSTER_THRESHOLD) {
       lastCluster.push(allX[i]);
@@ -127,8 +130,26 @@ function detectColumns(rows: TRow[]): number[] {
     }
   }
 
+  // Step 3: クラスタ数が期待列数より多い場合、最も近いクラスタ同士を統合
+  if (expectedCols > 0) {
+    while (clusters.length > expectedCols) {
+      // 隣接クラスタ間の距離を計算し、最小の間隔を見つける
+      let minGap = Infinity;
+      let mergeIdx = 0;
+      for (let i = 1; i < clusters.length; i++) {
+        const prevCenter = clusters[i - 1][Math.floor(clusters[i - 1].length / 2)];
+        const currCenter = clusters[i][Math.floor(clusters[i].length / 2)];
+        const gap = currCenter - prevCenter;
+        if (gap < minGap) { minGap = gap; mergeIdx = i; }
+      }
+      // 統合
+      clusters[mergeIdx - 1] = [...clusters[mergeIdx - 1], ...clusters[mergeIdx]];
+      clusters.splice(mergeIdx, 1);
+    }
+  }
+
   const colPositions = clusters.map(c => c[Math.floor(c.length / 2)]);
-  console.log(`[Payroll] 検出列数: ${colPositions.length}`);
+  console.log(`[Payroll] 最終列数: ${colPositions.length}`);
   return colPositions;
 }
 
