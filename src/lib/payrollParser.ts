@@ -236,22 +236,23 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
     const cells = line.items.map(it => it.str.trim()).filter(Boolean);
     excelRows.push(cells);
   }
-  // 従業員行のマスキング処理
-  for (const row of excelRows) {
+  // 従業員行のみマスキング処理（他の行は一切触らない）
+  const employeeRowSet = new Set(employeeLineIndices);
+  for (let r = 0; r < excelRows.length; r++) {
+    if (!employeeRowSet.has(r)) continue; // 従業員行以外はスキップ
+    const row = excelRows[r];
     for (let c = 0; c < row.length; c++) {
       const cellKey = toMatchKey(row[c]);
+      if (!cellKey || isCodeOrNumber(row[c])) continue;
       // マッチ済みユーザー → UID置換
       const matchedUser = userColumns.find(uc => cellKey.includes(toMatchKey(uc.name)));
       if (matchedUser) {
         row[c] = `UID:${matchedUser.userId}`;
         continue;
       }
-      // 未マッチだが人名っぽい → マスキング
-      if (looksLikeJapaneseName(row[c]) && !isCodeOrNumber(row[c]) && row[c].length >= 2) {
-        // ラベル行や項目名は除外（SAVE_ITEMSや一般的なラベル）
-        if (!SAVE_ITEMS.has(row[c]) && !isEmployeeLabel(row[c]) && !/[合計金額]/.test(row[c])) {
-          row[c] = maskName(row[c]);
-        }
+      // 従業員行内で日本語を含み、ラベルでもない → 未マッチの人名としてマスキング
+      if (looksLikeJapaneseName(row[c]) && !isEmployeeLabel(row[c]) && !isExcludedWord(row[c])) {
+        row[c] = maskName(row[c]);
       }
     }
   }
