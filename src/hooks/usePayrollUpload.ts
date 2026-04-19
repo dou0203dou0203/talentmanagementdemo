@@ -7,7 +7,7 @@ import { supabase } from '../lib/supabase';
 type State =
   | { status: 'idle' }
   | { status: 'uploading' }
-  | { status: 'success'; downloadUrl: string; filename: string; savedCount: number; mappedCount: number }
+  | { status: 'success'; downloadUrl: string; filename: string; savedCount: number; mappedCount: number; unmatchedNames: string[] }
   | { status: 'error'; message: string };
 
 export function usePayrollUpload() {
@@ -18,7 +18,7 @@ export function usePayrollUpload() {
 
     try {
       // Execute frontend parsing and masking
-      const { downloadUrl, dbRecords, mappedCount } = await processPayrollFrontend(file, yearMonth, users);
+      const { downloadUrl, dbRecords, mappedCount, unmatchedNames } = await processPayrollFrontend(file, yearMonth, users);
 
       // Save records to Supabase directly
       let savedCount = 0;
@@ -35,7 +35,7 @@ export function usePayrollUpload() {
       }
 
       const filename = `payroll_${yearMonth}_tokenized.xlsx`;
-      setState({ status: 'success', downloadUrl, filename, savedCount, mappedCount });
+      setState({ status: 'success', downloadUrl, filename, savedCount, mappedCount, unmatchedNames: unmatchedNames || [] });
     } catch (e: unknown) {
       console.error(e);
       setState({ status: 'error', message: e instanceof Error ? e.message : '不明なエラーが発生しました' });

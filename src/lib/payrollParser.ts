@@ -10,16 +10,69 @@ const SAVE_ITEMS = new Set([
   '課税支給合計', '非課税支給合計', '社会保険料合計',
 ]);
 
-function normalizeName(name: string) {
+/** すべてのスペース（全角・半角）を除去して比較用キーを作る */
+function toMatchKey(name: string): string {
+  return (name || '').replace(/[\s\u3000]+/g, '').trim();
+}
+
+/** 表示用に正規化 */
+function normalizeName(name: string): string {
   return (name || '').replace(/\u3000/g, ' ').trim();
 }
 
 function maskName(name: string) {
-  return name.split(' ').map(p => '●'.repeat(p.length)).join(' ');
+  const normalized = normalizeName(name);
+  if (!normalized) return '●●';
+  return normalized.split(/[\s\u3000]+/).map(p => '●'.repeat(p.length)).join(' ');
+}
+
+/**
+ * ユーザーリストから複数の照合キーを持つ辞書を構築する
+ * - フルネーム（スペースなし）: "山田太郎"
+ * - フルネーム（半角スペース）: "山田 太郎"
+ * - 姓のみ（3文字以上の場合のみ、誤マッチ防止）
+ */
+function buildNameDictionary(users: User[]): Map<string, string> {
+  const dict = new Map<string, string>();
+  for (const u of users) {
+    // スペースなしの完全一致キー
+    dict.set(toMatchKey(u.name), u.id);
+    // 正規化済み（半角スペース区切り）
+    dict.set(normalizeName(u.name), u.id);
+    // 姓のみ（3文字以上で、他のユーザーと被らない場合）
+    const parts = u.name.replace(/\u3000/g, ' ').trim().split(/\s+/);
+    if (parts.length > 0 && parts[0].length >= 3) {
+      if (!dict.has(parts[0])) {
+        dict.set(parts[0], u.id);
+      }
+    }
+  }
+  return dict;
+}
+
+/** PDFから抽出した名前を辞書で照合する */
+function findUserId(pdfName: string, dict: Map<string, string>): string | undefined {
+  // 1. スペースなし完全一致
+  const key1 = toMatchKey(pdfName);
+  if (dict.has(key1)) return dict.get(key1);
+  // 2. 正規化済み一致
+  const key2 = normalizeName(pdfName);
+  if (dict.has(key2)) return dict.get(key2);
+  // 3. 姓のみ一致（3文字以上）
+  const surname = pdfName.replace(/[\s\u3000]+/g, '').slice(0, 3);
+  if (surname.length >= 3 && dict.has(surname)) return dict.get(surname);
+  return undefined;
+}
+
+/** 「従業員」行かどうかを判定（部分一致） */
+function isEmployeeRow(label: string): boolean {
+  const l = (label || '').replace(/[\s\u3000]+/g, '');
+  return l.includes('従業員') || l.includes('氏名') || l.includes('社員');
 }
 
 export async function processPayrollFrontend(file: File, yearMonth: string, users: User[]) {
-  const nameToId = Object.fromEntries(users.map(u => [normalizeName(u.name), u.id]));
+  const nameDict = buildNameDictionary(users);
+  console.log('[Payroll] 照合辞書を構築:', nameDict.size, 'キー,', users.length, 'ユーザー');
 
   // 1. Read PDF
   const arrayBuffer = await file.arrayBuffer();
@@ -31,8 +84,6 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
     const content = await page.getTextContent();
     const items = content.items as any[];
 
-    // Sort items by Y (descending) then X (ascending)
-    // to reconstruct lines reliably.
     items.sort((a, b) => {
       const yA = a.transform[5];
       const yB = b.transform[5];
@@ -46,7 +97,6 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
       if (lastY !== -1 && Math.abs(lastY - y) > 2) {
         fullText += '\n';
       }
-      // Inject some spacing to simulate tab/double space parsing
       fullText += item.str + '  ';
       lastY = y;
     }
@@ -71,25 +121,37 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   }
   if (currentItem) rows.push([currentItem, ...currentValues]);
 
-  // 3. Tokenize
+  console.log('[Payroll] PDF解析完了:', rows.length, '行');
+
+  // 3. Tokenize — 従業員行を探して名前照合
   const colToUserId: Record<number, string> = {};
+  const unmatchedNames: string[] = [];
   const tokenized = rows.map(row => {
     const newRow = [...row];
-    if (row[0] === '従業員') {
+    if (isEmployeeRow(row[0] as string)) {
+      console.log('[Payroll] 従業員行を検出:', row.slice(1));
       for (let i = 1; i < row.length; i++) {
-        const name = normalizeName(row[i] as string);
-        if (!name || name === '-') continue;
-        const userId = nameToId[name];
+        const rawName = (row[i] as string || '').trim();
+        if (!rawName || rawName === '-' || rawName === '0' || /^\d+$/.test(rawName)) continue;
+        const userId = findUserId(rawName, nameDict);
         if (userId) {
           colToUserId[i] = userId;
           newRow[i] = `UID:${userId}`;
+          console.log(`[Payroll] ✅ マッチ: "${rawName}" → ${userId}`);
         } else {
-          newRow[i] = maskName(name);
+          newRow[i] = maskName(rawName);
+          unmatchedNames.push(rawName);
+          console.log(`[Payroll] ❌ 未マッチ: "${rawName}"`);
         }
       }
     }
     return newRow;
   });
+
+  console.log('[Payroll] 紐づけ結果:', Object.keys(colToUserId).length, '名マッチ,', unmatchedNames.length, '名未マッチ');
+  if (unmatchedNames.length > 0) {
+    console.log('[Payroll] 未マッチの名前一覧:', unmatchedNames);
+  }
 
   // 4. Build Excel
   const wb = XLSX.utils.book_new();
@@ -97,7 +159,6 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   ws['!cols'] = [{ wch: 24 }, ...Array(10).fill({ wch: 14 })];
   XLSX.utils.book_append_sheet(wb, ws, '支給控除一覧');
   
-  // Create Blob URL for download
   const excelArray = XLSX.write(wb, { type: 'array', bookType: 'xlsx' });
   const excelBlob = new Blob([excelArray], { type: 'application/octet-stream' });
   const downloadUrl = URL.createObjectURL(excelBlob);
@@ -117,5 +178,5 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
     }
   }
 
-  return { downloadUrl, dbRecords, mappedCount: Object.keys(colToUserId).length };
+  return { downloadUrl, dbRecords, mappedCount: Object.keys(colToUserId).length, unmatchedNames };
 }

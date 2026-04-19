@@ -75,7 +75,22 @@ export default function PayrollImport() {
             <p style={{ marginBottom: 'var(--space-4)', fontSize: 'var(--font-size-md)', color: 'var(--color-neutral-700)' }}>
               Supabaseへの保存件数: <strong>{state.savedCount}</strong> 件のレコード<br />
               紐付け成功: <strong>{state.mappedCount}</strong> 名のスタッフ
+              {state.unmatchedNames.length > 0 && (
+                <><br />未紐付け: <strong style={{ color: 'var(--color-danger)' }}>{state.unmatchedNames.length}</strong> 名</>
+              )}
             </p>
+            {state.unmatchedNames.length > 0 && (
+              <div style={{ background: '#fffbeb', border: '1px solid #f59e0b', borderRadius: 'var(--radius-md)', padding: 'var(--space-3)', marginBottom: 'var(--space-4)', textAlign: 'left', fontSize: 'var(--font-size-sm)' }}>
+                <strong style={{ color: '#92400e' }}>⚠️ 以下の名前がシステム上のスタッフと一致しませんでした:</strong>
+                <ul style={{ margin: '8px 0 0 16px', color: '#78350f' }}>
+                  {state.unmatchedNames.map((name, i) => <li key={i}>{name}</li>)}
+                </ul>
+                <p style={{ margin: '8px 0 0', color: '#92400e', fontSize: 'var(--font-size-xs)' }}>
+                  💡 スタッフデータの氏名欄をPDFの表記と一致させると、次回から自動紐付けされます。<br />
+                  ※ブラウザのDevTools → Console で詳細なデバッグログを確認できます。
+                </p>
+              </div>
+            )}
             
             <a
               href={state.downloadUrl}
