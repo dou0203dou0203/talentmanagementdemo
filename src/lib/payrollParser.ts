@@ -1,9 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfjsWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import PdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?worker&inline';
 import * as XLSX from 'xlsx';
 import type { User } from '../types';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorkerUrl;
+pdfjsLib.GlobalWorkerOptions.workerPort = new PdfjsWorker();
 
 const SAVE_ITEMS = new Set([
   '支給合計', '控除合計', '差引支給合計',
