@@ -77,7 +77,34 @@ async function extractPageRows(pdf: any): Promise<TRow[][]> {
  * 列の境界（各列の代表X値）を決定する。
  */
 function detectColumns(rows: TRow[]): number[] {
-  // 全アイテムのX座標を収集
+  if (rows.length === 0) return [];
+
+  // Step 1: データ行（数値が多い行）の列間隔を分析して適切な閾値を決める
+  // 数値アイテムは必ず1列=1アイテムなので、数値行のアイテム間隔＝列間隔
+  const dataGaps: number[] = [];
+  for (const row of rows) {
+    // 数値アイテムが2個以上ある行を「データ行」と判断
+    const numericItems = row.items.filter(it => /[\d,]+/.test(it.str) && parseFloat(it.str.replace(/[,\s]/g, '')) > 0);
+    if (numericItems.length >= 2) {
+      // X座標でソートして、隣接間隔を収集
+      const sorted = [...numericItems].sort((a, b) => a.x - b.x);
+      for (let i = 1; i < sorted.length; i++) {
+        dataGaps.push(sorted[i].x - sorted[i - 1].x);
+      }
+    }
+  }
+
+  // 列間隔の中央値を求める。なければデフォルト50pt
+  let colSpacing = 50;
+  if (dataGaps.length > 0) {
+    dataGaps.sort((a, b) => a - b);
+    colSpacing = dataGaps[Math.floor(dataGaps.length / 2)];
+  }
+  // 閾値 = 列間隔の40%（列内の分割テキストは統合、列間は分離）
+  const CLUSTER_THRESHOLD = Math.max(colSpacing * 0.4, 10);
+  console.log(`[Payroll] 列間隔中央値: ${colSpacing.toFixed(1)}pt, クラスタ閾値: ${CLUSTER_THRESHOLD.toFixed(1)}pt`);
+
+  // Step 2: 全アイテムのX座標をクラスタリング
   const allX: number[] = [];
   for (const row of rows) {
     for (const item of row.items) {
@@ -86,23 +113,22 @@ function detectColumns(rows: TRow[]): number[] {
   }
   if (allX.length === 0) return [];
 
-  // ソートして近いX座標をクラスタにまとめる
   allX.sort((a, b) => a - b);
   const clusters: number[][] = [[allX[0]]];
-  const CLUSTER_THRESHOLD = 8; // 8pt以内の差は同じ列
 
   for (let i = 1; i < allX.length; i++) {
     const lastCluster = clusters[clusters.length - 1];
-    const lastVal = lastCluster[lastCluster.length - 1];
-    if (allX[i] - lastVal <= CLUSTER_THRESHOLD) {
+    // クラスタの中央値との差で判定（端からの差ではなくクラスタ中心との距離）
+    const clusterCenter = lastCluster[Math.floor(lastCluster.length / 2)];
+    if (allX[i] - clusterCenter <= CLUSTER_THRESHOLD) {
       lastCluster.push(allX[i]);
     } else {
       clusters.push([allX[i]]);
     }
   }
 
-  // 各クラスタの中央値を列の代表X値とする
   const colPositions = clusters.map(c => c[Math.floor(c.length / 2)]);
+  console.log(`[Payroll] 検出列数: ${colPositions.length}`);
   return colPositions;
 }
 
