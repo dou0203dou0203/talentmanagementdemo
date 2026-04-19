@@ -107,30 +107,40 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
     }
     if (currentLine.length > 0) lineGroups.push(currentLine);
 
-    // 各行内で、X座標の間隔を見てセル分割する
-    // 近い（< GAP_THRESHOLD）→ 同じセル内のテキスト
-    // 遠い（>= GAP_THRESHOLD）→ 別の列
-    const GAP_THRESHOLD = 15;
+    // 各行内で、X開始座標の差分を見てセル分割する
     for (const lineItems of lineGroups) {
+      if (lineItems.length <= 1) {
+        const text = lineItems[0]?.str?.trim();
+        if (text) allRows.push([text]);
+        continue;
+      }
+
+      // 全テキスト断片間のX開始座標の差分を収集
+      const xGaps: number[] = [];
+      for (let j = 1; j < lineItems.length; j++) {
+        const gap = lineItems[j].transform[4] - lineItems[j - 1].transform[4];
+        xGaps.push(gap);
+      }
+
+      // 動的閾値: ギャップをソートし、中央値の3倍を閾値とする
+      // （列間の距離は文字間の距離の数倍以上あるはず）
+      const sortedGaps = [...xGaps].sort((a, b) => a - b);
+      const medianGap = sortedGaps[Math.floor(sortedGaps.length / 2)] || 10;
+      const threshold = Math.max(medianGap * 2.5, 20); // 最低20pt
+
       const cells: string[] = [];
-      let cellText = '';
-      for (let j = 0; j < lineItems.length; j++) {
-        const item = lineItems[j];
-        if (j > 0) {
-          const prevItem = lineItems[j - 1];
-          const prevEnd = prevItem.transform[4] + (prevItem.width || 0);
-          const currentStart = item.transform[4];
-          const gap = currentStart - prevEnd;
-          if (gap >= GAP_THRESHOLD) {
-            // 新しい列
-            cells.push(cellText.trim());
-            cellText = '';
-          } else if (gap > 1) {
-            // 同じセル内だが少しスペースあり → 半角スペース挿入
-            cellText += ' ';
-          }
+      let cellText = lineItems[0].str;
+      for (let j = 1; j < lineItems.length; j++) {
+        const xGap = lineItems[j].transform[4] - lineItems[j - 1].transform[4];
+        if (xGap >= threshold) {
+          // 新しい列
+          cells.push(cellText.trim());
+          cellText = '';
+        } else if (xGap > 2) {
+          // 同じセル内だが少しスペースあり → 半角スペース挿入
+          cellText += ' ';
         }
-        cellText += item.str;
+        cellText += lineItems[j].str;
       }
       if (cellText.trim()) cells.push(cellText.trim());
       if (cells.length > 0) allRows.push(cells);
@@ -141,6 +151,10 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   const rows = allRows;
 
   console.log('[Payroll] PDF解析完了:', rows.length, '行');
+  // デバッグ: 最初の10行のセル構造を出力
+  rows.slice(0, 10).forEach((row, i) => {
+    console.log(`[Payroll] 行${i}: [${row.length}列]`, row.map((c: any) => `"${c}"`).join(' | '));
+  });
 
   // 3. Tokenize — 従業員行を探して名前照合
   const colToUserId: Record<number, string> = {};
