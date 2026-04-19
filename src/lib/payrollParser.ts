@@ -76,7 +76,7 @@ async function extractPageRows(pdf: any): Promise<TRow[][]> {
  * ページ内の全アイテムのX座標を集めてクラスタリングし、
  * 列の境界（各列の代表X値）を決定する。
  */
-function detectColumns(rows: TRow[]): number[] {
+function detectColumns(rows: TRow[], expectedColsHint?: number): number[] {
   if (rows.length === 0) return [];
 
   // Step 1: データ行から「期待される列数」と「列間隔」を分析
@@ -93,9 +93,9 @@ function detectColumns(rows: TRow[]): number[] {
     }
   }
 
-  // データ行のアイテム数の最頻値 → 期待される列数
-  let expectedCols = 0;
-  if (itemCounts.length > 0) {
+  // 期待列数: 外部指定があればそれを使用、なければデータ行の最頻値
+  let expectedCols = expectedColsHint || 0;
+  if (expectedCols === 0 && itemCounts.length > 0) {
     const freq = new Map<number, number>();
     for (const n of itemCounts) freq.set(n, (freq.get(n) || 0) + 1);
     let maxFreq = 0;
@@ -199,13 +199,16 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   const allUnmatchedNames: string[] = [];
   const usedUserIds = new Set<string>();
   const allGrids: string[][][] = []; // ページごとのグリッド
+  let page1ColCount = 0; // 1ページ目の列数を記録
 
   for (let pageIdx = 0; pageIdx < allPages.length; pageIdx++) {
     const pageRows = allPages[pageIdx];
     console.log(`[Payroll] === ページ ${pageIdx + 1} (${pageRows.length} 行) ===`);
 
     // (A) 列構造を検出 → 2Dグリッドに変換
-    const colPositions = detectColumns(pageRows);
+    // 1ページ目の列数を基準として2ページ目以降に共有
+    const colPositions = detectColumns(pageRows, pageIdx > 0 ? page1ColCount : undefined);
+    if (pageIdx === 0) page1ColCount = colPositions.length;
     const grid = buildGrid(pageRows, colPositions);
     allGrids.push(grid);
 
