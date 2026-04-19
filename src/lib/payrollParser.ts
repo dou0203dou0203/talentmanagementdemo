@@ -31,6 +31,16 @@ function isExcludedWord(text: string): boolean {
   return EXCLUDED_WORDS.has(toMatchKey(text));
 }
 
+/** 従業員番号パターン（00-101, 01-003 等）→ 読み取りから除外 */
+function isEmployeeNumber(text: string): boolean {
+  const t = text.trim();
+  // 数字-数字 のパターン（00-101, 1-23, 01-003 等）
+  if (/^\d{1,4}[\-ー]\d{1,4}$/.test(t)) return true;
+  // No. や # 付きのコード
+  if (/^(No\.?|#)\s*\d+$/i.test(t)) return true;
+  return false;
+}
+
 // =========================================================================
 // Step 1: PDFからテキストアイテムをページ→行→アイテムで抽出
 // =========================================================================
@@ -60,7 +70,7 @@ async function extractPageRows(pdf: any): Promise<TRow[][]> {
         if (curItems.length > 0) rows.push({ items: curItems });
         curItems = [];
       }
-      if (it.str.trim()) curItems.push({ str: it.str, x: it.transform[4] });
+      if (it.str.trim() && !isEmployeeNumber(it.str)) curItems.push({ str: it.str, x: it.transform[4] });
       lastY = y;
     }
     if (curItems.length > 0) rows.push({ items: curItems });
