@@ -110,20 +110,20 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   //    - 見つかった名前のX位置を記録
   type UserColumn = { userId: string; name: string; xCenter: number };
   const userColumns: UserColumn[] = [];
-  let employeeLineIdx = -1;
+  const employeeLineIndices: number[] = [];
+  const usedUserIds = new Set<string>();
 
   for (let li = 0; li < lines.length; li++) {
     const line = lines[li];
     // 行の最初のテキストが従業員ラベルか確認
     if (!isEmployeeLabel(line.items[0]?.str || '')) continue;
-    employeeLineIdx = li;
+    employeeLineIndices.push(li);
 
     // fullText（スペースなし）でユーザー名を検索
     let searchText = toMatchKey(line.fullText);
     console.log('[Payroll] 従業員行を発見 (行' + li + '):', searchText);
 
     // 名前をfullTextから検索し、元のアイテムのX位置にマッピング
-    const usedUserIds = new Set<string>();
     for (const entry of nameEntries) {
       if (usedUserIds.has(entry.id)) continue;
       const idx = searchText.indexOf(entry.key);
@@ -147,30 +147,26 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
       searchText = searchText.slice(0, idx) + '□'.repeat(entry.key.length) + searchText.slice(idx + entry.key.length);
       console.log(`[Payroll] ✅ マッチ: "${entry.name}" (x=${nameX.toFixed(0)})`);
     }
-    if (userColumns.length > 0) break; // 最初の従業員行で充分
+    // ※breakしない → 全ページの従業員行を処理する
   }
 
   // X位置でソート（左から右）
   userColumns.sort((a, b) => a.xCenter - b.xCenter);
-  console.log('[Payroll] マッチしたユーザー:', userColumns.length, '名');
+  console.log('[Payroll] マッチしたユーザー:', userColumns.length, '名 (', employeeLineIndices.length, 'ページ分の従業員行)');
 
-  // 未マッチの名前を検出
+  // 未マッチの名前を検出（全従業員行を対象）
   const unmatchedNames: string[] = [];
-  if (employeeLineIdx >= 0) {
-    const line = lines[employeeLineIdx];
-    // 従業員行のテキストアイテムのうち、名前マッチしなかったもので日本語名っぽいものを収集
+  for (const eli of employeeLineIndices) {
+    const line = lines[eli];
     let remaining = toMatchKey(line.fullText);
-    // マッチ済み名前を除去
     for (const uc of userColumns) {
       remaining = remaining.replace(toMatchKey(uc.name), '');
     }
-    // 従業員ラベル自体を除去
     remaining = remaining.replace(/従業員|氏名|社員名/g, '');
-    // 残った部分にまだ日本語文字が含まれていれば未マッチ
     const leftover = remaining.replace(/[^\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g, '').trim();
     if (leftover.length > 0) {
       unmatchedNames.push(leftover);
-      console.log(`[Payroll] ❌ 未マッチの残余テキスト: "${leftover}"`);
+      console.log(`[Payroll] ❌ 未マッチの残余テキスト (行${eli}): "${leftover}"`);
     }
   }
 
