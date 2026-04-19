@@ -78,12 +78,13 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
   const arrayBuffer = await file.arrayBuffer();
   const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
 
-  let fullText = '';
+  const allRows: any[][] = [];
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const content = await page.getTextContent();
     const items = content.items as any[];
 
+    // Y座標（降順）→ X座標（昇順）でソート
     items.sort((a, b) => {
       const yA = a.transform[5];
       const yB = b.transform[5];
@@ -91,35 +92,53 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
       return a.transform[4] - b.transform[4];
     });
 
+    // 行ごとにグループ化
+    const lineGroups: any[][] = [];
+    let currentLine: any[] = [];
     let lastY = -1;
     for (const item of items) {
       const y = item.transform[5];
       if (lastY !== -1 && Math.abs(lastY - y) > 2) {
-        fullText += '\n';
+        if (currentLine.length > 0) lineGroups.push(currentLine);
+        currentLine = [];
       }
-      fullText += item.str + '  ';
+      currentLine.push(item);
       lastY = y;
     }
-    fullText += '\n';
-  }
+    if (currentLine.length > 0) lineGroups.push(currentLine);
 
-  // 2. Parse lines
-  const lines = fullText.split('\n').map((l: string) => l.trim()).filter(Boolean);
-  const rows: any[][] = [];
-  let currentItem: string | null = null;
-  let currentValues: string[] = [];
-
-  for (const line of lines) {
-    const parts = line.split(/\s{2,}|\t/);
-    if (parts.length >= 2) {
-      if (currentItem) rows.push([currentItem, ...currentValues]);
-      currentItem = parts[0];
-      currentValues = parts.slice(1);
-    } else if (currentItem) {
-      currentValues.push(...parts);
+    // 各行内で、X座標の間隔を見てセル分割する
+    // 近い（< GAP_THRESHOLD）→ 同じセル内のテキスト
+    // 遠い（>= GAP_THRESHOLD）→ 別の列
+    const GAP_THRESHOLD = 15;
+    for (const lineItems of lineGroups) {
+      const cells: string[] = [];
+      let cellText = '';
+      for (let j = 0; j < lineItems.length; j++) {
+        const item = lineItems[j];
+        if (j > 0) {
+          const prevItem = lineItems[j - 1];
+          const prevEnd = prevItem.transform[4] + (prevItem.width || 0);
+          const currentStart = item.transform[4];
+          const gap = currentStart - prevEnd;
+          if (gap >= GAP_THRESHOLD) {
+            // 新しい列
+            cells.push(cellText.trim());
+            cellText = '';
+          } else if (gap > 1) {
+            // 同じセル内だが少しスペースあり → 半角スペース挿入
+            cellText += ' ';
+          }
+        }
+        cellText += item.str;
+      }
+      if (cellText.trim()) cells.push(cellText.trim());
+      if (cells.length > 0) allRows.push(cells);
     }
   }
-  if (currentItem) rows.push([currentItem, ...currentValues]);
+
+  // 旧形式のrows互換（allRowsがそのままrows）
+  const rows = allRows;
 
   console.log('[Payroll] PDF解析完了:', rows.length, '行');
 
