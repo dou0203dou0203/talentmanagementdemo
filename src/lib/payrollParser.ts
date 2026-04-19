@@ -26,6 +26,20 @@ function isEmployeeLabel(text: string): boolean {
   return l.includes('従業員') || l.includes('氏名') || l.includes('社員名');
 }
 
+/** 給与PDFに頻出するが人名ではない単語を除外 */
+const EXCLUDED_WORDS = new Set([
+  '番号', '合計', '番号合計', '従業員', '従業員番号', '氏名', '社員名',
+  '支給', '控除', '差引', '課税', '非課税', '社会保険', '社会保険料',
+  '支給合計', '控除合計', '差引支給合計', '課税支給合計', '非課税支給合計', '社会保険料合計',
+  '基本給', '時間外', '通勤手当', '所得税', '住民税', '健康保険', '厚生年金',
+  '雇用保険', '介護保険', '事業所', '部署', '役職', '総合計',
+]);
+
+function isExcludedWord(text: string): boolean {
+  const key = text.replace(/[\s\u3000]+/g, '').trim();
+  return EXCLUDED_WORDS.has(key);
+}
+
 /** 数字・記号のみ（従業員番号等）→ 名前ではない */
 function isCodeOrNumber(text: string): boolean {
   return /^[\d\-.\s\/\\()（）]+$/.test(text.trim());
@@ -90,11 +104,13 @@ function extractLines(pdf: any): Promise<LineData[]> {
 // =========================================================================
 export async function processPayrollFrontend(file: File, yearMonth: string, users: User[]) {
   // 1. ユーザー名辞書（スペースなしキー → userId）
-  const nameEntries = users.map(u => ({
-    key: toMatchKey(u.name),
-    name: u.name,
-    id: u.id,
-  }));
+  const nameEntries = users
+    .map(u => ({
+      key: toMatchKey(u.name),
+      name: u.name,
+      id: u.id,
+    }))
+    .filter(e => e.key.length >= 2 && !isExcludedWord(e.key));
   // 長い名前を先に照合（部分一致で短い名前が先にマッチするのを防ぐ）
   nameEntries.sort((a, b) => b.key.length - a.key.length);
   console.log('[Payroll] ユーザー数:', users.length, ', 照合エントリ:', nameEntries.length);
@@ -121,6 +137,10 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
 
     // fullText（スペースなし）でユーザー名を検索
     let searchText = toMatchKey(line.fullText);
+    // 除外語をサーチテキストから先に除去（誤マッチ防止）
+    for (const ew of EXCLUDED_WORDS) {
+      searchText = searchText.replaceAll(ew, '□'.repeat(ew.length));
+    }
     console.log('[Payroll] 従業員行を発見 (行' + li + '):', searchText);
 
     // 名前をfullTextから検索し、元のアイテムのX位置にマッピング
