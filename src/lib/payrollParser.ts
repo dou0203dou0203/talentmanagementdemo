@@ -31,198 +31,212 @@ function isExcludedWord(text: string): boolean {
   return EXCLUDED_WORDS.has(toMatchKey(text));
 }
 
-function maskName(name: string): string {
-  const n = (name || '').replace(/\u3000/g, ' ').trim();
-  if (!n) return '●●';
-  return n.split(/[\s\u3000]+/).map(p => '●'.repeat(p.length)).join(' ');
-}
-
 // =========================================================================
-// ページ単位でPDFを解析
+// Step 1: PDFからテキストアイテムをページ→行→アイテムで抽出
 // =========================================================================
-interface TextItem { str: string; x: number; }
-interface PageLine { items: TextItem[]; }
-interface PageData { lines: PageLine[]; }
+interface TItem { str: string; x: number; }
+interface TRow { items: TItem[]; }
 
-async function extractPages(pdf: any): Promise<PageData[]> {
-  const pages: PageData[] = [];
+async function extractPageRows(pdf: any): Promise<TRow[][]> {
+  const allPages: TRow[][] = [];
   for (let p = 1; p <= pdf.numPages; p++) {
     const page = await pdf.getPage(p);
     const content = await page.getTextContent();
     const items = content.items as any[];
 
+    // Y降順 → X昇順 ソート
     items.sort((a: any, b: any) => {
       const yA = a.transform[5], yB = b.transform[5];
       if (Math.abs(yA - yB) > 2) return yB - yA;
       return a.transform[4] - b.transform[4];
     });
 
-    // 行ごとにグループ化（Y座標が近い → 同じ行）
-    const lines: PageLine[] = [];
-    let currentItems: TextItem[] = [];
+    const rows: TRow[] = [];
+    let curItems: TItem[] = [];
     let lastY = -1;
-    for (const item of items) {
-      const y = item.transform[5];
+    for (const it of items) {
+      const y = it.transform[5];
       if (lastY !== -1 && Math.abs(lastY - y) > 2) {
-        if (currentItems.length > 0) lines.push({ items: currentItems });
-        currentItems = [];
+        if (curItems.length > 0) rows.push({ items: curItems });
+        curItems = [];
       }
-      if (item.str.trim()) currentItems.push({ str: item.str, x: item.transform[4] });
+      if (it.str.trim()) curItems.push({ str: it.str, x: it.transform[4] });
       lastY = y;
     }
-    if (currentItems.length > 0) lines.push({ items: currentItems });
-    pages.push({ lines });
+    if (curItems.length > 0) rows.push({ items: curItems });
+    allPages.push(rows);
   }
-  return pages;
+  return allPages;
 }
 
 // =========================================================================
-// メイン処理
+// Step 2: 列構造を検出し、2Dグリッドを構築（空白セルを保持）
+// =========================================================================
+/**
+ * ページ内の全アイテムのX座標を集めてクラスタリングし、
+ * 列の境界（各列の代表X値）を決定する。
+ */
+function detectColumns(rows: TRow[]): number[] {
+  // 全アイテムのX座標を収集
+  const allX: number[] = [];
+  for (const row of rows) {
+    for (const item of row.items) {
+      allX.push(item.x);
+    }
+  }
+  if (allX.length === 0) return [];
+
+  // ソートして近いX座標をクラスタにまとめる
+  allX.sort((a, b) => a - b);
+  const clusters: number[][] = [[allX[0]]];
+  const CLUSTER_THRESHOLD = 8; // 8pt以内の差は同じ列
+
+  for (let i = 1; i < allX.length; i++) {
+    const lastCluster = clusters[clusters.length - 1];
+    const lastVal = lastCluster[lastCluster.length - 1];
+    if (allX[i] - lastVal <= CLUSTER_THRESHOLD) {
+      lastCluster.push(allX[i]);
+    } else {
+      clusters.push([allX[i]]);
+    }
+  }
+
+  // 各クラスタの中央値を列の代表X値とする
+  const colPositions = clusters.map(c => c[Math.floor(c.length / 2)]);
+  return colPositions;
+}
+
+/**
+ * テキストアイテムを列位置に割り当てて、空白セル付きの2Dグリッドにする
+ */
+function buildGrid(rows: TRow[], colPositions: number[]): string[][] {
+  const grid: string[][] = [];
+  for (const row of rows) {
+    const cells = new Array(colPositions.length).fill('');
+    for (const item of row.items) {
+      // 最も近い列を見つける
+      let bestCol = 0;
+      let bestDist = Math.abs(item.x - colPositions[0]);
+      for (let c = 1; c < colPositions.length; c++) {
+        const d = Math.abs(item.x - colPositions[c]);
+        if (d < bestDist) { bestDist = d; bestCol = c; }
+      }
+      // 同一列に既にテキストがあれば結合（同じ列内の複数アイテム）
+      if (cells[bestCol]) {
+        cells[bestCol] += ' ' + item.str.trim();
+      } else {
+        cells[bestCol] = item.str.trim();
+      }
+    }
+    grid.push(cells);
+  }
+  return grid;
+}
+
+// =========================================================================
+// Step 3: メイン処理
 // =========================================================================
 export async function processPayrollFrontend(file: File, yearMonth: string, users: User[]) {
-  // 1. ユーザー名辞書
+  // ユーザー辞書
   const nameList = users.map(u => ({ key: toMatchKey(u.name), name: u.name, id: u.id }))
     .filter(e => e.key.length >= 2 && !isExcludedWord(e.key));
-  // 長い名前を先にマッチ（部分一致の衝突防止）
   nameList.sort((a, b) => b.key.length - a.key.length);
 
-  console.log('[Payroll] ユーザー数:', users.length, ', 照合エントリ:', nameList.length);
-
-  // 2. PDF解析（ページ単位）
+  // PDF解析
   const arrayBuffer = await file.arrayBuffer();
   const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
-  const pages = await extractPages(pdf);
-  console.log('[Payroll] ページ数:', pages.length);
+  const allPages = await extractPageRows(pdf);
 
-  // 3. ページごとに処理
   const allDbRecords: { user_id: string; year_month: string; item_name: string; amount: number }[] = [];
   const allMatchedUsers: { name: string; id: string }[] = [];
   const allUnmatchedNames: string[] = [];
   const usedUserIds = new Set<string>();
+  const allGrids: string[][][] = []; // ページごとのグリッド
 
-  // Excel用の全行データ
-  const excelRows: string[][] = [];
-  // 従業員行のExcel行インデックスを記録
-  const employeeExcelRowIndices: number[] = [];
+  for (let pageIdx = 0; pageIdx < allPages.length; pageIdx++) {
+    const pageRows = allPages[pageIdx];
+    console.log(`[Payroll] === ページ ${pageIdx + 1} (${pageRows.length} 行) ===`);
 
-  for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
-    const page = pages[pageIdx];
-    console.log(`[Payroll] === ページ ${pageIdx + 1} (${page.lines.length} 行) ===`);
+    // (A) 列構造を検出 → 2Dグリッドに変換
+    const colPositions = detectColumns(pageRows);
+    const grid = buildGrid(pageRows, colPositions);
+    allGrids.push(grid);
 
-    // (A) 従業員行を見つけて、名前を順番に抽出
-    type NameSlot = { userId: string; name: string; order: number };
-    const nameSlots: NameSlot[] = [];
-    let employeeLineLocalIdx = -1;
+    console.log(`[Payroll] 列数: ${colPositions.length}, 行数: ${grid.length}`);
+    // デバッグ: 最初の3行を出力
+    grid.slice(0, 3).forEach((row, i) => {
+      console.log(`[Payroll] 行${i}:`, row.map(c => c || '(空)').join(' | '));
+    });
 
-    for (let li = 0; li < page.lines.length; li++) {
-      const line = page.lines[li];
-      const firstItem = line.items[0]?.str || '';
-      if (!isEmployeeLabel(firstItem)) continue;
-      employeeLineLocalIdx = li;
+    // (B) 従業員行を特定し、各列のユーザーIDをマッピング
+    // colToUserId[列番号] = userId
+    const colToUserId: Record<number, string> = {};
 
-      // 行のフルテキスト（スペース除去）を作成
-      let fullText = line.items.map(it => toMatchKey(it.str)).join('');
+    for (let r = 0; r < grid.length; r++) {
+      if (!isEmployeeLabel(grid[r][0])) continue;
+      console.log(`[Payroll] 従業員行: 行${r}`);
 
-      // 除外語を除去（同じ長さの□に置換）
-      for (const ew of EXCLUDED_WORDS) {
-        fullText = fullText.replaceAll(ew, '□'.repeat(ew.length));
+      for (let c = 1; c < grid[r].length; c++) {
+        const cellText = grid[r][c].trim();
+        if (!cellText) continue; // 空白セルはスキップ
+
+        // 除外語チェック
+        const cellKey = toMatchKey(cellText);
+        if (isExcludedWord(cellText)) continue;
+        if (/^[\d\-.\s\/\\()（）]+$/.test(cellText)) continue;
+        if (!/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(cellText)) continue;
+
+        // 登録ユーザーと照合
+        let matched = false;
+        for (const entry of nameList) {
+          if (usedUserIds.has(entry.id)) continue;
+          if (cellKey.includes(entry.key) || entry.key.includes(cellKey)) {
+            colToUserId[c] = entry.id;
+            usedUserIds.add(entry.id);
+            allMatchedUsers.push({ name: entry.name, id: entry.id });
+            console.log(`[Payroll] ✅ 列${c}: "${cellText}" → ${entry.name} (${entry.id})`);
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          allUnmatchedNames.push(cellText);
+          console.log(`[Payroll] ❌ 列${c}: "${cellText}" (未マッチ)`);
+        }
       }
-
-      console.log(`[Payroll] 従業員行(行${li}):`, fullText);
-
-      // 登録ユーザー名を検索（見つかった順番で記録）
-      let order = 0;
-      for (const entry of nameList) {
-        if (usedUserIds.has(entry.id)) continue;
-        const idx = fullText.indexOf(entry.key);
-        if (idx === -1) continue;
-
-        nameSlots.push({ userId: entry.id, name: entry.name, order: idx });
-        usedUserIds.add(entry.id);
-        fullText = fullText.slice(0, idx) + '□'.repeat(entry.key.length) + fullText.slice(idx + entry.key.length);
-        order++;
-      }
-
-      // 未マッチの日本語テキストを収集
-      const leftover = fullText.replace(/□/g, '').replace(/[^\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/g, '').trim();
-      if (leftover.length > 0) {
-        allUnmatchedNames.push(leftover);
-        console.log(`[Payroll] ❌ 未マッチ (P${pageIdx + 1}): "${leftover}"`);
-      }
-
-      break; // このページの従業員行は1つだけ
+      break; // 従業員行は1ページに1つ
     }
 
-    // 出現位置（idx）でソート → 左から右の順番
-    nameSlots.sort((a, b) => a.order - b.order);
-
-    for (const ns of nameSlots) {
-      console.log(`[Payroll] ✅ P${pageIdx + 1}: "${ns.name}" → ${ns.userId}`);
-      allMatchedUsers.push({ name: ns.name, id: ns.userId });
-    }
-
-    // (B) データ行から数値を順番に抽出し、nameSlots と順番でマッチ
-    for (const line of page.lines) {
-      const label = toMatchKey(line.items[0]?.str || '');
+    // (C) データ行からDBレコードを抽出（列番号で正確にマッチ）
+    for (let r = 0; r < grid.length; r++) {
+      const label = toMatchKey(grid[r][0]);
       if (!SAVE_ITEMS.has(label)) continue;
 
-      // 数値アイテムだけをX位置順に収集
-      const numValues: number[] = [];
-      for (const item of line.items.slice(1)) {
-        const numStr = item.str.replace(/[,\s]/g, '');
-        const val = parseFloat(numStr);
-        if (!isNaN(val)) numValues.push(val);
-      }
-
-      // 順番でマッチ: i番目の名前 ↔ i番目の数値
-      for (let i = 0; i < Math.min(nameSlots.length, numValues.length); i++) {
-        allDbRecords.push({
-          user_id: nameSlots[i].userId,
-          year_month: yearMonth,
-          item_name: label,
-          amount: numValues[i],
-        });
-      }
-    }
-
-    // (C) Excel用データを蓄積
-    for (let li = 0; li < page.lines.length; li++) {
-      const line = page.lines[li];
-      const cells = line.items.map(it => it.str.trim()).filter(Boolean);
-      const excelRowIdx = excelRows.length;
-
-      // 従業員行ならインデックスを記録
-      if (li === employeeLineLocalIdx) {
-        employeeExcelRowIndices.push(excelRowIdx);
-      }
-      excelRows.push(cells);
-    }
-  }
-
-  console.log('[Payroll] 全ページ合計:', allMatchedUsers.length, '名マッチ,', allDbRecords.length, 'DBレコード');
-
-  // 4. Excel の従業員行だけマスキング
-  const empRowSet = new Set(employeeExcelRowIndices);
-  for (let r = 0; r < excelRows.length; r++) {
-    if (!empRowSet.has(r)) continue;
-    const row = excelRows[r];
-    for (let c = 0; c < row.length; c++) {
-      const cellKey = toMatchKey(row[c]);
-      if (!cellKey) continue;
-      // マッチ済みユーザー → UID
-      const mu = allMatchedUsers.find(u => cellKey.includes(toMatchKey(u.name)));
-      if (mu) { row[c] = `UID:${mu.id}`; continue; }
-      // 従業員行内の未マッチ日本語 → マスキング
-      if (/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(row[c]) && !isEmployeeLabel(row[c]) && !isExcludedWord(row[c])) {
-        row[c] = maskName(row[c]);
+      for (const [colStr, userId] of Object.entries(colToUserId)) {
+        const colIdx = parseInt(colStr, 10);
+        const cellVal = (grid[r][colIdx] || '').replace(/[,\s]/g, '');
+        const amount = parseFloat(cellVal);
+        if (!isNaN(amount)) {
+          allDbRecords.push({ user_id: userId, year_month: yearMonth, item_name: label, amount });
+        }
       }
     }
   }
 
-  // 5. Excelファイル生成
+  console.log('[Payroll] 合計:', allMatchedUsers.length, '名マッチ,', allDbRecords.length, 'DBレコード');
+
+  // (D) 全ページのグリッドを結合してExcel出力
+  const excelRows: string[][] = [];
+  for (const grid of allGrids) {
+    for (const row of grid) {
+      excelRows.push(row);
+    }
+  }
+
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.aoa_to_sheet(excelRows);
-  ws['!cols'] = [{ wch: 24 }, ...Array(10).fill({ wch: 14 })];
+  // 列幅を設定
+  ws['!cols'] = excelRows[0]?.map(() => ({ wch: 16 })) || [];
   XLSX.utils.book_append_sheet(wb, ws, '支給控除一覧');
   const excelArray = XLSX.write(wb, { type: 'array', bookType: 'xlsx' });
   const excelBlob = new Blob([excelArray], { type: 'application/octet-stream' });
