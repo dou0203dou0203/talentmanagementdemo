@@ -132,7 +132,12 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
       console.log('[Payroll] 従業員行を検出:', row.slice(1));
       for (let i = 1; i < row.length; i++) {
         const rawName = (row[i] as string || '').trim();
-        if (!rawName || rawName === '-' || rawName === '0' || /^\d+$/.test(rawName)) continue;
+        // スキップ: 空、ハイフンのみ、数字・記号だけの値（従業員番号など）
+        if (!rawName || rawName === '-') continue;
+        // 数字・ハイフン・ドット・スラッシュのみで構成 → 従業員番号・コード類
+        if (/^[\d\-.\s\/\\]+$/.test(rawName)) continue;
+        // 日本語文字（漢字・ひらがな・カタカナ）を1文字も含まない → 名前ではない
+        if (!/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(rawName)) continue;
         const userId = findUserId(rawName, nameDict);
         if (userId) {
           colToUserId[i] = userId;
