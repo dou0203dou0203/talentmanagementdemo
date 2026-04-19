@@ -23,9 +23,15 @@ export function usePayrollUpload() {
       // Save records to Supabase directly
       let savedCount = 0;
       if (dbRecords.length > 0) {
-        const { error } = await supabase.from('payroll_records').upsert(dbRecords, { onConflict: 'user_id,year_month,item_name' });
+        // 重複を除去（同一 user_id + year_month + item_name は最後の値を採用）
+        const deduped = Object.values(
+          Object.fromEntries(
+            dbRecords.map(r => [`${r.user_id}__${r.year_month}__${r.item_name}`, r])
+          )
+        );
+        const { error } = await supabase.from('payroll_records').upsert(deduped, { onConflict: 'user_id,year_month,item_name' });
         if (error) throw new Error(`保存エラー: ${error.message}`);
-        savedCount = dbRecords.length;
+        savedCount = deduped.length;
       }
 
       const filename = `payroll_${yearMonth}_tokenized.xlsx`;
