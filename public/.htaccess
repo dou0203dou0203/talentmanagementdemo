@@ -1,8 +1,23 @@
 AddType application/javascript .mjs
 
+# PHP設定（PDF解析用）
+php_value upload_max_filesize 10M
+php_value post_max_size 12M
+php_value max_execution_time 120
+
+# Pythonファイルへの直接アクセスを禁止
+<FilesMatch "\.py$">
+  Order Deny,Allow
+  Deny from all
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # APIエンドポイント（PHP）はリライト対象外
+  RewriteRule ^api/ - [L]
+
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

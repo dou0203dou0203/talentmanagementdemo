@@ -34,9 +34,11 @@ async function parsePdfViaServer(file: File): Promise<string[][][]> {
   const formData = new FormData();
   formData.append('file', file);
 
-  // ローカル開発サーバー or 本番のAPIエンドポイント
-  const baseUrl = import.meta.env.DEV ? 'http://localhost:3001' : '';
-  const res = await fetch(`${baseUrl}/api/payroll/parse`, {
+  // ローカル開発: Express経由、本番(XServer): PHP経由
+  const apiUrl = import.meta.env.DEV
+    ? 'http://localhost:3001/api/payroll/parse'
+    : '/api/parse_payroll.php';
+  const res = await fetch(apiUrl, {
     method: 'POST',
     body: formData,
   });
