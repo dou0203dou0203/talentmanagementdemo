@@ -1,5 +1,9 @@
+import * as pdfjsLib from 'pdfjs-dist';
+import PdfjsWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?worker&inline';
 import * as XLSX from 'xlsx';
 import type { User } from '../types';
+
+pdfjsLib.GlobalWorkerOptions.workerPort = new PdfjsWorker();
 
 const SAVE_ITEMS = new Set([
   '支給合計', '控除合計', '差引支給合計',
@@ -27,77 +31,222 @@ function isExcludedWord(text: string): boolean {
   return EXCLUDED_WORDS.has(toMatchKey(text));
 }
 
-// =========================================================================
-// サーバーにPDFを送信し、pdfplumberで解析済みテーブルを受け取る
-// =========================================================================
-async function parsePdfViaServer(file: File): Promise<string[][][]> {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  // ローカル開発: Express経由、本番(XServer): PHP経由
-  const apiUrl = import.meta.env.DEV
-    ? 'http://localhost:3001/api/payroll/parse'
-    : '/api/parse_payroll.php';
-  const res = await fetch(apiUrl, {
-    method: 'POST',
-    body: formData,
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({ error: 'サーバーエラー' }));
-    throw new Error(err.error || `サーバーエラー (${res.status})`);
-  }
-
-  const data = await res.json();
-  console.log('[Payroll] pdfplumber解析結果:', data.totalPages, 'ページ,', data.totalRows, '行');
-  return data.pages as string[][][];
+/** 従業員番号パターン（00-101, 01-003 等）→ 読み取りから除外 */
+function isEmployeeNumber(text: string): boolean {
+  const t = text.trim();
+  // 数字-数字 のパターン（00-101, 1-23, 01-003 等）
+  if (/^\d{1,4}[\-ー]\d{1,4}$/.test(t)) return true;
+  // No. や # 付きのコード
+  if (/^(No\.?|#)\s*\d+$/i.test(t)) return true;
+  return false;
 }
 
 // =========================================================================
-// メイン処理
+// Step 1: PDFからテキストアイテムをページ→行→アイテムで抽出
+// =========================================================================
+interface TItem { str: string; x: number; }
+interface TRow { items: TItem[]; }
+
+async function extractPageRows(pdf: any): Promise<TRow[][]> {
+  const allPages: TRow[][] = [];
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    const items = content.items as any[];
+
+    // Y降順 → X昇順 ソート
+    items.sort((a: any, b: any) => {
+      const yA = a.transform[5], yB = b.transform[5];
+      if (Math.abs(yA - yB) > 2) return yB - yA;
+      return a.transform[4] - b.transform[4];
+    });
+
+    const rows: TRow[] = [];
+    let curItems: TItem[] = [];
+    let lastY = -1;
+    for (const it of items) {
+      const y = it.transform[5];
+      if (lastY !== -1 && Math.abs(lastY - y) > 2) {
+        if (curItems.length > 0) rows.push({ items: curItems });
+        curItems = [];
+      }
+      if (it.str.trim() && !isEmployeeNumber(it.str)) curItems.push({ str: it.str, x: it.transform[4] });
+      lastY = y;
+    }
+    if (curItems.length > 0) rows.push({ items: curItems });
+    allPages.push(rows);
+  }
+  return allPages;
+}
+
+// =========================================================================
+// Step 2: 列構造を検出し、2Dグリッドを構築（空白セルを保持）
+// =========================================================================
+/**
+ * ページ内の全アイテムのX座標を集めてクラスタリングし、
+ * 列の境界（各列の代表X値）を決定する。
+ */
+function detectColumns(rows: TRow[], expectedColsHint?: number): number[] {
+  if (rows.length === 0) return [];
+
+  // Step 1: データ行から「期待される列数」と「列間隔」を分析
+  const dataGaps: number[] = [];
+  const itemCounts: number[] = [];
+  for (const row of rows) {
+    const numericItems = row.items.filter(it => /[\d,]+/.test(it.str) && parseFloat(it.str.replace(/[,\s]/g, '')) > 0);
+    if (numericItems.length >= 2) {
+      itemCounts.push(row.items.length);
+      const sorted = [...numericItems].sort((a, b) => a.x - b.x);
+      for (let i = 1; i < sorted.length; i++) {
+        dataGaps.push(sorted[i].x - sorted[i - 1].x);
+      }
+    }
+  }
+
+  // 期待列数: 外部指定があればそれを使用、なければデータ行の最頻値
+  let expectedCols = expectedColsHint || 0;
+  if (expectedCols === 0 && itemCounts.length > 0) {
+    const freq = new Map<number, number>();
+    for (const n of itemCounts) freq.set(n, (freq.get(n) || 0) + 1);
+    let maxFreq = 0;
+    for (const [n, f] of freq) { if (f > maxFreq) { maxFreq = f; expectedCols = n; } }
+  }
+
+  let colSpacing = 50;
+  if (dataGaps.length > 0) {
+    dataGaps.sort((a, b) => a - b);
+    colSpacing = dataGaps[Math.floor(dataGaps.length / 2)];
+  }
+  const CLUSTER_THRESHOLD = Math.max(colSpacing * 0.4, 10);
+  console.log(`[Payroll] 列間隔中央値: ${colSpacing.toFixed(1)}pt, 閾値: ${CLUSTER_THRESHOLD.toFixed(1)}pt, 期待列数: ${expectedCols}`);
+
+  // Step 2: 全アイテムのX座標をクラスタリング
+  const allX: number[] = [];
+  for (const row of rows) {
+    for (const item of row.items) allX.push(item.x);
+  }
+  if (allX.length === 0) return [];
+
+  allX.sort((a, b) => a - b);
+  let clusters: number[][] = [[allX[0]]];
+
+  for (let i = 1; i < allX.length; i++) {
+    const lastCluster = clusters[clusters.length - 1];
+    const clusterCenter = lastCluster[Math.floor(lastCluster.length / 2)];
+    if (allX[i] - clusterCenter <= CLUSTER_THRESHOLD) {
+      lastCluster.push(allX[i]);
+    } else {
+      clusters.push([allX[i]]);
+    }
+  }
+
+  // Step 3: クラスタ数が期待列数より多い場合、最も近いクラスタ同士を統合
+  if (expectedCols > 0) {
+    while (clusters.length > expectedCols) {
+      // 隣接クラスタ間の距離を計算し、最小の間隔を見つける
+      let minGap = Infinity;
+      let mergeIdx = 0;
+      for (let i = 1; i < clusters.length; i++) {
+        const prevCenter = clusters[i - 1][Math.floor(clusters[i - 1].length / 2)];
+        const currCenter = clusters[i][Math.floor(clusters[i].length / 2)];
+        const gap = currCenter - prevCenter;
+        if (gap < minGap) { minGap = gap; mergeIdx = i; }
+      }
+      // 統合
+      clusters[mergeIdx - 1] = [...clusters[mergeIdx - 1], ...clusters[mergeIdx]];
+      clusters.splice(mergeIdx, 1);
+    }
+  }
+
+  const colPositions = clusters.map(c => c[Math.floor(c.length / 2)]);
+  console.log(`[Payroll] 最終列数: ${colPositions.length}`);
+  return colPositions;
+}
+
+/**
+ * テキストアイテムを列位置に割り当てて、空白セル付きの2Dグリッドにする
+ */
+function buildGrid(rows: TRow[], colPositions: number[]): string[][] {
+  const grid: string[][] = [];
+  for (const row of rows) {
+    const cells = new Array(colPositions.length).fill('');
+    for (const item of row.items) {
+      // 最も近い列を見つける
+      let bestCol = 0;
+      let bestDist = Math.abs(item.x - colPositions[0]);
+      for (let c = 1; c < colPositions.length; c++) {
+        const d = Math.abs(item.x - colPositions[c]);
+        if (d < bestDist) { bestDist = d; bestCol = c; }
+      }
+      // 同一列に既にテキストがあれば結合（同じ列内の複数アイテム）
+      if (cells[bestCol]) {
+        cells[bestCol] += ' ' + item.str.trim();
+      } else {
+        cells[bestCol] = item.str.trim();
+      }
+    }
+    grid.push(cells);
+  }
+  return grid;
+}
+
+// =========================================================================
+// Step 3: メイン処理
 // =========================================================================
 export async function processPayrollFrontend(file: File, yearMonth: string, users: User[]) {
-  // 1. ユーザー辞書
+  // ユーザー辞書
   const nameList = users.map(u => ({ key: toMatchKey(u.name), name: u.name, id: u.id }))
     .filter(e => e.key.length >= 2 && !isExcludedWord(e.key));
   nameList.sort((a, b) => b.key.length - a.key.length);
 
-  // 2. サーバーでPDF解析 → クリーンなテーブルデータを取得
-  const pages = await parsePdfViaServer(file);
+  // PDF解析
+  const arrayBuffer = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument(arrayBuffer).promise;
+  const allPages = await extractPageRows(pdf);
 
   const allDbRecords: { user_id: string; year_month: string; item_name: string; amount: number }[] = [];
   const allMatchedUsers: { name: string; id: string }[] = [];
   const allUnmatchedNames: string[] = [];
   const usedUserIds = new Set<string>();
-  const excelRows: string[][] = [];
+  const allGrids: string[][][] = []; // ページごとのグリッド
+  let page1ColCount = 0; // 1ページ目の列数を記録
 
-  for (let pageIdx = 0; pageIdx < pages.length; pageIdx++) {
-    const grid = pages[pageIdx]; // すでに行×列の2D配列
-    console.log(`[Payroll] === ページ ${pageIdx + 1} (${grid.length} 行 × ${grid[0]?.length || 0} 列) ===`);
+  for (let pageIdx = 0; pageIdx < allPages.length; pageIdx++) {
+    const pageRows = allPages[pageIdx];
+    console.log(`[Payroll] === ページ ${pageIdx + 1} (${pageRows.length} 行) ===`);
 
-    // デバッグ: 最初の3行
+    // (A) 列構造を検出 → 2Dグリッドに変換
+    // 1ページ目の列数を基準として2ページ目以降に共有
+    const colPositions = detectColumns(pageRows, pageIdx > 0 ? page1ColCount : undefined);
+    if (pageIdx === 0) page1ColCount = colPositions.length;
+    const grid = buildGrid(pageRows, colPositions);
+    allGrids.push(grid);
+
+    console.log(`[Payroll] 列数: ${colPositions.length}, 行数: ${grid.length}`);
+    // デバッグ: 最初の3行を出力
     grid.slice(0, 3).forEach((row, i) => {
       console.log(`[Payroll] 行${i}:`, row.map(c => c || '(空)').join(' | '));
     });
 
-    // (A) 従業員行を特定し、列ごとにユーザーをマッピング
+    // (B) 従業員行を特定し、各列のユーザーIDをマッピング
+    // colToUserId[列番号] = userId
     const colToUserId: Record<number, string> = {};
 
     for (let r = 0; r < grid.length; r++) {
-      if (!isEmployeeLabel(grid[r][0] || '')) continue;
+      if (!isEmployeeLabel(grid[r][0])) continue;
       console.log(`[Payroll] 従業員行: 行${r}`);
 
       for (let c = 1; c < grid[r].length; c++) {
-        const cellText = (grid[r][c] || '').trim();
-        if (!cellText) continue;
+        const cellText = grid[r][c].trim();
+        if (!cellText) continue; // 空白セルはスキップ
 
-        // 除外チェック
+        // 除外語チェック
+        const cellKey = toMatchKey(cellText);
         if (isExcludedWord(cellText)) continue;
         if (/^[\d\-.\s\/\\()（）]+$/.test(cellText)) continue;
         if (!/[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FFF]/.test(cellText)) continue;
 
-        // 照合
-        const cellKey = toMatchKey(cellText);
+        // 登録ユーザーと照合
         let matched = false;
         for (const entry of nameList) {
           if (usedUserIds.has(entry.id)) continue;
@@ -105,7 +254,7 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
             colToUserId[c] = entry.id;
             usedUserIds.add(entry.id);
             allMatchedUsers.push({ name: entry.name, id: entry.id });
-            console.log(`[Payroll] ✅ 列${c}: "${cellText}" → ${entry.name}`);
+            console.log(`[Payroll] ✅ 列${c}: "${cellText}" → ${entry.name} (${entry.id})`);
             matched = true;
             break;
           }
@@ -118,9 +267,9 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
       break; // 従業員行は1ページに1つ
     }
 
-    // (B) データ行 → DBレコード抽出（列番号で正確にマッチ）
+    // (C) データ行からDBレコードを抽出（列番号で正確にマッチ）
     for (let r = 0; r < grid.length; r++) {
-      const label = toMatchKey(grid[r][0] || '');
+      const label = toMatchKey(grid[r][0]);
       if (!SAVE_ITEMS.has(label)) continue;
 
       for (const [colStr, userId] of Object.entries(colToUserId)) {
@@ -132,18 +281,21 @@ export async function processPayrollFrontend(file: File, yearMonth: string, user
         }
       }
     }
+  }
 
-    // (C) Excel用データ
+  console.log('[Payroll] 合計:', allMatchedUsers.length, '名マッチ,', allDbRecords.length, 'DBレコード');
+
+  // (D) 全ページのグリッドを結合してExcel出力
+  const excelRows: string[][] = [];
+  for (const grid of allGrids) {
     for (const row of grid) {
       excelRows.push(row);
     }
   }
 
-  console.log('[Payroll] 合計:', allMatchedUsers.length, '名マッチ,', allDbRecords.length, 'DBレコード');
-
-  // 3. Excel生成
   const wb = XLSX.utils.book_new();
   const ws = XLSX.utils.aoa_to_sheet(excelRows);
+  // 列幅を設定
   ws['!cols'] = excelRows[0]?.map(() => ({ wch: 16 })) || [];
   XLSX.utils.book_append_sheet(wb, ws, '支給控除一覧');
   const excelArray = XLSX.write(wb, { type: 'array', bookType: 'xlsx' });

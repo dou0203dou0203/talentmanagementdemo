@@ -1,19 +1,8 @@
 AddType application/javascript .mjs
 
-
-# Pythonファイルへの直接アクセスを禁止
-<FilesMatch "\.py$">
-  Order Deny,Allow
-  Deny from all
-</FilesMatch>
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
-
-  # APIエンドポイント（PHP）はリライト対象外
-  RewriteRule ^api/ - [L]
-
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
