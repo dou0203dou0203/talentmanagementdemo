@@ -8,15 +8,37 @@ header('Content-Type: text/plain; charset=utf-8');
 
 echo "=== Python Setup ===\n\n";
 
-$pythonPaths = ['python3', '/usr/bin/python3', '/usr/local/bin/python3', 'python'];
+$pythonPaths = [];
+for ($i = 12; $i >= 8; $i--) {
+    $pythonPaths[] = "python3.$i";
+    $pythonPaths[] = "/usr/bin/python3.$i";
+    $pythonPaths[] = "/usr/local/bin/python3.$i";
+}
+$pythonPaths[] = 'python3';
+$pythonPaths[] = '/usr/bin/python3';
+
 $python = '';
 
 foreach ($pythonPaths as $p) {
-    if (shell_exec("$p --version 2>&1")) {
+    // try to get version output
+    $ver = shell_exec("$p --version 2>&1");
+    // Only accept if version starts with Python 3.8+ 
+    if ($ver && preg_match('/Python 3\.([8-9]|1[0-9])/', $ver)) {
         $python = $p;
         break;
     }
 }
+
+// Fallback to whatever we can find if none found
+if (!$python) {
+    foreach ($pythonPaths as $p) {
+        if (shell_exec("$p --version 2>&1")) {
+            $python = $p;
+            break;
+        }
+    }
+}
+
 
 if (!$python) {
     echo "Error: Python3 が見つかりません\n";

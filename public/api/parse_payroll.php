@@ -52,11 +52,22 @@ copy($uploadedFile, $tmpFile);
 
 // Pythonを実行
 // XServerではpython3.xのパスが異なる場合があるので複数試す
-$pythonPaths = ['python3', '/usr/bin/python3', '/usr/local/bin/python3', 'python'];
+$pythonPaths = [];
+for ($i = 12; $i >= 8; $i--) {
+    $pythonPaths[] = "python3.$i";
+    $pythonPaths[] = "/usr/bin/python3.$i";
+    $pythonPaths[] = "/usr/local/bin/python3.$i";
+}
+$pythonPaths[] = 'python3';
+$pythonPaths[] = '/usr/bin/python3';
+
 $output = '';
 $exitCode = 1;
 
 foreach ($pythonPaths as $python) {
+    if (!shell_exec("$python --version 2>/dev/null")) {
+        continue;
+    }
     $cmd = escapeshellcmd($python) . ' ' . escapeshellarg($pythonScript) . ' ' . escapeshellarg($tmpFile) . ' 2>&1';
     $output = shell_exec($cmd);
     
