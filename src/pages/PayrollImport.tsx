@@ -2,13 +2,16 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { usePayrollUpload } from '../hooks/usePayrollUpload';
+import { useGoogleDrivePicker } from '../hooks/useGoogleDrivePicker';
 
 export default function PayrollImport() {
   const { permissions } = useAuth();
   const { users } = useData();
   const fileRef = useRef<HTMLInputElement>(null);
+  const excelFileRef = useRef<HTMLInputElement>(null);
   const [yearMonth, setYearMonth] = useState(new Date().toISOString().slice(0, 7));
-  const { state, upload, reset } = usePayrollUpload();
+  const { state, upload, uploadExcelBuffer, reset } = usePayrollUpload();
+  const { isReady: isGoogleReady, pickFile } = useGoogleDrivePicker();
 
   if (!permissions.canViewPayroll) {
     return <div style={{ padding: 20 }}>アクセス権限がありません。（給与担当者のみ閲覧可能です）</div>;
@@ -21,6 +24,30 @@ export default function PayrollImport() {
     await upload(file, yearMonth, users);
   };
 
+  const handleDriveImport = async () => {
+    try {
+      const buffer = await pickFile();
+      await uploadExcelBuffer(buffer, yearMonth, users);
+    } catch (err: any) {
+      console.error(err);
+      alert(err.message || 'Google Driveのファイル取得に失敗しました');
+    }
+  };
+
+  const handleLocalExcelImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const buffer = await file.arrayBuffer();
+      await uploadExcelBuffer(buffer, yearMonth, users);
+    } catch (err: any) {
+      console.error(err);
+      alert('Excelファイルの読み込みに失敗しました');
+    }
+    // reset input
+    if (excelFileRef.current) excelFileRef.current.value = '';
+  };
+
   return (
     <div className="fade-in" style={{ paddingBottom: 60 }}>
       <h2 className="page-title">給与データ一括登録（バックエンド処理）</h2>
@@ -30,10 +57,10 @@ export default function PayrollImport() {
 
       <div className="card" style={{ maxWidth: 600, margin: '0 auto', marginBottom: 24 }}>
         <div className="card-header">
-          <h3 className="card-title">📄 PDFアップロード</h3>
+          <h3 className="card-title">☁️ データインポート</h3>
         </div>
         <div className="card-body">
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
             <div className="form-group" style={{ marginBottom: 0 }}>
               <label className="form-label">対象年月</label>
               <input
@@ -43,27 +70,57 @@ export default function PayrollImport() {
                 onChange={e => setYearMonth(e.target.value)}
               />
             </div>
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">給与支給控除一覧（PDF）</label>
-              <input
-                ref={fileRef}
-                type="file"
-                accept=".pdf"
-                className="form-input"
-                style={{ padding: '8px' }}
-              />
-              <p className="form-help">PDFファイルのみ対応しています。</p>
-            </div>
             
-            <button
-              type="submit"
-              disabled={state.status === 'uploading' || !yearMonth}
-              className="btn btn-primary btn-lg"
-              style={{ marginTop: 'var(--space-2)' }}
-            >
-              {state.status === 'uploading' ? '🔄 解析と保存を実行中...' : '解析してSupabaseへ保存'}
-            </button>
-          </form>
+            <div style={{ background: '#f8fafc', padding: 'var(--space-4)', borderRadius: 'var(--radius-md)', border: '1px solid #e2e8f0' }}>
+              <h4 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--font-size-md)' }}>GAS出力済み Excelインポート</h4>
+              <p className="form-help" style={{ marginBottom: 'var(--space-3)' }}>Google Driveから直接Excelファイルを取り込みます。</p>
+              
+              <button
+                type="button"
+                onClick={handleDriveImport}
+                disabled={state.status === 'uploading' || !yearMonth || !isGoogleReady}
+                className="btn btn-primary btn-lg"
+                style={{ width: '100%', marginBottom: 'var(--space-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+              >
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                {state.status === 'uploading' ? '読み込み中...' : (isGoogleReady ? 'Google Driveから選択' : '初期化中...')}
+              </button>
+
+              <div style={{ marginTop: 'var(--space-3)', position: 'relative' }}>
+                <input
+                  ref={excelFileRef}
+                  type="file"
+                  accept=".xlsx"
+                  onChange={handleLocalExcelImport}
+                  style={{ display: 'none' }}
+                  id="local-excel-upload"
+                />
+                <label htmlFor="local-excel-upload" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center', cursor: 'pointer' }}>
+                  ローカルのExcelファイルをアップロード
+                </label>
+              </div>
+            </div>
+
+            <div style={{ padding: 'var(--space-4)', borderRadius: 'var(--radius-md)', border: '1px dashed #e2e8f0' }}>
+              <form onSubmit={handleSubmit}>
+                <h4 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--font-size-md)', color: 'var(--color-neutral-600)' }}>PDFからの直接解析（旧方式）</h4>
+                <div className="form-group" style={{ marginBottom: 'var(--space-3)' }}>
+                  <input ref={fileRef} type="file" accept=".pdf" className="form-input" style={{ padding: '8px' }} />
+                </div>
+                <button
+                  type="submit"
+                  disabled={state.status === 'uploading' || !yearMonth}
+                  className="btn btn-secondary"
+                  style={{ width: '100%' }}
+                >
+                  PDFを解析
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
 
