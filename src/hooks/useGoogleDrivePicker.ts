@@ -5,6 +5,8 @@ declare global {
   interface Window {
     gapi: any;
     google: any;
+    _googleAuthResolve?: (buf: ArrayBuffer) => void;
+    _googleAuthReject?: (err: any) => void;
   }
 }
 
@@ -40,7 +42,19 @@ export function useGoogleDrivePicker() {
       const client = window.google.accounts.oauth2.initTokenClient({
         client_id: GOOGLE_CLIENT_ID,
         scope: 'https://www.googleapis.com/auth/drive.readonly',
-        callback: '' // 実行時に上書きする
+        callback: (response: any) => {
+          const res = window._googleAuthResolve;
+          const rej = window._googleAuthReject;
+          if (!res || !rej) return;
+
+          if (response.error !== undefined) {
+            rej(new Error(response.error_description || response.error));
+            return;
+          }
+
+          const accessToken = response.access_token;
+          showPicker(accessToken, res, rej);
+        }
       });
       setTokenClient(client);
       gisLoaded = true;
@@ -76,16 +90,9 @@ export function useGoogleDrivePicker() {
         return;
       }
 
-      // アクセストークンをリクエスト
-      tokenClient.callback = async (response: any) => {
-        if (response.error !== undefined) {
-          reject(response);
-          return;
-        }
-
-        const accessToken = response.access_token;
-        showPicker(accessToken, resolve, reject);
-      };
+      // GISのコールバックに渡すためにグローバル一時変数に保存
+      window._googleAuthResolve = resolve;
+      window._googleAuthReject = reject;
       
       tokenClient.requestAccessToken({ prompt: 'consent' });
     });
