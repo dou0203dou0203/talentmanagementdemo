@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { usePayrollUpload } from '../hooks/usePayrollUpload';
-import { useGoogleDrivePicker } from '../hooks/useGoogleDrivePicker';
 
 export default function PayrollImport() {
   const { permissions } = useAuth();
@@ -11,7 +10,6 @@ export default function PayrollImport() {
   const excelFileRef = useRef<HTMLInputElement>(null);
   const [yearMonth, setYearMonth] = useState(new Date().toISOString().slice(0, 7));
   const { state, upload, uploadExcelBuffer, reset } = usePayrollUpload();
-  const { isReady: isGoogleReady, pickFile } = useGoogleDrivePicker();
 
   if (!permissions.canViewPayroll) {
     return <div style={{ padding: 20 }}>アクセス権限がありません。（給与担当者のみ閲覧可能です）</div>;
@@ -22,16 +20,6 @@ export default function PayrollImport() {
     const file = fileRef.current?.files?.[0];
     if (!file) return;
     await upload(file, yearMonth, users);
-  };
-
-  const handleDriveImport = async () => {
-    try {
-      const buffer = await pickFile();
-      await uploadExcelBuffer(buffer, yearMonth, users);
-    } catch (err: any) {
-      console.error(err);
-      alert(err.message || 'Google Driveのファイル取得に失敗しました');
-    }
   };
 
   const handleLocalExcelImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,24 +60,10 @@ export default function PayrollImport() {
             </div>
             
             <div style={{ background: '#f8fafc', padding: 'var(--space-4)', borderRadius: 'var(--radius-md)', border: '1px solid #e2e8f0' }}>
-              <h4 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--font-size-md)' }}>GAS出力済み Excelインポート</h4>
-              <p className="form-help" style={{ marginBottom: 'var(--space-3)' }}>Google Driveから直接Excelファイルを取り込みます。</p>
-              
-              <button
-                type="button"
-                onClick={handleDriveImport}
-                disabled={state.status === 'uploading' || !yearMonth || !isGoogleReady}
-                className="btn btn-primary btn-lg"
-                style={{ width: '100%', marginBottom: 'var(--space-2)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
-              >
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-                </svg>
-                {state.status === 'uploading' ? '読み込み中...' : (isGoogleReady ? 'Google Driveから選択' : '初期化中...')}
-              </button>
+              <h4 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--font-size-md)' }}>GAS出力済み Excelアップロード</h4>
+              <p className="form-help" style={{ marginBottom: 'var(--space-3)' }}>Google Drive(GAS)で変換済みのExcelファイルをアップロードしてください。</p>
 
-              <div style={{ marginTop: 'var(--space-3)', position: 'relative' }}>
+              <div style={{ position: 'relative' }}>
                 <input
                   ref={excelFileRef}
                   type="file"
@@ -98,8 +72,13 @@ export default function PayrollImport() {
                   style={{ display: 'none' }}
                   id="local-excel-upload"
                 />
-                <label htmlFor="local-excel-upload" className="btn btn-secondary" style={{ width: '100%', textAlign: 'center', cursor: 'pointer' }}>
-                  ローカルのExcelファイルをアップロード
+                <label htmlFor="local-excel-upload" className="btn btn-primary btn-lg" style={{ width: '100%', textAlign: 'center', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  Excelファイルを選択して保存
                 </label>
               </div>
             </div>
