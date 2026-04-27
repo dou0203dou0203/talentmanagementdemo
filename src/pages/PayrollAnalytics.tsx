@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, ComposedChart
+  Line, ComposedChart
 } from 'recharts';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658', '#4cc9f0', '#f72585'];
@@ -266,8 +266,8 @@ export default function PayrollAnalytics() {
                     <BarChart data={trendData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="month" />
-                      <YAxis tickFormatter={(val) => `¥${(val/10000).toFixed(0)}万`} />
-                      <Tooltip formatter={(val: number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(val)} />
+                      <YAxis tickFormatter={(val: any) => `¥${(val/10000).toFixed(0)}万`} />
+                      <Tooltip formatter={(val: any) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(val)} />
                       <Legend />
                       {Array.from(selectedItems).map((key, i) => (
                         <Bar key={key} dataKey={key} stackId="a" fill={COLORS[i % COLORS.length]} />
@@ -290,9 +290,9 @@ export default function PayrollAnalytics() {
                     <ComposedChart data={crossFacilityData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
-                      <YAxis yAxisId="left" tickFormatter={(val) => `¥${(val/10000).toFixed(0)}万`} />
-                      <YAxis yAxisId="right" orientation="right" tickFormatter={(val) => `¥${(val/10000).toFixed(0)}万`} />
-                      <Tooltip formatter={(val: number) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(val)} />
+                      <YAxis yAxisId="left" tickFormatter={(val: any) => `¥${(val/10000).toFixed(0)}万`} />
+                      <YAxis yAxisId="right" orientation="right" tickFormatter={(val: any) => `¥${(val/10000).toFixed(0)}万`} />
+                      <Tooltip formatter={(val: any) => new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(val)} />
                       <Legend />
                       {Array.from(selectedItems).map((key, i) => (
                         <Bar key={key} dataKey={key} stackId="a" fill={COLORS[i % COLORS.length]} yAxisId="left" />

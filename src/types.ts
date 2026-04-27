@@ -197,11 +197,8 @@ export interface PayrollRecord {
   id: string;
   user_id: string;
   year_month: string;      // e.g. "2024-04"
-  base_salary: number;     // 基本給
-  allowances: number;      // 手当合計
-  deductions: number;      // 控除合計
-  net_pay: number;         // 差引支給額
-  details_json?: string;   // 手当や控除の詳細情報JSON文字列
+  item_name: string;       // 基本給, 健康保険, etc.
+  amount: number;          // 金額
   created_at?: string;
 }
 
