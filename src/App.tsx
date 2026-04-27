@@ -30,6 +30,7 @@ import ThanksPoints from './pages/ThanksPoints';
 import AdminSetup from './pages/AdminSetup';
 import PayrollImport from './pages/PayrollImport';
 import PayrollDataEditor from './pages/PayrollDataEditor';
+import PayrollAnalytics from './pages/PayrollAnalytics';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -72,6 +73,7 @@ function AppRoutes() {
         <Route path="documents" element={<HRRoute><DocumentManager /></HRRoute>} />
         <Route path="payroll-import" element={<HRRoute><PayrollImport /></HRRoute>} />
         <Route path="payroll-editor" element={<HRRoute><PayrollDataEditor /></HRRoute>} />
+        <Route path="payroll-analytics" element={<HRRoute><PayrollAnalytics /></HRRoute>} />
         <Route path="newcomer-checklist" element={<HRRoute><NewcomerChecklist /></HRRoute>} />
         <Route path="notifications" element={<HRRoute><Notifications /></HRRoute>} />
         <Route path="retired-staff" element={<HRRoute><RetiredStaff /></HRRoute>} />
