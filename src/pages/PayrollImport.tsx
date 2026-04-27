@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useData } from '../context/DataContext';
 import { usePayrollUpload } from '../hooks/usePayrollUpload';
+import { PayrollDeleteTool } from '../components/PayrollDeleteTool';
 
 export default function PayrollImport() {
   const { permissions } = useAuth();
@@ -170,6 +171,12 @@ export default function PayrollImport() {
           </div>
         </div>
       )}
+
+      {/* 取り消し機能セクション */}
+      <div style={{ maxWidth: 600, margin: '0 auto' }}>
+        <PayrollDeleteTool />
+      </div>
+
     </div>
   );
 }

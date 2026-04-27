@@ -63,6 +63,7 @@ const navItems: NavGroup[] = [
         requiredPermission: 'canViewPayroll',
         items: [
             { path: '/payroll-import', label: '給与データ取込', icon: '💰' },
+            { path: '/payroll-editor', label: '給与データ修正', icon: '✏️' },
         ],
     },
 ];
@@ -82,6 +83,8 @@ const pageTitles: Record<string, string> = {
     '/documents': '書類管理',
     '/alerts': '離職防止アラート',
     '/thanks': 'ありがとうポイント',
+    '/payroll-import': '給与データ取込・削除',
+    '/payroll-editor': '給与データの個別修正',
 };
 
 export default function Layout() {

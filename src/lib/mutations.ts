@@ -194,5 +194,46 @@ export const payrollMutations = {
       created_at: new Date().toISOString()
     }));
     return mutate('payroll_records', 'insert', payload);
+  },
+  async updatePayrollRecord(id: string, amount: number) {
+    if (!isSupabaseConfigured()) return { success: true };
+    try {
+      const { error } = await supabase.from('payroll_records').update({ amount }).eq('id', id);
+      if (error) throw error;
+      return { success: true };
+    } catch (e: any) {
+      return { success: false, error: e.message };
+    }
+  },
+  async deletePayrollRecords(yearMonth: string, facilityId?: string, userId?: string) {
+    if (!isSupabaseConfigured()) return { success: true };
+    try {
+      let query = supabase.from('payroll_records').delete().eq('year_month', yearMonth);
+      
+      // If facilityId is provided, we need to find user_ids for that facility first
+      if (facilityId || userId) {
+        let userIdsQuery = supabase.from('users').select('id');
+        if (userId) {
+          userIdsQuery = userIdsQuery.eq('id', userId);
+        } else if (facilityId) {
+          userIdsQuery = userIdsQuery.eq('facility_id', facilityId);
+        }
+        const { data: users, error: userError } = await userIdsQuery;
+        if (userError) throw userError;
+        if (!users || users.length === 0) return { success: true, count: 0 }; // Nothing to delete
+        
+        const extractedUserIds = users.map(u => u.id);
+        query = query.in('user_id', extractedUserIds);
+      }
+      
+      // In JS we can append .select() to get the count of deleted rows, but it's simpler to just run it. 
+      // Supabase v2 delete() allows returning deleted items.
+      const { data, error } = await query.select('id');
+      if (error) throw error;
+      
+      return { success: true, deletedCount: data?.length || 0 };
+    } catch (e: any) {
+      return { success: false, error: e.message };
+    }
   }
 };
