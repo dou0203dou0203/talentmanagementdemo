@@ -61,7 +61,20 @@ export default function PayrollImport() {
             
             <div style={{ background: '#f8fafc', padding: 'var(--space-4)', borderRadius: 'var(--radius-md)', border: '1px solid #e2e8f0' }}>
               <h4 style={{ marginBottom: 'var(--space-2)', fontSize: 'var(--font-size-md)' }}>GAS出力済み Excelアップロード</h4>
-              <p className="form-help" style={{ marginBottom: 'var(--space-3)' }}>Google Drive(GAS)で変換済みのExcelファイルをアップロードしてください。</p>
+              <p className="form-help" style={{ marginBottom: 'var(--space-2)' }}>Google Drive(GAS)で変換済みのExcelファイルをアップロードしてください。</p>
+              
+              <div style={{ 
+                fontSize: '0.75rem', 
+                color: 'var(--color-neutral-600)', 
+                backgroundColor: '#fff', 
+                padding: 'var(--space-2)', 
+                borderRadius: 'var(--radius-sm)', 
+                border: '1px dashed #cbd5e1',
+                marginBottom: 'var(--space-3)' 
+              }}>
+                <strong>【PDFファイルの処理手順】</strong><br/>
+                給与支給控除一覧のPDFファイルを共有ドライブの『給与担当者専用』＞『給与支給控除一覧PDF【処理待ち】』フォルダにアップロードしてください。処理が終わったファイルは『処理完了』フォルダに格納されます。
+              </div>
 
               <div style={{ position: 'relative' }}>
                 <input
