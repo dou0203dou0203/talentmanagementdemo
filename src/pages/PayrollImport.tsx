@@ -6,7 +6,7 @@ import { PayrollDeleteTool } from '../components/PayrollDeleteTool';
 
 export default function PayrollImport() {
   const { permissions } = useAuth();
-  const { users } = useData();
+  const { users, loading } = useData();
   const fileRef = useRef<HTMLInputElement>(null);
   const excelFileRef = useRef<HTMLInputElement>(null);
   const [yearMonth, setYearMonth] = useState(new Date().toISOString().slice(0, 7));
@@ -24,6 +24,10 @@ export default function PayrollImport() {
   };
 
   const handleLocalExcelImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (loading || users.length === 0) {
+      alert('スタッフデータを読み込み中です。数秒お待ちいただいてから再度お試しください。');
+      return;
+    }
     const file = e.target.files?.[0];
     if (!file) return;
     try {
@@ -85,14 +89,15 @@ export default function PayrollImport() {
                   onChange={handleLocalExcelImport}
                   style={{ display: 'none' }}
                   id="local-excel-upload"
+                  disabled={loading || state.status === 'uploading'}
                 />
-                <label htmlFor="local-excel-upload" className="btn btn-primary btn-lg" style={{ width: '100%', textAlign: 'center', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <label htmlFor={loading ? undefined : "local-excel-upload"} className="btn btn-primary btn-lg" style={{ width: '100%', textAlign: 'center', cursor: loading ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', opacity: loading ? 0.6 : 1 }}>
                   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                     <polyline points="17 8 12 3 7 8"></polyline>
                     <line x1="12" y1="3" x2="12" y2="15"></line>
                   </svg>
-                  Excelファイルを選択して保存
+                  {loading ? 'スタッフデータを読み込み中...' : 'Excelファイルを選択して保存'}
                 </label>
               </div>
             </div>
