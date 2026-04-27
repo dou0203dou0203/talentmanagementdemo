@@ -15,7 +15,8 @@ const EXCLUDED_WORDS = new Set([
 ]);
 
 function toMatchKey(s: string): string {
-  return (s || '').toString().replace(/[\s\u3000]+/g, '').trim();
+  // すべての空白文字（半角、全角、ノーブレークスペース、タブなど）を完全に除去
+  return (s || '').toString().replace(/[\s\u3000\u00A0\t\n\r\u200B-\u200D\uFEFF]+/g, '');
 }
 
 function isEmployeeLabel(text: string): boolean {
@@ -44,7 +45,6 @@ export async function processExcelBuffer(buffer: ArrayBuffer, yearMonth: string,
   const allDbRecords: { user_id: string; year_month: string; item_name: string; amount: number }[] = [];
   const allMatchedUsers: { name: string; id: string }[] = [];
   const allUnmatchedNames: string[] = [];
-  const usedUserIds = new Set<string>();
 
   // (A/B) 行を上からスキャンし、ブロック単位でマッピングとデータ取得を行う
   let activeColToUserId: Record<number, string> | null = null;
@@ -66,6 +66,7 @@ export async function processExcelBuffer(buffer: ArrayBuffer, yearMonth: string,
       console.log(`[Excel Parser] 従業員ヘッダー行発見: 行${r} (ラベルは列${headerColIdx})`);
       // 新しいブロックに入ったのでマッピングを作り直す
       activeColToUserId = {};
+      const blockUsedUserIds = new Set<string>(); // ブロック内での重複紐付け防止用
       
       for (let c = headerColIdx + 1; c < grid[r].length; c++) {
         const cellText = (grid[r][c] || '').toString().trim();
@@ -78,10 +79,10 @@ export async function processExcelBuffer(buffer: ArrayBuffer, yearMonth: string,
         const cellKey = toMatchKey(cellText);
         let matched = false;
         for (const entry of nameList) {
-          if (usedUserIds.has(entry.id)) continue; // 重複紐付け防止
+          if (blockUsedUserIds.has(entry.id)) continue; // ブロック内での重複紐付け防止
           if (cellKey.includes(entry.key) || entry.key.includes(cellKey)) {
             activeColToUserId[c] = entry.id;
-            usedUserIds.add(entry.id);
+            blockUsedUserIds.add(entry.id);
             allMatchedUsers.push({ name: entry.name, id: entry.id });
             console.log(`[Excel Parser] ✅ 列${c}: "${cellText}" → ${entry.name}`);
             matched = true;
