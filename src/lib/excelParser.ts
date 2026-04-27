@@ -46,55 +46,75 @@ export async function processExcelBuffer(buffer: ArrayBuffer, yearMonth: string,
   const allUnmatchedNames: string[] = [];
   const usedUserIds = new Set<string>();
 
-  // (A) 従業員行を特定し、列ごとにユーザーをマッピング
-  const colToUserId: Record<number, string> = {};
+  // (A/B) 行を上からスキャンし、ブロック単位でマッピングとデータ取得を行う
+  let activeColToUserId: Record<number, string> | null = null;
+  let headerColIdx = 0;
 
   for (let r = 0; r < grid.length; r++) {
-    const rowHeader = (grid[r][0] || '').toString();
-    if (!isEmployeeLabel(rowHeader)) continue;
-    console.log(`[Excel Parser] 従業員行発見: 行${r}`);
-
-    for (let c = 1; c < grid[r].length; c++) {
-      const cellText = (grid[r][c] || '').toString().trim();
-      if (!cellText || cellText === '-') continue;
-
-      // 除外チェック
-      if (isExcludedWord(cellText)) continue;
-      if (/^[\d\-.\s\/\\()（）]+$/.test(cellText)) continue;
-      
-      const cellKey = toMatchKey(cellText);
-      let matched = false;
-      for (const entry of nameList) {
-        if (usedUserIds.has(entry.id)) continue;
-        if (cellKey.includes(entry.key) || entry.key.includes(cellKey)) {
-          colToUserId[c] = entry.id;
-          usedUserIds.add(entry.id);
-          allMatchedUsers.push({ name: entry.name, id: entry.id });
-          console.log(`[Excel Parser] ✅ 列${c}: "${cellText}" → ${entry.name}`);
-          matched = true;
-          break;
-        }
-      }
-      if (!matched) {
-        allUnmatchedNames.push(cellText);
-        console.log(`[Excel Parser] ❌ 列${c}: "${cellText}" (未マッチ)`);
+    // 1. その行が「従業員名」を示すヘッダー行かどうかを最初の5列から判定
+    let isHeaderRow = false;
+    for (let c = 0; c < Math.min(5, grid[r].length); c++) {
+      const cellText = (grid[r][c] || '').toString();
+      if (isEmployeeLabel(cellText)) {
+        isHeaderRow = true;
+        headerColIdx = c;
+        break;
       }
     }
-    // 最初の従業員行だけでマッピング完了とする（サンプル表構造ベース）
-    break; 
-  }
 
-  // (B) データ行からDBレコードを抽出
-  for (let r = 0; r < grid.length; r++) {
-    const label = toMatchKey((grid[r][0] || '').toString());
-    if (!SAVE_ITEMS.has(label)) continue;
+    if (isHeaderRow) {
+      console.log(`[Excel Parser] 従業員ヘッダー行発見: 行${r} (ラベルは列${headerColIdx})`);
+      // 新しいブロックに入ったのでマッピングを作り直す
+      activeColToUserId = {};
+      
+      for (let c = headerColIdx + 1; c < grid[r].length; c++) {
+        const cellText = (grid[r][c] || '').toString().trim();
+        if (!cellText || cellText === '-') continue;
 
-    for (const [colStr, userId] of Object.entries(colToUserId)) {
-      const colIdx = parseInt(colStr, 10);
-      const cellVal = (grid[r][colIdx] || '').toString().replace(/[,\s]/g, '');
-      const amount = parseFloat(cellVal);
-      if (!isNaN(amount)) {
-        allDbRecords.push({ user_id: userId, year_month: yearMonth, item_name: label, amount });
+        // 除外チェック
+        if (isExcludedWord(cellText)) continue;
+        if (/^[\d\-.\s\/\\()（）]+$/.test(cellText)) continue;
+        
+        const cellKey = toMatchKey(cellText);
+        let matched = false;
+        for (const entry of nameList) {
+          if (usedUserIds.has(entry.id)) continue; // 重複紐付け防止
+          if (cellKey.includes(entry.key) || entry.key.includes(cellKey)) {
+            activeColToUserId[c] = entry.id;
+            usedUserIds.add(entry.id);
+            allMatchedUsers.push({ name: entry.name, id: entry.id });
+            console.log(`[Excel Parser] ✅ 列${c}: "${cellText}" → ${entry.name}`);
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          allUnmatchedNames.push(cellText);
+          console.log(`[Excel Parser] ❌ 列${c}: "${cellText}" (未マッチ)`);
+        }
+      }
+      continue; // この行はデータ行ではないので次へ
+    }
+
+    // 2. 現在アクティブなマッピングがあればデータ行として評価する
+    if (activeColToUserId && Object.keys(activeColToUserId).length > 0) {
+      const labelText = (grid[r][headerColIdx] || '').toString();
+      const label = toMatchKey(labelText);
+      
+      if (!label || isEmployeeLabel(labelText) || isExcludedWord(labelText) && !SAVE_ITEMS.has(label)) {
+        // SAVE_ITEMSと合致するかどうかだけをチェック
+        // ただし「基本給」なども除外されている可能性があるため厳格に SAVE_ITEMS.has をベースにする
+      }
+
+      if (SAVE_ITEMS.has(label)) {
+        for (const [colStr, userId] of Object.entries(activeColToUserId)) {
+          const colIdx = parseInt(colStr, 10);
+          const cellVal = (grid[r][colIdx] || '').toString().replace(/[,\s¥]/g, '');
+          const amount = parseFloat(cellVal);
+          if (!isNaN(amount)) {
+            allDbRecords.push({ user_id: userId, year_month: yearMonth, item_name: label, amount });
+          }
+        }
       }
     }
   }
