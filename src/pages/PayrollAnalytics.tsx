@@ -15,9 +15,22 @@ export default function PayrollAnalytics() {
   const [startMonth, setStartMonth] = useState('');
   const [endMonth, setEndMonth] = useState('');
   
-  const [facilityId, setFacilityId] = useState<string>('');
-  const [occupationId, setOccupationId] = useState<string>('');
+  const [selectedFacilities, setSelectedFacilities] = useState<Set<string>>(new Set());
+  const [selectedOccupations, setSelectedOccupations] = useState<Set<string>>(new Set());
+  const [selectedStaffIds, setSelectedStaffIds] = useState<Set<string>>(new Set());
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (facilities.length > 0 && selectedFacilities.size === 0) {
+      setSelectedFacilities(new Set(facilities.map(f => f.id)));
+    }
+  }, [facilities]);
+
+  useEffect(() => {
+    if (occupations.length > 0 && selectedOccupations.size === 0) {
+      setSelectedOccupations(new Set(occupations.map(o => o.id)));
+    }
+  }, [occupations]);
   
   const [activeTab, setActiveTab] = useState<'trend' | 'cross' | 'ratio' | 'table'>('trend');
 
@@ -78,8 +91,8 @@ export default function PayrollAnalytics() {
     // 対象スタッフセット (事業所・職種フィルタによる)
     const validUserIds = new Set<string>();
     users.forEach(u => {
-      if (facilityId && u.facility_id !== facilityId) return;
-      if (occupationId && u.occupation_id !== occupationId) return;
+      if (selectedFacilities.size > 0 && !selectedFacilities.has(u.facility_id)) return;
+      if (selectedOccupations.size > 0 && !selectedOccupations.has(u.occupation_id)) return;
       validUserIds.add(u.id);
     });
 
@@ -89,7 +102,7 @@ export default function PayrollAnalytics() {
       if (!selectedItems.has(r.item_name)) return false;
       return true;
     });
-  }, [payrollRecords, users, facilityId, occupationId, startMonth, endMonth, selectedItems]);
+  }, [payrollRecords, users, selectedFacilities, selectedOccupations, startMonth, endMonth, selectedItems]);
 
   // ▼各グラフ用の集計データ生成ロジック▼
   // タブ1: 月別トレンド推移
@@ -157,6 +170,29 @@ export default function PayrollAnalytics() {
     return results.sort((a, b) => b.total - a.total);
   }, [filteredRecords, users, facilities, occupations]);
 
+  // スタッフ一覧が変わったら全選択状態にする
+  const staffIdsStr = useMemo(() => staffTableData.map(r => r.id).join(','), [staffTableData]);
+  useEffect(() => {
+    setSelectedStaffIds(new Set(staffTableData.map(r => r.id)));
+  }, [staffIdsStr]);
+
+  // スタッフ合計の計算
+  const tableTotals = useMemo(() => {
+    const itemsTotal: Record<string, number> = {};
+    let grandTotal = 0;
+    Array.from(selectedItems).forEach(i => itemsTotal[i] = 0);
+    
+    staffTableData.forEach(row => {
+      if (selectedStaffIds.has(row.id)) {
+        Array.from(selectedItems).forEach(i => {
+          itemsTotal[i] += (row.items[i] || 0);
+        });
+        grandTotal += row.total;
+      }
+    });
+    return { itemsTotal, grandTotal };
+  }, [staffTableData, selectedItems, selectedStaffIds]);
+
   const exportCSV = () => {
     const selectedItemsArr = Array.from(selectedItems);
     const headers = ['スタッフ名', '事業所', '職種', ...selectedItemsArr, '合計'];
@@ -204,19 +240,51 @@ export default function PayrollAnalytics() {
               <label className="form-label">終了年月</label>
               <input type="month" className="form-input" value={endMonth} onChange={e => setEndMonth(e.target.value)} />
             </div>
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">拠点フィルタ</label>
-              <select className="form-select" value={facilityId} onChange={e => setFacilityId(e.target.value)}>
-                <option value="">すべての事業所</option>
-                {facilities.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
-              </select>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: 'var(--space-3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
+              <label className="form-label" style={{ marginBottom: 0 }}>拠点フィルタ (複数選択)</label>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" onClick={() => setSelectedFacilities(new Set(facilities.map(f => f.id)))} className="btn" style={{ padding: '4px 8px', fontSize: 12 }}>すべて選択</button>
+                <button type="button" onClick={() => setSelectedFacilities(new Set())} className="btn" style={{ padding: '4px 8px', fontSize: 12 }}>すべて外す</button>
+              </div>
             </div>
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label">職種フィルタ</label>
-              <select className="form-select" value={occupationId} onChange={e => setOccupationId(e.target.value)}>
-                <option value="">すべての職種</option>
-                {occupations.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}
-              </select>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, maxHeight: '150px', overflowY: 'auto', padding: '8px', background: '#f8fafc', borderRadius: 6, border: '1px solid #e2e8f0' }}>
+              {facilities.length === 0 && <span style={{ color: '#94a3b8' }}>データがありません</span>}
+              {facilities.map(f => (
+                <label key={f.id} style={{ display: 'flex', alignItems: 'center', gap: 4, background: selectedFacilities.has(f.id) ? '#eff6ff' : '#fff', border: `1px solid ${selectedFacilities.has(f.id) ? '#3b82f6' : '#cbd5e1'}`, padding: '4px 12px', borderRadius: 20, fontSize: 13, cursor: 'pointer', transition: 'all 0.2s', color: selectedFacilities.has(f.id) ? '#1d4ed8' : '#334155' }}>
+                  <input type="checkbox" checked={selectedFacilities.has(f.id)} onChange={() => {
+                    const next = new Set(selectedFacilities);
+                    if (next.has(f.id)) next.delete(f.id); else next.add(f.id);
+                    setSelectedFacilities(next);
+                  }} style={{ display: 'none' }} />
+                  {f.name}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ borderTop: '1px solid #e2e8f0', paddingTop: 'var(--space-3)', marginTop: 'var(--space-3)' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-2)' }}>
+              <label className="form-label" style={{ marginBottom: 0 }}>職種フィルタ (複数選択)</label>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <button type="button" onClick={() => setSelectedOccupations(new Set(occupations.map(o => o.id)))} className="btn" style={{ padding: '4px 8px', fontSize: 12 }}>すべて選択</button>
+                <button type="button" onClick={() => setSelectedOccupations(new Set())} className="btn" style={{ padding: '4px 8px', fontSize: 12 }}>すべて外す</button>
+              </div>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, maxHeight: '150px', overflowY: 'auto', padding: '8px', background: '#f8fafc', borderRadius: 6, border: '1px solid #e2e8f0' }}>
+              {occupations.length === 0 && <span style={{ color: '#94a3b8' }}>データがありません</span>}
+              {occupations.map(occ => (
+                <label key={occ.id} style={{ display: 'flex', alignItems: 'center', gap: 4, background: selectedOccupations.has(occ.id) ? '#eff6ff' : '#fff', border: `1px solid ${selectedOccupations.has(occ.id) ? '#3b82f6' : '#cbd5e1'}`, padding: '4px 12px', borderRadius: 20, fontSize: 13, cursor: 'pointer', transition: 'all 0.2s', color: selectedOccupations.has(occ.id) ? '#1d4ed8' : '#334155' }}>
+                  <input type="checkbox" checked={selectedOccupations.has(occ.id)} onChange={() => {
+                    const next = new Set(selectedOccupations);
+                    if (next.has(occ.id)) next.delete(occ.id); else next.add(occ.id);
+                    setSelectedOccupations(next);
+                  }} style={{ display: 'none' }} />
+                  {occ.name}
+                </label>
+              ))}
             </div>
           </div>
 
@@ -318,7 +386,17 @@ export default function PayrollAnalytics() {
                   <table className="table" style={{ whiteSpace: 'nowrap' }}>
                     <thead style={{ position: 'sticky', top: 0, background: '#f8fafc', zIndex: 10 }}>
                       <tr>
-                        <th style={{ position: 'sticky', left: 0, background: '#f8fafc', zIndex: 11 }}>スタッフ名</th>
+                        <th style={{ position: 'sticky', left: 0, background: '#f8fafc', zIndex: 11, width: 40, textAlign: 'center' }}>
+                          <input 
+                            type="checkbox" 
+                            checked={staffTableData.length > 0 && selectedStaffIds.size === staffTableData.length}
+                            onChange={e => {
+                              if (e.target.checked) setSelectedStaffIds(new Set(staffTableData.map(r => r.id)));
+                              else setSelectedStaffIds(new Set());
+                            }}
+                          />
+                        </th>
+                        <th style={{ position: 'sticky', left: 40, background: '#f8fafc', zIndex: 11 }}>スタッフ名</th>
                         <th>事業所</th>
                         <th>職種</th>
                         {Array.from(selectedItems).map(i => <th key={i} style={{ textAlign: 'right' }}>{i}</th>)}
@@ -327,8 +405,19 @@ export default function PayrollAnalytics() {
                     </thead>
                     <tbody>
                       {staffTableData.map(row => (
-                        <tr key={row.id}>
-                          <td style={{ position: 'sticky', left: 0, background: '#fff', zIndex: 1, fontWeight: 'bold' }}>{row.name}</td>
+                        <tr key={row.id} style={{ opacity: selectedStaffIds.has(row.id) ? 1 : 0.5 }}>
+                          <td style={{ position: 'sticky', left: 0, background: '#fff', zIndex: 1, textAlign: 'center' }}>
+                            <input 
+                              type="checkbox" 
+                              checked={selectedStaffIds.has(row.id)}
+                              onChange={e => {
+                                const next = new Set(selectedStaffIds);
+                                if (e.target.checked) next.add(row.id); else next.delete(row.id);
+                                setSelectedStaffIds(next);
+                              }}
+                            />
+                          </td>
+                          <td style={{ position: 'sticky', left: 40, background: '#fff', zIndex: 1, fontWeight: 'bold' }}>{row.name}</td>
                           <td>{row.facility}</td>
                           <td>{row.occupation}</td>
                           {Array.from(selectedItems).map(i => (
@@ -338,6 +427,21 @@ export default function PayrollAnalytics() {
                         </tr>
                       ))}
                     </tbody>
+                    <tfoot style={{ position: 'sticky', bottom: 0, background: '#eef2ff', zIndex: 10, fontWeight: 'bold' }}>
+                      <tr>
+                        <td colSpan={4} style={{ position: 'sticky', left: 0, background: '#eef2ff', zIndex: 11, textAlign: 'right', paddingRight: 16 }}>
+                          選択スタッフ合計 ({selectedStaffIds.size}人)
+                        </td>
+                        {Array.from(selectedItems).map(i => (
+                          <td key={i} style={{ textAlign: 'right', color: '#1d4ed8' }}>
+                            {new Intl.NumberFormat('ja-JP').format(tableTotals.itemsTotal[i] || 0)}
+                          </td>
+                        ))}
+                        <td style={{ textAlign: 'right', color: '#1d4ed8', fontSize: '1.1em' }}>
+                          {new Intl.NumberFormat('ja-JP').format(tableTotals.grandTotal)}
+                        </td>
+                      </tr>
+                    </tfoot>
                   </table>
                 </div>
               </>
