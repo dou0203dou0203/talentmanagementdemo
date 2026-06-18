@@ -6,7 +6,7 @@ import { userMutations } from '../lib/saveHelper';
 import type { User, EmploymentType, WorkPattern, InterviewLog } from '../types';
 
 export default function StaffProfile() {
-    const { users, occupations, facilities, interviewLogs, updateUser } = useData();
+    const { users, occupations, facilities, interviewLogs, updateUser, addUsers } = useData();
     const { user: currentUser, permissions, roleLabel: _rl } = useAuth();
     const [selectedUserId, setSelectedUserId] = useState<string>(currentUser?.id || 'u-1');
     const [activeTab, setActiveTab] = useState<'basic' | 'qualifications' | 'history' | 'interviews' | 'hr'>('basic');
@@ -18,7 +18,7 @@ export default function StaffProfile() {
     const [showAddInterview, setShowAddInterview] = useState(false);
     const [editingInterview, setEditingInterview] = useState<InterviewLog | null>(null);
     const [ivForm, setIvForm] = useState({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
-    const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ', master_user_id: '' });
+    const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ', master_user_id: '' });
 
     // Qualification modal
     const [showQualModal, setShowQualModal] = useState(false);
@@ -118,11 +118,48 @@ export default function StaffProfile() {
     };
 
     // New staff
-    const saveNewStaff = () => {
+    const saveNewStaff = async () => {
         if (!newStaffForm.name || !newStaffForm.email) { alert('氏名とメールは必須です'); return; }
-        alert(`新規職員「${newStaffForm.name}」を登録しました（デモ）`);
-        setShowAddStaff(false);
-        setNewStaffForm({ name: '', email: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ', master_user_id: '' });
+        setSaving(true);
+        const newId = 'u-' + Date.now();
+        const newUser: User = {
+            id: newId,
+            name: newStaffForm.name.trim(),
+            email: newStaffForm.email.trim(),
+            role: newStaffForm.role,
+            occupation_id: newStaffForm.occupation_id,
+            facility_id: newStaffForm.facility_id,
+            status: 'active',
+            evaluator_id: null,
+            gender: newStaffForm.gender?.trim() || undefined,
+            birth_date: newStaffForm.birth_date?.trim() || undefined,
+            hire_date: newStaffForm.hire_date?.trim() || undefined,
+            position: newStaffForm.position?.trim() || undefined,
+            employment_type: newStaffForm.employment_type || undefined,
+            work_pattern: newStaffForm.work_pattern || undefined,
+            corporation: newStaffForm.corporation?.trim() || undefined,
+            master_user_id: newStaffForm.master_user_id || undefined,
+        };
+
+        try {
+            const result = await userMutations.addUser(newUser);
+            if (result.success) {
+                // Update in-memory state
+                addUsers([newUser]);
+                // Select the newly added staff member
+                setSelectedUserId(newId);
+                setToast(`✅ 新規職員「${newUser.name}」を登録しました`);
+                setShowAddStaff(false);
+                setNewStaffForm({ name: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ', master_user_id: '' });
+            } else {
+                setToast('⚠️ 登録失敗: ' + (result.error || ''));
+            }
+        } catch (e: any) {
+            console.warn('Supabase登録失敗:', e);
+            setToast('⚠️ 登録に失敗しました（データベースエラー）');
+        }
+        setSaving(false);
+        setTimeout(() => setToast(null), 4000);
     };
 
     // Interview
@@ -413,6 +450,16 @@ export default function StaffProfile() {
                         <div className="sp-form-grid">
                             <FormField label="氏名 *" value={newStaffForm.name} onChange={(v) => setNewStaffForm({ ...newStaffForm, name: v })} />
                             <FormField label="メール *" value={newStaffForm.email} onChange={(v) => setNewStaffForm({ ...newStaffForm, email: v })} type="email" />
+                            <div className="sp-form-field">
+                                <label>性別</label>
+                                <select value={newStaffForm.gender} onChange={(e) => setNewStaffForm({ ...newStaffForm, gender: e.target.value })}>
+                                    <option value="">未選択</option>
+                                    <option value="男性">男性</option>
+                                    <option value="女性">女性</option>
+                                    <option value="その他">その他</option>
+                                    <option value="未回答">未回答</option>
+                                </select>
+                            </div>
                             <FormField label="生年月日" value={newStaffForm.birth_date} onChange={(v) => setNewStaffForm({ ...newStaffForm, birth_date: v })} type="date" />
                             <FormField label="入社日" value={newStaffForm.hire_date} onChange={(v) => setNewStaffForm({ ...newStaffForm, hire_date: v })} type="date" />
                             <div className="sp-form-field"><label>事業所</label><select value={newStaffForm.facility_id} onChange={(e) => setNewStaffForm({ ...newStaffForm, facility_id: e.target.value })}>{facilities.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}</select></div>
@@ -430,8 +477,8 @@ export default function StaffProfile() {
                             </div>
                         </div>
                         <div className="sp-form-actions">
-                            <button className="btn btn-secondary" onClick={() => setShowAddStaff(false)}>キャンセル</button>
-                            <button className="btn btn-primary" onClick={saveNewStaff}>登録</button>
+                            <button className="btn btn-secondary" onClick={() => setShowAddStaff(false)} disabled={saving}>キャンセル</button>
+                            <button className="btn btn-primary" onClick={saveNewStaff} disabled={saving}>{saving ? '⏳ 登録中...' : '登録'}</button>
                         </div>
                     </div>
                 </div>

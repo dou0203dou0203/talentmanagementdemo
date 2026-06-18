@@ -95,7 +95,7 @@ const USER_DB_COLUMNS = [
   'id', 'name', 'email', 'role', 'occupation_id', 'facility_id', 'status',
   'evaluator_id', 'gender', 'birth_date', 'hire_date', 'position', 'employment_type',
   'work_pattern', 'corporation', 'address', 'phone', 'notes', 'health_check_date',
-  'resignation_date', 'resignation_reason', 'updated_at',
+  'resignation_date', 'resignation_reason', 'master_user_id', 'updated_at',
 ];
 
 function filterUserColumns(data: Record<string, any>): Record<string, any> {
