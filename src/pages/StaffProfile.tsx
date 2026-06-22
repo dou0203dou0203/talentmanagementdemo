@@ -267,11 +267,9 @@ export default function StaffProfile() {
                         <InfoRow label="役職" value={selected.position || '未登録'} />
                         <InfoRow label="雇用形態" value={selected.employment_type || '未登録'} />
                         <InfoRow label="勤務形態" value={selected.work_pattern || '未登録'} />
+                        <InfoRow label="退職日" value={selected.resignation_date || '未登録'} />
                         {selected.status === 'inactive' && (
-                            <>
-                                <InfoRow label="離職日" value={selected.resignation_date || '未登録'} />
-                                <InfoRow label="離職理由" value={selected.resignation_reason || '未登録'} />
-                            </>
+                            <InfoRow label="退職理由" value={selected.resignation_reason || '未登録'} />
                         )}
                     </div>
                 )}
