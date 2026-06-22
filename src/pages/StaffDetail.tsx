@@ -163,6 +163,7 @@ interface HrInfoTabProps {
 
 interface EditForm {
   name: string;
+  furigana: string;
   gender: string;
   birth_date: string;
   facility_id: string;
@@ -187,6 +188,7 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permis
 
   const buildForm = (): EditForm => ({
     name: user.name || '',
+    furigana: user.furigana || '',
     gender: user.gender || '',
     birth_date: user.birth_date || '',
     facility_id: user.facility_id || '',
@@ -226,6 +228,7 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permis
 
     const updates: Partial<User> = {
       name: form.name.trim(),
+      furigana: form.furigana.trim() || undefined,
       gender: form.gender.trim() || undefined,
       birth_date: form.birth_date.trim() || undefined,
       facility_id: form.facility_id,
@@ -279,6 +282,7 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permis
   // View-mode display items
   const displayItems = [
     { label: '氏名', value: user.name, icon: '👤' },
+    { label: 'フリガナ', value: user.furigana || '未登録', icon: '🗣️' },
     { label: '性別', value: user.gender || '未登録', icon: '🚻' },
     { label: '生年月日', value: user.birth_date || '未登録', icon: '🎂' },
     { label: '所属', value: fac?.name || '未登録', icon: '🏥' },
@@ -335,6 +339,11 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permis
               <div>
                 <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>👤 氏名 <span style={{ color: 'var(--color-danger)' }}>*</span></label>
                 <input type='text' style={inputStyle} value={form.name} onChange={e => set('name', e.target.value)} placeholder='氏名' />
+              </div>
+              {/* フリガナ */}
+              <div>
+                <label style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-neutral-500)', display: 'block', marginBottom: 4 }}>🗣️ フリガナ</label>
+                <input type='text' style={inputStyle} value={form.furigana} onChange={e => set('furigana', e.target.value)} placeholder='フリガナ' />
               </div>
               {/* 性別 */}
               <div>

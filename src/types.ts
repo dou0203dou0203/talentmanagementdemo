@@ -49,6 +49,7 @@ export interface User {
   avatar?: string;
   // 拡張フィールド
   gender?: string;              // 性別
+  furigana?: string;            // フリガナ
   birth_date?: string;
   hire_date?: string;
   position?: string;            // 役職

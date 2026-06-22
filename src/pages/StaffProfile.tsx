@@ -18,7 +18,7 @@ export default function StaffProfile() {
     const [showAddInterview, setShowAddInterview] = useState(false);
     const [editingInterview, setEditingInterview] = useState<InterviewLog | null>(null);
     const [ivForm, setIvForm] = useState({ type: '定期面談', summary: '', details: '', mood: 3, action_items: '' });
-    const [newStaffForm, setNewStaffForm] = useState({ name: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ', master_user_id: '' });
+    const [newStaffForm, setNewStaffForm] = useState({ name: '', furigana: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff' as const, birth_date: '', hire_date: '', position: '', employment_type: '常勤' as EmploymentType, work_pattern: '日勤のみ' as WorkPattern, corporation: 'さくらの樹グループ', master_user_id: '' });
 
     // Qualification modal
     const [showQualModal, setShowQualModal] = useState(false);
@@ -76,13 +76,14 @@ export default function StaffProfile() {
 
     // Basic info edit
     const startEdit = () => {
-        setEditForm({ name: selected.name, email: selected.email, gender: selected.gender || '', birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '', master_user_id: selected.master_user_id || '' });
+        setEditForm({ name: selected.name, furigana: selected.furigana || '', email: selected.email, gender: selected.gender || '', birth_date: selected.birth_date || '', hire_date: selected.hire_date || '', position: selected.position || '', employment_type: selected.employment_type || '常勤', work_pattern: selected.work_pattern || '日勤のみ', corporation: selected.corporation || '', occupation_id: selected.occupation_id, facility_id: selected.facility_id, status: selected.status, resignation_date: selected.resignation_date || '', resignation_reason: selected.resignation_reason || '', master_user_id: selected.master_user_id || '' });
         setEditMode(true);
     };
     const saveEdit = async () => {
         setSaving(true);
         const updates: Partial<User> = {
             name: editForm.name?.trim() || selected.name,
+            furigana: editForm.furigana?.trim() || undefined,
             email: editForm.email?.trim() || selected.email,
             gender: editForm.gender?.trim() || undefined,
             birth_date: editForm.birth_date?.trim() || undefined,
@@ -125,6 +126,7 @@ export default function StaffProfile() {
         const newUser: User = {
             id: newId,
             name: newStaffForm.name.trim(),
+            furigana: newStaffForm.furigana?.trim() || undefined,
             email: newStaffForm.email.trim(),
             role: newStaffForm.role,
             occupation_id: newStaffForm.occupation_id,
@@ -150,7 +152,7 @@ export default function StaffProfile() {
                 setSelectedUserId(newId);
                 setToast(`✅ 新規職員「${newUser.name}」を登録しました`);
                 setShowAddStaff(false);
-                setNewStaffForm({ name: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ', master_user_id: '' });
+                setNewStaffForm({ name: '', furigana: '', email: '', gender: '', occupation_id: occupations[0]?.id || '', facility_id: facilities[0]?.id || '', role: 'staff', birth_date: '', hire_date: '', position: '', employment_type: '常勤', work_pattern: '日勤のみ', corporation: 'さくらの樹グループ', master_user_id: '' });
             } else {
                 setToast('⚠️ 登録失敗: ' + (result.error || ''));
             }
@@ -187,7 +189,7 @@ export default function StaffProfile() {
 
     const employmentTypes: EmploymentType[] = ['常勤', '非常勤', 'パート', '派遣', '契約'];
     const workPatterns: WorkPattern[] = ['日勤のみ', '夜勤あり', '交代制', '変則勤務', 'フレックス'];
-    const POSITIONS: string[] = ['院長', '理事長兼院長', '医事課係長', '看護師長', '事務長', '事務長代理', '主任', '医療事業部長', 'エリアマネージャー', '施設長'];
+    const POSITIONS: string[] = ['院長', '理事長兼院長', '医事課係長', '看護師長', '事務長', '事務長代理', '主任', '医療事業部長', 'エリアマネージャー', '施設長', '管理者', 'サービス提供責任者', '部長'];
 
     return (
         <div className="staff-profile-page">
@@ -252,6 +254,7 @@ export default function StaffProfile() {
                 {activeTab === 'basic' && !editMode && (
                     <div className="sp-grid">
                         <InfoRow label="氏名" value={selected.name} />
+                        <InfoRow label="フリガナ" value={selected.furigana || '未登録'} />
                         <InfoRow label="メール" value={selected.email} />
                         <InfoRow label="性別" value={selected.gender || '未登録'} />
                         <InfoRow label="生年月日" value={selected.birth_date || '未登録'} />
@@ -277,6 +280,7 @@ export default function StaffProfile() {
                         <h3 className="sp-section-title">✏️ 基本情報を編集</h3>
                         <div className="sp-form-grid">
                             <FormField label="氏名" value={editForm.name || ''} onChange={(v) => setEditForm({ ...editForm, name: v })} />
+                            <FormField label="フリガナ" value={editForm.furigana || ''} onChange={(v) => setEditForm({ ...editForm, furigana: v })} />
                             <FormField label="メール" value={editForm.email || ''} onChange={(v) => setEditForm({ ...editForm, email: v })} type="email" />
                             <div className="sp-form-field"><label>性別</label><select value={editForm.gender || ''} onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}><option value="">未選択</option><option value="男性">男性</option><option value="女性">女性</option><option value="その他">その他</option><option value="未回答">未回答</option></select></div>
                             <FormField label="生年月日" value={editForm.birth_date || ''} onChange={(v) => setEditForm({ ...editForm, birth_date: v })} type="date" />
@@ -449,6 +453,7 @@ export default function StaffProfile() {
                         <div className="modal-header"><h3>➕ 新規職員登録</h3><button className="modal-close" onClick={() => setShowAddStaff(false)}>✕</button></div>
                         <div className="sp-form-grid">
                             <FormField label="氏名 *" value={newStaffForm.name} onChange={(v) => setNewStaffForm({ ...newStaffForm, name: v })} />
+                            <FormField label="フリガナ" value={newStaffForm.furigana} onChange={(v) => setNewStaffForm({ ...newStaffForm, furigana: v })} />
                             <FormField label="メール *" value={newStaffForm.email} onChange={(v) => setNewStaffForm({ ...newStaffForm, email: v })} type="email" />
                             <div className="sp-form-field">
                                 <label>性別</label>

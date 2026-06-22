@@ -15,8 +15,7 @@ import type {
   InterviewLog,
   AptitudeTest,
 } from '../types';
-
-export const occupations: Occupation[] = [
+export const occupations: Occupation[] = [
   {
     id: 'occ-1',
     name: '医師'
@@ -30,8 +29,12 @@ export const occupations: Occupation[] = [
     name: 'リハビリ'
   },
   {
-    id: 'occ-4',
-    name: '介護士'
+    id: 'occ-16',
+    name: '初任者研修'
+  },
+  {
+    id: 'occ-17',
+    name: '実務者研修'
   },
   {
     id: 'occ-5',
@@ -275,7 +278,7 @@ export const users: User[] = [
     name: '後藤湊',
     email: 'user18@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-9',
     status: 'active',
     evaluator_id: 'u-17'
@@ -305,7 +308,7 @@ export const users: User[] = [
     name: '伊藤大輔',
     email: 'user21@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-10',
     status: 'active',
     evaluator_id: 'u-17'
@@ -497,7 +500,7 @@ export const users: User[] = [
     name: '長谷川凛',
     email: 'user40@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-14',
     status: 'active',
     evaluator_id: 'u-39'
@@ -527,7 +530,7 @@ export const users: User[] = [
     name: '福田京子',
     email: 'user43@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-14',
     status: 'active',
     evaluator_id: 'u-39'
@@ -664,7 +667,7 @@ export const users: User[] = [
     name: '今井隼人',
     email: 'user54@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-1',
     status: 'active',
     evaluator_id: 'u-1',
@@ -683,7 +686,7 @@ export const users: User[] = [
     name: '福田力',
     email: 'user55@example.com',
     role: 'staff',
-    occupation_id: 'occ-4',
+    occupation_id: 'occ-16',
     facility_id: 'fac-1',
     status: 'inactive',
     evaluator_id: 'u-1',

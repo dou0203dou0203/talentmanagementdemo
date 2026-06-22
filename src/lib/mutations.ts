@@ -93,7 +93,7 @@ export const thanksMutations = {
 // Columns that exist in the Supabase users table (Including new ones we will add via SQL)
 const USER_DB_COLUMNS = [
   'id', 'name', 'email', 'role', 'occupation_id', 'facility_id', 'status',
-  'evaluator_id', 'gender', 'birth_date', 'hire_date', 'position', 'employment_type',
+  'evaluator_id', 'gender', 'furigana', 'birth_date', 'hire_date', 'position', 'employment_type',
   'work_pattern', 'corporation', 'address', 'phone', 'notes', 'health_check_date',
   'resignation_date', 'resignation_reason', 'master_user_id', 'updated_at',
 ];

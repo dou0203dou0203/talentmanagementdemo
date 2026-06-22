@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS facility_staffing_targets (
 CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
+  furigana TEXT,
   email TEXT NOT NULL DEFAULT '',
   role TEXT NOT NULL DEFAULT 'staff',
   occupation_id TEXT REFERENCES occupations(id),
