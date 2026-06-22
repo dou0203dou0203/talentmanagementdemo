@@ -292,6 +292,7 @@ function HrInfoTab({ user, fac, occ, facilities, occupations, updateUser, permis
     { label: '住所', value: user.address || '未登録', icon: '🏠' },
     { label: '連絡先', value: user.phone || '未登録', icon: '📞' },
     { label: '雇用年月日', value: user.hire_date || '未登録', icon: '📅' },
+    { label: '退職日', value: user.resignation_date || '未登録', icon: '🚪' },
     { label: '保有資格', value: user.qualifications?.map(q => q.name).join(', ') || '未登録', icon: '📜' },
     { label: '備考', value: user.notes || '—', icon: '📎' },
     { label: '健康診断時期', value: user.health_check_date || '未登録', icon: '🩺' },
